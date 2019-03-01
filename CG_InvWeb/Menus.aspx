@@ -51,7 +51,7 @@
                             <EditItemTemplate>
                                 <dx:ASPxComboBox ID="ASPxComboBox3" runat="server" Text='<%# Bind("MenuP", "{0}") %>' OnSelectedIndexChanged="ASPxComboBox3_SelectedIndexChanged" Value='<%# Eval("MenuP") %>'  Font-Names="Century Gothic" Theme="iOS">
                                     <Items>
-                                        <dx:ListEditItem Text="Catalogos" Value="0" />
+                                        <dx:ListEditItem Text="Catálogos" Value="0" />
                                         <dx:ListEditItem Text="Procesos" Value="1" />
                                         <dx:ListEditItem Text="Reportes" Value="3" />
                                         <dx:ListEditItem Text="Configuracion" Value="2" />
