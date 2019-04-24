@@ -20,6 +20,8 @@
 
     <item  Text="Menus" NavigateUrl="~/Menus.aspx"/>
 
+    <item Text="Proveedores" NavigateUrl="~/Catalogos/Proveedores.aspx"/>
+
   </group>
   
   
