@@ -20,7 +20,7 @@
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
-                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourceObras" KeyFieldName="Index" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="iOS" Width="100%" Font-Names="Century Gothic">
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourceObras" KeyFieldName="key_obras" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="iOS" Width="100%" Font-Names="Century Gothic">
                     <SettingsPager PageSize="25">
                     </SettingsPager>
                     <SettingsEditing Mode="PopupEditForm">
@@ -35,21 +35,10 @@
                         <SettingsItemCaptions HorizontalAlign="Left" Location="Top" />
                     </EditFormLayoutProperties>
                     <Columns>
-                        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonType="Image">
-                        </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn FieldName="Index" ReadOnly="True" VisibleIndex="1" Visible="False">
+                        <dx:GridViewDataTextColumn FieldName="key_obras" ReadOnly="True" VisibleIndex="0">
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Obras" VisibleIndex="2" SortIndex="0" SortOrder="Ascending">
-                            <PropertiesTextEdit MaxLength="80">
-                            </PropertiesTextEdit>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
+                        <dx:GridViewDataTextColumn FieldName="obras" VisibleIndex="1">
                         </dx:GridViewDataTextColumn>
                     </Columns>
                     <SettingsCommandButton>
@@ -73,7 +62,7 @@
             </dx:PanelContent>
         </PanelCollection>
     </dx:ASPxRoundPanel>
-    <asp:SqlDataSource ID="SDSourceObras" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Obras]" DeleteCommand="DELETE FROM [Obras] WHERE [Index] = @Index" InsertCommand="INSERT INTO [Obras] ([Obras]) VALUES (@Obras)" UpdateCommand="UPDATE [Obras] SET [Obras] = @Obras WHERE [Index] = @Index">
+    <asp:SqlDataSource ID="SDSourceObras" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" SelectCommand="SELECT * FROM &quot;Obras&quot;" DeleteCommand="DELETE FROM &quot;Obras&quot; WHERE &quot;key_obras&quot; = @key_obras" InsertCommand="INSERT INTO &quot;Obras&quot; (&quot;Obras&quot;) VALUES (@Obras)" UpdateCommand="UPDATE &quot;Obras&quot; SET &quot;Obras&quot; = @Obras WHERE &quot;key_obras&quot; = @key_obras" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>">
         <DeleteParameters>
             <asp:Parameter Name="Index" Type="Int32" />
         </DeleteParameters>

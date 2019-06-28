@@ -18,7 +18,7 @@
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
-                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDataSourceMenus" KeyFieldName="Index" OnRowDeleted="ASPxGridView1_RowDeleted" OnRowInserted="ASPxGridView1_RowInserted" OnRowUpdated="ASPxGridView1_RowUpdated" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="Glass" Width="100%" Font-Names="Century Gothic">
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDataSourceMenus" KeyFieldName="key_menu" OnRowDeleted="ASPxGridView1_RowDeleted" OnRowInserted="ASPxGridView1_RowInserted" OnRowUpdated="ASPxGridView1_RowUpdated" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="Glass" Width="100%" Font-Names="Century Gothic">
                     <ClientSideEvents BatchEditEndEditing="function(s, e) {
                         var capa = document.getElementById(&quot;BtnGuardar&quot;); &nbsp; 
                         capa.click();
@@ -42,67 +42,18 @@
                         <SettingsItemCaptions HorizontalAlign="Left" Location="Top" />
                     </EditFormLayoutProperties>
                     <Columns>
-                        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonType="Image">
-                        </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn FieldName="Index" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="1" Visible="False">
+                        <dx:GridViewDataTextColumn FieldName="key_menu" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="0">
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="MenuP" VisibleIndex="2" SortIndex="1" SortOrder="Ascending">
-                            <EditItemTemplate>
-                                <dx:ASPxComboBox ID="ASPxComboBox3" runat="server" Text='<%# Bind("MenuP", "{0}") %>' OnSelectedIndexChanged="ASPxComboBox3_SelectedIndexChanged" Value='<%# Eval("MenuP") %>'  Font-Names="Century Gothic" Theme="iOS">
-                                    <Items>
-                                        <dx:ListEditItem Text="Catálogos" Value="0" />
-                                        <dx:ListEditItem Text="Procesos" Value="1" />
-                                        <dx:ListEditItem Text="Reportes" Value="3" />
-                                        <dx:ListEditItem Text="Configuracion" Value="2" />
-                                    </Items>
-                                </dx:ASPxComboBox>
-                            </EditItemTemplate>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
+                        <dx:GridViewDataTextColumn FieldName="menup" VisibleIndex="1">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Menu" VisibleIndex="3" SortIndex="2" SortOrder="Ascending" >
-                            <PropertiesTextEdit MaxLength="20">
-                            </PropertiesTextEdit>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
+                        <dx:GridViewDataTextColumn FieldName="menu" VisibleIndex="2" >
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Ruta" VisibleIndex="4">
-                            <PropertiesTextEdit MaxLength="50">
-                            </PropertiesTextEdit>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
+                        <dx:GridViewDataTextColumn FieldName="ruta" VisibleIndex="3">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataCheckColumn FieldName="Activo" VisibleIndex="5" Visible="False">
-                        </dx:GridViewDataCheckColumn>
-                        <dx:GridViewDataTextColumn FieldName="perfil" VisibleIndex="6" SortIndex="0" SortOrder="Ascending">
-                            <EditItemTemplate>
-                                <dx:ASPxComboBox ID="ASPxComboBox2" runat="server" DataSourceID="SqlDataSourcePerfil" Text='<%# Bind("perfil", "{0}") %>' TextField="Perfil" ValueField="Perfil"  Font-Names="Century Gothic" Theme="iOS">
-                                </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="SqlDataSourcePerfil" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Perfil] FROM [Perfil]"></asp:SqlDataSource>
-                            </EditItemTemplate>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
+                        <dx:GridViewDataTextColumn FieldName="activo" VisibleIndex="4">
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="perfil" ShowInCustomizationForm="True" VisibleIndex="5">
                         </dx:GridViewDataTextColumn>
                 </Columns>
                     <SettingsCommandButton>
@@ -126,7 +77,7 @@
             </dx:PanelContent>
         </PanelCollection>
     </dx:ASPxRoundPanel>
-    <asp:SqlDataSource ID="SDataSourceMenus" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" DeleteCommand="DELETE FROM [Menus] WHERE [Index] = @Index" InsertCommand="INSERT INTO [Menus] ([MenuP], [Menu], [Ruta], [Activo], [perfil]) VALUES (@MenuP, @Menu, @Ruta, @Activo, @perfil)" SelectCommand="SELECT * FROM [Menus]" UpdateCommand="UPDATE [Menus] SET [MenuP] = @MenuP, [Menu] = @Menu, [Ruta] = @Ruta, [Activo] = @Activo, [perfil] = @perfil WHERE [Index] = @Index">
+    <asp:SqlDataSource ID="SDataSourceMenus" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" DeleteCommand="DELETE FROM &quot;Menus&quot; WHERE &quot;key_menu&quot; = @key_menu" InsertCommand="INSERT INTO &quot;Menus&quot; (&quot;MenuP&quot;, &quot;Menu&quot;, &quot;Ruta&quot;, &quot;Activo&quot;, &quot;perfil&quot;) VALUES (@MenuP, @Menu, @Ruta, @Activo, @perfil)" SelectCommand="SELECT * FROM &quot;Menus&quot;" UpdateCommand="UPDATE &quot;Menus&quot; SET &quot;MenuP&quot; = @MenuP, &quot;Menu&quot; = @Menu, &quot;Ruta&quot; = @Ruta, &quot;Activo&quot; = @Activo, &quot;perfil&quot; = @perfil WHERE &quot;key_menu&quot; = @key_menu" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>">
         <DeleteParameters>
             <asp:Parameter Name="Index" Type="Int32" />
         </DeleteParameters>

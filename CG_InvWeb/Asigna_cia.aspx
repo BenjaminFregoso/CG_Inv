@@ -20,7 +20,7 @@
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
-                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourceCias" KeyFieldName="Index" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="Glass" Width="100%" Font-Names="Century Gothic">
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourceCias" KeyFieldName="key_compañias" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="Glass" Width="100%" Font-Names="Century Gothic">
                     <SettingsPager PageSize="25">
                     </SettingsPager>
                     <SettingsEditing Mode="PopupEditForm">
@@ -35,16 +35,10 @@
                         <SettingsItemCaptions HorizontalAlign="Left" Location="Top" />
                     </EditFormLayoutProperties>
                     <Columns>
-                        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonType="Image">
-                        </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn FieldName="Index" ReadOnly="True" VisibleIndex="1" Visible="False">
-                            <PropertiesTextEdit MaxLength="80">
-                            </PropertiesTextEdit>
+                        <dx:GridViewDataTextColumn FieldName="key_compañias" ReadOnly="True" VisibleIndex="0">
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Compañia" VisibleIndex="2" SortIndex="0" SortOrder="Ascending">
-                            <PropertiesTextEdit MaxLength="80">
-                            </PropertiesTextEdit>
+                        <dx:GridViewDataTextColumn FieldName="compañia" VisibleIndex="1">
                         </dx:GridViewDataTextColumn>
                     </Columns>
                     <SettingsCommandButton>
@@ -69,7 +63,7 @@
         </PanelCollection>
     </dx:ASPxRoundPanel>
     <br />
-    <asp:SqlDataSource ID="SDSourceCias" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" DeleteCommand="DELETE FROM [Compañias] WHERE [Index] = @Index" InsertCommand="INSERT INTO [Compañias] ([Compañia]) VALUES (@Compañia)" SelectCommand="SELECT * FROM [Compañias]" UpdateCommand="UPDATE [Compañias] SET [Compañia] = @Compañia WHERE [Index] = @Index">
+    <asp:SqlDataSource ID="SDSourceCias" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" DeleteCommand="DELETE FROM &quot;Compañias&quot; WHERE &quot;key_compañias&quot; = @key_compañias" InsertCommand="INSERT INTO &quot;Compañias&quot; (&quot;Compañia&quot;) VALUES (@Compañia)" SelectCommand="SELECT * FROM &quot;Compañias&quot;" UpdateCommand="UPDATE &quot;Compañias&quot; SET &quot;Compañia&quot; = @Compania WHERE &quot;key_compañias&quot; = @key_compañias" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>">
         <DeleteParameters>
             <asp:Parameter Name="Index" Type="Int32" />
         </DeleteParameters>

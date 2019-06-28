@@ -20,7 +20,7 @@
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
-                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourcePerfil" KeyFieldName="Index" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="Glass" Width="100%" Font-Names="Century Gothic">
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourcePerfil" KeyFieldName="key_perfil" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="Glass" Width="100%" Font-Names="Century Gothic">
                 <SettingsPager PageSize="25">
                 </SettingsPager>
                 <SettingsEditing Mode="PopupEditForm">
@@ -35,22 +35,10 @@
                         <SettingsItemCaptions HorizontalAlign="Left" Location="Top" />
                 </EditFormLayoutProperties>
                 <Columns>
-                    <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonType="Image">
-                    </dx:GridViewCommandColumn>
-                    <dx:GridViewDataTextColumn FieldName="Index" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1">
+                    <dx:GridViewDataTextColumn FieldName="key_perfil" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="0">
                         <EditFormSettings Visible="False" />
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="Perfil" ShowInCustomizationForm="True"  VisibleIndex="2" SortIndex="0" SortOrder="Ascending">
-                        <PropertiesTextEdit MaxLength="15">
-                        </PropertiesTextEdit>
-                        <EditFormSettings Caption="Perfil" CaptionLocation="Top" />
-                        <EditCellStyle Font-Names="Century Gothic">
-                        </EditCellStyle>
-                        <EditFormCaptionStyle Font-Names="Century Gothic">
-                        </EditFormCaptionStyle>
-                        <HeaderStyle Font-Names="Century Gothic" />
-                        <CellStyle Font-Names="Century Gothic">
-                        </CellStyle>
+                    <dx:GridViewDataTextColumn FieldName="perfil" ShowInCustomizationForm="True"  VisibleIndex="1">
                     </dx:GridViewDataTextColumn>
                 </Columns>
                     <SettingsCommandButton>
@@ -75,7 +63,7 @@
         </PanelCollection>
     </dx:ASPxRoundPanel>
     <br />
-    <asp:SqlDataSource ID="SDSourcePerfil" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" DeleteCommand="DELETE FROM [Perfil] WHERE [Index] = @Index" InsertCommand="INSERT INTO [Perfil] ([Perfil]) VALUES (@Perfil)" SelectCommand="SELECT * FROM [Perfil]" UpdateCommand="UPDATE [Perfil] SET [Perfil] = @Perfil WHERE [Index] = @Index">
+    <asp:SqlDataSource ID="SDSourcePerfil" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" DeleteCommand="DELETE FROM &quot;Perfil&quot; WHERE &quot;key_perfil&quot; = @key_perfil" InsertCommand="INSERT INTO &quot;Perfil&quot; (&quot;Perfil&quot;) VALUES (@Perfil)" SelectCommand="SELECT * FROM &quot;Perfil&quot;" UpdateCommand="UPDATE &quot;Perfil&quot; SET &quot;Perfil&quot; = @Perfil WHERE &quot;key_perfil&quot; = @key_perfil" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>">
     <DeleteParameters>
         <asp:Parameter Name="Index" Type="Int32" />
     </DeleteParameters>

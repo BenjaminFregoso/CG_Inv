@@ -82,7 +82,7 @@ namespace CG_InvWeb
 
                     ));
 
-            documeto.Save("C:/Users/User/Documents/CG_InvWeb/CG_Inv/CG_InvWeb/App_Data/" + PerfilValue +".xml");
+            documeto.Save(@"App_Data\"+ PerfilValue +".xml");
             
         }
 

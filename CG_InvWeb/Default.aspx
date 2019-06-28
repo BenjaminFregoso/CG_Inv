@@ -115,7 +115,7 @@
             </tr>
             </table>
     </div>
-    <asp:SqlDataSource ID="SDataSourceUsu" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Usuario] FROM [Usuarios]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SDataSourceUsu" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" SelectCommand="SELECT &quot;Usuario&quot; FROM &quot;Usuarios&quot;" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>"></asp:SqlDataSource>
     </form>
 </body>
 </html>

@@ -18,7 +18,7 @@
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
-                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourceAccesos" KeyFieldName="index" OnInitNewRow="ASPxGridView1_InitNewRow" OnRowInserting="ASPxGridView1_RowInserting" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="Glass" Width="100%" Font-Names="Century Gothic">
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourceAccesos" KeyFieldName="key_accesos" OnInitNewRow="ASPxGridView1_InitNewRow" OnRowInserting="ASPxGridView1_RowInserting" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="Glass" Width="100%" Font-Names="Century Gothic">
                     <ClientSideEvents RowDblClick="function(s, e) {
                         s.StartEditRow(e.visibleIndex);
                     }" />
@@ -36,73 +36,17 @@
                         <SettingsItemCaptions HorizontalAlign="Left" Location="Top" />
                     </EditFormLayoutProperties>
                     <Columns>
-                        <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonType="Image">
-                        </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn FieldName="index" ReadOnly="True" VisibleIndex="1" Visible="False" >
+                        <dx:GridViewDataTextColumn FieldName="key_accesos" ReadOnly="True" VisibleIndex="0" >
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Usuario" VisibleIndex="2">
-                            <EditItemTemplate>
-                                <dx:ASPxComboBox ID="ASPxComboBox1" runat="server" DataSourceID="SDSourceUsuarios" Text='<%# Bind("Usuario", "{0}") %>' TextField="Usuario" ValueField="Usuario" Font-Names="Century Gothic" Theme="iOS">
-                                    <Columns>
-                                        <dx:ListBoxColumn FieldName="Usuario" />
-                                    </Columns>
-                                </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="SDSourceUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Usuario] FROM [Usuarios]"></asp:SqlDataSource>
-                            </EditItemTemplate>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
+                        <dx:GridViewDataTextColumn FieldName="usuario" VisibleIndex="1">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Obras" VisibleIndex="3">
-                            <EditItemTemplate>
-                                <dx:ASPxComboBox ID="ASPxComboBox2" runat="server" DataSourceID="SDataSourceObras" Text='<%# Bind("Obras", "{0}") %>' TextField="Obras" Value='<%# Eval("Obras") %>' ValueField="Obras" Font-Names="Century Gothic" Theme="iOS">
-                                    <Columns>
-                                        <dx:ListBoxColumn FieldName="Obras" />
-                                    </Columns>
-                                </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="SDataSourceObras" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Obras] FROM [Obras]"></asp:SqlDataSource>
-                            </EditItemTemplate>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
+                        <dx:GridViewDataTextColumn FieldName="obras" VisibleIndex="2">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Compañias" VisibleIndex="4">
-                            <EditItemTemplate>
-                                <dx:ASPxComboBox ID="ASPxComboBox3" runat="server" DataSourceID="SDSourceCias" Text='<%# Bind("Compañias", "{0}") %>' TextField="Compañia" ValueField="Compañia" Font-Names="Century Gothic" Theme="iOS">
-                                    <Columns>
-                                        <dx:ListBoxColumn FieldName="Compañia" />
-                                    </Columns>
-                                </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="SDSourceCias" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Compañia] FROM [Compañias]"></asp:SqlDataSource>
-                            </EditItemTemplate>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
+                        <dx:GridViewDataTextColumn FieldName="compañias" VisibleIndex="3">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataCheckColumn FieldName="Periodos" VisibleIndex="5">
-                            <PropertiesCheckEdit ValueChecked="">
-                            </PropertiesCheckEdit>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
-                        </dx:GridViewDataCheckColumn>
+                        <dx:GridViewDataTextColumn FieldName="periodos" ShowInCustomizationForm="True" VisibleIndex="4">
+                        </dx:GridViewDataTextColumn>
                     </Columns>
                     <SettingsCommandButton>
                         <NewButton>
@@ -125,7 +69,7 @@
             </dx:PanelContent>
         </PanelCollection>
     </dx:ASPxRoundPanel>
-    <asp:SqlDataSource ID="SDSourceAccesos" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" DeleteCommand="DELETE FROM [Accesos] WHERE [index] = @index" InsertCommand="INSERT INTO [Accesos] ([Usuario], [Obras], [Compañias], [Periodos]) VALUES (@Usuario, @Obras, @Compañias, @Periodos)" SelectCommand="SELECT * FROM [Accesos]" UpdateCommand="UPDATE [Accesos] SET [Usuario] = @Usuario, [Obras] = @Obras, [Compañias] = @Compañias, [Periodos] = @Periodos WHERE [index] = @index">
+    <asp:SqlDataSource ID="SDSourceAccesos" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" DeleteCommand="DELETE FROM &quot;Accesos&quot; WHERE &quot;key_accesos&quot; = @key_accesos" InsertCommand="INSERT INTO &quot;Accesos&quot; (&quot;Usuario&quot;, &quot;Obras&quot;, &quot;Compañias&quot;, &quot;Periodos&quot;) VALUES (@Usuario, @Obras, @Compañias, @Periodos)" SelectCommand="SELECT * FROM &quot;Accesos&quot;" UpdateCommand="UPDATE &quot;Accesos&quot; SET &quot;Usuario&quot; = @Usuario, &quot;Obras&quot; = @Obras, &quot;Compañias&quot; = @Compañias, &quot;Periodos&quot; = @Periodos WHERE &quot;key_accesos&quot; = @key_accesos" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>">
         <DeleteParameters>
             <asp:Parameter Name="index" Type="Int32" />
         </DeleteParameters>

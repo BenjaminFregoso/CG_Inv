@@ -100,6 +100,9 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
                 
+                <dx:ASPxTextBox ID="ASPxTextBox1" runat="server" Width="170px">
+                </dx:ASPxTextBox>
+                
             </dx:PanelContent>
         </PanelCollection>
     </dx:ASPxRoundPanel>

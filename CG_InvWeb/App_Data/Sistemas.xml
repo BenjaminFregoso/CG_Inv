@@ -13,14 +13,14 @@
     <item Text="Almacenes" NavigateUrl="~/Catalogos/Almacen.aspx"/>
 
     <item Text="Artículos" NavigateUrl="~/Catalogos/Articulos.aspx"/>
+    
+    <item Text="Proveedores" NavigateUrl="~/Catalogos/Proveedores.aspx"/>
 
     <item Text="Centros de Costos" NavigateUrl="~/Catalogos/CentroCostos.aspx"/>    
 
     <item  Text="Datos compañía" NavigateUrl="~/Inicio.aspx"/>
 
     <item  Text="Menus" NavigateUrl="~/Menus.aspx"/>
-
-    <item Text="Proveedores" NavigateUrl="~/Catalogos/Proveedores.aspx"/>
 
   </group>
   
