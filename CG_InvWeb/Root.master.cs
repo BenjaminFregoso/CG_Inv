@@ -16,4 +16,20 @@ namespace CG_InvWeb {
             ASPxLabel2.Text = svNombre;
         }
     }
+    //PRUEBAS METODOS GLOBALES
+    /*
+    public class funciones_globales
+    {
+        public funciones_globales()
+        {
+
+        }
+
+        public string bitacora()
+        {
+            Console.WriteLine("Pruebas de funcion global");
+            return "hola";
+        }
+    }
+    */
 }
