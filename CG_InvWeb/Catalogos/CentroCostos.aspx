@@ -85,7 +85,7 @@
                         </CancelButton>
                     </SettingsCommandButton>
                 </dx:ASPxGridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" DeleteCommand="DELETE FROM &quot;CentroCostos&quot; WHERE &quot;key_centro_costos&quot; = ?" InsertCommand="INSERT INTO &quot;CentroCostos&quot; (&quot;cc&quot;, &quot;descrip&quot;) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;key_centro_costos&quot;, &quot;cc&quot;, &quot;descrip&quot; FROM &quot;CentroCostos&quot; ORDER BY &quot;cc&quot;" UpdateCommand="UPDATE &quot;CentroCostos&quot; SET &quot;cc&quot; = ?, &quot;descrip&quot; = ? WHERE &quot;key_centro_costos&quot; = ?">
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;CentroCostos&quot; WHERE &quot;key_centro_costos&quot; = ?" InsertCommand="INSERT INTO &quot;CentroCostos&quot; (&quot;cc&quot;, &quot;descrip&quot;) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_centro_costos&quot;, &quot;cc&quot;, &quot;descrip&quot; FROM &quot;CentroCostos&quot; ORDER BY &quot;cc&quot;" UpdateCommand="UPDATE &quot;CentroCostos&quot; SET &quot;cc&quot; = ?, &quot;descrip&quot; = ? WHERE &quot;key_centro_costos&quot; = ?">
                     <DeleteParameters>
                         <asp:Parameter Name="key_centro_costos" Type="Int64" />
                     </DeleteParameters>

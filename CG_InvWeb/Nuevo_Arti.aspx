@@ -288,10 +288,10 @@
         </PanelCollection>
     </dx:ASPxRoundPanel>
 
-    <asp:SqlDataSource ID="SDS_Articulos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerLinuxConnectionString1 %>" 
+    <asp:SqlDataSource ID="SDS_Articulos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" 
 DeleteCommand="DELETE FROM &quot;Articulos&quot; WHERE &quot;key_articulo&quot; = ? AND &quot;codigo_articulo&quot; = ?" 
 InsertCommand="INSERT INTO &quot;Articulos&quot; (&quot;descripcion&quot;, &quot;modelo&quot;, &quot;descripcion_larga&quot;, &quot;otra_informacion&quot;, &quot;cuidado_limpieza&quot;, &quot;fkey_departamento&quot;, &quot;fkey_clasificacion&quot;, &quot;fkey_familia&quot;, &quot;fkey_marca&quot;, &quot;codigo_articulo&quot;, &quot;fecha_alta&quot; ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-ProviderName="<%$ ConnectionStrings:ServerLinuxConnectionString1.ProviderName %>" 
+ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" 
 SelectCommand="SELECT &quot;key_articulo&quot;, &quot;descripcion&quot;, &quot;modelo&quot;, &quot;descripcion_larga&quot;, &quot;otra_informacion&quot;, &quot;cuidado_limpieza&quot;, &quot;Articulos&quot;.&quot;fkey_departamento&quot;, &quot;Articulos&quot;.&quot;fkey_clasificacion&quot;,&quot;Articulos&quot;.&quot;fkey_familia&quot;, &quot;fkey_marca&quot;, &quot;codigo_articulo&quot;, &quot;fecha_alta&quot;, &quot;usuario_alta&quot;, &quot;Departamento&quot;.&quot;departamento&quot;, &quot;Clasificacion&quot;.&quot;clasificacion&quot;, &quot;Familia&quot;.&quot;familia&quot;, &quot;Articulos_marca&quot;.&quot;marca&quot;
 FROM &quot;Articulos&quot;, &quot;Departamento&quot;, &quot;Clasificacion&quot;, &quot;Familia&quot;, &quot;Articulos_marca&quot;
 WHERE &quot;Articulos&quot;.&quot;fkey_departamento&quot; = &quot;Departamento&quot;.&quot;key_departamento&quot;
@@ -331,28 +331,28 @@ UpdateCommand="UPDATE &quot;Articulos&quot; SET &quot;descripcion&quot; = ?, &qu
     </asp:SqlDataSource>
 
 
-    <asp:SqlDataSource ID="SDS_Departamentos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerLinuxConnectionString1 %>" ProviderName="<%$ ConnectionStrings:ServerLinuxConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;key_departamento&quot;, &quot;departamento&quot; FROM &quot;Departamento&quot;"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SDS_Departamentos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_departamento&quot;, &quot;departamento&quot; FROM &quot;Departamento&quot;"></asp:SqlDataSource>
     
-    <asp:SqlDataSource ID="SDS_Familia" runat="server" ConnectionString="<%$ ConnectionStrings:ServerLinuxConnectionString1 %>" ProviderName="<%$ ConnectionStrings:ServerLinuxConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;key_familia&quot;, &quot;familia&quot;, &quot;key_clasificacion&quot;, &quot;key_departamento&quot; FROM &quot;Familia&quot;"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SDS_Familia" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_familia&quot;, &quot;familia&quot;, &quot;key_clasificacion&quot;, &quot;key_departamento&quot; FROM &quot;Familia&quot;"></asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="SDS_Marca" runat="server" ConnectionString="<%$ ConnectionStrings:ServerLinuxConnectionString1 %>" ProviderName="<%$ ConnectionStrings:ServerLinuxConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;key_marca&quot;, &quot;marca&quot; FROM &quot;Articulos_marca&quot;"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SDS_Marca" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_marca&quot;, &quot;marca&quot; FROM &quot;Articulos_marca&quot;"></asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="SDS_Clasificacion" runat="server" ConnectionString="<%$ ConnectionStrings:ServerLinuxConnectionString1 %>" ProviderName="<%$ ConnectionStrings:ServerLinuxConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;key_clasificacion&quot;, &quot;clasificacion&quot;, &quot;fkey_departamento&quot; FROM  &quot;Clasificacion&quot;"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SDS_Clasificacion" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_clasificacion&quot;, &quot;clasificacion&quot;, &quot;fkey_departamento&quot; FROM  &quot;Clasificacion&quot;"></asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="SDS_Arbol" runat="server" ConnectionString="<%$ ConnectionStrings:ServerLinuxConnectionString1 %>" ProviderName="<%$ ConnectionStrings:ServerLinuxConnectionString1.ProviderName %>" 
+    <asp:SqlDataSource ID="SDS_Arbol" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" 
         SelectCommand="SELECT &quot;Familia&quot;.&quot;key_familia&quot;,&quot;Departamento&quot;.&quot;departamento&quot;, &quot;Clasificacion&quot;.&quot;clasificacion&quot;, &quot;Familia&quot;.&quot;familia&quot;, &quot;Familia&quot;.&quot;fkey_clasificacion&quot;, &quot;Familia&quot;.&quot;fkey_departamento&quot;
 FROM &quot;Departamento&quot;, &quot;Clasificacion&quot;, &quot;Familia&quot; 
 WHERE &quot;Departamento&quot;.&quot;key_departamento&quot; = &quot;Clasificacion&quot;.&quot;fkey_departamento&quot; AND &quot;Clasificacion&quot;.&quot;key_clasificacion&quot; = &quot;Familia&quot;.&quot;fkey_clasificacion&quot;">
     </asp:SqlDataSource>
 
     
-    <asp:SqlDataSource ID="SDS_ArticulosDeptos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerLinuxConnectionString1 %>" ProviderName="<%$ ConnectionStrings:ServerLinuxConnectionString1.ProviderName %>" SelectCommand="SELECT DISTINCT &quot;Articulos&quot;.&quot;fkey_departamento&quot;, &quot;Departamento&quot;.&quot;departamento&quot;
+    <asp:SqlDataSource ID="SDS_ArticulosDeptos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT DISTINCT &quot;Articulos&quot;.&quot;fkey_departamento&quot;, &quot;Departamento&quot;.&quot;departamento&quot;
 FROM &quot;Articulos&quot;, &quot;Departamento&quot;
 WHERE &quot;Articulos&quot;.&quot;fkey_departamento&quot; = &quot;Departamento&quot;.&quot;key_departamento&quot;">
     </asp:SqlDataSource>
 
 
-    <asp:SqlDataSource ID="SDS_ArticulosClas" runat="server" ConnectionString="<%$ ConnectionStrings:ServerLinuxConnectionString1 %>" ProviderName="<%$ ConnectionStrings:ServerLinuxConnectionString1.ProviderName %>" SelectCommand="SELECT DISTINCT &quot;Articulos&quot;.&quot;fkey_departamento&quot;, &quot;Articulos&quot;.&quot;fkey_clasificacion&quot;, &quot;Clasificacion&quot;.&quot;clasificacion&quot;, &quot;Departamento&quot;.&quot;departamento&quot;
+    <asp:SqlDataSource ID="SDS_ArticulosClas" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT DISTINCT &quot;Articulos&quot;.&quot;fkey_departamento&quot;, &quot;Articulos&quot;.&quot;fkey_clasificacion&quot;, &quot;Clasificacion&quot;.&quot;clasificacion&quot;, &quot;Departamento&quot;.&quot;departamento&quot;
 FROM &quot;Articulos&quot;, &quot;Clasificacion&quot;, &quot;Departamento&quot;
 WHERE &quot;Articulos&quot;.&quot;fkey_clasificacion&quot; = &quot;Clasificacion&quot;.&quot;key_clasificacion&quot;
 AND &quot;Articulos&quot;.&quot;fkey_departamento&quot; = &quot;Departamento&quot;.&quot;key_departamento&quot;
@@ -363,7 +363,7 @@ AND &quot;Departamento&quot;.&quot;departamento&quot; = ?">
     </asp:SqlDataSource>
 
     
-    <asp:SqlDataSource ID="SDS_ArticulosFam" runat="server" ConnectionString="<%$ ConnectionStrings:ServerLinuxConnectionString1 %>" ProviderName="<%$ ConnectionStrings:ServerLinuxConnectionString1.ProviderName %>" 
+    <asp:SqlDataSource ID="SDS_ArticulosFam" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" 
 SelectCommand="SELECT DISTINCT &quot;Articulos&quot;.&quot;fkey_clasificacion&quot;, &quot;Articulos&quot;.&quot;fkey_familia&quot;, &quot;Familia&quot;.&quot;familia&quot;
 FROM &quot;Articulos&quot;,&quot;Departamento&quot;, &quot;Clasificacion&quot;, &quot;Familia&quot;
 WHERE &quot;Articulos&quot;.&quot;fkey_departamento&quot; = &quot;Departamento&quot;.&quot;key_departamento&quot;
@@ -403,7 +403,7 @@ AND &quot;Departamento&quot;.&quot;departamento&quot; = ?">
         </Columns>
     </dx:ASPxGridLookup>
 
-    <asp:SqlDataSource ID="SDS_DepClasFam" runat="server" ConnectionString="<%$ ConnectionStrings:ServerLinuxConnectionString1 %>" ProviderName="<%$ ConnectionStrings:ServerLinuxConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;Familia&quot;.&quot;key_familia&quot;,&quot;Departamento&quot;.&quot;departamento&quot;, &quot;Clasificacion&quot;.&quot;clasificacion&quot;, &quot;Familia&quot;.&quot;familia&quot;, &quot;Familia&quot;.&quot;fkey_clasificacion&quot;, &quot;Familia&quot;.&quot;fkey_departamento&quot;
+    <asp:SqlDataSource ID="SDS_DepClasFam" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;Familia&quot;.&quot;key_familia&quot;,&quot;Departamento&quot;.&quot;departamento&quot;, &quot;Clasificacion&quot;.&quot;clasificacion&quot;, &quot;Familia&quot;.&quot;familia&quot;, &quot;Familia&quot;.&quot;fkey_clasificacion&quot;, &quot;Familia&quot;.&quot;fkey_departamento&quot;
     FROM &quot;Departamento&quot;, &quot;Clasificacion&quot;, &quot;Familia&quot; 
     WHERE &quot;Departamento&quot;.&quot;key_departamento&quot; = &quot;Clasificacion&quot;.&quot;fkey_departamento&quot; AND &quot;Clasificacion&quot;.&quot;key_clasificacion&quot; = &quot;Familia&quot;.&quot;fkey_clasificacion&quot;"></asp:SqlDataSource>
 

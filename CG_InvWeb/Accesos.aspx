@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Accesos.aspx.cs" Inherits="CG_InvWeb.Accesos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<style>
+    <style>
         Principal{
         width:80%;
         margin-top:20px;
@@ -14,7 +14,7 @@
     }
 </style> 
 <div class="Principal">          
-    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Asignación de obras" ShowCollapseButton="True" Theme="iOS" Width="100%" Font-Names="Century Gothic" CssClass="auto-style1" Height="100%" AllowCollapsingByHeaderClick="True" HeaderNavigateUrl="~/Usuarios.aspx">
+    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Asignación de obras" ShowCollapseButton="True" Theme="iOS" Width="100%" Font-Names="Century Gothic" CssClass="auto-style1" Height="100%" HeaderNavigateUrl="~/Usuarios.aspx">
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
@@ -48,7 +48,8 @@
                                         <dx:ListBoxColumn FieldName="Usuario" />
                                     </Columns>
                                 </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="SDSourceUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Usuario] FROM [Usuarios]"></asp:SqlDataSource>
+                                
+                                <asp:SqlDataSource ID="SDSourceUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" SelectCommand="SELECT &quot;usuario&quot; FROM &quot;Usuarios&quot;" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>"></asp:SqlDataSource>
                             </EditItemTemplate>
                             <EditCellStyle Font-Names="Century Gothic">
                             </EditCellStyle>
@@ -58,31 +59,15 @@
                             <CellStyle Font-Names="Century Gothic">
                             </CellStyle>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Obras" VisibleIndex="3">
-                            <EditItemTemplate>
-                                <dx:ASPxComboBox ID="ASPxComboBox2" runat="server" DataSourceID="SDataSourceObras" Text='<%# Bind("Obras", "{0}") %>' TextField="Obras" Value='<%# Eval("Obras") %>' ValueField="Obras" Font-Names="Century Gothic" Theme="iOS">
-                                    <Columns>
-                                        <dx:ListBoxColumn FieldName="Obras" />
-                                    </Columns>
-                                </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="SDataSourceObras" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Obras] FROM [Obras]"></asp:SqlDataSource>
-                            </EditItemTemplate>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Compañias" VisibleIndex="4">
+                        <dx:GridViewDataTextColumn FieldName="Empresa" VisibleIndex="4">
                             <EditItemTemplate>
                                 <dx:ASPxComboBox ID="ASPxComboBox3" runat="server" DataSourceID="SDSourceCias" Text='<%# Bind("Compañias", "{0}") %>' TextField="Compañia" ValueField="Compañia" Font-Names="Century Gothic" Theme="iOS">
                                     <Columns>
                                         <dx:ListBoxColumn FieldName="Compañia" />
                                     </Columns>
                                 </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="SDSourceCias" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Compañia] FROM [Compañias]"></asp:SqlDataSource>
+
+                                <asp:SqlDataSource ID="SDSourceCias" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" SelectCommand="SELECT &quot;empresa&quot; FROM &quot;Empresas&quot;" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>"></asp:SqlDataSource>
                             </EditItemTemplate>
                             <EditCellStyle Font-Names="Century Gothic">
                             </EditCellStyle>
@@ -125,7 +110,7 @@
             </dx:PanelContent>
         </PanelCollection>
     </dx:ASPxRoundPanel>
-    <asp:SqlDataSource ID="SDSourceAccesos" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" DeleteCommand="DELETE FROM [Accesos] WHERE [index] = @index" InsertCommand="INSERT INTO [Accesos] ([Usuario], [Obras], [Compañias], [Periodos]) VALUES (@Usuario, @Obras, @Compañias, @Periodos)" SelectCommand="SELECT * FROM [Accesos]" UpdateCommand="UPDATE [Accesos] SET [Usuario] = @Usuario, [Obras] = @Obras, [Compañias] = @Compañias, [Periodos] = @Periodos WHERE [index] = @index">
+    <asp:SqlDataSource ID="SDSourceAccesos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Accesos&quot; WHERE &quot;key_accesos&quot; = @key_accesos" InsertCommand="INSERT INTO &quot;Accesos&quot; (&quot;Usuario&quot;, &quot;Empresa&quot;, &quot;Periodos&quot;) VALUES (@Usuario, @Empresa, @Periodos)" SelectCommand="SELECT &quot;key_accesos&quot;, &quot;empresa&quot;, &quot;usuario&quot;, &quot;obras&quot;, &quot;periodos&quot; FROM &quot;Accesos&quot;" UpdateCommand="UPDATE &quot;Accesos&quot; SET &quot;usuario&quot; = @Usuario, &quot;empresa&quot; = @Empresa, &quot;periodos&quot; = @Periodos WHERE &quot;key_accesos&quot; = @key_accesos" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>">
         <DeleteParameters>
             <asp:Parameter Name="index" Type="Int32" />
         </DeleteParameters>

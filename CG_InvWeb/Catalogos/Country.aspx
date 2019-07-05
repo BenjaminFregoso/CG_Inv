@@ -84,7 +84,7 @@
                         </CancelButton>
                     </SettingsCommandButton>
                 </dx:ASPxGridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" DeleteCommand="DELETE FROM &quot;c_Pais&quot; WHERE &quot;key_pais&quot; = ?" InsertCommand="INSERT INTO &quot;c_Pais&quot; (&quot;pais&quot;, &quot;descrip&quot;) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;key_pais&quot;, &quot;pais&quot;, &quot;descrip&quot; FROM &quot;c_Pais&quot; ORDER BY &quot;pais&quot;" UpdateCommand="UPDATE &quot;c_Pais&quot; SET &quot;pais&quot; = ?, &quot;descrip&quot; = ? WHERE &quot;key_pais&quot; = ?">
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;c_Pais&quot; WHERE &quot;key_pais&quot; = ?" InsertCommand="INSERT INTO &quot;c_Pais&quot; (&quot;pais&quot;, &quot;descrip&quot;) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_pais&quot;, &quot;pais&quot;, &quot;descrip&quot; FROM &quot;c_Pais&quot; ORDER BY &quot;pais&quot;" UpdateCommand="UPDATE &quot;c_Pais&quot; SET &quot;pais&quot; = ?, &quot;descrip&quot; = ? WHERE &quot;key_pais&quot; = ?">
                     <DeleteParameters>
                         <asp:Parameter Name="key_pais" Type="Int64" />
                     </DeleteParameters>
