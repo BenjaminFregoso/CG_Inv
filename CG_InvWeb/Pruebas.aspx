@@ -23,7 +23,7 @@
             </dx:PanelContent>
 </PanelCollection>
 </dx:ASPxRoundPanel>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" DeleteCommand="DELETE FROM &quot;c_Bancos&quot; WHERE &quot;key_banco&quot; = ? AND ((&quot;banco&quot; = ?) OR (&quot;banco&quot; IS NULL AND ? IS NULL))" InsertCommand="INSERT INTO &quot;c_Bancos&quot; (&quot;key_banco&quot;, &quot;banco&quot;, &quot;descrip&quot;) VALUES (?, ?, ?)" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;key_banco&quot;, &quot;banco&quot;, &quot;descrip&quot; FROM &quot;c_Bancos&quot;" UpdateCommand="UPDATE &quot;c_Bancos&quot; SET &quot;descrip&quot; = ? WHERE &quot;key_banco&quot; = ? AND ((&quot;banco&quot; = ?) OR (&quot;banco&quot; IS NULL AND ? IS NULL))">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;c_Bancos&quot; WHERE &quot;key_banco&quot; = ? AND ((&quot;banco&quot; = ?) OR (&quot;banco&quot; IS NULL AND ? IS NULL))" InsertCommand="INSERT INTO &quot;c_Bancos&quot; (&quot;key_banco&quot;, &quot;banco&quot;, &quot;descrip&quot;) VALUES (?, ?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_banco&quot;, &quot;banco&quot;, &quot;descrip&quot; FROM &quot;c_Bancos&quot;" UpdateCommand="UPDATE &quot;c_Bancos&quot; SET &quot;descrip&quot; = ? WHERE &quot;key_banco&quot; = ? AND ((&quot;banco&quot; = ?) OR (&quot;banco&quot; IS NULL AND ? IS NULL))">
         <DeleteParameters>
             <asp:Parameter Name="key_banco" Type="Int64" />
             <asp:Parameter Name="banco" Type="String" />

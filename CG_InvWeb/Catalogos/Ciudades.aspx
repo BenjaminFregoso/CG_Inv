@@ -98,7 +98,7 @@
                         </CancelButton>
                     </SettingsCommandButton>
                 </dx:ASPxGridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" DeleteCommand="DELETE FROM &quot;c_Ciudades&quot; WHERE &quot;key_ciudad&quot; = ?" InsertCommand="INSERT INTO &quot;c_Ciudades&quot; (&quot;descrip&quot;,&quot;estado&quot;,&quot;pais&quot; ) VALUES (?,?,?)" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;key_ciudad&quot;, &quot;descrip&quot;,&quot;estado&quot;,&quot;pais&quot; FROM &quot;c_Ciudades&quot; ORDER BY &quot;descrip&quot;" UpdateCommand="UPDATE &quot;c_Ciudades&quot; SET &quot;descrip&quot; = ?,&quot;estado&quot; =?,&quot;pais&quot; = ? WHERE &quot;key_ciudad&quot; = ?">
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;c_Ciudades&quot; WHERE &quot;key_ciudad&quot; = ?" InsertCommand="INSERT INTO &quot;c_Ciudades&quot; (&quot;descrip&quot;,&quot;estado&quot;,&quot;pais&quot; ) VALUES (?,?,?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_ciudad&quot;, &quot;descrip&quot;,&quot;estado&quot;,&quot;pais&quot; FROM &quot;c_Ciudades&quot; ORDER BY &quot;descrip&quot;" UpdateCommand="UPDATE &quot;c_Ciudades&quot; SET &quot;descrip&quot; = ?,&quot;estado&quot; =?,&quot;pais&quot; = ? WHERE &quot;key_ciudad&quot; = ?">
                     <DeleteParameters>
                         <asp:Parameter Name="key_ciudad" Type="Int64" />
                     </DeleteParameters>
@@ -115,8 +115,8 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
                 
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;descrip&quot;, &quot;estado&quot; FROM &quot;c_Estado&quot;"></asp:SqlDataSource>
-                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;descrip&quot;, &quot;pais&quot; FROM &quot;c_Pais&quot;"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;descrip&quot;, &quot;estado&quot; FROM &quot;c_Estado&quot;"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;descrip&quot;, &quot;pais&quot; FROM &quot;c_Pais&quot;"></asp:SqlDataSource>
                 
             </dx:PanelContent>
         </PanelCollection>
