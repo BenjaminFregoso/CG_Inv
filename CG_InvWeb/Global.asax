@@ -1,1 +1,0 @@
-<%@ Application Codebehind="Global.asax.cs" Inherits="CG_InvWeb.Global_asax" Language="C#" %>
