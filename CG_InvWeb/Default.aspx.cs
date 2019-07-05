@@ -40,7 +40,7 @@ namespace CG_InvWeb
                 sqlConnection1.Open();
                 //BUSCA EN CLIENTES
                 //NpgsqlCommand cmd = new NpgsqlCommand("Select * From public.Usuarios Where Usuario='" + Usuario + "' And Contraseña='" + Contraseña + "' ", sqlConnection1);
-                NpgsqlCommand cmd = new NpgsqlCommand("Select \"Usuario\", \"Perfil\", \"Usuario_Largo\" From \"Usuarios\"", sqlConnection1);
+                NpgsqlCommand cmd = new NpgsqlCommand("Select Usuario, Perfil, Nombre From \"Usuarios\" ", sqlConnection1);
                 NpgsqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.HasRows)
@@ -48,7 +48,7 @@ namespace CG_InvWeb
                     reader.Read();
                     System.Web.HttpContext.Current.Session["Perfil"] = reader["Perfil"].ToString();
                     System.Web.HttpContext.Current.Session["Usuario"] = Usuario;
-                    System.Web.HttpContext.Current.Session["Nombre_Completo"] = reader["Usuario_Largo"].ToString(); ;
+                    System.Web.HttpContext.Current.Session["Nombre"] = reader["Nombre"].ToString(); ;
 
                     //Response.Redirect("Default.aspx?Usuario=" + Usuario + "&Id=" + reader["Perfil"].ToString() + "&Obra=" + Obra + "&Compañia=" + Compañia);
                     Response.Redirect("Inicio.aspx?Usuario=" + Usuario);
