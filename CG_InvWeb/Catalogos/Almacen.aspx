@@ -85,7 +85,7 @@
                         </CancelButton>
                     </SettingsCommandButton>
                 </dx:ASPxGridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" DeleteCommand="DELETE FROM &quot;c_Almacen&quot; WHERE &quot;key_almacen&quot; = ?" InsertCommand="INSERT INTO &quot;c_Almacen&quot; (&quot;almacen&quot;, &quot;descrip&quot;) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;key_almacen&quot;, &quot;almacen&quot;, &quot;descrip&quot; FROM &quot;c_Almacen&quot; ORDER BY &quot;almacen&quot;" UpdateCommand="UPDATE &quot;c_Almacen&quot; SET &quot;almacen&quot; = ?, &quot;descrip&quot; = ? WHERE &quot;key_almacen&quot; = ?">
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;c_Almacen&quot; WHERE &quot;key_almacen&quot; = ?" InsertCommand="INSERT INTO &quot;c_Almacen&quot; (&quot;almacen&quot;, &quot;descrip&quot;) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_almacen&quot;, &quot;almacen&quot;, &quot;descrip&quot; FROM &quot;c_Almacen&quot; ORDER BY &quot;almacen&quot;" UpdateCommand="UPDATE &quot;c_Almacen&quot; SET &quot;almacen&quot; = ?, &quot;descrip&quot; = ? WHERE &quot;key_almacen&quot; = ?">
                     <DeleteParameters>
                         <asp:Parameter Name="key_almacen" Type="Int64" />
                     </DeleteParameters>

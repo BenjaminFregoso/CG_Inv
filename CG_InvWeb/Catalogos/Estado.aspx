@@ -84,7 +84,7 @@
                         </CancelButton>
                     </SettingsCommandButton>
                 </dx:ASPxGridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CG_001ConnectionString1 %>" DeleteCommand="DELETE FROM &quot;c_Estado&quot; WHERE &quot;key_estado&quot; = ?" InsertCommand="INSERT INTO &quot;c_Estado&quot; (&quot;estado&quot;, &quot;descrip&quot;) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:CG_001ConnectionString1.ProviderName %>" SelectCommand="SELECT &quot;key_estado&quot;, &quot;estado&quot;, &quot;descrip&quot; FROM &quot;c_Estado&quot; ORDER BY &quot;estado&quot;" UpdateCommand="UPDATE &quot;c_Estado&quot; SET &quot;estado&quot; = ?, &quot;descrip&quot; = ? WHERE &quot;key_estado&quot; = ?">
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;c_Estado&quot; WHERE &quot;key_estado&quot; = ?" InsertCommand="INSERT INTO &quot;c_Estado&quot; (&quot;estado&quot;, &quot;descrip&quot;) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_estado&quot;, &quot;estado&quot;, &quot;descrip&quot; FROM &quot;c_Estado&quot; ORDER BY &quot;estado&quot;" UpdateCommand="UPDATE &quot;c_Estado&quot; SET &quot;estado&quot; = ?, &quot;descrip&quot; = ? WHERE &quot;key_estado&quot; = ?">
                     <DeleteParameters>
                         <asp:Parameter Name="key_estado" Type="Int64" />
                     </DeleteParameters>
