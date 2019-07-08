@@ -44,10 +44,13 @@
                     <Columns>
                         <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonType="Image">
                         </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn FieldName="Index" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="1" Visible="False">
-                            <EditFormSettings Visible="False" />
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="MenuP" VisibleIndex="2" SortIndex="1" SortOrder="Ascending">
+                        <dx:GridViewDataTextColumn FieldName="menup" VisibleIndex="1" SortIndex="1" SortOrder="Ascending" Caption="MenuP">
+                            <PropertiesTextEdit MaxLength="20">
+                            </PropertiesTextEdit>
+                            <EditCellStyle Font-Names="Century Gothic">
+                            </EditCellStyle>
+                            <EditFormCaptionStyle Font-Names="Century Gothic">
+                            </EditFormCaptionStyle>
                             <EditItemTemplate>
                                 <dx:ASPxComboBox ID="ASPxComboBox3" runat="server" Text='<%# Bind("MenuP", "{0}") %>' OnSelectedIndexChanged="ASPxComboBox3_SelectedIndexChanged" Value='<%# Eval("MenuP") %>'  Font-Names="Century Gothic" Theme="iOS">
                                     <Items>
@@ -58,43 +61,19 @@
                                     </Items>
                                 </dx:ASPxComboBox>
                             </EditItemTemplate>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
                             <HeaderStyle Font-Names="Century Gothic" />
                             <CellStyle Font-Names="Century Gothic">
                             </CellStyle>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Menu" VisibleIndex="3" SortIndex="2" SortOrder="Ascending" >
-                            <PropertiesTextEdit MaxLength="20">
-                            </PropertiesTextEdit>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
+                        <dx:GridViewDataTextColumn FieldName="menu" VisibleIndex="2" SortIndex="2" SortOrder="Ascending" Caption="Menu" >
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Ruta" VisibleIndex="4">
-                            <PropertiesTextEdit MaxLength="50">
-                            </PropertiesTextEdit>
-                            <EditCellStyle Font-Names="Century Gothic">
-                            </EditCellStyle>
-                            <EditFormCaptionStyle Font-Names="Century Gothic">
-                            </EditFormCaptionStyle>
-                            <HeaderStyle Font-Names="Century Gothic" />
-                            <CellStyle Font-Names="Century Gothic">
-                            </CellStyle>
+                        <dx:GridViewDataTextColumn FieldName="ruta" VisibleIndex="3" Caption="Ruta">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataCheckColumn FieldName="Activo" VisibleIndex="5" Visible="False">
-                        </dx:GridViewDataCheckColumn>
-                        <dx:GridViewDataTextColumn FieldName="perfil" VisibleIndex="6" SortIndex="0" SortOrder="Ascending">
+                        <dx:GridViewDataTextColumn FieldName="perfil" VisibleIndex="4" SortIndex="0" SortOrder="Ascending" Caption="Perfil">
                             <EditItemTemplate>
                                 <dx:ASPxComboBox ID="ASPxComboBox2" runat="server" DataSourceID="SqlDataSourcePerfil" Text='<%# Bind("perfil", "{0}") %>' TextField="Perfil" ValueField="Perfil"  Font-Names="Century Gothic" Theme="iOS">
                                 </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="SqlDataSourcePerfil" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Perfil] FROM [Perfil]"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="SqlDataSourcePerfil" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" SelectCommand="SELECT &quot;Perfil&quot; FROM &quot;Perfil&quot;" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>"></asp:SqlDataSource>
                             </EditItemTemplate>
                             <EditCellStyle Font-Names="Century Gothic">
                             </EditCellStyle>
@@ -103,6 +82,10 @@
                             <HeaderStyle Font-Names="Century Gothic" />
                             <CellStyle Font-Names="Century Gothic">
                             </CellStyle>
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataCheckColumn FieldName="activo" VisibleIndex="5" Caption="Activo">
+                        </dx:GridViewDataCheckColumn>
+                        <dx:GridViewDataTextColumn FieldName="key_menu" ShowInCustomizationForm="True" VisibleIndex="6" Visible="False" Caption="key_menu">
                         </dx:GridViewDataTextColumn>
                 </Columns>
                     <SettingsCommandButton>
@@ -126,24 +109,24 @@
             </dx:PanelContent>
         </PanelCollection>
     </dx:ASPxRoundPanel>
-    <asp:SqlDataSource ID="SDataSourceMenus" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" DeleteCommand="DELETE FROM [Menus] WHERE [Index] = @Index" InsertCommand="INSERT INTO [Menus] ([MenuP], [Menu], [Ruta], [Activo], [perfil]) VALUES (@MenuP, @Menu, @Ruta, @Activo, @perfil)" SelectCommand="SELECT * FROM [Menus]" UpdateCommand="UPDATE [Menus] SET [MenuP] = @MenuP, [Menu] = @Menu, [Ruta] = @Ruta, [Activo] = @Activo, [perfil] = @perfil WHERE [Index] = @Index">
+    <asp:SqlDataSource ID="SDataSourceMenus" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Menus&quot; WHERE &quot;key_menu&quot; = @key_menu" InsertCommand="INSERT INTO &quot;Menus&quot; (&quot;menup&quot;, &quot;menu&quot;, &quot;ruta&quot;, &quot;activo&quot;, &quot;perfil&quot;) VALUES (@menup, @menu, @ruta, @activo, @perfil)" SelectCommand="SELECT * FROM &quot;Menus&quot;" UpdateCommand="UPDATE &quot;Menus&quot; SET &quot;menup&quot; = @menup, &quot;menu&quot; = @menu, &quot;ruta&quot; = @ruta, &quot;activo&quot; = @activo, &quot;perfil&quot; = @perfil WHERE &quot;key_menu&quot; = @key_menu" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>">
         <DeleteParameters>
-            <asp:Parameter Name="Index" Type="Int32" />
+            <asp:Parameter Name="key_menu" Type="Int64" />
         </DeleteParameters>
         <InsertParameters>
-            <asp:Parameter Name="MenuP" Type="String" />
-            <asp:Parameter Name="Menu" Type="String" />
-            <asp:Parameter Name="Ruta" Type="String" />
-            <asp:Parameter Name="Activo" Type="Boolean" />
+            <asp:Parameter Name="menum" Type="String" />
+            <asp:Parameter Name="menu" Type="String" />
+            <asp:Parameter Name="ruta" Type="String" />
+            <asp:Parameter Name="activo" Type="Boolean" />
             <asp:Parameter Name="perfil" Type="String" />
         </InsertParameters>
         <UpdateParameters>
-            <asp:Parameter Name="MenuP" Type="String" />
-            <asp:Parameter Name="Menu" Type="String" />
-            <asp:Parameter Name="Ruta" Type="String" />
-            <asp:Parameter Name="Activo" Type="Boolean" />
+            <asp:Parameter Name="menup" Type="String" />
+            <asp:Parameter Name="menu" Type="String" />
+            <asp:Parameter Name="ruta" Type="String" />
+            <asp:Parameter Name="activo" Type="Boolean" />
             <asp:Parameter Name="perfil" Type="String" />
-            <asp:Parameter Name="Index" Type="Int32" />
+            <asp:Parameter Name="key_menu" Type="Int64" />
         </UpdateParameters>
     </asp:SqlDataSource>
 </div>

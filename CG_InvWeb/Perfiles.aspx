@@ -37,10 +37,7 @@
                 <Columns>
                     <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonType="Image">
                     </dx:GridViewCommandColumn>
-                    <dx:GridViewDataTextColumn FieldName="Index" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1">
-                        <EditFormSettings Visible="False" />
-                    </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="Perfil" ShowInCustomizationForm="True"  VisibleIndex="2" SortIndex="0" SortOrder="Ascending">
+                    <dx:GridViewDataTextColumn FieldName="perfil" ShowInCustomizationForm="True" VisibleIndex="1" Caption="Perfil" SortIndex="0" SortOrder="Ascending">
                         <PropertiesTextEdit MaxLength="15">
                         </PropertiesTextEdit>
                         <EditFormSettings Caption="Perfil" CaptionLocation="Top" />
@@ -51,6 +48,8 @@
                         <HeaderStyle Font-Names="Century Gothic" />
                         <CellStyle Font-Names="Century Gothic">
                         </CellStyle>
+                    </dx:GridViewDataTextColumn>
+                    <dx:GridViewDataTextColumn FieldName="key_perfil" ShowInCustomizationForm="True" Visible="False" VisibleIndex="2" Caption="key_perfil" Name="key_perfil">
                     </dx:GridViewDataTextColumn>
                 </Columns>
                     <SettingsCommandButton>
@@ -75,16 +74,16 @@
         </PanelCollection>
     </dx:ASPxRoundPanel>
     <br />
-    <asp:SqlDataSource ID="SDSourcePerfil" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" DeleteCommand="DELETE FROM [Perfil] WHERE [Index] = @Index" InsertCommand="INSERT INTO [Perfil] ([Perfil]) VALUES (@Perfil)" SelectCommand="SELECT * FROM [Perfil]" UpdateCommand="UPDATE [Perfil] SET [Perfil] = @Perfil WHERE [Index] = @Index">
+    <asp:SqlDataSource ID="SDSourcePerfil" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Perfil&quot; WHERE &quot;key_perfil&quot; = @&quot;key_perfil&quot;" InsertCommand="INSERT INTO &quot;Perfil&quot; (&quot;perfil&quot;) VALUES (@perfil)" SelectCommand="SELECT * FROM &quot;Perfil&quot;" UpdateCommand="UPDATE &quot;Perfil&quot; SET &quot;perfil&quot; = @perfil WHERE &quot;key_perfil&quot; = @&quot;key_perfil&quot;" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>">
     <DeleteParameters>
-        <asp:Parameter Name="Index" Type="Int32" />
+        <asp:Parameter Name="key_perfil" Type="Int64" />
     </DeleteParameters>
     <InsertParameters>
-        <asp:Parameter Name="Perfil" Type="String" />
+        <asp:Parameter Name="perfil" Type="String" />
     </InsertParameters>
     <UpdateParameters>
         <asp:Parameter Name="Perfil" Type="String" />
-        <asp:Parameter Name="Index" Type="Int32" />
+        <asp:Parameter Name="key_perfil" Type="Int64" />
     </UpdateParameters>
 </asp:SqlDataSource>
 </div>

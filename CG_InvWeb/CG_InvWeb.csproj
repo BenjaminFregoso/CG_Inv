@@ -134,7 +134,6 @@
     <Reference Include="DevExpress.Web.ASPxRichEdit.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Articulos.aspx" />
     <Content Include="Catalogos\Ciudades.aspx" />
     <Content Include="Catalogos\Estado.aspx" />
     <Content Include="Catalogos\MetodoPago.aspx" />
@@ -145,7 +144,6 @@
     <Content Include="Catalogos\Bancos.aspx" />
     <Content Include="Catalogos\ClaveProductoServicios.aspx" />
     <Content Include="Catalogos\CentroCostos.aspx" />
-    <Content Include="Catalogos\Articulos.aspx" />
     <Content Include="Catalogos\UnidadMedida.aspx" />
     <Content Include="Images\fondo12.png" />
     <Content Include="Inicio.aspx" />
@@ -174,7 +172,6 @@
     <Content Include="Images\usuario.png" />
     <Content Include="Default.aspx" />
     <Content Include="Menus.aspx" />
-    <Content Include="Obras.aspx" />
     <Content Include="Content\Images\AquaHeader.jpg" />
     <Content Include="Content\Images\BlackGlassHeader.jpg" />
     <Content Include="Content\Images\GlassHeader.jpg" />
@@ -182,17 +179,12 @@
     <Content Include="Content\Images\RedWineHeader.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Asigna_cia.aspx" />
-    <Content Include="Accesos_ant.aspx" />
     <Content Include="Nuevo_Arti.aspx" />
     <Content Include="Periodos.aspx" />
     <Content Include="Perfiles.aspx" />
-    <Content Include="Entradas_Inv.aspx" />
-    <Content Include="ImportaXML.aspx" />
-    <Content Include="Pruebas.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Accesos.aspx" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Light.master" />
@@ -218,13 +210,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Articulos.aspx.cs">
-      <DependentUpon>Articulos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Articulos.aspx.designer.cs">
-      <DependentUpon>Articulos.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Catalogos\Ciudades.aspx.cs">
       <DependentUpon>Ciudades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -294,13 +279,6 @@
     </Compile>
     <Compile Include="Catalogos\CentroCostos.aspx.designer.cs">
       <DependentUpon>CentroCostos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\Articulos.aspx.cs">
-      <DependentUpon>Articulos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\Articulos.aspx.designer.cs">
-      <DependentUpon>Articulos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\UnidadMedida.aspx.cs">
       <DependentUpon>UnidadMedida.aspx</DependentUpon>
@@ -372,26 +350,12 @@
     <Compile Include="Menus.aspx.designer.cs">
       <DependentUpon>Menus.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Obras.aspx.cs">
-      <DependentUpon>Obras.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Obras.aspx.designer.cs">
-      <DependentUpon>Obras.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Asigna_cia.aspx.cs">
       <DependentUpon>Asigna_cia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Asigna_cia.aspx.designer.cs">
       <DependentUpon>Asigna_cia.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Accesos_ant.aspx.cs">
-      <DependentUpon>Accesos_ant.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Accesos_ant.aspx.designer.cs">
-      <DependentUpon>Accesos_ant.aspx</DependentUpon>
     </Compile>
     <Compile Include="Nuevo_Arti.aspx.cs">
       <DependentUpon>Nuevo_Arti.aspx</DependentUpon>
@@ -413,27 +377,6 @@
     </Compile>
     <Compile Include="Perfiles.aspx.designer.cs">
       <DependentUpon>Perfiles.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Entradas_Inv.aspx.cs">
-      <DependentUpon>Entradas_Inv.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Entradas_Inv.aspx.designer.cs">
-      <DependentUpon>Entradas_Inv.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ImportaXML.aspx.cs">
-      <DependentUpon>ImportaXML.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ImportaXML.aspx.designer.cs">
-      <DependentUpon>ImportaXML.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pruebas.aspx.cs">
-      <DependentUpon>Pruebas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pruebas.aspx.designer.cs">
-      <DependentUpon>Pruebas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
@@ -473,13 +416,6 @@
     </Compile>
     <Compile Include="Accesos.aspx.designer.cs">
       <DependentUpon>Accesos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
