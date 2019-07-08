@@ -69,7 +69,7 @@
         </PanelCollection>
     </dx:ASPxRoundPanel>
     <br />
-    <asp:SqlDataSource ID="SDSourceCias" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" DeleteCommand="DELETE FROM [Compañias] WHERE [Index] = @Index" InsertCommand="INSERT INTO [Compañias] ([Compañia]) VALUES (@Compañia)" SelectCommand="SELECT * FROM [Compañias]" UpdateCommand="UPDATE [Compañias] SET [Compañia] = @Compañia WHERE [Index] = @Index">
+    <asp:SqlDataSource ID="SDSourceCias" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Empresas&quot; WHERE &quot;key_empresa&quot; = @key_empresa" InsertCommand="INSERT INTO &quot;Empresas&quot; (&quot;empresa&quot;) VALUES (@Empresa)" SelectCommand="SELECT * FROM &quot;Empresas&quot;" UpdateCommand="UPDATE &quot;Empresas&quot; SET &quot;empresa&quot; = @Empresa WHERE &quot;key_empresa&quot; = @key_empresa" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>">
         <DeleteParameters>
             <asp:Parameter Name="Index" Type="Int32" />
         </DeleteParameters>

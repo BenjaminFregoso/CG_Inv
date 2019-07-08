@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using DevExpress.Web;
+using Npgsql;
 
 namespace CG_InvWeb
 {
@@ -32,16 +33,17 @@ namespace CG_InvWeb
             //Compañia = "SSC DESARROLLOS";
             //Obra = "UNICA";
 
-
-            using (SqlConnection sqlConnection1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString.ToString()))
+            //AQUI NO SIRVE 
+            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
+            //using (SqlConnection sqlConnection1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString.ToString()))
             {
                 sqlConnection1.Open();
-                SqlCommand cmd = new SqlCommand();
-                SqlDataReader reader;
+                NpgsqlCommand cmd = new NpgsqlCommand();
+                NpgsqlDataReader reader;
 
                 //BUSCA EN CLIENTES
-                //cmd.CommandText = "ConsultaLogin '" + Usuario + "','" + Contraseña + "','" + Compañia + "','" + Obra + "' ";
-                cmd.CommandText = "ConsultaLogin '" + Usuario + "','" + Contraseña + "' ";
+                //Modificar data procedure por metodo shabo || SELECT para validar 
+                cmd.CommandText = "SELECT * FROM \"Usuarios\"";
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = sqlConnection1;
                 reader = cmd.ExecuteReader();
@@ -50,7 +52,7 @@ namespace CG_InvWeb
                     reader.Read();
                     System.Web.HttpContext.Current.Session["Perfil"] = reader["Perfil"].ToString();
                     System.Web.HttpContext.Current.Session["Usuario"] = Usuario;
-                    System.Web.HttpContext.Current.Session["Nombre_Completo"] = reader["Usuario_Largo"].ToString(); ; 
+                    //System.Web.HttpContext.Current.Session["Nombre_Completo"] = reader["Usuario_Largo"].ToString(); ; 
 
                     //Response.Redirect("Default.aspx?Usuario=" + Usuario + "&Id=" + reader["Perfil"].ToString() + "&Obra=" + Obra + "&Compañia=" + Compañia);
                     Response.Redirect("Inicio.aspx?Usuario=" + Usuario);

@@ -115,7 +115,7 @@
             </tr>
             </table>
     </div>
-    <asp:SqlDataSource ID="SDataSourceUsu" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Usuario] FROM [Usuarios]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SDataSourceUsu" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" SelectCommand="SELECT &quot;usuario&quot; FROM &quot;Usuarios&quot;" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>"></asp:SqlDataSource>
     </form>
 </body>
 </html>
