@@ -16,7 +16,7 @@
         <PanelCollection>
             <dx:PanelContent runat="server">
                 
-                <dx:ASPxGridView ID="ASPxGridView1" ClientInstanceName="ASPxGridView1" runat="server" AutoGenerateColumns="False" CssClass="auto-style3" DataSourceID="SDS_Articulos" EnableTheming="True" KeyFieldName="key_articulo" OnFocusedRowChanged="ASPxGridView1_FocusedRowChanged" Theme="MaterialCompact" SettingsBehavior-ColumnResizeMode="Control" PreviewFieldName="descripcion_larga" OnInitNewRow="ASPxGridView1_InitNewRow">
+                <dx:ASPxGridView ID="ASPxGridView1" ClientInstanceName="ASPxGridView1" runat="server" AutoGenerateColumns="False" CssClass="auto-style3" DataSourceID="SDS_Articulos" EnableTheming="True" KeyFieldName="key_articulo" OnFocusedRowChanged="ASPxGridView1_FocusedRowChanged" Theme="MaterialCompact" SettingsBehavior-ColumnResizeMode="Control" PreviewFieldName="descripcion_larga" OnInitNewRow="ASPxGridView1_InitNewRow" OnRowInserting="ASPxGridView1_RowInserting">
                     <ClientSideEvents  RowDblClick="function(s, e) {	s.StartEditRow(e.visibleIndex);}" />
                     <SettingsAdaptivity AdaptivityMode="HideDataCells" HideDataCellsAtWindowInnerWidth="400" AllowOnlyOneAdaptiveDetailExpanded="True">
                         <AdaptiveDetailLayoutProperties>

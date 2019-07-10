@@ -92,20 +92,16 @@ namespace CG_InvWeb {
 
         protected void ASPxGridView1_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            //ASPxGridView1.GetMasterRowKeyValue();
-            //string PerfilValue = e.Values[index].ToString();
-            //e.NewValues["fisica"] = (e.NewValues["fisica"] == null) ? 0 : e.NewValues["fisica"];
-            //e.NewValues["moral"] = (e.NewValues["moral"] == null) ? 0: e.NewValues["moral"];
-            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
-            {
-                sqlConnection1.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand();
-                NpgsqlDataReader reader;
+            Funciones_globales objetoFunGlobal = new Funciones_globales();
+            var conexion = objetoFunGlobal.ConectarPostgresql();
+
+            NpgsqlCommand cmd = new NpgsqlCommand();
+            NpgsqlDataReader reader;
 
                 //BUSCA ULTIMO CODIGO 
-                cmd.CommandText = "Select codigo_articulo from \"Articulos\" ";
+                cmd.CommandText = "Select codigo_articulo from \"Articulos\" order by codigo_articulo desc limit 1";
                 cmd.CommandType = CommandType.Text;
-                cmd.Connection = sqlConnection1;
+                cmd.Connection = conexion;
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -117,14 +113,18 @@ namespace CG_InvWeb {
                     cCodigo = "000000000";
                 }
                 reader.Close();
-                sqlConnection1.Close();
-            }
+                conexion.Close();
+            
 
             nCodigo = Convert.ToInt32(cCodigo) + 1;
             cCodigo = "";
             cCodigo = String.Format("{0}{1}", cCodigo.PadLeft(9 - nCodigo.ToString().Length, '0'), nCodigo.ToString());
             e.NewValues["codigo_articulo"] = cCodigo;
 
+            //BITACORA || NOTA: HACERLO MAS GENERAL
+            Funciones_globales jobj = new Funciones_globales();
+            jobj.Bitacora("INSERT ARTICULO", "", "codigo_articulo: "+cCodigo.ToString(), System.Web.HttpContext.Current.Session["Usuario"].ToString(), "");
+            
         }
 
 
