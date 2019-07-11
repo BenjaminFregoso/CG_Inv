@@ -19,11 +19,8 @@ namespace CG_InvWeb {
     {
         public string cCodigo = "";
         public Int32 nCodigo = 0;
-        public string dato;
         protected void Page_Load(object sender, EventArgs e)
         {
-            dato = Server.MapPath("");
-
 
         }
 
