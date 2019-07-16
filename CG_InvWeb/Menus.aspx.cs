@@ -115,10 +115,16 @@ namespace CG_InvWeb
 
         protected void ASPxGridView1_CustomErrorText(object sender, ASPxGridViewCustomErrorTextEventArgs e)
         {
+            string usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            //GUARDAR ERROR DE BASES EN LOG DE ERRORES #### AGREGAR EL COMANDO Y NOMBRE DE LA BASE DE DATOS
+            GlobalHandler obje = new GlobalHandler();
+            obje.guardarLog(e.ErrorText);
+
             if (e.ErrorText.Contains("Cannot insert duplicate key"))
             {
                 e.ErrorText = "Ya existe un menu con el mismo perfil";
             }
         }
+
     }
 }
