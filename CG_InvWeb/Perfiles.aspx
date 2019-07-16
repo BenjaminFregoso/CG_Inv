@@ -52,23 +52,29 @@
                     <dx:GridViewDataTextColumn FieldName="key_perfil" ShowInCustomizationForm="True" Visible="False" VisibleIndex="2" Caption="key_perfil" Name="key_perfil">
                     </dx:GridViewDataTextColumn>
                 </Columns>
-                    <SettingsCommandButton>
-                        <NewButton>
-                            <Image ToolTip="Nuevo registro" Url="Images/nuevo.png" />
+                  <SettingsCommandButton>
+                        <NewButton Text="Nuevo">
+                            <Image IconID="actions_add_16x16gray">
+                            </Image>
                         </NewButton>
-                        <EditButton>
-                            <Image ToolTip="Modificar registro" Url="Images/edit.png" />
-                        </EditButton>
-                        <DeleteButton>
-                            <Image ToolTip="Borrar registro" Url="Images/eliminar.png"/>
-                        </DeleteButton>
-                        <UpdateButton ButtonType="Image">
-                            <Image ToolTip="Actualizar registro" Url="Images/guardar.png" />
+                        <UpdateButton Text="Guardar">
+                            <Image IconID="actions_refresh_16x16gray">
+                            </Image>
                         </UpdateButton>
-                        <CancelButton ButtonType="Image">
-                            <Image ToolTip="Deshacer cambios" Url="Images/cancel.png" />
+                        <CancelButton Text="Cerrar">
+                            <Image IconID="history_undo_16x16gray">
+                            </Image>
                         </CancelButton>
+                        <EditButton Text="Editar">
+                            <Image AlternateText="Edit" IconID="edit_edit_16x16gray">
+                            </Image>
+                        </EditButton>
+                        <DeleteButton Text="Borrar">
+                            <Image IconID="edit_delete_16x16gray">
+                            </Image>
+                        </DeleteButton>
                     </SettingsCommandButton>
+
                 </dx:ASPxGridView>
             </dx:PanelContent>
         </PanelCollection>

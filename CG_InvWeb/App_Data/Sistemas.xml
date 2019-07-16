@@ -12,20 +12,38 @@
 
     <item Text="Almacenes" NavigateUrl="~/Catalogos/Almacen.aspx"/>
 
-    <item Text="Artículos" NavigateUrl="~/Nuevo_Arti.aspx"/>
-
     <item Text="Centros de Costos" NavigateUrl="~/Catalogos/CentroCostos.aspx"/>    
 
     <item  Text="Datos compañía" NavigateUrl="~/Inicio.aspx"/>
 
     <item  Text="Menus" NavigateUrl="~/Menus.aspx"/>
 
-    <item  Text="Pruebas" NavigateUrl="~/Pruebas.aspx"/>
+  </group>
+
+  <group Text="Catálogo de Artículos">
+
+    <item Text="Artículos" NavigateUrl="~/Nuevo_Arti.aspx"/>
+
+    <item Text="Departamentos" NavigateUrl="~/Articulos/Departamento.aspx"/>
+
+    <item Text="Clasificación" NavigateUrl="~/Articulos/Clasificacion.aspx"/>
+
+    <item Text="Familias" NavigateUrl="~/Inicio.aspx"/>
+
+    <item Text="Características" NavigateUrl="~/Inicio.aspx"/>
+
+    <item Text="Detalle de características" NavigateUrl="~/Inicio.aspx"/>
+
+    <item Text="Relación Familias y Características" NavigateUrl="~/Inicio.aspx"/>
+
+    <item Text="Rangos de tallas" NavigateUrl="~/Inicio.aspx"/>
+
+    <item Text="Marcas" NavigateUrl="~/Inicio.aspx"/>
 
   </group>
-  
-  
-    <group Text="Universales">
+
+
+  <group Text="Universales">
 
 
     <item  Text="Régimen fiscal" NavigateUrl="~/Catalogos/RegimenFiscal.aspx"/>

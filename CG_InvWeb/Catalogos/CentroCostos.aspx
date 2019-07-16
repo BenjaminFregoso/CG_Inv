@@ -67,23 +67,29 @@
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
                     </Columns>
-                    <SettingsCommandButton>
-                        <NewButton>
-                            <Image ToolTip="Nuevo registro" Url="~/Images/nuevo.png" />
+                  <SettingsCommandButton>
+                        <NewButton Text="Nuevo">
+                            <Image IconID="actions_add_16x16gray">
+                            </Image>
                         </NewButton>
-                        <EditButton>
-                            <Image ToolTip="Modificar registro" Url="~/Images/edit.png" />
-                        </EditButton>
-                        <DeleteButton>
-                            <Image ToolTip="Borrar registro" Url="~/Images/eliminar.png"/>
-                        </DeleteButton>
-                        <UpdateButton ButtonType="Image">
-                            <Image ToolTip="Actualizar registro" Url="~/Images/guardar.png" />
+                        <UpdateButton Text="Guardar">
+                            <Image IconID="actions_refresh_16x16gray">
+                            </Image>
                         </UpdateButton>
-                        <CancelButton ButtonType="Image">
-                            <Image ToolTip="Deshacer cambios" Url="~/Images/cancel.png" />
+                        <CancelButton Text="Cerrar">
+                            <Image IconID="history_undo_16x16gray">
+                            </Image>
                         </CancelButton>
+                        <EditButton Text="Editar">
+                            <Image AlternateText="Edit" IconID="edit_edit_16x16gray">
+                            </Image>
+                        </EditButton>
+                        <DeleteButton Text="Borrar">
+                            <Image IconID="edit_delete_16x16gray">
+                            </Image>
+                        </DeleteButton>
                     </SettingsCommandButton>
+
                 </dx:ASPxGridView>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;CentroCostos&quot; WHERE &quot;key_centro_costos&quot; = ?" InsertCommand="INSERT INTO &quot;CentroCostos&quot; (&quot;cc&quot;, &quot;descrip&quot;) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_centro_costos&quot;, &quot;cc&quot;, &quot;descrip&quot; FROM &quot;CentroCostos&quot; ORDER BY &quot;cc&quot;" UpdateCommand="UPDATE &quot;CentroCostos&quot; SET &quot;cc&quot; = ?, &quot;descrip&quot; = ? WHERE &quot;key_centro_costos&quot; = ?">
                     <DeleteParameters>

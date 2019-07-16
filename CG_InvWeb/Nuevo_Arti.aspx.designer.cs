@@ -112,15 +112,6 @@ namespace CG_InvWeb {
         protected global::System.Web.UI.WebControls.SqlDataSource SDS_ArticulosFam;
         
         /// <summary>
-        /// Control ASPxGridLookup2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridLookup ASPxGridLookup2;
-        
-        /// <summary>
         /// Control SDS_DepClasFam.
         /// </summary>
         /// <remarks>
@@ -128,5 +119,59 @@ namespace CG_InvWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SDS_DepClasFam;
+        
+        /// <summary>
+        /// Control SDS_Articulos_Tallas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Articulos_Tallas;
+        
+        /// <summary>
+        /// Control SDS_Articulos_Tallas_Rangos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Articulos_Tallas_Rangos;
+        
+        /// <summary>
+        /// Control SDS_Articulos_Color.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Articulos_Color;
+        
+        /// <summary>
+        /// Control SDS_Articulos_Caracteristicas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Articulos_Caracteristicas;
+        
+        /// <summary>
+        /// Control SDS_Caracteristicas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Caracteristicas;
+        
+        /// <summary>
+        /// Control SDS_Caracteristicas_det.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Caracteristicas_det;
     }
 }
