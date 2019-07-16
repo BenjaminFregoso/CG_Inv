@@ -303,6 +303,7 @@
     <Compile Include="Catalogos\UnidadMedida.aspx.designer.cs">
       <DependentUpon>UnidadMedida.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GlobalHandler.cs" />
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

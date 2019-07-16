@@ -36,7 +36,7 @@ namespace CG_InvWeb
             //Aquí puede poner la lógica de registro personalizado
         }
 
-        
+
 
         //Guardar en la bitacora
         public void Bitacora(string accion_, string dato_anterior_, string dato_nuevo_, string usuario_, string autorizacion_)
