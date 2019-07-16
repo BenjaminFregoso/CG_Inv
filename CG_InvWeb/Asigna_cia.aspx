@@ -20,10 +20,10 @@
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
-                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourceCias" KeyFieldName="Index" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="Glass" Width="100%" Font-Names="Century Gothic">
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourceCias" KeyFieldName="key_empresa" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="Glass" Width="100%" Font-Names="Century Gothic">
                     <SettingsPager PageSize="25">
                     </SettingsPager>
-                    <SettingsEditing Mode="PopupEditForm">
+                    <SettingsEditing Mode="Inline">
                     </SettingsEditing>
                     <Settings ShowFilterRow="True" />
                     <SettingsBehavior AllowSelectByRowClick="true" AllowSelectSingleRowOnly="true"  ConfirmDelete="True" />
@@ -37,48 +37,54 @@
                     <Columns>
                         <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonType="Image">
                         </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn FieldName="Index" ReadOnly="True" VisibleIndex="1" Visible="False">
+                        <dx:GridViewDataTextColumn FieldName="key_empresa" ReadOnly="True" VisibleIndex="1" Visible="False">
                             <PropertiesTextEdit MaxLength="80">
                             </PropertiesTextEdit>
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Compañia" VisibleIndex="2" SortIndex="0" SortOrder="Ascending">
+                        <dx:GridViewDataTextColumn FieldName="empresa" VisibleIndex="2" SortIndex="0" SortOrder="Ascending">
                             <PropertiesTextEdit MaxLength="80">
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
                     </Columns>
-                    <SettingsCommandButton>
-                        <NewButton>
-                            <Image ToolTip="Nuevo registro" Url="Images/nuevo.png" />
+                  <SettingsCommandButton>
+                        <NewButton Text="Nuevo">
+                            <Image IconID="actions_add_16x16gray">
+                            </Image>
                         </NewButton>
-                        <EditButton>
-                            <Image ToolTip="Modificar registro" Url="Images/edit.png" />
-                        </EditButton>
-                        <DeleteButton>
-                            <Image ToolTip="Borrar registro" Url="Images/eliminar.png"/>
-                        </DeleteButton>
-                        <UpdateButton ButtonType="Image">
-                            <Image ToolTip="Actualizar registro" Url="Images/guardar.png" />
+                        <UpdateButton Text="Guardar">
+                            <Image IconID="actions_refresh_16x16gray">
+                            </Image>
                         </UpdateButton>
-                        <CancelButton ButtonType="Image">
-                            <Image ToolTip="Deshacer cambios" Url="Images/cancel.png" />
+                        <CancelButton Text="Cerrar">
+                            <Image IconID="history_undo_16x16gray">
+                            </Image>
                         </CancelButton>
+                        <EditButton Text="Editar">
+                            <Image AlternateText="Edit" IconID="edit_edit_16x16gray">
+                            </Image>
+                        </EditButton>
+                        <DeleteButton Text="Borrar">
+                            <Image IconID="edit_delete_16x16gray">
+                            </Image>
+                        </DeleteButton>
                     </SettingsCommandButton>
+
                 </dx:ASPxGridView>
             </dx:PanelContent>
         </PanelCollection>
     </dx:ASPxRoundPanel>
     <br />
-    <asp:SqlDataSource ID="SDSourceCias" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Empresas&quot; WHERE &quot;key_empresa&quot; = @key_empresa" InsertCommand="INSERT INTO &quot;Empresas&quot; (&quot;empresa&quot;) VALUES (@Empresa)" SelectCommand="SELECT * FROM &quot;Empresas&quot;" UpdateCommand="UPDATE &quot;Empresas&quot; SET &quot;empresa&quot; = @Empresa WHERE &quot;key_empresa&quot; = @key_empresa" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>">
+    <asp:SqlDataSource ID="SDSourceCias" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Empresas&quot; WHERE key_empresa = ?" InsertCommand="INSERT INTO &quot;Empresas&quot; (empresa) VALUES (?)" SelectCommand="SELECT * FROM &quot;Empresas&quot;" UpdateCommand="UPDATE &quot;Empresas&quot; SET &quot;empresa&quot; = ? WHERE &quot;key_empresa&quot; = ?" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>">
         <DeleteParameters>
-            <asp:Parameter Name="Index" Type="Int32" />
+            <asp:Parameter Name="key_empresa" Type="Int32" />
         </DeleteParameters>
         <InsertParameters>
-            <asp:Parameter Name="Compañia" Type="String" />
+            <asp:Parameter Name="empresa" Type="String" />
         </InsertParameters>
         <UpdateParameters>
-            <asp:Parameter Name="Compañia" Type="String" />
-            <asp:Parameter Name="Index" Type="Int32" />
+            <asp:Parameter Name="empresa" Type="String" />
+            <asp:Parameter Name="key_empresa" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
 </div>

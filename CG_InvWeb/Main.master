@@ -31,7 +31,7 @@
                         <div class="leftPanel" style="width: 200px">
                             <%-- DXCOMMENT: Configure the left panel's ASPxNavBar --%>
                             <asp:XmlDataSource ID="XmlDataSourceLeft" runat="server" DataFile="~/App_Data/SideMenu.xml" XPath="/menu/*"></asp:XmlDataSource>
-                            <dx:ASPxNavBar ID="ASPxNavBar1" runat="server" AutoCollapse="True" EnableAnimation="True" Width="100%" DataSourceID="XmlDataSourceLeft" Theme="iOS" Font-Names="Century Gothic" EnableCallbackAnimation="True">
+                            <dx:ASPxNavBar ID="ASPxNavBar1" runat="server" AutoCollapse="True" EnableAnimation="True" Width="100%" DataSourceID="XmlDataSourceLeft" Theme="MaterialCompact" Font-Names="Century Gothic" EnableCallbackAnimation="True">
                                 <Border BorderWidth="0px" />
                                 <Paddings Padding="0px" />
                             </dx:ASPxNavBar>

@@ -21,5 +21,7 @@ namespace CG_InvWeb
                 e.ErrorText = "Ya existe la Compañia";
             }
         }
+
+
     }
 }
