@@ -10,6 +10,7 @@ namespace CG_InvWeb
     {
         //Variable que utiliza Bitacora()
         string servidor = ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString();
+        
         /// <summary>
         /// Deberá configurar este módulo en el archivo Web.config de su
         ///  web y registrarlo en IIS para poder usarlo. Para obtener más información
@@ -76,11 +77,22 @@ namespace CG_InvWeb
             return conexion;
         }
 
+        //GUARDAR LOG DE ERRORES
         public void guardarLog(string descripcion_)
         {
-            //string usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString(); NO FUNCIONA CON ESTOS COMANDOS DENTRO DE ASAX Y GLOBALHANDLER
+            
             var dataFile = System.Web.Hosting.HostingEnvironment.MapPath("~/Archivos/log.txt"); //LINEA PARA GUARDAR EN SERVIDOR
-            File.AppendAllText(dataFile, descripcion_ + " ### FECHA: " + DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss") + " USUARIO: " + "PONER USUARIO" + Environment.NewLine);
+            File.AppendAllText(dataFile, "FECHA: " + DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss") + "  "+ descripcion_ +   Environment.NewLine);
+
+            var dataFile2 = System.Web.Hosting.HostingEnvironment.MapPath("~/Archivos/temp.txt"); //LINEA PARA GUARDAR EN SERVIDOR
+            File.WriteAllText(dataFile2, descripcion_);
+        }
+
+        public string obtenerError()
+        {
+            var dataFile = System.Web.Hosting.HostingEnvironment.MapPath("~/Archivos/temp.txt"); //LINEA PARA GUARDAR EN SERVIDOR
+            string ultimoError = File.ReadAllText(dataFile);
+            return ultimoError;
         }
     }
 }

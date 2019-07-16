@@ -19,8 +19,9 @@ using System;
             }
 
             void Application_Error(object sender, EventArgs e) {
-            var usuarios = System.Web.HttpContext.Current.Session["Usuario"];
-
+            var ultimoError2 = e.ToString();
+            
+            
             Exception exception = Server.GetLastError();
             Response.Clear();
 
