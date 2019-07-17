@@ -31,9 +31,10 @@
         <PanelCollection>
             <dx:PanelContent runat="server">
                 
-                <dx:ASPxGridView ID="ASPxGridView1" ClientInstanceName="ASPxGridView1" runat="server" AutoGenerateColumns="False" CssClass="auto-style3" DataSourceID="SDS_Articulos" EnableTheming="True" KeyFieldName="key_articulo" OnFocusedRowChanged="ASPxGridView1_FocusedRowChanged" Theme="MaterialCompact" SettingsBehavior-ColumnResizeMode="Control" PreviewFieldName="descripcion_larga" OnInitNewRow="ASPxGridView1_InitNewRow" OnRowInserting="ASPxGridView1_RowInserting" OnStartRowEditing="ASPxGridView1_StartRowEditing" OnCustomErrorText="ASPxGridView1_CustomErrorText">
+                <dx:ASPxGridView ID="ASPxGridView1" ClientInstanceName="ASPxGridView1" runat="server" AutoGenerateColumns="False" CssClass="auto-style3" DataSourceID="SDS_Articulos" EnableTheming="True" KeyFieldName="key_articulo" OnFocusedRowChanged="ASPxGridView1_FocusedRowChanged" Theme="MaterialCompact" SettingsBehavior-ColumnResizeMode="Control" PreviewFieldName="descripcion_larga" OnInitNewRow="ASPxGridView1_InitNewRow" OnRowInserting="ASPxGridView1_RowInserting" OnStartRowEditing="ASPxGridView1_StartRowEditing" OnCustomErrorText="ASPxGridView1_CustomErrorText" KeyboardSupport="True">
                     <ClientSideEvents  RowDblClick="function(s, e) {	s.StartEditRow(e.visibleIndex);}" />
                     <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="True" />
+                    <SettingsSearchPanel ShowApplyButton="True" ShowClearButton="True" />
                     <SettingsAdaptivity AdaptivityMode="HideDataCells" HideDataCellsAtWindowInnerWidth="400" AllowOnlyOneAdaptiveDetailExpanded="True">
                         <AdaptiveDetailLayoutProperties>
                             <Items>
@@ -57,13 +58,15 @@
                     </SettingsAdaptivity>
                     <Templates>
                         <DetailRow>
-                            <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" EnableTabScrolling="True" Theme="MaterialCompact" Width="100%">
+                            <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="2" EnableTabScrolling="True" Theme="Office2010Silver" Width="100%">
                                 <TabPages>
                                     <dx:TabPage Name="caracteristicas" Text="Características">
+                                        <TabImage IconID="outlookinspired_customerprofilereport_svg_16x16">
+                                        </TabImage>
                                         <ContentCollection>
                                             <dx:ContentControl runat="server">
 
-                                                <dx:ASPxGridView ID="ASPxGridView4" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Caracteristicas" KeyFieldName="key_articulos_caracteristicas" OnBeforePerformDataSelect="ASPxGridView4_BeforePerformDataSelect" OnRowInserting="ASPxGridView4_RowInserting" Theme="Glass" Width="100%" OnCellEditorInitialize="ASPxGridView4_CellEditorInitialize" OnInitNewRow="ASPxGridView4_InitNewRow">
+                                                <dx:ASPxGridView ID="ASPxGridView4" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Caracteristicas" KeyFieldName="key_articulos_caracteristicas" OnBeforePerformDataSelect="ASPxGridView4_BeforePerformDataSelect" OnRowInserting="ASPxGridView4_RowInserting" Theme="Office2010Silver" Width="100%" OnCellEditorInitialize="ASPxGridView4_CellEditorInitialize" OnInitNewRow="ASPxGridView4_InitNewRow" EnableTheming="True" KeyboardSupport="True">
                                                     <ClientSideEvents RowDblClick="function(s, e) {	s.StartEditRow(e.visibleIndex);}" />
                                                     <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
                                                     <SettingsPager Mode="EndlessPaging">
@@ -117,9 +120,11 @@
                                         </ContentCollection>
                                     </dx:TabPage>
                                     <dx:TabPage Name="talla" Text="Talla">
+                                        <TabImage IconID="richedit_rulervertical_svg_16x16">
+                                        </TabImage>
                                         <ContentCollection>
                                             <dx:ContentControl runat="server">
-                                                <dx:ASPxGridView ID="ASPxGridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Tallas" KeyFieldName="key_tallas" Theme="MaterialCompact" Width="100%" OnBeforePerformDataSelect="ASPxGridView2_BeforePerformDataSelect" OnInitNewRow="ASPxGridView2_InitNewRow" OnRowInserting="ASPxGridView2_RowInserting">
+                                                <dx:ASPxGridView ID="ASPxGridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Tallas" KeyFieldName="key_tallas" Theme="Office2010Silver" Width="100%" OnBeforePerformDataSelect="ASPxGridView2_BeforePerformDataSelect" OnInitNewRow="ASPxGridView2_InitNewRow" OnRowInserting="ASPxGridView2_RowInserting" KeyboardSupport="True">
                                                     <ClientSideEvents  RowDblClick="function(s, e) {	s.StartEditRow(e.visibleIndex);}" />
                                                     <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
                                                     <SettingsPager Mode="EndlessPaging">
@@ -176,9 +181,11 @@
                                         </ContentCollection>
                                     </dx:TabPage>
                                     <dx:TabPage Name="color" Text="Color">
+                                        <TabImage IconID="businessobjects_bo_appearance_svg_16x16">
+                                        </TabImage>
                                         <ContentCollection>
                                             <dx:ContentControl runat="server">
-                                                <dx:ASPxGridView ID="ASPxGridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Color" KeyFieldName="key_color" OnBeforePerformDataSelect="ASPxGridView3_BeforePerformDataSelect" OnInitNewRow="ASPxGridView3_InitNewRow" OnRowInserting="ASPxGridView3_RowInserting" Theme="MaterialCompact" Width="100%">
+                                                <dx:ASPxGridView ID="ASPxGridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Color" KeyFieldName="key_color" OnBeforePerformDataSelect="ASPxGridView3_BeforePerformDataSelect" OnInitNewRow="ASPxGridView3_InitNewRow" OnRowInserting="ASPxGridView3_RowInserting" Theme="Office2010Silver" Width="100%" KeyboardSupport="True">
                                                     <ClientSideEvents RowDblClick="function(s, e) {	s.StartEditRow(e.visibleIndex);}" />
                                                     <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
                                                     <SettingsPager Mode="EndlessPaging">
@@ -233,6 +240,8 @@
                                         </ContentCollection>
                                     </dx:TabPage>
                                     <dx:TabPage Name="precios" Text="Precios">
+                                        <TabImage IconID="iconbuilder_business_money_svg_16x16">
+                                        </TabImage>
                                         <ContentCollection>
                                             <dx:ContentControl runat="server">
                                             </dx:ContentControl>
@@ -267,6 +276,15 @@
                             <Image IconID ="edit_delete_16x16gray">
                             </Image>
                         </DeleteButton>
+                        <SearchPanelApplyButton ButtonType="Image" RenderMode="Image">
+                            <Image IconID="find_find_16x16gray" ToolTip="Buscar">
+                            </Image>
+                        </SearchPanelApplyButton>
+                        <SearchPanelClearButton ButtonType="Image" RenderMode="Image">
+                            <Image IconID="edit_delete_16x16gray" ToolTip="Vaciar">
+                            </Image>
+                        </SearchPanelClearButton>
+
                     </SettingsCommandButton>
                     <SettingsPopup>
                         <EditForm PopupAnimationType="Fade" HorizontalAlign="WindowCenter" ShowCollapseButton="True" ShowMaximizeButton="True" ShowPinButton="True" ShowShadow="True" AllowResize="True" CloseOnEscape="True" MinWidth="400px" Modal="True" VerticalAlign="WindowCenter" />
@@ -310,7 +328,9 @@
                                     <dx:GridViewColumnLayoutItem ColumnName="descripcion_larga" RequiredMarkDisplayMode="Hidden" ShowCaption="False" ColSpan="2" ColumnSpan="2" RowSpan="2"></dx:GridViewColumnLayoutItem>
                                 </Items>
                             </dx:GridViewLayoutGroup>
-                            <dx:EditModeCommandLayoutItem ColSpan="2" HorizontalAlign="Right" Width="100%">
+                            <dx:EmptyLayoutItem ColSpan="1">
+                            </dx:EmptyLayoutItem>
+                            <dx:EditModeCommandLayoutItem ColSpan="1" Width="100%">
                             </dx:EditModeCommandLayoutItem>
                         </Items>
                         <SettingsItemCaptions HorizontalAlign="Center" />

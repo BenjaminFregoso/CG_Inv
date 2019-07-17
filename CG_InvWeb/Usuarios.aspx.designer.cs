@@ -1,10 +1,10 @@
-//------------------------------------------------------------------------------
-// <generado autom·ticamente>
-//     Este cÛdigo fue generado por una herramienta.
+Ôªø//------------------------------------------------------------------------------
+// <generado autom√°ticamente>
+//     Este c√≥digo fue generado por una herramienta.
 //
-//     Los cambios en este archivo podrÌan causar un comportamiento incorrecto y se perder·n si
-//     se vuelve a generar el cÛdigo. 
-// </generado autom·ticamente>
+//     Los cambios en este archivo podr√≠an causar un comportamiento incorrecto y se perder√°n si
+//     se vuelve a generar el c√≥digo. 
+// </generado autom√°ticamente>
 //------------------------------------------------------------------------------
 
 namespace CG_InvWeb {
@@ -13,30 +13,48 @@ namespace CG_InvWeb {
     public partial class Usuarios {
         
         /// <summary>
-        /// Control ASPxRoundPanel1.
+        /// Control ASPxRoundPanelPrincipal.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom·ticamente.
-        /// Para modificarlo, mueva la declaraciÛn del campo del archivo del diseÒador al archivo de cÛdigo subyacente.
+        /// Campo generado autom√°ticamente.
+        /// Para modificarlo, mueva la declaraci√≥n del campo del archivo del dise√±ador al archivo de c√≥digo subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel ASPxRoundPanel1;
+        protected global::DevExpress.Web.ASPxRoundPanel ASPxRoundPanelPrincipal;
         
         /// <summary>
         /// Control ASPxGridView1.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom·ticamente.
-        /// Para modificarlo, mueva la declaraciÛn del campo del archivo del diseÒador al archivo de cÛdigo subyacente.
+        /// Campo generado autom√°ticamente.
+        /// Para modificarlo, mueva la declaraci√≥n del campo del archivo del dise√±ador al archivo de c√≥digo subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
         
         /// <summary>
-        /// Control SDSourceUsu.
+        /// Control SDS_Usuarios.
         /// </summary>
         /// <remarks>
-        /// Campo generado autom·ticamente.
-        /// Para modificarlo, mueva la declaraciÛn del campo del archivo del diseÒador al archivo de cÛdigo subyacente.
+        /// Campo generado autom√°ticamente.
+        /// Para modificarlo, mueva la declaraci√≥n del campo del archivo del dise√±ador al archivo de c√≥digo subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDSourceUsu;
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Usuarios;
+        
+        /// <summary>
+        /// Control SDS_Perfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom√°ticamente.
+        /// Para modificarlo, mueva la declaraci√≥n del campo del archivo del dise√±ador al archivo de c√≥digo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Perfil;
+        
+        /// <summary>
+        /// Control SDS_Empresa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado autom√°ticamente.
+        /// Para modificarlo, mueva la declaraci√≥n del campo del archivo del dise√±ador al archivo de c√≥digo subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Empresa;
     }
 }

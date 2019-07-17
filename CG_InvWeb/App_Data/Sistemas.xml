@@ -4,9 +4,11 @@
 
   <group Text="Catálogos">
 
+    <item Text="Pruebas" NavigateUrl="~/entrada.aspx"/>
+    
     <item Text="Empresas" NavigateUrl="~/Asigna_cia.aspx"/>
 
-    <item Text="Empleados" NavigateUrl="~/Usuarios.aspx"/>
+    <item Text="Usuarios" NavigateUrl="~/Usuarios.aspx"/>
 
     <item Text="Perfiles" NavigateUrl="~/Perfiles.aspx"/>
 
