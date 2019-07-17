@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<menu>
+
+  <group Text="Catálogos">
+
+    <item Text="Empresas" NavigateUrl="~/Asigna_cia.aspx"/>
+
+    <item Text="Empleados" NavigateUrl="~/Usuarios.aspx"/>
+
+    <item Text="Perfiles" NavigateUrl="~/Perfiles.aspx"/>
+
+    <item Text="Almacenes" NavigateUrl="~/Catalogos/Almacen.aspx"/>
+
+    <item Text="Centros de Costos" NavigateUrl="~/Catalogos/CentroCostos.aspx"/>    
+
+    <item  Text="Datos compañía" NavigateUrl="~/Inicio.aspx"/>
+
+    <item  Text="Menus" NavigateUrl="~/Menus.aspx"/>
+
+  </group>
+
+  <group Text="Catálogo de Artículos">
+
+    <item Text="Artículos" NavigateUrl="~/Nuevo_Arti.aspx"/>
+
+    <item Text="Departamentos" NavigateUrl="~/Articulos/Departamento.aspx"/>
+
+    <item Text="Clasificación" NavigateUrl="~/Articulos/Clasificacion.aspx"/>
+
+    <item Text="Familias" NavigateUrl="~/Inicio.aspx"/>
+
+    <item Text="Características" NavigateUrl="~/Inicio.aspx"/>
+
+    <item Text="Detalle de características" NavigateUrl="~/Inicio.aspx"/>
+
+    <item Text="Relación Familias y Características" NavigateUrl="~/Inicio.aspx"/>
+
+    <item Text="Rangos de tallas" NavigateUrl="~/Inicio.aspx"/>
+
+    <item Text="Marcas" NavigateUrl="~/Inicio.aspx"/>
+
+  </group>
+
+
+  <group Text="Universales">
+
+
+    <item  Text="Régimen fiscal" NavigateUrl="~/Catalogos/RegimenFiscal.aspx"/>
+
+    <item  Text="Método de pago" NavigateUrl="~/Catalogos/MetodoPago.aspx"/>
+
+    <item  Text="Forma de pago" NavigateUrl="~/Catalogos/FormaPago.aspx"/>
+
+    <item  Text="Claves de producto" NavigateUrl="~/Catalogos/ClaveProductoServicios.aspx"/>
+
+    <item  Text="Unidad de medida" NavigateUrl="~/Catalogos/UnidadMedida.aspx"/>
+
+    <item  Text="Monedas" NavigateUrl="~/Catalogos/Moneda.aspx"/>
+
+    <item  Text="Países" NavigateUrl="~/Catalogos/Country.aspx"/>
+
+    <item  Text="Estados" NavigateUrl="~/Catalogos/Estado.aspx"/>
+
+    <item  Text="Ciudades" NavigateUrl="~/Catalogos/Ciudades.aspx"/>
+
+    <item  Text="Bancos" NavigateUrl="~/Catalogos/Bancos.aspx"/>
+
+
+  </group>
+  
+  
+  
+
+  <group Text="Procesos">
+
+    <item Text="Orden de compra" NavigateUrl="~/Default.aspx" />
+
+  </group>
+
+  <group Text="Consultas y reportes">
+    <item Text="Kardex" NavigateUrl="~/Default.aspx"/>
+    <item Text="Inventario total" NavigateUrl="~/Default.aspx"/>
+    <item Text="Movimientos" NavigateUrl="~/Default.aspx"/>
+    <item Text="Pedido sugerido" NavigateUrl="~/Default.aspx"/>
+  </group>
+
+  <group Text="Configuración">
+
+    <item Text="Datos compañía" NavigateUrl="~/Default.aspx"/>
+
+  </group>
+
+</menu>

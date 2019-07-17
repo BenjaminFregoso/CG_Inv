@@ -176,6 +176,7 @@
     <Content Include="Images\ssc_logo.png" />
     <Content Include="Images\usuario.png" />
     <Content Include="Default.aspx" />
+    <Content Include="Errores.aspx" />
     <Content Include="Menus.aspx" />
     <Content Include="Content\Images\AquaHeader.jpg" />
     <Content Include="Content\Images\BlackGlassHeader.jpg" />
@@ -207,6 +208,7 @@
     <Content Include="Web.config" />
     <Content Include="web.sitemap" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -306,13 +308,7 @@
     <Compile Include="Catalogos\UnidadMedida.aspx.designer.cs">
       <DependentUpon>UnidadMedida.aspx</DependentUpon>
     </Compile>
-    <Compile Include="entrada.aspx.cs">
-      <DependentUpon>entrada.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="entrada.aspx.designer.cs">
-      <DependentUpon>entrada.aspx</DependentUpon>
-    </Compile>
+    <Compile Include="GlobalHandler.cs" />
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -368,6 +364,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Errores.aspx.cs">
+      <DependentUpon>Errores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errores.aspx.designer.cs">
+      <DependentUpon>Errores.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menus.aspx.cs">
       <DependentUpon>Menus.aspx</DependentUpon>
