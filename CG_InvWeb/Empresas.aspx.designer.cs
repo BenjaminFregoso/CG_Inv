@@ -10,16 +10,16 @@
 namespace CG_InvWeb {
     
     
-    public partial class Menus {
+    public partial class Empresas {
         
         /// <summary>
-        /// Control ASPxRoundPanel1.
+        /// Control ASPxRoundPanelPrincipal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel ASPxRoundPanel1;
+        protected global::DevExpress.Web.ASPxRoundPanel ASPxRoundPanelPrincipal;
         
         /// <summary>
         /// Control ASPxGridView1.
@@ -31,12 +31,12 @@ namespace CG_InvWeb {
         protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
         
         /// <summary>
-        /// Control SDataSourceMenus.
+        /// Control SDSourceCias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDataSourceMenus;
+        protected global::System.Web.UI.WebControls.SqlDataSource SDSourceCias;
     }
 }

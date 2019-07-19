@@ -1,7 +1,0 @@
-Datos de prueba ### FECHA: 16-07-2019 12:37:19c:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Menus.aspx(132): error CS0012: The type 'System.Object' is defined in an assembly that is not referenced. You must add a reference to assembly 'System.Runtime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
- ### FECHA: 16-07-2019 12:37:19Administrador
- ### FECHA: 16-07-2019 12:40:17c:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Menus.aspx(132): error CS0012: The type 'System.Object' is defined in an assembly that is not referenced. You must add a reference to assembly 'System.Runtime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
- ### FECHA: 16-07-2019 12:42:49c:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Menus.aspx(132): error CS0012: The type 'System.Object' is defined in an assembly that is not referenced. You must add a reference to assembly 'System.Runtime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
- ### FECHA: 16-07-2019 12:42:49Administrador
- ### FECHA: 16-07-2019 12:43:44c:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Menus.aspx(132): error CS0012: The type 'System.Object' is defined in an assembly that is not referenced. You must add a reference to assembly 'System.Runtime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
- ### FECHA: 16-07-2019 12:43:44Administrador

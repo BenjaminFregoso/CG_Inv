@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CG_InvWeb {
+namespace Doctos_eje2.DeviceMobile {
     
     
-    public partial class Menus {
+    public partial class entrada {
         
         /// <summary>
         /// Control ASPxRoundPanel1.
@@ -31,12 +31,12 @@ namespace CG_InvWeb {
         protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
         
         /// <summary>
-        /// Control SDataSourceMenus.
+        /// Control SqlDataSourceMovtosDet.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDataSourceMenus;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceMovtosDet;
     }
 }

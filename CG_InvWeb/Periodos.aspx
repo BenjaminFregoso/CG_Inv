@@ -20,7 +20,17 @@
         <PanelCollection>
             <dx:PanelContent runat="server">
                 <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourcePeriodos" KeyFieldName="index" OnRowInserting="ASPxGridView1_RowInserting" OnInitNewRow="ASPxGridView1_InitNewRow" OnCustomErrorText="ASPxGridView1_CustomErrorText" style="margin-left: 0px" Theme="iOS" Width="100%" Font-Names="Century Gothic">
-                    <SettingsPager PageSize="25">
+                    <SettingsPager Mode="ShowPager">
+                        <FirstPageButton Visible="True">
+                        </FirstPageButton>
+                        <LastPageButton Visible="True">
+                        </LastPageButton>
+                        <NextPageButton Visible="False">
+                        </NextPageButton>
+                        <PrevPageButton Visible="False">
+                        </PrevPageButton>
+                        <PageSizeItemSettings Visible="True">
+                        </PageSizeItemSettings>
                     </SettingsPager>
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>

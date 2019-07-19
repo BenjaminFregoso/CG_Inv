@@ -44,8 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.ExpressApp.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.Web.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpo.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
@@ -136,6 +138,7 @@
   <ItemGroup>
     <Content Include="Articulos\Clasificacion.aspx" />
     <Content Include="Articulos\Departamento.aspx" />
+    <Content Include="Articulos\Familias.aspx" />
     <Content Include="Catalogos\Ciudades.aspx" />
     <Content Include="Catalogos\Estado.aspx" />
     <Content Include="Catalogos\MetodoPago.aspx" />
@@ -147,6 +150,7 @@
     <Content Include="Catalogos\ClaveProductoServicios.aspx" />
     <Content Include="Catalogos\CentroCostos.aspx" />
     <Content Include="Catalogos\UnidadMedida.aspx" />
+    <Content Include="entrada.aspx" />
     <Content Include="Images\fondo12.png" />
     <Content Include="Inicio.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
@@ -185,7 +189,6 @@
     <Content Include="Nuevo_Arti.aspx" />
     <Content Include="Periodos.aspx" />
     <Content Include="Perfiles.aspx" />
-    <Content Include="Usuarios.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Accesos.aspx" />
   </ItemGroup>
@@ -202,6 +205,8 @@
     <Content Include="Account\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Empresas.aspx" />
+    <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="web.sitemap" />
     <None Include="packages.config" />
@@ -227,6 +232,13 @@
     </Compile>
     <Compile Include="Articulos\Departamento.aspx.designer.cs">
       <DependentUpon>Departamento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Articulos\Familias.aspx.cs">
+      <DependentUpon>Familias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos\Familias.aspx.designer.cs">
+      <DependentUpon>Familias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Ciudades.aspx.cs">
       <DependentUpon>Ciudades.aspx</DependentUpon>
@@ -404,13 +416,6 @@
     <Compile Include="Perfiles.aspx.designer.cs">
       <DependentUpon>Perfiles.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Usuarios.aspx.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Usuarios.aspx.designer.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -442,6 +447,20 @@
     </Compile>
     <Compile Include="Accesos.aspx.designer.cs">
       <DependentUpon>Accesos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Empresas.aspx.cs">
+      <DependentUpon>Empresas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Empresas.aspx.designer.cs">
+      <DependentUpon>Empresas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
