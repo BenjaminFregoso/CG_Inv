@@ -2,7 +2,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <dx:ASPxRoundPanel ID="ASPxRoundPanelPrincipal" HorizontalAlign="Left" runat="server" HeaderText="Catálogo de usuarios" ShowCollapseButton="True" Theme="MaterialCompact" Width="100%" Font-Names="Century Gothic" Height="100%" AllowCollapsingByHeaderClick="True" HeaderNavigateUrl="~/Usuarios.aspx">
+    <dx:ASPxRoundPanel ID="ASPxRoundPanelPrincipal" HorizontalAlign="Left" runat="server" HeaderText="Usuarios" ShowCollapseButton="True" Theme="MaterialCompact" Width="100%" Font-Names="Century Gothic" Height="100%" AllowCollapsingByHeaderClick="True" HeaderNavigateUrl="~/Usuarios.aspx">
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
@@ -12,37 +12,31 @@
                             <SettingsAdaptivity Mode="OnWindowInnerWidth" />
                         </EditForm>
                     </SettingsPopup>
-                    <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" FileName="Usuarios">
+                    <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" FileName="Empresas">
                     </SettingsExport>
                     <SettingsSearchPanel ShowApplyButton="True" ShowClearButton="True" />
                     <EditFormLayoutProperties ColCount="2" ColumnCount="2">
                         <Items>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="usuario">
-                                <CaptionSettings Location="Top" />
                             </dx:GridViewColumnLayoutItem>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="contrasena">
-                                <CaptionSettings Location="Top" />
                             </dx:GridViewColumnLayoutItem>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="perfil">
-                                <CaptionSettings Location="Top" />
                             </dx:GridViewColumnLayoutItem>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="empresa">
-                                <CaptionSettings Location="Top" />
                             </dx:GridViewColumnLayoutItem>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="nombre">
-                                <CaptionSettings Location="Top" />
                             </dx:GridViewColumnLayoutItem>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="fecha_alta">
-                                <CaptionSettings Location="Top" />
                             </dx:GridViewColumnLayoutItem>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="fecha_baja">
-                                <CaptionSettings Location="Top" />
                             </dx:GridViewColumnLayoutItem>
-                            <dx:EditModeCommandLayoutItem ColSpan="2" ColumnSpan="2" HorizontalAlign="Right">
+                            <dx:EditModeCommandLayoutItem ColSpan="1" Width="100%">
                             </dx:EditModeCommandLayoutItem>
                         </Items>
                         <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="600">
                         </SettingsAdaptivity>
+                        <SettingsItemCaptions HorizontalAlign="Left" Location="Top" />
                     </EditFormLayoutProperties>
                     <Columns>
                         <dx:GridViewCommandColumn VisibleIndex="0" Caption="#" Visible="False">
@@ -64,6 +58,8 @@
                             </PropertiesComboBox>
                         </dx:GridViewDataComboBoxColumn>
                         <dx:GridViewDataTextColumn Caption="Contraseña" FieldName="contrasena" ShowInCustomizationForm="True" VisibleIndex="3">
+                            <PropertiesTextEdit Password="True">
+                            </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
                     </Columns>
                     <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
@@ -90,7 +86,17 @@
                             </SettingsAdaptivity>
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
-                    <SettingsPager Mode="EndlessPaging">
+                    <SettingsPager Mode="ShowPager">
+                        <FirstPageButton Visible="True">
+                        </FirstPageButton>
+                        <LastPageButton Visible="True">
+                        </LastPageButton>
+                        <NextPageButton Visible="False">
+                        </NextPageButton>
+                        <PrevPageButton Visible="False">
+                        </PrevPageButton>
+                        <PageSizeItemSettings Visible="True">
+                        </PageSizeItemSettings>
                     </SettingsPager>
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>
@@ -126,6 +132,7 @@
                             </Image>
                         </SearchPanelClearButton>
                     </SettingsCommandButton>
+
                     <Toolbars>
                         <dx:GridViewToolbar >
                             <Items>

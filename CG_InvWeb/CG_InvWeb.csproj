@@ -138,6 +138,7 @@
   <ItemGroup>
     <Content Include="Articulos\Clasificacion.aspx" />
     <Content Include="Articulos\Departamento.aspx" />
+    <Content Include="Articulos\Familias.aspx" />
     <Content Include="Catalogos\Ciudades.aspx" />
     <Content Include="Catalogos\Estado.aspx" />
     <Content Include="Catalogos\MetodoPago.aspx" />
@@ -204,6 +205,7 @@
     <Content Include="Account\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Empresas.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="web.sitemap" />
@@ -230,6 +232,13 @@
     </Compile>
     <Compile Include="Articulos\Departamento.aspx.designer.cs">
       <DependentUpon>Departamento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Articulos\Familias.aspx.cs">
+      <DependentUpon>Familias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos\Familias.aspx.designer.cs">
+      <DependentUpon>Familias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Ciudades.aspx.cs">
       <DependentUpon>Ciudades.aspx</DependentUpon>
@@ -438,6 +447,13 @@
     </Compile>
     <Compile Include="Accesos.aspx.designer.cs">
       <DependentUpon>Accesos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Empresas.aspx.cs">
+      <DependentUpon>Empresas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Empresas.aspx.designer.cs">
+      <DependentUpon>Empresas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>

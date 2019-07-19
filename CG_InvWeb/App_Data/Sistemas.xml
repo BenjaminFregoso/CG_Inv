@@ -2,9 +2,7 @@
 
 <menu>
 
-  <group Text="Catálogos">
-
-    <item Text="Pruebas" NavigateUrl="~/entrada.aspx"/>
+  <group Text="Configuración">
     
     <item Text="Empresas" NavigateUrl="~/Asigna_cia.aspx"/>
 
@@ -30,7 +28,7 @@
 
     <item Text="Clasificación" NavigateUrl="~/Articulos/Clasificacion.aspx"/>
 
-    <item Text="Familias" NavigateUrl="~/Inicio.aspx"/>
+    <item Text="Familias" NavigateUrl="~/Articulos/Familias.aspx"/>
 
     <item Text="Características" NavigateUrl="~/Inicio.aspx"/>
 
@@ -85,12 +83,6 @@
     <item Text="Inventario total" NavigateUrl="~/Default.aspx"/>
     <item Text="Movimientos" NavigateUrl="~/Default.aspx"/>
     <item Text="Pedido sugerido" NavigateUrl="~/Default.aspx"/>
-  </group>
-
-  <group Text="Configuración">
-
-    <item Text="Datos compañía" NavigateUrl="~/Default.aspx"/>
-
   </group>
 
 </menu>
