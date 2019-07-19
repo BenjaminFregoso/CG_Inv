@@ -80,7 +80,6 @@ namespace CG_InvWeb
         //GUARDAR LOG DE ERRORES
         public void guardarLog(string descripcion_)
         {
-            
             var dataFile = System.Web.Hosting.HostingEnvironment.MapPath("~/Archivos/log.txt"); //LINEA PARA GUARDAR EN SERVIDOR
             File.AppendAllText(dataFile, "FECHA: " + DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss") + "  "+ descripcion_ +   Environment.NewLine);
 

@@ -22,8 +22,14 @@ namespace CG_InvWeb
         {
             GlobalHandler objeto = new GlobalHandler();
 
-            string usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
-            
+            string usuario="";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
             Label1.Text = objeto.obtenerError()+ " || || "+usuario;
             objeto.guardarLog(usuario); 
         }
