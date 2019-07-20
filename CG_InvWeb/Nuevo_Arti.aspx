@@ -30,7 +30,8 @@
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
-                <dx:ASPxGridView ID="ASPxGridView1" ClientInstanceName="ASPxGridView1" runat="server" AutoGenerateColumns="False" CssClass="auto-style3" DataSourceID="SDS_Articulos" EnableTheming="True" KeyFieldName="key_articulo" OnFocusedRowChanged="ASPxGridView1_FocusedRowChanged" Theme="MaterialCompact" SettingsBehavior-ColumnResizeMode="Control" PreviewFieldName="descripcion_larga" OnInitNewRow="ASPxGridView1_InitNewRow" OnRowInserting="ASPxGridView1_RowInserting" OnStartRowEditing="ASPxGridView1_StartRowEditing" OnCustomErrorText="ASPxGridView1_CustomErrorText" KeyboardSupport="True" Width="100%" >
+
+                <dx:ASPxGridView  ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos" EnableTheming="True" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnRowInserting="ASPxGridView1_RowInserting" OnInitNewRow="ASPxGridView1_InitNewRow" OnCustomErrorText="ASPxGridView1_CustomErrorText">
 
                     <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="True" />
                     <Templates>

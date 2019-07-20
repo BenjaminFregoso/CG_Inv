@@ -22,7 +22,7 @@
 
   <group Text="Catálogo de Artículos">
 
-    <item Text="Artículos" NavigateUrl="~/Nuevo_Arti.aspx"/>
+    <item Text="Artículos" NavigateUrl="~/Articulos/Articulos.aspx"/>
 
     <item Text="Departamentos" NavigateUrl="~/Articulos/Departamento.aspx"/>
 

@@ -136,6 +136,7 @@
     <Reference Include="DevExpress.Web.ASPxRichEdit.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Articulos\Articulos.aspx" />
     <Content Include="Articulos\Clasificacion.aspx" />
     <Content Include="Articulos\Departamento.aspx" />
     <Content Include="Articulos\Familias.aspx" />
@@ -219,6 +220,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Articulos\Articulos.aspx.cs">
+      <DependentUpon>Articulos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos\Articulos.aspx.designer.cs">
+      <DependentUpon>Articulos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Articulos\Clasificacion.aspx.cs">
       <DependentUpon>Clasificacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
