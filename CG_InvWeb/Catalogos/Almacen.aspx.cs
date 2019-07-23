@@ -19,6 +19,7 @@ namespace CG_InvWeb.Catalogos
             //string PerfilValue = e.Values[index].ToString();
             //e.NewValues["fisica"] = (e.NewValues["fisica"] == null) ? 0 : e.NewValues["fisica"];
             //e.NewValues["moral"] = (e.NewValues["moral"] == null) ? 0: e.NewValues["moral"];
+
         }
 
         protected void ASPxGridView1_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
@@ -44,5 +45,63 @@ namespace CG_InvWeb.Catalogos
 
         }
 
+        protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("INSERT", "", e.NewValues["almacen"].ToString() + " -- " + e.NewValues["descrip"].ToString(), usuario, "", "c_Almacen");
+            //TERMINA BITACORA #######################
+        }
+
+        protected void ASPxGridView1_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("UPDATE", e.OldValues["almacen"].ToString() + " -- " + e.OldValues["descrip"].ToString(), e.NewValues["almacen"].ToString() + " -- " + e.NewValues["descrip"].ToString(), usuario, "", "c_Almacen");
+            //TERMINA BITACORA #######################
+        }
+
+        protected void ASPxGridView1_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+
+            GlobalHandler objeto = new GlobalHandler();
+
+            objeto.Bitacora("DELETE", e.Values["almacen"].ToString() + " -- " + e.Values["descrip"].ToString(), "", usuario, "", "c_Almacen");
+            //TERMINA BITACORA #######################
+        }
+
+        
     }
 }

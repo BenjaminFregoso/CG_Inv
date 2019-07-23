@@ -27,11 +27,12 @@ namespace CG_InvWeb
         {
             Usuario = ASPxComboUsu.SelectedItem.Text;
             Contraseña = ASPxTextPass.Text;
-            //Compañia = ASPxComboCia.SelectedItem.Text;
-            //Obra = ASPxListObras.SelectedItem.Text;
 
-            //Compañia = "SSC DESARROLLOS";
-            //Obra = "UNICA";
+            //BITACORA #######################
+            GlobalHandler objeto = new GlobalHandler();
+            //TERMINA BITACORA #######################
+            string ip = Request.UserHostAddress.ToString();
+
 
             //AQUI NO SIRVE 
             using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
@@ -42,26 +43,30 @@ namespace CG_InvWeb
                 NpgsqlDataReader reader;
 
                 //BUSCA EN CLIENTES
-                //Modificar data procedure por metodo shabo || SELECT para validar 
-                cmd.CommandText = "SELECT * FROM \"Usuarios\"";
+                cmd.CommandText = "SELECT * FROM \"Usuarios\" WHERE usuario = '"+ Usuario + "' AND contrasena = '"+Contraseña+"'"; 
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = sqlConnection1;
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
+                    //BITACORA #######################
+                    objeto.Bitacora("LOG IN", "", "EXITOSO", Usuario, ip, "Usuarios");
+                    //TERMINA BITACORA #######################
                     reader.Read();
+                    System.Web.HttpContext.Current.Session.Timeout = 300; //Tiempo de sesion 
                     System.Web.HttpContext.Current.Session["Perfil"] = reader["Perfil"].ToString();
                     System.Web.HttpContext.Current.Session["Usuario"] = Usuario;
-                    //System.Web.HttpContext.Current.Session["Nombre_Completo"] = reader["Usuario_Largo"].ToString(); ; 
-
-                    //Response.Redirect("Default.aspx?Usuario=" + Usuario + "&Id=" + reader["Perfil"].ToString() + "&Obra=" + Obra + "&Compañia=" + Compañia);
                     Response.Redirect("Inicio.aspx?Usuario=" + Usuario);
+                    
                 }
                 else
                 {
                     ASPxMensaje.Visible = true;
                     ASPxMensaje.Text = "Usuario y/o contraseña sin acceso";
                     reader.Close();
+                    //BITACORA #######################
+                    objeto.Bitacora("LOG IN", "", "FALLIDO", Usuario, ip, "Usuarios");
+                    //TERMINA BITACORA #######################
                 }
             }
         }

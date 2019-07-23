@@ -41,5 +41,59 @@ namespace CG_InvWeb.Catalogos
             }
         }
 
+        protected void ASPxGridView1_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("DELETE", e.Values["pais"].ToString() + " -- " + e.Values["descrip"].ToString(), "", usuario, "", "c_Pais");
+            //TERMINA BITACORA #######################
+        }
+
+        protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("INSERT", "", e.NewValues["pais"].ToString() + " -- " + e.NewValues["descrip"].ToString(), usuario, "", "c_Pais");
+            //TERMINA BITACORA #######################
+        }
+
+        protected void ASPxGridView1_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("UPDATE", e.OldValues["pais"].ToString() + " -- " + e.OldValues["descrip"].ToString(), e.NewValues["pais"].ToString() + " -- " + e.NewValues["descrip"].ToString(), usuario, "", "c_Pais");
+            //TERMINA BITACORA #######################
+
+        }
     }
 }

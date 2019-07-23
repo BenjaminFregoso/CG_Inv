@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Menus.aspx.cs" Inherits="CG_InvWeb.Menus" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<style>
+    <style>
         Principal{
         width:80%;
         margin-top:20px;
@@ -85,7 +85,7 @@
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataCheckColumn FieldName="activo" VisibleIndex="5" Caption="Activo">
                         </dx:GridViewDataCheckColumn>
-                        <dx:GridViewDataTextColumn FieldName="key_menu" ShowInCustomizationForm="True" VisibleIndex="6" Visible="False" Caption="key_menu">
+                        <dx:GridViewDataTextColumn FieldName="key_menu" ShowInCustomizationForm="True" VisibleIndex="6" Caption="key_menu">
                         </dx:GridViewDataTextColumn>
                 </Columns>
                     <SettingsCommandButton>
@@ -129,6 +129,5 @@
             <asp:Parameter Name="key_menu" Type="Int64" />
         </UpdateParameters>
     </asp:SqlDataSource>
-    <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
 </div>
 </asp:Content>

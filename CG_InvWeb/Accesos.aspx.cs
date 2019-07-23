@@ -32,5 +32,59 @@ namespace CG_InvWeb
             }
         }
 
+        protected void ASPxGridView1_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("DELETE", e.Values["Usuario"].ToString() + " -- " + e.Values["Empresa"].ToString() + " -- " + e.Values["Periodos"].ToString(), "", usuario, "", "Accesos");
+            //TERMINA BITACORA #######################
+        }
+
+        protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
+        {
+            //Accesos&quot; (&quot;Usuario&quot;, &quot;Empresa&quot;, &quot;Periodos&quot;)
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("INSERT", "", e.NewValues["Usuario"].ToString() + " -- " + e.NewValues["Empresa"].ToString() + " -- " + e.NewValues["Periodos"].ToString(), usuario, "", "Accesos");
+            //TERMINA BITACORA #######################
+        }
+
+        protected void ASPxGridView1_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("UPDATE", e.OldValues["Usuario"].ToString() + " -- " + e.OldValues["Empresa"].ToString() + " -- " + e.OldValues["Periodos"].ToString(), e.NewValues["Usuario"].ToString() + " -- " + e.NewValues["Empresa"].ToString() + " -- " + e.NewValues["Periodos"].ToString(), usuario, "", "Accesos");
+            //TERMINA BITACORA #######################
+        }
     }
 }

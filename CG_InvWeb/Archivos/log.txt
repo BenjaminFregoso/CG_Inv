@@ -1,0 +1,248 @@
+FECHA: 19-07-2019 05:00:17  System.Web.HttpUnhandledException (0x80004005): Se produjo una excepción de tipo 'System.Web.HttpUnhandledException'. ---> System.Data.Odbc.OdbcException (0x80131937): ERROR [IM002] [Microsoft][Administrador de controladores ODBC] No se encuentra el nombre del origen de datos y no se especificó ningún controlador predeterminado
+   en System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   en System.Data.Odbc.OdbcConnectionHandle..ctor(OdbcConnection connection, OdbcConnectionString constr, OdbcEnvironmentHandle environmentHandle)
+   en System.Data.Odbc.OdbcConnectionOpen..ctor(OdbcConnection outerConnection, OdbcConnectionString connectionOptions)
+   en System.Data.Odbc.OdbcConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.Odbc.OdbcConnection.Open()
+   en System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   en System.Web.UI.WebControls.SqlDataSourceView.ExecuteSelect(DataSourceSelectArguments arguments)
+   en System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   en DevExpress.Web.Internal.DataHelper.PerformSelect()
+   en DevExpress.Web.Internal.DataContainer.PerformSelect()
+   en DevExpress.Web.ASPxDataWebControlBase.DataBindCore()
+   en DevExpress.Web.ASPxDataWebControlBase.DataBindInternal()
+   en DevExpress.Web.ASPxWebControl.DataBind()
+   en DevExpress.Web.ASPxComboBox.DataBind()
+   en DevExpress.Web.Internal.DataHelperBase.EnsureDataBound(Boolean ensureChildControls)
+   en DevExpress.Web.Internal.DataContainer.EnsureDataBound()
+   en DevExpress.Web.ASPxDataWebControlBase.OnPreRender(EventArgs e)
+   en DevExpress.Web.ASPxDropDownEditBase.OnPreRender(EventArgs e)
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   en System.Web.UI.Page.HandleError(Exception e)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   en System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   en System.Web.UI.Page.ProcessRequest()
+   en System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   en System.Web.UI.Page.ProcessRequest(HttpContext context)
+   en ASP.default_aspx.ProcessRequest(HttpContext context) en c:\Users\siste\AppData\Local\Temp\Temporary ASP.NET Files\vs\a6536d76\2b0b41f7\App_Web_ddyfuduk.1.cs:línea 0
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+FECHA: 22-07-2019 12:03:08  System.Web.HttpException (0x80004005): El archivo '/Almacen.aspx' no existe.
+   en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+FECHA: 22-07-2019 12:27:36  System.Web.HttpCompileException (0x80004005): c:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Catalogos\Almacen.aspx(24): error CS0012: The type 'System.Object' is defined in an assembly that is not referenced. You must add a reference to assembly 'System.Runtime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
+   en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+FECHA: 22-07-2019 12:27:53  System.Web.HttpCompileException (0x80004005): c:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Catalogos\Almacen.aspx(24): error CS0012: The type 'System.Object' is defined in an assembly that is not referenced. You must add a reference to assembly 'System.Runtime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.
+   en System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+FECHA: 22-07-2019 01:14:58  NO SE GUARDO LA BITACORA Npgsql.PostgresException (0x80004005): 42601: syntax error at or near "c_Almacen"
+   en Npgsql.NpgsqlConnector.<>c__DisplayClass161_0.<<ReadMessage>g__ReadMessageLong|0>d.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   en Npgsql.NpgsqlConnector.<>c__DisplayClass161_0.<<ReadMessage>g__ReadMessageLong|0>d.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en System.Threading.Tasks.ValueTask`1.get_Result()
+   en Npgsql.NpgsqlDataReader.<NextResult>d__46.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlDataReader.NextResult()
+   en Npgsql.NpgsqlCommand.<ExecuteDbDataReader>d__100.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlCommand.<ExecuteNonQuery>d__92.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   en CG_InvWeb.GlobalHandler.Bitacora(String accion_, String dato_anterior_, String dato_nuevo_, String usuario_, String autorizacion_, String tabla_) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\GlobalHandler.cs:línea 53
+FECHA: 22-07-2019 01:15:02  NO SE GUARDO LA BITACORA Npgsql.PostgresException (0x80004005): 42601: syntax error at or near "c_Almacen"
+   en Npgsql.NpgsqlConnector.<>c__DisplayClass161_0.<<ReadMessage>g__ReadMessageLong|0>d.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   en Npgsql.NpgsqlConnector.<>c__DisplayClass161_0.<<ReadMessage>g__ReadMessageLong|0>d.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en System.Threading.Tasks.ValueTask`1.get_Result()
+   en Npgsql.NpgsqlDataReader.<NextResult>d__46.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlDataReader.NextResult()
+   en Npgsql.NpgsqlCommand.<ExecuteDbDataReader>d__100.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlCommand.<ExecuteNonQuery>d__92.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   en CG_InvWeb.GlobalHandler.Bitacora(String accion_, String dato_anterior_, String dato_nuevo_, String usuario_, String autorizacion_, String tabla_) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\GlobalHandler.cs:línea 53
+FECHA: 22-07-2019 01:16:18  NO SE GUARDO LA BITACORA Npgsql.PostgresException (0x80004005): 42601: syntax error at or near "c_Almacen"
+   en Npgsql.NpgsqlConnector.<>c__DisplayClass161_0.<<ReadMessage>g__ReadMessageLong|0>d.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   en Npgsql.NpgsqlConnector.<>c__DisplayClass161_0.<<ReadMessage>g__ReadMessageLong|0>d.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en System.Threading.Tasks.ValueTask`1.get_Result()
+   en Npgsql.NpgsqlDataReader.<NextResult>d__46.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlDataReader.NextResult()
+   en Npgsql.NpgsqlCommand.<ExecuteDbDataReader>d__100.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlCommand.<ExecuteNonQuery>d__92.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   en CG_InvWeb.GlobalHandler.Bitacora(String accion_, String dato_anterior_, String dato_nuevo_, String usuario_, String autorizacion_, String tabla_) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\GlobalHandler.cs:línea 53
+FECHA: 22-07-2019 01:18:34  NO SE GUARDO LA BITACORA Npgsql.PostgresException (0x80004005): 42601: syntax error at or near "c_Almacen"
+   en Npgsql.NpgsqlConnector.<>c__DisplayClass161_0.<<ReadMessage>g__ReadMessageLong|0>d.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   en Npgsql.NpgsqlConnector.<>c__DisplayClass161_0.<<ReadMessage>g__ReadMessageLong|0>d.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en System.Threading.Tasks.ValueTask`1.get_Result()
+   en Npgsql.NpgsqlDataReader.<NextResult>d__46.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlDataReader.NextResult()
+   en Npgsql.NpgsqlCommand.<ExecuteDbDataReader>d__100.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlCommand.<ExecuteNonQuery>d__92.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en Npgsql.NpgsqlCommand.ExecuteNonQuery()
+   en CG_InvWeb.GlobalHandler.Bitacora(String accion_, String dato_anterior_, String dato_nuevo_, String usuario_, String autorizacion_, String tabla_) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\GlobalHandler.cs:línea 53
+FECHA: 22-07-2019 05:10:28  System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en CG_InvWeb.Global_asax.Application_Error(Object sender, EventArgs e) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Global.asax.cs:línea 25
+FECHA: 22-07-2019 06:35:43  System.Web.HttpException (0x80004005): El archivo '/ClaveProductoServicios.aspx' no existe.
+   en System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   en System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   en System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   en System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   en System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   en System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+FECHA: 23-07-2019 09:58:40  System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en CG_InvWeb.Global_asax.Application_Error(Object sender, EventArgs e) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Global.asax.cs:línea 25
+FECHA: 23-07-2019 10:00:58  System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en CG_InvWeb.Global_asax.Application_Error(Object sender, EventArgs e) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Global.asax.cs:línea 25
+FECHA: 23-07-2019 10:04:18  System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en CG_InvWeb.Global_asax.Application_Error(Object sender, EventArgs e) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Global.asax.cs:línea 25
+FECHA: 23-07-2019 10:05:33  System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en CG_InvWeb.Global_asax.Application_Error(Object sender, EventArgs e) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Global.asax.cs:línea 25
+FECHA: 23-07-2019 10:06:26  System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en CG_InvWeb.Global_asax.Application_Error(Object sender, EventArgs e) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Global.asax.cs:línea 25
+FECHA: 23-07-2019 10:08:12  System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en CG_InvWeb.Global_asax.Application_Error(Object sender, EventArgs e) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Global.asax.cs:línea 25
+FECHA: 23-07-2019 10:10:37  System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en CG_InvWeb.Global_asax.Application_Error(Object sender, EventArgs e) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Global.asax.cs:línea 25
+FECHA: 23-07-2019 10:17:00  System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
+   en CG_InvWeb.Global_asax.Application_Error(Object sender, EventArgs e) en C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\Global.asax.cs:línea 25
+FECHA: 23-07-2019 01:42:56  System.Web.HttpUnhandledException (0x80004005): Se produjo una excepción de tipo 'System.Web.HttpUnhandledException'. ---> System.IO.FileNotFoundException: No se pudo encontrar el archivo 'C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\App_Data\.xml'.
+Nombre de archivo: 'C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\App_Data\.xml'
+   en System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   en System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   en System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   en System.Web.UI.Control.OpenFileAndGetDependency(VirtualPath virtualPath, String physicalPath, CacheDependency& dependency)
+   en System.Web.UI.WebControls.XmlDataSource.GetReader(String path, String content, CacheDependency& cacheDependency)
+   en System.Web.UI.WebControls.XmlDataSource.PopulateXmlDocument(XmlDocument document, CacheDependency& dataCacheDependency, CacheDependency& transformCacheDependency)
+   en System.Web.UI.WebControls.XmlDataSource.GetXmlDocument()
+   en System.Web.UI.WebControls.XmlHierarchicalDataSourceView.Select()
+   en DevExpress.Web.ASPxNavBar.DataBindGroups()
+   en DevExpress.Web.ASPxNavBar.PerformDataBinding(String dataHelperName)
+   en DevExpress.Web.Internal.HierarchicalDataHelper.PerformDataBinding()
+   en DevExpress.Web.Internal.HierarchicalDataHelper.PerformSelect()
+   en DevExpress.Web.Internal.DataContainer.PerformSelect()
+   en DevExpress.Web.ASPxDataWebControlBase.DataBindCore()
+   en DevExpress.Web.ASPxDataWebControlBase.DataBindInternal()
+   en DevExpress.Web.ASPxWebControl.DataBind()
+   en DevExpress.Web.Internal.DataHelperBase.EnsureDataBound(Boolean ensureChildControls)
+   en DevExpress.Web.Internal.DataContainer.EnsureDataBound()
+   en DevExpress.Web.ASPxDataWebControlBase.OnPreRender(EventArgs e)
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Control.PreRenderRecursiveInternal()
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   en System.Web.UI.Page.HandleError(Exception e)
+   en System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   en System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   en System.Web.UI.Page.ProcessRequest()
+   en System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   en System.Web.UI.Page.ProcessRequest(HttpContext context)
+   en ASP.usuarios_aspx.ProcessRequest(HttpContext context) en c:\Users\siste\AppData\Local\Temp\Temporary ASP.NET Files\vs\a6536d76\2b0b41f7\App_Web_y2xz0jhw.0.cs:línea 0
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
