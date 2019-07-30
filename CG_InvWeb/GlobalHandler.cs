@@ -40,19 +40,24 @@ namespace CG_InvWeb
 
 
         //Guardar en la bitacora
-        public void Bitacora(string accion_, string dato_anterior_, string dato_nuevo_, string usuario_, string autorizacion_)
-        {
-            var conexion = ConectarPostgresql();
-            string fecha = "12/12/2018";
-            //var fecha = DateTime.Now.ToString("dd-MM-yyyy"); 
-            var hora = DateTime.Now.ToString("hh:mm:ss");
-            NpgsqlCommand cmd = conexion.CreateCommand();
-            cmd.CommandText = "INSERT INTO  \"Bitacora\" (accion, dato_anterior, dato_nuevo, fecha, hora, usuario, autorizacion) VALUES('" + accion_ + "','" + dato_anterior_ + "','" + dato_nuevo_ + "','" + fecha + "','" + hora + "','" + usuario_ + "','" + autorizacion_ + "')";
-            //cmd.Parameters.Add("@FechaHoy", SqlDbType.Date).Value = dateTimePicker1.Value;
-            cmd.ExecuteNonQuery();
-            conexion.Close();
+        public void Bitacora(string accion_, string dato_anterior_, string dato_nuevo_, string usuario_, string autorizacion_, string tabla_)
+        {/*
+            try
+            {*/
+                var conexion = ConectarPostgresql();
+                var fecha = DateTime.Now.ToString("dd-MM-yyyy");
+                var hora = DateTime.Now.ToString("hh:mm:ss");
+                NpgsqlCommand cmd = conexion.CreateCommand();
+                cmd.CommandText = "INSERT INTO  \"Bitacora\" (accion, dato_anterior, dato_nuevo, fecha, hora, usuario, autorizacion, tabla) VALUES('" + accion_ + "','" + dato_anterior_ + "','" + dato_nuevo_ + "','" + fecha + "','" + hora + "','" + usuario_ + "','" + autorizacion_ + "','"+tabla_+"')";
+                //cmd.Parameters.Add("@FechaHoy", SqlDbType.Date).Value = dateTimePicker1.Value;
+                cmd.ExecuteNonQuery();
+                conexion.Close();
 
-            //Al llamar está funcion guardar los datos 
+            /*    //Al llamar está funcion guardar los datos 
+            }catch (Exception erro)
+            {
+                guardarLog("NO SE GUARDO LA BITACORA "+erro.ToString());
+            }*/
         }
 
         //CONEXION A LA BASE SIN ODBC || Listo 09/07/2019
@@ -80,7 +85,6 @@ namespace CG_InvWeb
         //GUARDAR LOG DE ERRORES
         public void guardarLog(string descripcion_)
         {
-            
             var dataFile = System.Web.Hosting.HostingEnvironment.MapPath("~/Archivos/log.txt"); //LINEA PARA GUARDAR EN SERVIDOR
             File.AppendAllText(dataFile, "FECHA: " + DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss") + "  "+ descripcion_ +   Environment.NewLine);
 
@@ -92,7 +96,7 @@ namespace CG_InvWeb
         {
             var dataFile = System.Web.Hosting.HostingEnvironment.MapPath("~/Archivos/temp.txt"); //LINEA PARA GUARDAR EN SERVIDOR
             string ultimoError = File.ReadAllText(dataFile);
-            return ultimoError;
+            return ultimoError; 
         }
     }
 }

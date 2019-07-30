@@ -19,7 +19,15 @@ using System;
             void Application_Error(object sender, EventArgs e) {
             // Code that runs when an unhandled error occurs
 
-            var User = System.Web.HttpContext.Current.Session["Usuario"];
+            GlobalHandler objeto = new GlobalHandler();
+            try
+            {
+                objeto.guardarLog(Server.GetLastError().ToString());
+            }catch (Exception err)
+            {
+                objeto.guardarLog(err.ToString());
+            }
+            
 
 
         }

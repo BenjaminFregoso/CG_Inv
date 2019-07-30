@@ -41,5 +41,58 @@ namespace CG_InvWeb.Catalogos
             }
         }
 
+        protected void ASPxGridView1_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("DELETE", e.Values["claveprodserv"].ToString() + " -- " + e.Values["descrip"].ToString() + " -- " + e.Values["palabras_similares"].ToString(), "", usuario, "", "c_ClaveProdServ");
+            //TERMINA BITACORA #######################
+        }
+
+        protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("INSERT", "", e.NewValues["claveprodserv"].ToString() + " -- " + e.NewValues["descrip"].ToString() + " -- " + e.NewValues["palabras_similares"].ToString(), usuario, "", "c_ClaveProdServ");
+            //TERMINA BITACORA #######################
+        }
+
+        protected void ASPxGridView1_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("DELETE", e.OldValues["claveprodserv"].ToString() + " -- " + e.OldValues["descrip"].ToString() + " -- " + e.OldValues["palabras_similares"].ToString(), e.NewValues["claveprodserv"].ToString() + " -- " + e.NewValues["descrip"].ToString() + " -- " + e.NewValues["palabras_similares"].ToString(), usuario, "", "c_ClaveProdServ");
+            //TERMINA BITACORA #######################
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace CG_InvWeb.Articulos
         }
 
 
-    protected void ASPxGridView1_CustomErrorText(object sender, DevExpress.Web.ASPxGridViewCustomErrorTextEventArgs e)
+        protected void ASPxGridView1_CustomErrorText(object sender, DevExpress.Web.ASPxGridViewCustomErrorTextEventArgs e)
         {
             if (e.ErrorText.Contains("fkey_departamento"))
             {
@@ -45,7 +45,7 @@ namespace CG_InvWeb.Articulos
         }
 
 
- 
+
         protected void ASPxGridView1_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
         {
             ((ASPxGridView)sender).EditFormLayoutProperties.FindColumnItem("fkey_clasificacion").Visible = false;
@@ -75,7 +75,7 @@ namespace CG_InvWeb.Articulos
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    nDepartamento = Convert.ToInt64(reader["fkey_departamento"].ToString());                    
+                    nDepartamento = Convert.ToInt64(reader["fkey_departamento"].ToString());
                 }
                 else
                 {
@@ -89,6 +89,59 @@ namespace CG_InvWeb.Articulos
             HttpContext.Current.Session["session_clasificacion"] = nClasificacion;
         }
 
+        protected void ASPxGridView1_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("DELETE", e.Values["familia"].ToString() + " -- " + e.Values["fkey_clasificacion"].ToString() + " -- " + e.Values["fkey_departamento"].ToString(),"", usuario, "", "Familia");
+            //TERMINA BITACORA #######################
+        }
+
+        protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler(); 
+            objeto.Bitacora("INSERT", "", e.NewValues["familia"].ToString() + " -- " + e.NewValues["fkey_clasificacion"].ToString() + " -- " + e.NewValues["fkey_departamento"].ToString(), usuario, "", "Familia");
+            //TERMINA BITACORA #######################
+        }
+
+        protected void ASPxGridView1_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+        {
+            //BITACORA #######################
+            string usuario = "";
+            try
+            {
+                usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
+            }
+            catch (Exception err)
+            {
+                usuario = err.ToString();
+            }
+
+            GlobalHandler objeto = new GlobalHandler();
+            objeto.Bitacora("INSERT", e.OldValues["familia"].ToString() + " -- " + e.OldValues["fkey_clasificacion"].ToString() + " -- " + e.OldValues["fkey_departamento"].ToString(), e.NewValues["familia"].ToString() + " -- " + e.NewValues["fkey_clasificacion"].ToString() + " -- " + e.NewValues["fkey_departamento"].ToString(), usuario, "", "Familia");
+            //TERMINA BITACORA #######################
+        }
     }
 
 

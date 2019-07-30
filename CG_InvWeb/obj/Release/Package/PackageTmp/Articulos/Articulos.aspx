@@ -15,12 +15,12 @@
         text-align:left;
         font-family :'Open Sans';
     }
-</style> 
-<div class="Principal">          
+</style>
+<div class="Principal">
     <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Artículos" ShowCollapseButton="True" Theme="MaterialCompact" Width="100%" Font-Names="Century Gothic" CssClass="auto-style1" Height="100%" HeaderNavigateUrl="~/Articulos/Clasificacion.aspx">
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
-            <dx:PanelContent runat="server">                    
+            <dx:PanelContent runat="server">
                 <dx:ASPxGridView  ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos" KeyFieldName="key_articulo" EnableTheming="True" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnRowInserting="ASPxGridView1_RowInserting" OnInitNewRow="ASPxGridView1_InitNewRow" OnCustomErrorText="ASPxGridView1_CustomErrorText" OnStartRowEditing="ASPxGridView1_StartRowEditing">
 
                     <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="True" />
@@ -33,7 +33,7 @@
                                         </TabImage>--%>
                                         <ContentCollection>
                                             <dx:ContentControl runat="server">
-                                                <dx:ASPxGridView ID="ASPxGridView4" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Caracteristicas" KeyFieldName="key_articulos_caracteristicas" OnBeforePerformDataSelect="ASPxGridView4_BeforePerformDataSelect" OnRowInserting="ASPxGridView4_RowInserting" Theme="Glass" Width="100%" OnCellEditorInitialize="ASPxGridView4_CellEditorInitialize" OnInitNewRow="ASPxGridView4_InitNewRow" EnableTheming="True" KeyboardSupport="True">                                                    
+                                                <dx:ASPxGridView ID="ASPxGridView4" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Caracteristicas" KeyFieldName="key_articulos_caracteristicas" OnBeforePerformDataSelect="ASPxGridView4_BeforePerformDataSelect" OnRowInserting="ASPxGridView4_RowInserting" Theme="Glass" Width="100%" OnCellEditorInitialize="ASPxGridView4_CellEditorInitialize" OnInitNewRow="ASPxGridView4_InitNewRow" EnableTheming="True" KeyboardSupport="True">
                                                     <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
                                                     <SettingsPager Mode="EndlessPaging">
                                                     </SettingsPager>
@@ -76,7 +76,7 @@
                                                             <EditFormSettings Visible="False" />
                                                         </dx:GridViewDataTextColumn>
                                                         <dx:GridViewDataComboBoxColumn Caption="Característica" FieldName="caracteristica" ShowInCustomizationForm="True" VisibleIndex="2" Name="caracteristica">
-                                                            <PropertiesComboBox SelectInputTextOnClick="true" DataSourceID="SDS_Caracteristicas" TextField="caracteristica" ValueField="caracteristica" ClientInstanceName="caracteristica">                                                                
+                                                            <PropertiesComboBox SelectInputTextOnClick="true" DataSourceID="SDS_Caracteristicas" TextField="caracteristica" ValueField="caracteristica" ClientInstanceName="caracteristica">
                                                                 <ReadOnlyStyle BackColor="#999999" ForeColor="White">
                                                                 </ReadOnlyStyle>
                                                             </PropertiesComboBox>
@@ -91,7 +91,7 @@
                                                     <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
                                                         <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
                                                             <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
-                                                            </SettingsAdaptivity>                    
+                                                            </SettingsAdaptivity>
                                                             <SettingsItemCaptions Location="Top" />
                                                         </AdaptiveDetailLayoutProperties>
                                                     </SettingsAdaptivity>
@@ -163,7 +163,7 @@
                                                     <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
                                                         <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
                                                             <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
-                                                            </SettingsAdaptivity>                    
+                                                            </SettingsAdaptivity>
                                                             <SettingsItemCaptions Location="Top" />
                                                         </AdaptiveDetailLayoutProperties>
                                                     </SettingsAdaptivity>
@@ -234,7 +234,7 @@
                                                     <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
                                                         <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
                                                             <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
-                                                            </SettingsAdaptivity>                    
+                                                            </SettingsAdaptivity>
                                                             <SettingsItemCaptions Location="Top" />
                                                         </AdaptiveDetailLayoutProperties>
                                                     </SettingsAdaptivity>
@@ -281,7 +281,7 @@
                                 </Items>
                             </dx:GridViewLayoutGroup>
                             <dx:GridViewLayoutGroup Caption="Datos Generales" ColCount="2" ColSpan="2" Name="DatosGralesArticulos" ColumnCount="2">
-                                <Items>                                    
+                                <Items>
                                     <dx:GridViewColumnLayoutItem ColumnName="fkey_marca" RequiredMarkDisplayMode="Hidden" ShowCaption="False" Caption="Marca">
                                     </dx:GridViewColumnLayoutItem>
                                     <dx:GridViewColumnLayoutItem ColumnName="Modelo" RequiredMarkDisplayMode="Hidden" ShowCaption="False">
@@ -352,29 +352,29 @@
                         <dx:GridViewDataComboBoxColumn Caption="fkey_departamento" FieldName="fkey_departamento" Name="fkey_departamento" ShowInCustomizationForm="True" Visible="False" VisibleIndex="12" ToolTip="Departamento">
                             <PropertiesComboBox DataSourceID="SDS_Departamentos" TextField="departamento" ValueField="key_departamento" AnimationType="Fade" NullTextDisplayMode="UnfocusedAndFocused" NullText="Departamento...">
                                 <ValidationSettings SetFocusOnError="True">
-                                    <RequiredField IsRequired="True" />                                    
+                                    <RequiredField IsRequired="True" />
                                 </ValidationSettings>
                             </PropertiesComboBox>
                         </dx:GridViewDataComboBoxColumn>
                         <dx:GridViewDataComboBoxColumn Caption="fkey_clasificacion" FieldName="fkey_clasificacion" Name="fkey_clasificacion" ShowInCustomizationForm="True" Visible="False" VisibleIndex="13" ToolTip="Clasificación">
                             <PropertiesComboBox DataSourceID="SDS_Clasificacion" TextField="clasificacion" ValueField="key_clasificacion" AnimationType="Fade" NullTextDisplayMode="UnfocusedAndFocused" NullText="Clasificación...">
                                 <ValidationSettings SetFocusOnError="True">
-                                    <RequiredField IsRequired="True" />                                    
+                                    <RequiredField IsRequired="True" />
                                 </ValidationSettings>
                             </PropertiesComboBox>
                         </dx:GridViewDataComboBoxColumn>
                         <dx:GridViewDataComboBoxColumn Caption="fkey_familia" FieldName="fkey_familia" Name="fkey_familia" ShowInCustomizationForm="True" Visible="False" VisibleIndex="15" ToolTip="Familia">
                             <PropertiesComboBox DataSourceID="SDS_Arbol" TextField="familia" ValueField="key_familia" AnimationType="Fade" NullTextDisplayMode="UnfocusedAndFocused" NullText="Familia...">
                                 <ValidationSettings SetFocusOnError="True">
-                                    <RequiredField IsRequired="True" />                                    
+                                    <RequiredField IsRequired="True" />
                                 </ValidationSettings>
-                            </PropertiesComboBox>     
+                            </PropertiesComboBox>
                             <EditItemTemplate>
                                 <dx:ASPxGridLookup ID="ASPxGridLookup2" TextFormatString="{1}   |   {2}   |   {3}" SelectionMode="Single" KeyFieldName="key_familia" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_DepClasFam" EnableTheming="True" Theme="MaterialCompact" Width="100%" OnValueChanged="ASPxGridLookup2_ValueChanged" NullText="Departamento | Clasificación | Familia" NullTextDisplayMode="UnfocusedAndFocused" ToolTip="Departamento | Clasificación | Familia">
                                     <GridViewProperties >
-                                    <SettingsBehavior AllowEllipsisInText="true" AllowFocusedRow="True" AllowSelectSingleRowOnly="True" AutoExpandAllGroups="True"></SettingsBehavior>    
+                                    <SettingsBehavior AllowEllipsisInText="true" AllowFocusedRow="True" AllowSelectSingleRowOnly="True" AutoExpandAllGroups="True"></SettingsBehavior>
                                     <SettingsPager Mode="ShowAllRecords">
-                                    </SettingsPager>   
+                                    </SettingsPager>
                                     <Settings VerticalScrollBarMode="Auto"  ShowHeaderFilterButton="true" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="true" />
                                     </GridViewProperties>
                                     <Columns>
@@ -399,7 +399,7 @@
                                         <RequiredField IsRequired="True" />
                                     </ValidationSettings>
                                 </dx:ASPxGridLookup>
-                            </EditItemTemplate>                            
+                            </EditItemTemplate>
                         </dx:GridViewDataComboBoxColumn>
                         <dx:GridViewDataDateColumn Caption="fecha_alta" FieldName="fecha_alta" Name="fecha_alta" ShowInCustomizationForm="True" Visible="False" VisibleIndex="14" PropertiesDateEdit-NullText="Fecha de alta..." PropertiesDateEdit-NullTextDisplayMode="UnfocusedAndFocused" ReadOnly="True">
                             <PropertiesDateEdit DisplayFormatString="dd/MMM/yy" DisplayFormatInEditMode="True" >
@@ -412,7 +412,7 @@
                         <dx:GridViewDataMemoColumn AdaptivePriority="4" Caption="Descripción Larga" CellRowSpan="2" FieldName="descripcion_larga" Name="descripcion_larga" ShowInCustomizationForm="True" Visible="False" VisibleIndex="8" PropertiesMemoEdit-NullText="Descripción larga..." PropertiesMemoEdit-NullTextDisplayMode="UnfocusedAndFocused">
                             <PropertiesMemoEdit Rows="4">
                                 <ValidationSettings SetFocusOnError="True">
-                                    <RequiredField IsRequired="True" />                                    
+                                    <RequiredField IsRequired="True" />
                                 </ValidationSettings>
                             </PropertiesMemoEdit>
                             <EditFormSettings ColumnSpan="2" RowSpan="2" />
@@ -452,7 +452,7 @@
                                 </ValidationSettings>
                             </PropertiesComboBox>
                         </dx:GridViewDataComboBoxColumn>
-                    </Columns>                    
+                    </Columns>
 
                     <SettingsPopup>
                         <EditForm CloseOnEscape="True" AllowResize="True" ShowCollapseButton="True" ShowMaximizeButton="True" ShowPinButton="True" ShowShadow="True" ShowViewportScrollbarWhenModal="True" HorizontalAlign="LeftSides" ShowFooter="True" ShowPageScrollbarWhenModal="True" VerticalAlign="Above">
@@ -468,7 +468,7 @@
                     <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
                         <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
                             <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
-                            </SettingsAdaptivity>                    
+                            </SettingsAdaptivity>
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
@@ -555,7 +555,7 @@
                                         </dx:GridViewToolbarItem>
                                         <dx:GridViewToolbarItem Command="ClearFilter">
                                         </dx:GridViewToolbarItem>
-                                    </Items>                                   
+                                    </Items>
                                     <Image IconID="dashboards_multiplemasterfilter_svg_16x16"></Image>
                                 </dx:GridViewToolbarItem>
                                 <dx:GridViewToolbarItem  Text="Exportar" Image-IconID="export_export_svg_16x16">
@@ -572,7 +572,7 @@
                                         </dx:GridViewToolbarItem>
                                         <dx:GridViewToolbarItem Command="ExportToXls">
                                         </dx:GridViewToolbarItem>
-                                    </Items>                                   
+                                    </Items>
                                     <Image IconID="export_export_svg_16x16"></Image>
                                 </dx:GridViewToolbarItem>
                                 <dx:GridViewToolbarItem Command="Refresh"  Text="Refrescar" ToolTip="Refrescar datos" DisplayMode="Image">
@@ -580,18 +580,19 @@
                             </Items>
                         </dx:GridViewToolbar>
                     </Toolbars>
+
                 </dx:ASPxGridView>
 
-    <asp:SqlDataSource ID="SDS_Articulos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" 
-DeleteCommand="DELETE FROM &quot;Articulos&quot; WHERE &quot;key_articulo&quot; = ? AND &quot;codigo_articulo&quot; = ?" 
+    <asp:SqlDataSource ID="SDS_Articulos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>"
+DeleteCommand="DELETE FROM &quot;Articulos&quot; WHERE &quot;key_articulo&quot; = ? AND &quot;codigo_articulo&quot; = ?"
 InsertCommand="INSERT INTO &quot;Articulos&quot; (&quot;descripcion&quot;, &quot;modelo&quot;, &quot;descripcion_larga&quot;, &quot;otra_informacion&quot;, &quot;cuidado_limpieza&quot;, &quot;fkey_departamento&quot;, &quot;fkey_clasificacion&quot;, &quot;fkey_familia&quot;, &quot;fkey_marca&quot;, &quot;codigo_articulo&quot;, &quot;fecha_alta&quot; ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" 
+ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>"
 SelectCommand="SELECT &quot;key_articulo&quot;, &quot;descripcion&quot;, &quot;modelo&quot;, &quot;descripcion_larga&quot;, &quot;otra_informacion&quot;, &quot;cuidado_limpieza&quot;, &quot;Articulos&quot;.&quot;fkey_departamento&quot;, &quot;Articulos&quot;.&quot;fkey_clasificacion&quot;,&quot;Articulos&quot;.&quot;fkey_familia&quot;, &quot;fkey_marca&quot;, &quot;codigo_articulo&quot;, &quot;fecha_alta&quot;, &quot;usuario_alta&quot;, &quot;Departamento&quot;.&quot;departamento&quot;, &quot;Clasificacion&quot;.&quot;clasificacion&quot;, &quot;Familia&quot;.&quot;familia&quot;, &quot;Articulos_marca&quot;.&quot;marca&quot;
 FROM &quot;Articulos&quot;, &quot;Departamento&quot;, &quot;Clasificacion&quot;, &quot;Familia&quot;, &quot;Articulos_marca&quot;
 WHERE &quot;Articulos&quot;.&quot;fkey_departamento&quot; = &quot;Departamento&quot;.&quot;key_departamento&quot;
 AND &quot;Articulos&quot;.&quot;fkey_clasificacion&quot; = &quot;Clasificacion&quot;.&quot;key_clasificacion&quot;
 AND &quot;Articulos&quot;.&quot;fkey_familia&quot; = &quot;Familia&quot;.&quot;key_familia&quot;
-AND &quot;Articulos&quot;.&quot;fkey_marca&quot; = &quot;Articulos_marca&quot;.&quot;key_marca&quot;" 
+AND &quot;Articulos&quot;.&quot;fkey_marca&quot; = &quot;Articulos_marca&quot;.&quot;key_marca&quot;"
 UpdateCommand="UPDATE &quot;Articulos&quot; SET &quot;descripcion&quot; = ?, &quot;modelo&quot; = ?, &quot;descripcion_larga&quot; = ?, &quot;otra_informacion&quot; = ?, &quot;cuidado_limpieza&quot; = ?, &quot;fkey_departamento&quot; = ?, &quot;fkey_clasificacion&quot; = ?, &quot;fkey_familia&quot; = ?, &quot;fkey_marca&quot; = ?,  &quot;fecha_alta&quot; = ?  WHERE &quot;key_articulo&quot; = ?">
         <DeleteParameters>
             <asp:Parameter Name="key_articulo" Type="Int64" />
@@ -625,19 +626,19 @@ UpdateCommand="UPDATE &quot;Articulos&quot; SET &quot;descripcion&quot; = ?, &qu
     </asp:SqlDataSource>
 
     <asp:SqlDataSource ID="SDS_Departamentos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_departamento&quot;, &quot;departamento&quot; FROM &quot;Departamento&quot;"></asp:SqlDataSource>
-    
+
     <asp:SqlDataSource ID="SDS_Familia" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_familia&quot;, &quot;familia&quot;, &quot;key_clasificacion&quot;, &quot;key_departamento&quot; FROM &quot;Familia&quot;"></asp:SqlDataSource>
 
     <asp:SqlDataSource ID="SDS_Marca" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_marca&quot;, &quot;marca&quot; FROM &quot;Articulos_marca&quot;"></asp:SqlDataSource>
 
     <asp:SqlDataSource ID="SDS_Clasificacion" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_clasificacion&quot;, &quot;clasificacion&quot;, &quot;fkey_departamento&quot; FROM  &quot;Clasificacion&quot;"></asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="SDS_Arbol" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" 
+    <asp:SqlDataSource ID="SDS_Arbol" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>"
         SelectCommand="SELECT &quot;Familia&quot;.&quot;key_familia&quot;,&quot;Departamento&quot;.&quot;departamento&quot;, &quot;Clasificacion&quot;.&quot;clasificacion&quot;, &quot;Familia&quot;.&quot;familia&quot;, &quot;Familia&quot;.&quot;fkey_clasificacion&quot;, &quot;Familia&quot;.&quot;fkey_departamento&quot;
-FROM &quot;Departamento&quot;, &quot;Clasificacion&quot;, &quot;Familia&quot; 
+FROM &quot;Departamento&quot;, &quot;Clasificacion&quot;, &quot;Familia&quot;
 WHERE &quot;Departamento&quot;.&quot;key_departamento&quot; = &quot;Clasificacion&quot;.&quot;fkey_departamento&quot; AND &quot;Clasificacion&quot;.&quot;key_clasificacion&quot; = &quot;Familia&quot;.&quot;fkey_clasificacion&quot;">
     </asp:SqlDataSource>
-    
+
     <asp:SqlDataSource ID="SDS_ArticulosDeptos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT DISTINCT &quot;Articulos&quot;.&quot;fkey_departamento&quot;, &quot;Departamento&quot;.&quot;departamento&quot;
 FROM &quot;Articulos&quot;, &quot;Departamento&quot;
 WHERE &quot;Articulos&quot;.&quot;fkey_departamento&quot; = &quot;Departamento&quot;.&quot;key_departamento&quot;">
@@ -652,8 +653,8 @@ AND &quot;Departamento&quot;.&quot;departamento&quot; = ?">
             <asp:SessionParameter DefaultValue="" Name="departamento" SessionField="departamento_filter" />
         </SelectParameters>
     </asp:SqlDataSource>
-    
-    <asp:SqlDataSource ID="SDS_ArticulosFam" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" 
+
+    <asp:SqlDataSource ID="SDS_ArticulosFam" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>"
 SelectCommand="SELECT DISTINCT &quot;Articulos&quot;.&quot;fkey_clasificacion&quot;, &quot;Articulos&quot;.&quot;fkey_familia&quot;, &quot;Familia&quot;.&quot;familia&quot;
 FROM &quot;Articulos&quot;,&quot;Departamento&quot;, &quot;Clasificacion&quot;, &quot;Familia&quot;
 WHERE &quot;Articulos&quot;.&quot;fkey_departamento&quot; = &quot;Departamento&quot;.&quot;key_departamento&quot;
@@ -669,7 +670,7 @@ AND &quot;Departamento&quot;.&quot;departamento&quot; = ?">
 
     <asp:SqlDataSource ID="SDS_DepClasFam" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand=
 "SELECT &quot;Familia&quot;.&quot;key_familia&quot;,&quot;Departamento&quot;.&quot;departamento&quot;, &quot;Clasificacion&quot;.&quot;clasificacion&quot;, &quot;Familia&quot;.&quot;familia&quot;, &quot;Familia&quot;.&quot;fkey_clasificacion&quot;, &quot;Familia&quot;.&quot;fkey_departamento&quot;
-FROM &quot;Departamento&quot;, &quot;Clasificacion&quot;, &quot;Familia&quot; 
+FROM &quot;Departamento&quot;, &quot;Clasificacion&quot;, &quot;Familia&quot;
 WHERE &quot;Departamento&quot;.&quot;key_departamento&quot; = &quot;Clasificacion&quot;.&quot;fkey_departamento&quot; AND &quot;Clasificacion&quot;.&quot;key_clasificacion&quot; = &quot;Familia&quot;.&quot;fkey_clasificacion&quot;
 ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSource>
 
@@ -719,7 +720,7 @@ ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSour
             <asp:Parameter Name="descrip" Type="String" />
             <asp:Parameter Name="fkey_articulo" Type="Int64" />
             <asp:Parameter Name="color_hex" Type="String" />
-            <asp:Parameter Name="key_color" Type="Int64" />            
+            <asp:Parameter Name="key_color" Type="Int64" />
         </UpdateParameters>
     </asp:SqlDataSource>
 
@@ -729,7 +730,7 @@ ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSour
             <asp:Parameter Name="key_articulos_caracteristicas" Type="Int64" />
         </DeleteParameters>
         <InsertParameters>
-            <asp:Parameter Name="fkey_articulo" Type="Int64" />            
+            <asp:Parameter Name="fkey_articulo" Type="Int64" />
             <asp:Parameter Name="caracteristica" Type="String" />
             <asp:Parameter Name="caracteristica_det" Type="String" />
         </InsertParameters>
@@ -738,8 +739,8 @@ ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSour
         </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="caracteristica" Type="String" />
-            <asp:Parameter Name="caracteristica_det" Type="String" />            
-            <asp:Parameter Name="key_articulos_caracteristicas" Type="Int64" />            
+            <asp:Parameter Name="caracteristica_det" Type="String" />
+            <asp:Parameter Name="key_articulos_caracteristicas" Type="Int64" />
         </UpdateParameters>
     </asp:SqlDataSource>
 
@@ -750,11 +751,10 @@ ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSour
 
     <asp:SqlDataSource ID="SDS_Caracteristicas_det" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_caracteristicas_det, fkey_caracteristicas, descripcion FROM &quot;Caracteristicas_det&quot;">
     </asp:SqlDataSource>
-                
-               
+
+
             </dx:PanelContent>
         </PanelCollection>
     </dx:ASPxRoundPanel>
 </div>
 </asp:Content>
-

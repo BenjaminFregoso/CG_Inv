@@ -1104,3 +1104,6 @@ D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.csproj.CoreCompileInput
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.csproj.CopyComplete
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.dll
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.pdb
+C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
