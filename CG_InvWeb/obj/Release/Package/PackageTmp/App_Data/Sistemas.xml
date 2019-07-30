@@ -2,11 +2,11 @@
 
 <menu>
 
-  <group Text="Catálogos">
-
+  <group Text="Configuración">
+    
     <item Text="Empresas" NavigateUrl="~/Asigna_cia.aspx"/>
 
-    <item Text="Empleados" NavigateUrl="~/Usuarios.aspx"/>
+    <item Text="Usuarios" NavigateUrl="~/Usuarios.aspx"/>
 
     <item Text="Perfiles" NavigateUrl="~/Perfiles.aspx"/>
 
@@ -22,13 +22,13 @@
 
   <group Text="Catálogo de Artículos">
 
-    <item Text="Artículos" NavigateUrl="~/Nuevo_Arti.aspx"/>
+    <item Text="Artículos" NavigateUrl="~/Articulos/Articulos.aspx"/>
 
     <item Text="Departamentos" NavigateUrl="~/Articulos/Departamento.aspx"/>
 
     <item Text="Clasificación" NavigateUrl="~/Articulos/Clasificacion.aspx"/>
 
-    <item Text="Familias" NavigateUrl="~/Inicio.aspx"/>
+    <item Text="Familias" NavigateUrl="~/Articulos/Familias.aspx"/>
 
     <item Text="Características" NavigateUrl="~/Inicio.aspx"/>
 
@@ -83,12 +83,6 @@
     <item Text="Inventario total" NavigateUrl="~/Default.aspx"/>
     <item Text="Movimientos" NavigateUrl="~/Default.aspx"/>
     <item Text="Pedido sugerido" NavigateUrl="~/Default.aspx"/>
-  </group>
-
-  <group Text="Configuración">
-
-    <item Text="Datos compañía" NavigateUrl="~/Default.aspx"/>
-
   </group>
 
 </menu>

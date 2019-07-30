@@ -1,86 +1,110 @@
-<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="Usuarios.aspx.cs" Inherits="CG_InvWeb.Usuarios" %>
+ï»¿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="CG_InvWeb.Usuarios" %>
 
 
-<asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
-<style>
-        Principal{
-        width:80%;
-        margin-top:20px;
-        padding-left:20px;
-        padding-top:20px;
-    }
-    .auto-style1 {
-        margin-left: 0px;
-        vertical-align:text-top;
-        text-align:left;
-    }
-</style> 
-<div class="Principal">          
-    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Catálogo de empleados" ShowCollapseButton="True" Theme="iOS" Width="100%" Font-Names="Century Gothic" CssClass="auto-style1" Height="100%" AllowCollapsingByHeaderClick="True" HeaderNavigateUrl="~/Usuarios.aspx">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <dx:ASPxRoundPanel ID="ASPxRoundPanelPrincipal" HorizontalAlign="Left" runat="server" HeaderText="Usuarios" ShowCollapseButton="True" Theme="MaterialCompact" Width="100%" Font-Names="Century Gothic" Height="100%" AllowCollapsingByHeaderClick="True" HeaderNavigateUrl="~/Usuarios.aspx">
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
-                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDSourceUsu" KeyFieldName="Usuario" OnCustomErrorText="ASPxGridView1_CustomErrorText3" style="margin-left: 0px" Theme="Glass" Width="100%" Font-Names="Open Sans">
-                    <ClientSideEvents RowDblClick="function(s, e) {
-                        s.StartEditRow(e.visibleIndex);
-                    }" />
-                    <SettingsPager PageSize="25">
-                    </SettingsPager>
-                    <SettingsEditing Mode="PopupEditForm">
-                    </SettingsEditing>
-                    <Settings ShowFilterRow="True" />
-                    <SettingsBehavior AllowSelectByRowClick="true" AllowSelectSingleRowOnly="true"  ConfirmDelete="True" />
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Usuarios" EnableTheming="True" KeyFieldName="key_usuario" Theme="MaterialCompact" KeyboardSupport="True" Width="100%">
                     <SettingsPopup>
-                        <EditForm AllowResize="True" HorizontalAlign="Center" VerticalAlign="Middle" />
+                        <EditForm CloseOnEscape="True" AllowResize="True" ShowCollapseButton="True" ShowMaximizeButton="True" ShowPinButton="True" ShowShadow="True" ShowViewportScrollbarWhenModal="True" HorizontalAlign="LeftSides" ShowFooter="True" ShowPageScrollbarWhenModal="True" VerticalAlign="Above">
+                            <SettingsAdaptivity Mode="OnWindowInnerWidth" />
+                        </EditForm>
                     </SettingsPopup>
-                    <SettingsSearchPanel Visible="True" />
-                    <EditFormLayoutProperties ColCount="2" RequiredMarkDisplayMode="Auto" ShowItemCaptionColon="False">
+                    <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" FileName="Empresas">
+                    </SettingsExport>
+                    <SettingsSearchPanel ShowApplyButton="True" ShowClearButton="True" />
+                    <EditFormLayoutProperties ColCount="2" ColumnCount="2">
+                        <Items>
+                            <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="usuario">
+                            </dx:GridViewColumnLayoutItem>
+                            <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="contrasena">
+                            </dx:GridViewColumnLayoutItem>
+                            <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="perfil">
+                            </dx:GridViewColumnLayoutItem>
+                            <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="empresa">
+                            </dx:GridViewColumnLayoutItem>
+                            <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="nombre">
+                            </dx:GridViewColumnLayoutItem>
+                            <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="fecha_alta">
+                            </dx:GridViewColumnLayoutItem>
+                            <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="fecha_baja">
+                            </dx:GridViewColumnLayoutItem>
+                            <dx:EditModeCommandLayoutItem ColSpan="1" Width="100%">
+                            </dx:EditModeCommandLayoutItem>
+                        </Items>
+                        <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="600">
+                        </SettingsAdaptivity>
                         <SettingsItemCaptions HorizontalAlign="Left" Location="Top" />
                     </EditFormLayoutProperties>
                     <Columns>
-                        <dx:GridViewCommandColumn ButtonType="Image" ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0">
+                        <dx:GridViewCommandColumn VisibleIndex="0" Caption="#" Visible="False">
                         </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn FieldName="usuario" ShowInCustomizationForm="True" VisibleIndex="1" Caption="Usuario">
+                        <dx:GridViewDataComboBoxColumn Caption="Empresa" FieldName="empresa" VisibleIndex="1">
+                            <PropertiesComboBox DataSourceID="SDS_Empresa" TextField="empresa" ValueField="empresa">
+                            </PropertiesComboBox>
+                        </dx:GridViewDataComboBoxColumn>
+                        <dx:GridViewDataTextColumn Caption="Usuario" FieldName="usuario" ShowInCustomizationForm="True" VisibleIndex="2">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="contrasena" ShowInCustomizationForm="True" VisibleIndex="2" Caption="Contraseña">
-                            <PropertiesTextEdit MaxLength="20" Password="True">
-                            </PropertiesTextEdit>
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="perfil" ShowInCustomizationForm="True" SortIndex="1" SortOrder="Ascending" VisibleIndex="3" Caption="Perfil">
-                            <EditFormSettings Caption="Perfil" CaptionLocation="Top" />
-                            <EditItemTemplate>
-                                <dx:ASPxComboBox ID="ASPxComboBox1" runat="server" DataSourceID="SDataSourcePerfiles" Text='<%# Bind("Perfil", "{0}") %>' TextField="Perfil" ValueField="Perfil" Font-Names="Open Sans" Theme="Glass">
-                                    <Columns>
-                                        <dx:ListBoxColumn FieldName="Perfil" />
-                                    </Columns>
-                                </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="SDataSourcePerfiles" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" SelectCommand="SELECT &quot;perfil&quot; FROM &quot;Perfil&quot;" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>"></asp:SqlDataSource>
-                            </EditItemTemplate>
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="empresa" ShowInCustomizationForm="True" VisibleIndex="4" Caption="Empresa">
-                            <EditFormSettings Caption="Compañía" CaptionLocation="Top" />
-                            <EditItemTemplate>
-                                <dx:ASPxComboBox ID="ASPxComboBox2" runat="server" DataSourceID="SqlDataSourceCompañia" Text='<%# Bind("Compañia", "{0}") %>'  TextField="Compañia" ValueField="Compañia" Font-Names="Open Sans" Theme="Glass">
-                                    <Columns>
-                                        <dx:ListBoxColumn FieldName="Compañia" />
-                                    </Columns>
-                                </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="SqlDataSourceCompañia" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" SelectCommand="SELECT &quot;empresa&quot; FROM &quot;Empresas&quot;" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>"></asp:SqlDataSource>
-                            </EditItemTemplate>
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataDateColumn Caption="Fecha baja" FieldName="fecha_baja" ShowInCustomizationForm="True" VisibleIndex="16">
-                            <EditFormSettings Caption="Fecha de baja" CaptionLocation="Top" />
+                        <dx:GridViewDataDateColumn Caption="Fecha de Baja" FieldName="fecha_baja" ShowInCustomizationForm="True" VisibleIndex="7">
                         </dx:GridViewDataDateColumn>
-                        <dx:GridViewDataDateColumn FieldName="fecha_alta" ShowInCustomizationForm="True" VisibleIndex="5" Caption="Fecha alta">
+                        <dx:GridViewDataDateColumn Caption="Fecha de Alta" FieldName="fecha_alta" ShowInCustomizationForm="True" VisibleIndex="6">
                         </dx:GridViewDataDateColumn>
-                        <dx:GridViewDataTextColumn FieldName="nombre" ShowInCustomizationForm="True" VisibleIndex="17" Caption="Nombre">
-                            <PropertiesTextEdit MaxLength="11">
+                        <dx:GridViewDataTextColumn Caption="Nombre completo" FieldName="nombre" ShowInCustomizationForm="True" VisibleIndex="5">
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataComboBoxColumn Caption="Perfil" FieldName="perfil" ShowInCustomizationForm="True" VisibleIndex="4">
+                            <PropertiesComboBox DataSourceID="SDS_Perfil" TextField="perfil" ValueField="perfil">
+                            </PropertiesComboBox>
+                        </dx:GridViewDataComboBoxColumn>
+                        <dx:GridViewDataTextColumn Caption="ContraseÃ±a" FieldName="contrasena" ShowInCustomizationForm="True" VisibleIndex="3">
+                            <PropertiesTextEdit Password="True">
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
                     </Columns>
-                  <SettingsCommandButton>
-                        <NewButton Text="Nuevo">
-                            <Image IconID="actions_add_16x16gray">
+                    <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
+                        <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
+                            <Items>
+                                <dx:GridViewColumnLayoutItem ColSpan="1">
+                                </dx:GridViewColumnLayoutItem>
+                                <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="usuario">
+                                </dx:GridViewColumnLayoutItem>
+                                <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="contrasena">
+                                </dx:GridViewColumnLayoutItem>
+                                <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="perfil">
+                                </dx:GridViewColumnLayoutItem>
+                                <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="empresa">
+                                </dx:GridViewColumnLayoutItem>
+                                <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="nombre">
+                                </dx:GridViewColumnLayoutItem>
+                                <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="fecha_alta">
+                                </dx:GridViewColumnLayoutItem>
+                                <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="fecha_baja">
+                                </dx:GridViewColumnLayoutItem>
+                            </Items>
+                            <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
+                            </SettingsAdaptivity>
+                        </AdaptiveDetailLayoutProperties>
+                    </SettingsAdaptivity>
+                    <SettingsPager Mode="ShowPager">
+                        <FirstPageButton Visible="True">
+                        </FirstPageButton>
+                        <LastPageButton Visible="True">
+                        </LastPageButton>
+                        <NextPageButton Visible="False">
+                        </NextPageButton>
+                        <PrevPageButton Visible="False">
+                        </PrevPageButton>
+                        <PageSizeItemSettings Visible="True">
+                        </PageSizeItemSettings>
+                    </SettingsPager>
+                    <SettingsEditing Mode="PopupEditForm">
+                    </SettingsEditing>
+                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+                    <SettingsBehavior ConfirmDelete="True" AllowEllipsisInText="True" />
+                    <SettingsCommandButton >
+                        <NewButton  Text="Nuevo">
+                            <Image  IconID="actions_add_16x16gray">
                             </Image>
                         </NewButton>
                         <UpdateButton Text="Guardar">
@@ -99,42 +123,120 @@
                             <Image IconID="edit_delete_16x16gray">
                             </Image>
                         </DeleteButton>
+                        <SearchPanelApplyButton ButtonType="Image" RenderMode="Image">
+                            <Image IconID="find_find_16x16gray" ToolTip="Buscar">
+                            </Image>
+                        </SearchPanelApplyButton>
+                        <SearchPanelClearButton ButtonType="Image" RenderMode="Image">
+                            <Image IconID="edit_delete_16x16gray" ToolTip="Vaciar">
+                            </Image>
+                        </SearchPanelClearButton>
                     </SettingsCommandButton>
+
+                    <Toolbars>
+                        <dx:GridViewToolbar >
+                            <Items>
+                                <dx:GridViewToolbarItem Command="New" Text="Nuevo" ToolTip="Nuevo">
+                                </dx:GridViewToolbarItem>
+                                <dx:GridViewToolbarItem Command="Edit"  Text="Editar" ToolTip="Editar">
+                                </dx:GridViewToolbarItem>
+                                <dx:GridViewToolbarItem Command="Delete"  Text="Borrar" ToolTip="Borrar">
+                                </dx:GridViewToolbarItem>
+
+                               
+                                <dx:GridViewToolbarItem Command="ShowSearchPanel"  Text="Buscar" ToolTip="Panel de bÃºsqueda">
+                                </dx:GridViewToolbarItem>
+
+                                <dx:GridViewToolbarItem  Text="Agrupar" Image-IconID="spreadsheet_group_svg_16x16"  >
+                                    <Items>
+                                        <dx:GridViewToolbarItem Command="ShowGroupPanel" Text="Panel Agrupador" >
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="FullExpand">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="FullCollapse" Text="Contraer">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ClearSorting" Image-IconID="spreadsheet_ungroup_svg_16x16" Text="Quitar Orden o Grupos">
+            <Image IconID="spreadsheet_ungroup_svg_16x16"></Image>
+                                        </dx:GridViewToolbarItem>
+                                    </Items>                                   
+
+            <Image IconID="spreadsheet_group_svg_16x16"></Image>
+                                </dx:GridViewToolbarItem>
+
+
+                                <dx:GridViewToolbarItem  Text="Filtros" Image-IconID="dashboards_multiplemasterfilter_svg_16x16">
+                                    <Items>
+                                        <dx:GridViewToolbarItem Command="ShowFilterRow">
+                                        </dx:GridViewToolbarItem>
+            <%--                                        <dx:GridViewToolbarItem Command="ShowFilterRowMenu" Text="Filtro de Fila Opciones">
+                                        </dx:GridViewToolbarItem>--%>
+                                        <dx:GridViewToolbarItem Command="ShowFilterEditor" Text="Filtro Avanzado">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ClearFilter">
+                                        </dx:GridViewToolbarItem>
+                                    </Items>                                   
+
+            <Image IconID="dashboards_multiplemasterfilter_svg_16x16"></Image>
+                                </dx:GridViewToolbarItem>
+                                <dx:GridViewToolbarItem  Text="Exportar" Image-IconID="export_export_svg_16x16">
+                                    <Items>
+                                        <dx:GridViewToolbarItem Command="ExportToXlsx">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ExportToDocx">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ExportToPdf">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ExportToCsv">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ExportToRtf">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ExportToXls">
+                                        </dx:GridViewToolbarItem>
+                                    </Items>                                   
+
+            <Image IconID="export_export_svg_16x16"></Image>
+                                </dx:GridViewToolbarItem>
+
+                                <dx:GridViewToolbarItem Command="Refresh"  Text="Refrescar" ToolTip="Refrescar datos" DisplayMode="Image">
+                                </dx:GridViewToolbarItem>
+                            </Items>
+                        </dx:GridViewToolbar>
+                    </Toolbars>
 
                 </dx:ASPxGridView>
             </dx:PanelContent>
         </PanelCollection>
     </dx:ASPxRoundPanel>
-    <br />
-    <asp:SqlDataSource ID="SDSourceUsu" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Usuarios&quot; WHERE &quot;key_usuario&quot; = @key_usuario" InsertCommand="INSERT INTO Usuarios(usuario, contrasena, perfil, empresa, fecha_baja, fecha_alta, nombre) VALUES (@usuario, @fontrasena, @ferfil, @fmpresa, @fecha_baja, @fecha_alta, @uombre)" SelectCommand="SELECT * FROM &quot;Usuarios&quot;" UpdateCommand="UPDATE Usuarios SET usuario = @usuario, contrasena = @contrasena, perfil = @perfil, empresa= @empresa, fecha_baja = @fecha_baja, fecha_alta = @fecha_alta, nombre = @nombre WHERE (&quot;key_usuario&quot; = @key_usuario )" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>">
+
+    <asp:SqlDataSource ID="SDS_Usuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Usuarios&quot; WHERE key_usuario = ?" InsertCommand="INSERT INTO &quot;Usuarios&quot; (usuario, contrasena, perfil, empresa, nombre, fecha_baja, fecha_alta) VALUES ( ?, ?, ?, ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_usuario, usuario, contrasena, perfil, empresa, nombre, fecha_baja, fecha_alta FROM &quot;Usuarios&quot;" UpdateCommand="UPDATE &quot;Usuarios&quot; SET usuario = ?, contrasena = ?, perfil = ?, empresa = ?, nombre = ?, fecha_baja = ?, fecha_alta = ? WHERE key_usuario = ?">
         <DeleteParameters>
-            <asp:Parameter Name="Index" Type="Int32" />
+            <asp:Parameter Name="key_usuario" Type="Int32" />
         </DeleteParameters>
         <InsertParameters>
             <asp:Parameter Name="usuario" Type="String" />
-            <asp:Parameter Name="uontraseña" Type="String" />
+            <asp:Parameter Name="contrasena" Type="String" />
             <asp:Parameter Name="perfil" Type="String" />
-            <asp:Parameter Name="empresa" />
-            <asp:Parameter Name="fecha_baja" />
+            <asp:Parameter Name="empresa" Type="String" />
+            <asp:Parameter Name="nombre" Type="String" />
+            <asp:Parameter Name="fecha_baja" Type="DateTime" />
+            <asp:Parameter Name="fecha_alta" Type="DateTime" />
         </InsertParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="Usuario" Type="String" />
-            <asp:Parameter Name="Contraseña" Type="String" />
-            <asp:Parameter Name="Usuario_Largo" Type="String" />
-            <asp:Parameter Name="Perfil" Type="String" />
-            <asp:Parameter Name="Compañia" />
-            <asp:Parameter Name="status" />
-            <asp:Parameter Name="fecha_nacimiento" />
-            <asp:Parameter Name="email" />
-            <asp:Parameter Name="curp" />
-            <asp:Parameter Name="fecha_baja" />
-            <asp:Parameter Name="tipo_nomina" />
-            <asp:Parameter Name="Index" Type="Int32" />
+        <UpdateParameters>                        
+            <asp:Parameter Name="usuario" Type="String" />
+            <asp:Parameter Name="contrasena" Type="String" />
+            <asp:Parameter Name="perfil" Type="String" />
+            <asp:Parameter Name="empresa" Type="String" />
+            <asp:Parameter Name="nombre" Type="String" />
+            <asp:Parameter Name="fecha_baja" Type="DateTime" />
+            <asp:Parameter Name="fecha_alta" Type="DateTime" />
+            <asp:Parameter Name="key_usuario" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
-<br />
-<br />
-<br />
-<br />
-</div>
+
+    <asp:SqlDataSource ID="SDS_Perfil" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_perfil, perfil FROM &quot;Perfil&quot;">
+    </asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="SDS_Empresa" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_empresa, empresa FROM &quot;Empresas&quot;">
+    </asp:SqlDataSource>
+
 </asp:Content>

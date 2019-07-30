@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Régimen Fiscal" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Articulos.aspx.cs" Inherits="CG_InvWeb.Articulos.Articulos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link rel="stylesheet" type="text/css" href="../Content/UploadControl/DragAndDrop.css">
     <style>
         Principal{
         width:80%;
@@ -8,34 +9,31 @@
         padding-left:20px;
         padding-top:20px;
         font-family :'Open Sans';
-    }
-    .auto-style1 {
-        margin-left: 0px;
-        vertical-align:text-top;
-        text-align:left;
-        font-family :'Open Sans';
-    }
-</style> 
+    }    
+    </style> 
+
+
 <div class="Principal">          
-    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Artículos" ShowCollapseButton="True" Theme="MaterialCompact" Width="100%" Font-Names="Century Gothic" CssClass="auto-style1" Height="100%" HeaderNavigateUrl="~/Articulos/Clasificacion.aspx">
+    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Artículos" ShowCollapseButton="True" Theme="MaterialCompact" Width="100%" Font-Names="Century Gothic" Height="100%" HeaderNavigateUrl="~/Articulos/Clasificacion.aspx">
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">                    
                 <dx:ASPxGridView  ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos" KeyFieldName="key_articulo" EnableTheming="True" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnRowInserting="ASPxGridView1_RowInserting" OnInitNewRow="ASPxGridView1_InitNewRow" OnCustomErrorText="ASPxGridView1_CustomErrorText" OnStartRowEditing="ASPxGridView1_StartRowEditing">
-
                     <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="True" />
                     <Templates>
                         <DetailRow>
-                            <dx:ASPxPageControl BackColor="#cccccc" ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" EnableTabScrolling="True" Theme="MaterialCompact" Width="100%">
+                            <dx:ASPxPageControl BackColor="#CCCCCC" ID="ASPxPageControl1" runat="server" ActiveTabIndex="3" EnableTabScrolling="True" Theme="MaterialCompact" Width="100%">
                                 <TabPages>
                                     <dx:TabPage Name="caracteristicas" Text="Características">
-                                        <%--<TabImage IconID="outlookinspired_customerprofilereport_svg_16x16">
-                                        </TabImage>--%>
+                                        <ActiveTabImage IconID="spreadsheet_tableconverttorange_svg_16x16">
+                                        </ActiveTabImage>
+                                        <TabImage IconID="spreadsheet_multiplesheet_svg_16x16">
+                                        </TabImage>
                                         <ContentCollection>
                                             <dx:ContentControl runat="server">
                                                 <dx:ASPxGridView ID="ASPxGridView4" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Caracteristicas" KeyFieldName="key_articulos_caracteristicas" OnBeforePerformDataSelect="ASPxGridView4_BeforePerformDataSelect" OnRowInserting="ASPxGridView4_RowInserting" Theme="Glass" Width="100%" OnCellEditorInitialize="ASPxGridView4_CellEditorInitialize" OnInitNewRow="ASPxGridView4_InitNewRow" EnableTheming="True" KeyboardSupport="True">                                                    
                                                     <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
-                                                    <SettingsPager Mode="EndlessPaging">
+                                                    <SettingsPager Mode="ShowAllRecords">
                                                     </SettingsPager>
                                                     <SettingsEditing Mode="Inline">
                                                     </SettingsEditing>
@@ -100,87 +98,23 @@
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
-                                    <dx:TabPage Name="talla" Text="Talla">
-                                        <%--<TabImage IconID="richedit_rulervertical_svg_16x16">
-                                        </TabImage>--%>
+                                    <dx:TabPage Name="talla" Text="Tallas">
+                                        <ActiveTabImage IconID="spreadsheet_tableconverttorange_svg_16x16">
+                                        </ActiveTabImage>
+                                        <TabImage IconID="spreadsheet_multiplesheet_svg_16x16">
+                                        </TabImage>
                                         <ContentCollection>
                                             <dx:ContentControl runat="server">
                                                 <dx:ASPxGridView ID="ASPxGridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Tallas" KeyFieldName="key_tallas" Theme="Glass" Width="100%" OnBeforePerformDataSelect="ASPxGridView2_BeforePerformDataSelect" OnInitNewRow="ASPxGridView2_InitNewRow" OnRowInserting="ASPxGridView2_RowInserting" KeyboardSupport="True">
                                                     <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
-                                                    <SettingsPager Mode="EndlessPaging">
+                                                    <SettingsPager Mode="ShowAllRecords">
                                                     </SettingsPager>
                                                     <SettingsEditing Mode="Inline">
                                                     </SettingsEditing>
                                                     <SettingsBehavior AllowFocusedRow="True" ConfirmDelete="True" />
                                                     <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
-                                                    <SettingsCommandButton>
-                                                        <NewButton Text="Nuevo" RenderMode="Default">
-                                                            <Image IconID ="actions_add_16x16gray">
-                                                            </Image>
-                                                        </NewButton>
-                                                        <UpdateButton Text="Guardar" RenderMode="Default">
-                                                            <Image IconID="actions_refresh_16x16gray" >
-                                                            </Image>
-                                                        </UpdateButton>
-                                                        <CancelButton Text="Cerrar" RenderMode="Default">
-                                                            <Image IconID="history_undo_16x16gray">
-                                                            </Image>
-                                                        </CancelButton>
-                                                        <EditButton Text="Editar" RenderMode="Default">
-                                                            <Image AlternateText="Edit" IconID="edit_edit_16x16gray">
-                                                            </Image>
-                                                        </EditButton>
-                                                        <DeleteButton Text="Borrar" RenderMode="Default">
-                                                            <Image IconID ="edit_delete_16x16gray">
-                                                            </Image>
-                                                        </DeleteButton>
-                                                    </SettingsCommandButton>
 
-                                                    <Columns>
-                                                        <dx:GridViewCommandColumn Width="50px" ButtonRenderMode="Image" ButtonType="Image" ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0">
-                                                        </dx:GridViewCommandColumn>
-                                                        <dx:GridViewDataTextColumn FieldName="key_tallas" ShowInCustomizationForm="True" VisibleIndex="1" Visible="False">
-                                                            <EditFormSettings Visible="False" />
-                                                        </dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataTextColumn FieldName="tallas" ShowInCustomizationForm="True" VisibleIndex="2" Caption="Código de talla" ReadOnly="True">
-                                                            <PropertiesTextEdit DisplayFormatInEditMode="false" DisplayFormatString="000000000-00">
-                                                            </PropertiesTextEdit>
-                                                        </dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataTextColumn FieldName="descrip" ShowInCustomizationForm="True" VisibleIndex="3" Caption="Talla">
-                                                        </dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataTextColumn FieldName="fkey_articulo" ShowInCustomizationForm="True" VisibleIndex="5" Visible="False" Caption="fkey_articulo" Name="fkey_articulo">
-                                                            <EditFormSettings Visible="False" />
-                                                        </dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataComboBoxColumn Caption="Rango de tallas" FieldName="fkey_rango" ShowInCustomizationForm="True" VisibleIndex="4">
-                                                            <PropertiesComboBox DataSourceID="SDS_Articulos_Tallas_Rangos" ImageUrlField="imagen" TextField="rango" ValueField="key_rango_talla">
-                                                            </PropertiesComboBox>
-                                                            <EditFormSettings Visible="False" />
-                                                        </dx:GridViewDataComboBoxColumn>
-                                                    </Columns>
-                                                    <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
-                                                        <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
-                                                            <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
-                                                            </SettingsAdaptivity>                    
-                                                            <SettingsItemCaptions Location="Top" />
-                                                        </AdaptiveDetailLayoutProperties>
-                                                    </SettingsAdaptivity>
-                                                </dx:ASPxGridView>
-                                            </dx:ContentControl>
-                                        </ContentCollection>
-                                    </dx:TabPage>
-                                    <dx:TabPage Name="color" Text="Color">
-                                        <%--<TabImage IconID="businessobjects_bo_appearance_svg_16x16">
-                                        </TabImage>--%>
-                                        <ContentCollection>
-                                            <dx:ContentControl runat="server">
-                                                <dx:ASPxGridView ID="ASPxGridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Color" KeyFieldName="key_color" OnBeforePerformDataSelect="ASPxGridView3_BeforePerformDataSelect" OnInitNewRow="ASPxGridView3_InitNewRow" OnRowInserting="ASPxGridView3_RowInserting" Theme="Glass" Width="100%" KeyboardSupport="True">
-                                                    <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
-                                                    <SettingsPager Mode="EndlessPaging">
-                                                    </SettingsPager>
-                                                    <SettingsEditing Mode="Inline">
-                                                    </SettingsEditing>
-                                                    <SettingsBehavior AllowFocusedRow="True" ConfirmDelete="True" />
-                                                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+
                                                     <SettingsCommandButton>
                                                         <NewButton Text="Nuevo">
                                                             <Image IconID="actions_add_16x16gray">
@@ -203,13 +137,89 @@
                                                             </Image>
                                                         </DeleteButton>
                                                     </SettingsCommandButton>
+
+
+                                                    <Columns>
+                                                        <dx:GridViewCommandColumn Width="50px" ButtonRenderMode="Image" ButtonType="Image" ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0">
+                                                        </dx:GridViewCommandColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="key_tallas" ShowInCustomizationForm="True" VisibleIndex="1" Visible="False">
+                                                            <EditFormSettings Visible="False" />
+                                                        </dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="tallas" ShowInCustomizationForm="True" VisibleIndex="2" Caption="Código de talla" ReadOnly="True" Visible="False">
+                                                            <PropertiesTextEdit DisplayFormatInEditMode="false" DisplayFormatString="000000000-00">
+                                                            </PropertiesTextEdit>
+                                                        </dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="descrip" ShowInCustomizationForm="True" VisibleIndex="3" Caption="Talla">
+                                                        </dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="fkey_articulo" ShowInCustomizationForm="True" VisibleIndex="5" Visible="False" Caption="fkey_articulo" Name="fkey_articulo">
+                                                            <EditFormSettings Visible="False" />
+                                                        </dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataComboBoxColumn Caption="Rango de tallas" FieldName="fkey_rango" ShowInCustomizationForm="True" VisibleIndex="4">
+                                                            <PropertiesComboBox DataSourceID="SDS_Articulos_Tallas_Rangos" ImageUrlField="imagen" TextField="rango" ValueField="key_rango_talla">
+                                                            </PropertiesComboBox>
+                                                            <EditFormSettings Visible="False" />
+                                                        </dx:GridViewDataComboBoxColumn>
+                                                    </Columns>
+                                                    <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
+                                                        <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
+                                                            <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
+                                                            </SettingsAdaptivity>                    
+                                                            <SettingsItemCaptions Location="Top" />
+                                                        </AdaptiveDetailLayoutProperties>
+                                                    </SettingsAdaptivity>
+
+
+                                                </dx:ASPxGridView>
+                                            </dx:ContentControl>
+                                        </ContentCollection>
+                                    </dx:TabPage>
+                                    <dx:TabPage Name="color" Text="Colores">
+                                        <ActiveTabImage IconID="spreadsheet_tableconverttorange_svg_16x16">
+                                        </ActiveTabImage>
+                                        <TabImage IconID="spreadsheet_multiplesheet_svg_16x16">
+                                        </TabImage>
+                                        <ContentCollection>
+                                            <dx:ContentControl runat="server">
+                                                <dx:ASPxGridView ID="ASPxGridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Color" KeyFieldName="key_color" OnBeforePerformDataSelect="ASPxGridView3_BeforePerformDataSelect" OnInitNewRow="ASPxGridView3_InitNewRow" OnRowInserting="ASPxGridView3_RowInserting" Theme="Glass" Width="100%" KeyboardSupport="True">
+                                                    <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
+                                                    <SettingsPager Mode="ShowAllRecords">
+                                                    </SettingsPager>
+                                                    <SettingsEditing Mode="Inline">
+                                                    </SettingsEditing>
+                                                    <SettingsBehavior AllowFocusedRow="True" ConfirmDelete="True" />
+                                                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+
+
+                                                    <SettingsCommandButton>
+                                                        <NewButton Text="Nuevo">
+                                                            <Image IconID="actions_add_16x16gray">
+                                                            </Image>
+                                                        </NewButton>
+                                                        <UpdateButton Text="Guardar">
+                                                            <Image IconID="actions_refresh_16x16gray">
+                                                            </Image>
+                                                        </UpdateButton>
+                                                        <CancelButton Text="Cerrar">
+                                                            <Image IconID="history_undo_16x16gray">
+                                                            </Image>
+                                                        </CancelButton>
+                                                        <EditButton Text="Editar">
+                                                            <Image AlternateText="Edit" IconID="edit_edit_16x16gray">
+                                                            </Image>
+                                                        </EditButton>
+                                                        <DeleteButton Text="Borrar">
+                                                            <Image IconID="edit_delete_16x16gray">
+                                                            </Image>
+                                                        </DeleteButton>
+                                                    </SettingsCommandButton>
+
                                                     <Columns>
                                                         <dx:GridViewCommandColumn Width="50px" ButtonRenderMode="Image" ButtonType="Image" ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0">
                                                         </dx:GridViewCommandColumn>
                                                         <dx:GridViewDataTextColumn FieldName="key_color" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1">
                                                             <EditFormSettings Visible="False" />
                                                         </dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataTextColumn Caption="Código de color" FieldName="color" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="2">
+                                                        <dx:GridViewDataTextColumn Caption="Código de color" FieldName="color" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="2" Visible="False">
                                                             <PropertiesTextEdit DisplayFormatString="000000000-00">
                                                             </PropertiesTextEdit>
                                                         </dx:GridViewDataTextColumn>
@@ -230,13 +240,98 @@
                                                             <SettingsItemCaptions Location="Top" />
                                                         </AdaptiveDetailLayoutProperties>
                                                     </SettingsAdaptivity>
+
+
                                                 </dx:ASPxGridView>
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
+                                    <dx:TabPage Text="Fotografías">
+                                        <ActiveTabImage IconID="spreadsheet_tableconverttorange_svg_16x16">
+                                        </ActiveTabImage>
+                                        <TabImage IconID="spreadsheet_multiplesheet_svg_16x16">
+                                        </TabImage>
+                                        <ContentCollection>
+                                            <dx:ContentControl runat="server">
+                                                <div class="SubeFotos">
+                                                    <div class="uploadContainer">
+                                                        <dx:ASPxUploadControl ID="UploadControl" ClientInstanceName="UploadControl" runat="server" UploadMode="Auto" AutoStartUpload="True" Width="100%" 
+                                                            ShowProgressPanel="True" DialogTriggerID="externalDropZone" OnFileUploadComplete="UploadControl_FileUploadComplete" Theme="MaterialCompact" >
+                                                            <AdvancedModeSettings EnableDragAndDrop="True" EnableFileList="False" EnableMultiSelect="False" ExternalDropZoneID="externalDropZone" DropZoneText="" />
+                                                            <ValidationSettings MaxFileSize="4194304" AllowedFileExtensions=".jpg, .jpeg, .gif, .png" ErrorStyle-CssClass="validationMessage" >
+                                                                <ErrorStyle CssClass="validationMessage" />
+                                                            </ValidationSettings>
+                                                            <BrowseButton Text="Seleccionar imagen a subir..." />
+                                                            <DropZoneStyle CssClass="uploadControlDropZone" />
+                                                            <ClientSideEvents 
+                                                                DropZoneEnter="function(s, e) { if(e.dropZone.id == 'externalDropZone') setElementVisible('dropZone', true); }"
+                                                                DropZoneLeave="function(s, e) { if(e.dropZone.id == 'externalDropZone') setElementVisible('dropZone', false); }" 
+                                                                FileUploadComplete="onUploadControlFileUploadComplete">
+                                                            </ClientSideEvents>
+                                                        </dx:ASPxUploadControl>
+                                                    </div>
+                                                    <div id="externalDropZone" class="dropZoneExternal">
+                                                        <div id="dragZone">
+                                                            <span class="dragZoneText">Arrastrar imagen aquí</span>
+                                                        </div>
+                                                        <img id="uploadedImage" src="#" class="hidden" alt="" onload="onImageLoad()" />
+                                                        <div id="dropZone" class="hidden">
+                                                            <span class="dropZoneText">Soltar la imagen aquí</span>
+                                                        </div>
+                                                    </div>                                                
+                                                </div>                                                
+                                                <div class="GridFotos">
+                                                    <dx:ASPxGridView ID="ASPxGridView5" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Images" EnableTheming="True" KeyFieldName="key_imagen" Theme="Glass" OnBeforePerformDataSelect="ASPxGridView5_BeforePerformDataSelect" KeyboardSupport="True" Width="85%">
+                                                    <SettingsPager Mode="ShowAllRecords">
+                                                    </SettingsPager>
+                                                    <SettingsBehavior ConfirmDelete="True" />
+                                                    <Settings ShowColumnHeaders="false" VerticalScrollBarMode="Visible" />
+                                                    <SettingsCommandButton>
+                                                        <DeleteButton Text="Borrar">
+                                                            <Image ToolTip="Eliminar foto" IconID="iconbuilder_actions_deletecircled_svg_16x16">
+                                                            </Image>
+                                                        </DeleteButton>
+                                                    </SettingsCommandButton>
+                                                        <EditFormLayoutProperties ShowItemCaptionColon="False">
+                                                        </EditFormLayoutProperties>
+                                                    <Columns>
+                                                        <dx:GridViewCommandColumn Caption=" " Width="30px" ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="0" ButtonRenderMode="Image" ButtonType="Image" AdaptivePriority="1">
+                                                        </dx:GridViewCommandColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="key_imagen" ReadOnly="True" VisibleIndex="1" Visible="False">
+                                                            <EditFormSettings Visible="False" />
+                                                        </dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="fkey_articulo" VisibleIndex="2" Visible="False">
+                                                            <EditFormSettings Visible="False" />
+                                                        </dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="id_imagen" ShowInCustomizationForm="True" Visible="False" VisibleIndex="3">
+                                                        </dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataImageColumn FieldName="archivo_foto" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="4" Caption="Fotos" MinWidth="50" >
+                                                            <PropertiesImage ImageHeight="150px" ImageWidth="200px" ImageAlign="Middle">
+                                                            </PropertiesImage>
+                                                        </dx:GridViewDataImageColumn>
+                                                    </Columns>
+                                                    <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
+                                                        <AdaptiveDetailLayoutProperties SettingsAdaptivity-GridSettings-WrapCaptionAtWidth="0" SettingsItems-ShowCaption="False" ShowItemCaptionColon="False">
+                                                            <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
+                                                            </SettingsAdaptivity>                    
+                                                            <SettingsItemCaptions Location="Top" />
+                                                            <SettingsItems ShowCaption="False" />
+                                                        </AdaptiveDetailLayoutProperties>
+                                                    </SettingsAdaptivity>
+
+
+                                                </dx:ASPxGridView>
+                                                </div>
+                                              
+
+                                            </dx:ContentControl>
+                                        </ContentCollection>
+                                    </dx:TabPage>
                                     <dx:TabPage Name="precios" Text="Precios">
-                                        <%--<TabImage IconID="iconbuilder_business_money_svg_16x16">
-                                        </TabImage>--%>
+                                        <ActiveTabImage IconID="spreadsheet_tableconverttorange_svg_16x16">
+                                        </ActiveTabImage>
+                                        <TabImage IconID="spreadsheet_multiplesheet_svg_16x16">
+                                        </TabImage>
                                         <ContentCollection>
                                             <dx:ContentControl runat="server">
                                             </dx:ContentControl>
@@ -246,7 +341,6 @@
                             </dx:ASPxPageControl>
                         </DetailRow>
                     </Templates>
-
 
                     <EditFormLayoutProperties ColCount="2" ShowItemCaptionColon="False">
                         <Items>
@@ -260,7 +354,7 @@
                             </dx:GridViewLayoutGroup>
                             <dx:GridViewLayoutGroup Caption="Departamento    |    Clasificación    |    Familia" ColCount="3" ColSpan="2" ColumnCount="3" ColumnSpan="2">
                                 <Items>
-                                    <dx:GridViewColumnLayoutItem ColSpan="3" ColumnName="fkey_familia" ColumnSpan="3" RequiredMarkDisplayMode="Required" ShowCaption="False">
+                                    <dx:GridViewColumnLayoutItem ColSpan="3" ColumnName="fkey_familia" ColumnSpan="3" RequiredMarkDisplayMode="Hidden" ShowCaption="False">
                                     </dx:GridViewColumnLayoutItem>
                                     <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="Departamento" RequiredMarkDisplayMode="Hidden" ShowCaption="False">
                                     </dx:GridViewColumnLayoutItem>
@@ -294,7 +388,6 @@
                         </SettingsAdaptivity>
                         <SettingsItemCaptions HorizontalAlign="Left" Location="Top" />
                     </EditFormLayoutProperties>
-
 
                     <Columns>
                         <dx:GridViewCommandColumn Visible="false" ButtonRenderMode="Default" ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" ShowClearFilterButton="True">
@@ -571,6 +664,10 @@
                         </dx:GridViewToolbar>
                     </Toolbars>
                 </dx:ASPxGridView>
+            </dx:PanelContent>
+        </PanelCollection>
+    </dx:ASPxRoundPanel>
+</div>
 
     <asp:SqlDataSource ID="SDS_Articulos" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" 
 DeleteCommand="DELETE FROM &quot;Articulos&quot; WHERE &quot;key_articulo&quot; = ? AND &quot;codigo_articulo&quot; = ?" 
@@ -581,7 +678,8 @@ FROM &quot;Articulos&quot;, &quot;Departamento&quot;, &quot;Clasificacion&quot;,
 WHERE &quot;Articulos&quot;.&quot;fkey_departamento&quot; = &quot;Departamento&quot;.&quot;key_departamento&quot;
 AND &quot;Articulos&quot;.&quot;fkey_clasificacion&quot; = &quot;Clasificacion&quot;.&quot;key_clasificacion&quot;
 AND &quot;Articulos&quot;.&quot;fkey_familia&quot; = &quot;Familia&quot;.&quot;key_familia&quot;
-AND &quot;Articulos&quot;.&quot;fkey_marca&quot; = &quot;Articulos_marca&quot;.&quot;key_marca&quot;" 
+AND &quot;Articulos&quot;.&quot;fkey_marca&quot; = &quot;Articulos_marca&quot;.&quot;key_marca&quot;
+ORDER BY key_articulo desc" 
 UpdateCommand="UPDATE &quot;Articulos&quot; SET &quot;descripcion&quot; = ?, &quot;modelo&quot; = ?, &quot;descripcion_larga&quot; = ?, &quot;otra_informacion&quot; = ?, &quot;cuidado_limpieza&quot; = ?, &quot;fkey_departamento&quot; = ?, &quot;fkey_clasificacion&quot; = ?, &quot;fkey_familia&quot; = ?, &quot;fkey_marca&quot; = ?,  &quot;fecha_alta&quot; = ?  WHERE &quot;key_articulo&quot; = ?">
         <DeleteParameters>
             <asp:Parameter Name="key_articulo" Type="Int64" />
@@ -742,9 +840,23 @@ ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSour
     </asp:SqlDataSource>
                 
                
-            </dx:PanelContent>
-        </PanelCollection>
-    </dx:ASPxRoundPanel>
-</div>
+    <asp:SqlDataSource ID="SDS_Images" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM Articulos_imagenes WHERE key_imagen = ?" InsertCommand="INSERT INTO Articulos_imagenes ( fkey_articulo, id_imagen) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_imagen, fkey_articulo, id_imagen, '../Archivos/Fotos/' || id_imagen as archivo_foto FROM &quot;Articulos_imagenes&quot; WHERE fkey_articulo = ?" UpdateCommand="UPDATE &quot;Articulos_imagenes&quot; SET fkey_articulo = ?, id_imagen = ? WHERE key_imagen = ?">
+        <SelectParameters>
+            <asp:SessionParameter Name="fkey_articulo" SessionField="session_key_articulo"/>
+        </SelectParameters>
+        <DeleteParameters>
+            <asp:Parameter Name="key_imagen" Type="Int64" />
+        </DeleteParameters>
+        <InsertParameters>
+            <asp:Parameter Name="fkey_articulo" Type="Int64" />
+            <asp:Parameter Name="id_imagen" Type="String" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="fkey_articulo" Type="Int64" />
+            <asp:Parameter Name="id_imagen" Type="String" />
+            <asp:Parameter Name="key_imagen" Type="Int64" />
+        </UpdateParameters>
+    </asp:SqlDataSource>
+
 </asp:Content>
 

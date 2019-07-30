@@ -30,7 +30,7 @@
 
     <item Text="Familias" NavigateUrl="~/Articulos/Familias.aspx"/>
 
-    <item Text="Características" NavigateUrl="~/Inicio.aspx"/>
+    <item Text="Características" NavigateUrl="~/Articulos/Caracteristicas.aspx"/>
 
     <item Text="Detalle de características" NavigateUrl="~/Inicio.aspx"/>
 

@@ -1,14 +1,17 @@
 ﻿using DevExpress.Web;
+using DevExpress.Web.Internal;
 using Npgsql;
 using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing;
 
 namespace CG_InvWeb.Articulos
 {
@@ -26,6 +29,7 @@ namespace CG_InvWeb.Articulos
         public string cColor = "";
         public Int32 nColor = 0;
         public string cFolioColor = "";
+        const string UploadDirectory = "~/Archivos/Fotos/";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -319,9 +323,9 @@ namespace CG_InvWeb.Articulos
             if ((sender as ASPxGridView).IsNewRowEditing)
             {
                 if (e.Column.FieldName == "caracteristica_det")
-                    e.Editor.ReadOnly = true;
+                    e.Editor.Enabled = false;
                 else
-                    e.Editor.ReadOnly = false;
+                    e.Editor.Enabled = true;
 
                 return;
             }
@@ -329,9 +333,9 @@ namespace CG_InvWeb.Articulos
             if ((sender as ASPxGridView).IsEditing)
             {
                 if (e.Column.FieldName == "caracteristica_det")
-                    e.Editor.ReadOnly = false;
+                    e.Editor.Enabled = true;
                 else
-                    e.Editor.ReadOnly = true;
+                    e.Editor.Enabled = false;
             }
 
 
@@ -419,6 +423,66 @@ namespace CG_InvWeb.Articulos
 
 
             //((ASPxGridView)sender).EditFormLayoutProperties.FindColumnItem("Detalle").Visible = false;
+        }
+
+        protected void UploadControl_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
+        {
+            e.CallbackData = SavePostedFile(e.UploadedFile);
+
+            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
+            {
+                sqlConnection1.Open();
+                NpgsqlCommand cmd = new NpgsqlCommand();
+
+                //BUSCA ARTICULO para traer el codigo_articulo
+                cmd.CommandText = "Insert into \"Articulos_imagenes\"(fkey_articulo, id_imagen) values( @sParamArticulo,@sParamImagen )";
+                cmd.CommandType = CommandType.Text;
+                NpgsqlParameter Param1;
+                Param1 = new NpgsqlParameter();
+                Param1.ParameterName = "sParamArticulo";
+                Param1.NpgsqlDbType = NpgsqlDbType.Bigint;
+                Param1.Value = Session["session_key_articulo"];
+                cmd.Parameters.Add(Param1);
+
+                NpgsqlParameter Param2;
+                Param2 = new NpgsqlParameter();
+                Param2.ParameterName = "sParamImagen";
+                Param2.NpgsqlDbType = NpgsqlDbType.Varchar;
+                Param2.Value = e.CallbackData;
+                cmd.Parameters.Add(Param2);
+
+                cmd.Connection = sqlConnection1;
+                cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+            }
+
+            //*****
+            //ASPxGridView1.FindDetailRowTemplateControl(0, "ASPxGridView5").DataBind();
+            // Buscar primero el PageControl y luego el AspxGridView5
+            //*****
+
+        }
+
+        protected string SavePostedFile(UploadedFile uploadedFile)
+        {
+            if (!uploadedFile.IsValid)
+                return string.Empty;
+            string fileName = Path.ChangeExtension(Path.GetRandomFileName(), ".jpg");
+            string fullFileName = CombinePath(fileName);
+            using (System.Drawing.Image original = System.Drawing.Image.FromStream(uploadedFile.FileContent))
+            using (System.Drawing.Image thumbnail = new ImageThumbnailCreator(original).CreateImageThumbnail(new Size(1620, 1215)))
+                ImageUtils.SaveToJpeg((Bitmap)thumbnail, fullFileName);                    
+            return fileName;
+        }
+
+        protected string CombinePath(string fileName)
+        {
+            return Path.Combine(Server.MapPath(UploadDirectory), fileName);
+        }
+
+        protected void ASPxGridView5_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            Session["session_key_articulo"] = (sender as ASPxGridView).GetMasterRowKeyValue();           
         }
     }
 }
