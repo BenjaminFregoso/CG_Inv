@@ -140,10 +140,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Articulos\Articulos.aspx" />
+    <Content Include="Articulos\DetalleCaracteristicas.aspx" />
     <Content Include="Articulos\Clasificacion.aspx" />
     <Content Include="Articulos\Caracteristicas.aspx" />
     <Content Include="Articulos\Departamento.aspx" />
     <Content Include="Articulos\Familias.aspx" />
+    <Content Include="Catalogos\Bancos_New.aspx" />
     <Content Include="Catalogos\Ciudades.aspx" />
     <Content Include="Catalogos\Estado.aspx" />
     <Content Include="Catalogos\MetodoPago.aspx" />
@@ -237,6 +239,13 @@
     <Compile Include="Articulos\Articulos.aspx.designer.cs">
       <DependentUpon>Articulos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Articulos\DetalleCaracteristicas.aspx.cs">
+      <DependentUpon>DetalleCaracteristicas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos\DetalleCaracteristicas.aspx.designer.cs">
+      <DependentUpon>DetalleCaracteristicas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Articulos\Clasificacion.aspx.cs">
       <DependentUpon>Clasificacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -264,6 +273,13 @@
     </Compile>
     <Compile Include="Articulos\Familias.aspx.designer.cs">
       <DependentUpon>Familias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Bancos_New.aspx.cs">
+      <DependentUpon>Bancos_New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Bancos_New.aspx.designer.cs">
+      <DependentUpon>Bancos_New.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Ciudades.aspx.cs">
       <DependentUpon>Ciudades.aspx</DependentUpon>

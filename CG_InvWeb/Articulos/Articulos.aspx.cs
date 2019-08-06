@@ -456,10 +456,7 @@ namespace CG_InvWeb.Articulos
                 sqlConnection1.Close();
             }
 
-            //*****
-            //ASPxGridView1.FindDetailRowTemplateControl(0, "ASPxGridView5").DataBind();
-            // Buscar primero el PageControl y luego el AspxGridView5
-            //*****
+
 
         }
 
@@ -483,6 +480,17 @@ namespace CG_InvWeb.Articulos
         protected void ASPxGridView5_BeforePerformDataSelect(object sender, EventArgs e)
         {
             Session["session_key_articulo"] = (sender as ASPxGridView).GetMasterRowKeyValue();           
+        }
+
+        protected void ASPxButtonRefrescaGridFotos_Click(object sender, EventArgs e)
+        {
+            //*****
+            //ASPxGridView1.FindDetailRowTemplateControl(0, "ASPxGridView5").DataBind();
+            // Buscar primero el PageControl y luego el AspxGridView5
+            //*****
+
+            //ASPxGridView1.FindDetailRowTemplateControl(0, "ASPxPageControl1").TemplateControl.
+           
         }
     }
 }

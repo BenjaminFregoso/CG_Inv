@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Régimen Fiscal" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Articulos.aspx.cs" Inherits="CG_InvWeb.Articulos.Articulos" %>
+﻿<%@ Page Title="Artículos" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Articulos.aspx.cs" Inherits="CG_InvWeb.Articulos.Articulos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link rel="stylesheet" type="text/css" href="../Content/UploadControl/DragAndDrop.css">
@@ -10,6 +10,10 @@
         padding-top:20px;
         font-family :'Open Sans';
     }    
+        .auto-style1 {
+            left: 0px;
+            top: 0px;
+        }
     </style> 
 
 
@@ -20,9 +24,9 @@
             <dx:PanelContent runat="server">                    
                 <dx:ASPxGridView  ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos" KeyFieldName="key_articulo" EnableTheming="True" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnRowInserting="ASPxGridView1_RowInserting" OnInitNewRow="ASPxGridView1_InitNewRow" OnCustomErrorText="ASPxGridView1_CustomErrorText" OnStartRowEditing="ASPxGridView1_StartRowEditing">
                     <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="True" />
-                    <Templates>
+                    <Templates>                        
                         <DetailRow>
-                            <dx:ASPxPageControl BackColor="#CCCCCC" ID="ASPxPageControl1" runat="server" ActiveTabIndex="3" EnableTabScrolling="True" Theme="MaterialCompact" Width="100%">
+                            <dx:ASPxPageControl BackColor="#CCCCCC" ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" EnableTabScrolling="True" Theme="MaterialCompact" Width="100%">
                                 <TabPages>
                                     <dx:TabPage Name="caracteristicas" Text="Características">
                                         <ActiveTabImage IconID="spreadsheet_tableconverttorange_svg_16x16">
@@ -145,7 +149,7 @@
                                                         <dx:GridViewDataTextColumn FieldName="key_tallas" ShowInCustomizationForm="True" VisibleIndex="1" Visible="False">
                                                             <EditFormSettings Visible="False" />
                                                         </dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataTextColumn FieldName="tallas" ShowInCustomizationForm="True" VisibleIndex="2" Caption="Código de talla" ReadOnly="True" Visible="False">
+                                                        <dx:GridViewDataTextColumn FieldName="tallas" ShowInCustomizationForm="True" VisibleIndex="2" Caption="Código de talla" ReadOnly="True">
                                                             <PropertiesTextEdit DisplayFormatInEditMode="false" DisplayFormatString="000000000-00">
                                                             </PropertiesTextEdit>
                                                         </dx:GridViewDataTextColumn>
@@ -219,7 +223,7 @@
                                                         <dx:GridViewDataTextColumn FieldName="key_color" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1">
                                                             <EditFormSettings Visible="False" />
                                                         </dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataTextColumn Caption="Código de color" FieldName="color" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="2" Visible="False">
+                                                        <dx:GridViewDataTextColumn Caption="Código de color" FieldName="color" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="2">
                                                             <PropertiesTextEdit DisplayFormatString="000000000-00">
                                                             </PropertiesTextEdit>
                                                         </dx:GridViewDataTextColumn>
@@ -246,7 +250,7 @@
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
-                                    <dx:TabPage Text="Fotografías">
+                                    <dx:TabPage Text="Fotografías" Name="fotos">
                                         <ActiveTabImage IconID="spreadsheet_tableconverttorange_svg_16x16">
                                         </ActiveTabImage>
                                         <TabImage IconID="spreadsheet_multiplesheet_svg_16x16">
@@ -256,7 +260,7 @@
                                                 <div class="SubeFotos">
                                                     <div class="uploadContainer">
                                                         <dx:ASPxUploadControl ID="UploadControl" ClientInstanceName="UploadControl" runat="server" UploadMode="Auto" AutoStartUpload="True" Width="100%" 
-                                                            ShowProgressPanel="True" DialogTriggerID="externalDropZone" OnFileUploadComplete="UploadControl_FileUploadComplete" Theme="MaterialCompact" >
+                                                            ShowProgressPanel="True" DialogTriggerID="externalDropZone" OnFileUploadComplete="UploadControl_FileUploadComplete" Theme="MaterialCompact">
                                                             <AdvancedModeSettings EnableDragAndDrop="True" EnableFileList="False" EnableMultiSelect="False" ExternalDropZoneID="externalDropZone" DropZoneText="" />
                                                             <ValidationSettings MaxFileSize="4194304" AllowedFileExtensions=".jpg, .jpeg, .gif, .png" ErrorStyle-CssClass="validationMessage" >
                                                                 <ErrorStyle CssClass="validationMessage" />
@@ -271,7 +275,7 @@
                                                         </dx:ASPxUploadControl>
                                                     </div>
                                                     <div id="externalDropZone" class="dropZoneExternal">
-                                                        <div id="dragZone">
+                                                        <div id="dragZone" class="auto-style1">
                                                             <span class="dragZoneText">Arrastrar imagen aquí</span>
                                                         </div>
                                                         <img id="uploadedImage" src="#" class="hidden" alt="" onload="onImageLoad()" />
@@ -281,11 +285,11 @@
                                                     </div>                                                
                                                 </div>                                                
                                                 <div class="GridFotos">
-                                                    <dx:ASPxGridView ID="ASPxGridView5" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Images" EnableTheming="True" KeyFieldName="key_imagen" Theme="Glass" OnBeforePerformDataSelect="ASPxGridView5_BeforePerformDataSelect" KeyboardSupport="True" Width="85%">
+                                                    <dx:ASPxGridView ID="ASPxGridView5" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Images" EnableTheming="True" KeyFieldName="key_imagen" Theme="Glass" OnBeforePerformDataSelect="ASPxGridView5_BeforePerformDataSelect" KeyboardSupport="True" Width="100%">
                                                     <SettingsPager Mode="ShowAllRecords">
                                                     </SettingsPager>
                                                     <SettingsBehavior ConfirmDelete="True" />
-                                                    <Settings ShowColumnHeaders="false" VerticalScrollBarMode="Visible" />
+                                                    <Settings ShowColumnHeaders="false" VerticalScrollBarMode="Visible" VerticalScrollableHeight="430" />
                                                     <SettingsCommandButton>
                                                         <DeleteButton Text="Borrar">
                                                             <Image ToolTip="Eliminar foto" IconID="iconbuilder_actions_deletecircled_svg_16x16">
@@ -321,6 +325,9 @@
 
 
                                                 </dx:ASPxGridView>
+                                                </div>
+                                                <div>
+                                                    <dx:ASPxButton ID="ASPxButtonRefrescaGridFotos" runat="server" Text="ASPxButton" OnClick="ASPxButtonRefrescaGridFotos_Click"></dx:ASPxButton>
                                                 </div>
                                               
 
@@ -555,7 +562,7 @@
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
-                    <SettingsPager Mode="ShowPager">
+                    <SettingsPager Mode="ShowPager" Position ="TopAndBottom">                        
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">
@@ -840,7 +847,7 @@ ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSour
     </asp:SqlDataSource>
                 
                
-    <asp:SqlDataSource ID="SDS_Images" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM Articulos_imagenes WHERE key_imagen = ?" InsertCommand="INSERT INTO Articulos_imagenes ( fkey_articulo, id_imagen) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_imagen, fkey_articulo, id_imagen, '../Archivos/Fotos/' || id_imagen as archivo_foto FROM &quot;Articulos_imagenes&quot; WHERE fkey_articulo = ?" UpdateCommand="UPDATE &quot;Articulos_imagenes&quot; SET fkey_articulo = ?, id_imagen = ? WHERE key_imagen = ?">
+    <asp:SqlDataSource ID="SDS_Images" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Articulos_imagenes&quot; WHERE key_imagen = ?" InsertCommand="INSERT INTO Articulos_imagenes ( fkey_articulo, id_imagen) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_imagen, fkey_articulo, id_imagen, '../Archivos/Fotos/' || id_imagen as archivo_foto FROM &quot;Articulos_imagenes&quot; WHERE fkey_articulo = ?" UpdateCommand="UPDATE &quot;Articulos_imagenes&quot; SET fkey_articulo = ?, id_imagen = ? WHERE key_imagen = ?">
         <SelectParameters>
             <asp:SessionParameter Name="fkey_articulo" SessionField="session_key_articulo"/>
         </SelectParameters>

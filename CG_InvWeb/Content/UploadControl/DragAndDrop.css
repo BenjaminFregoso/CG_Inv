@@ -1,21 +1,21 @@
 .dropZoneExternal > div,
-.dropZoneExternal > img
-{
+.dropZoneExternal > img {
     position: absolute;
+    text-align: center;
 }
-.dropZoneExternal
-{    
+.dropZoneExternal {
     position: relative;
-    border: 1px dashed #f17f21!important;
+    border: 1px double rgba(0, 0, 0, 0.4) !important;
+    box-shadow: rgba(0, 0, 0, 0.4) 1px 1px;
     cursor: pointer;
 }
 .dropZoneExternal,
 .dragZoneText
 {
-    width: 100%;
-    max-width: 350px;
+    width: 85%;
+    /*max-width: 1350px;*/
     min-width: 50px;
-    height: 200px;
+    height: 400px;
 }
 #dragZone
 {
@@ -24,20 +24,19 @@
 }
 #uploadedImage
 {
-    width: 100%;
+    width: 80%;
 }
-.dropZoneText
-{
-    width: 300px;
-    height: 50px;
-
+.dropZoneText {
+    width: 800px;
+    height: 400px;
     color: #fff;
     background-color: #888;
 }
-#dropZone
-{
+#dropZone {
     top: 0;
-    padding: 75px 25px; 
+    vertical-align: middle;
+    text-align: center;
+    /*padding: 75px 55px;*/
 }
 .uploadControlDropZone,
 .hidden
@@ -67,16 +66,15 @@
     padding: 0 20px;
     text-align: center;
 }
-.uploadContainer
-{
-    width: 100%;
+.uploadContainer {
+    width: 85%;
     /*max-width: 350px;*/
     min-width: 50px;
     /*margin-top: 10px;*/
 }
 .SubeFotos {
     width: 50%;
-    float: left;
+    float: left;    
 }
 .GridFotos {
     width: 50%;

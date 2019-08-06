@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Régimen Fiscal" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Departamento.aspx.cs" Inherits="CG_InvWeb.Articulos.Departamento" %>
+﻿<%@ Page Title="Departamento" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Departamento.aspx.cs" Inherits="CG_InvWeb.Articulos.Departamento" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -34,6 +34,7 @@
                         </SettingsAdaptivity>
                         <SettingsItemCaptions HorizontalAlign="Left" Location="Top" />
                     </EditFormLayoutProperties>
+
                     <Columns>
                         <dx:GridViewCommandColumn VisibleIndex="0" Caption="#" Visible="False">
                         </dx:GridViewCommandColumn>

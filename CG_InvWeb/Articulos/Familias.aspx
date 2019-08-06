@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="Familias.aspx.cs" Inherits="CG_InvWeb.Articulos.Familias" %>
+<%@ Page Title="Familias" Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="Familias.aspx.cs" Inherits="CG_InvWeb.Articulos.Familias" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <style>
