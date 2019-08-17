@@ -40,7 +40,7 @@
 
 
                     <Columns>
-                        <dx:GridViewDataTextColumn FieldName="key_caracteristicas_det"  ShowInCustomizationForm="True" VisibleIndex="0" Caption="Código" ReadOnly="True">
+                        <dx:GridViewDataTextColumn FieldName="key_caracteristicas_det"  ShowInCustomizationForm="True" VisibleIndex="0" Caption="Código" ReadOnly="True" Visible="False">
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn Caption="Detalle de característica" FieldName="descripcion" ShowInCustomizationForm="True" VisibleIndex="2">
@@ -70,7 +70,7 @@
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
-                    <SettingsPager Mode="ShowPager">
+                    <SettingsPager Mode="ShowPager" Position ="TopAndBottom">
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">
@@ -185,14 +185,12 @@
                         <asp:Parameter Name="key_caracteristicas_det" Type="Int64" />
                     </DeleteParameters>
                     <InsertParameters>
-                        <asp:Parameter Name="key_caracteristicas_det" Type="Int64" />
                         <asp:Parameter Name="descripcion" Type="String" />
                         <asp:Parameter Name="fkey_caracteristicas" Type="Int64" />
                     </InsertParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="descripcion" Type="String" />
                         <asp:Parameter Name="fkey_caracteristicas" Type="Int64" />
-                        <asp:Parameter Name="key_caracteristicas_det" Type="Int64" />
                     </UpdateParameters>
                 </asp:SqlDataSource>
                 

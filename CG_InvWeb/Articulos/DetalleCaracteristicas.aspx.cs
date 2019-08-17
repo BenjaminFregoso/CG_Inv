@@ -61,7 +61,7 @@ namespace CG_InvWeb.Articulos
             }
 
             GlobalHandler objeto = new GlobalHandler();
-            objeto.Bitacora("UPDATE", e.OldValues["clasificacion"].ToString() + " -- " + e.OldValues["fkey_departamento"].ToString(), e.NewValues["clasificacion"].ToString() + " -- " + e.NewValues["fkey_departamento"].ToString(), usuario, "","Clasificacion");
+            objeto.Bitacora("UPDATE", e.OldValues["descripcion"].ToString() + " -- " + e.OldValues["fkey_caracteristicas"].ToString(), e.NewValues["descripcion"].ToString() + " -- " + e.NewValues["fkey_caracteristicas"].ToString(), usuario, "", "Caracteristicas_det");
             //TERMINA BITACORA #######################
         }
 
@@ -79,7 +79,7 @@ namespace CG_InvWeb.Articulos
             }
 
             GlobalHandler objeto = new GlobalHandler();
-            objeto.Bitacora("INSERT", "", e.NewValues["clasificacion"].ToString() + " -- " + e.NewValues["fkey_departamento"].ToString(), usuario, "", "Clasificacion");
+            objeto.Bitacora("INSERT", "", e.NewValues["descripcion"].ToString() + " -- " + e.NewValues["fkey_caracteristicas"].ToString(), usuario, "", "Caracteristicas_det");
             //TERMINA BITACORA #######################
         }
 
@@ -97,7 +97,7 @@ namespace CG_InvWeb.Articulos
             }
 
             GlobalHandler objeto = new GlobalHandler();
-            objeto.Bitacora("DELETE", e.Values["clasificacion"].ToString() + " -- " + e.Values["fkey_departamento"].ToString(), "", usuario, "", "Clasificacion");
+            objeto.Bitacora("DELETE", e.Values["descripcion"].ToString() + " -- " + e.Values["fkey_caracteristicas"].ToString(), "", usuario, "", "Caracteristicas_det");
             //TERMINA BITACORA #######################
         }
     }

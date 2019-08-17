@@ -1,4 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="CG_InvWeb.Inicio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainInicio.master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="CG_InvWeb.Inicio" %>
+
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <style>
         Principal{

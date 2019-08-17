@@ -1,0 +1,71 @@
+<%@ Master Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="MainInicio.master.cs" Inherits="CG_InvWeb.MainIniciomaster" %>
+
+<%-- DXCOMMENT: Page Main.master is a master page that contains central area layout --%>
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+
+    <dx:ASPxSplitter ID="ContentSplitter" runat="server" Width="100%" Height="100%" ShowCollapseForwardButton="True" Theme="iOS" ResizingMode="Live">
+        <ClientSideEvents PaneResized="function(s, e)
+            { 
+            if(window.ASPxGridView1 && e.pane.name == 'ContentCenter')
+                ASPxGridView1.SetHeight(e.pane.GetClientHeight());
+            }"
+        />
+        <Styles>
+            <Pane>
+                <%--<Border BorderWidth="0px" />--%>
+            </Pane>                           
+            <VerticalSeparator  BackColor="#35B86B" >
+                <HoverStyle BackColor="#666666">
+                </HoverStyle>
+            </VerticalSeparator>
+            <VerticalSeparatorButton BackColor="#35B86B" >
+                <HoverStyle BackColor="#666666">
+                </HoverStyle>
+            </VerticalSeparatorButton>
+        </Styles>
+        <Panes>  
+            <dx:SplitterPane Name="ContentLeft" ShowCollapseBackwardButton="True" Size="200px" MinSize="150px" ScrollBars="Vertical" Collapsed="false">
+                <PaneStyle CssClass="leftPane">
+                <Paddings Padding="1px"></Paddings>
+                </PaneStyle>
+                <PaneStyle>
+                    <Paddings Padding="1px" />
+                </PaneStyle>
+                <ContentCollection>
+                    <dx:SplitterContentControl>
+                        <div class="leftPanel" style="width: 200px">
+                            <%-- DXCOMMENT: Configure the left panel's ASPxNavBar --%>
+                            <asp:XmlDataSource ID="XmlDataSourceLeft" runat="server" DataFile="~/App_Data/SideMenu.xml" XPath="/menu/*"></asp:XmlDataSource>
+                            <dx:ASPxNavBar ID="ASPxNavBar1" runat="server" AutoCollapse="true" EnableAnimation="True" Width="100%" DataSourceID="XmlDataSourceLeft" Theme="MaterialCompact" Font-Names="Century Gothic" EnableCallbackAnimation="True" AllowSelectItem="True" EnableCallBacks="True" ExpandGroupAction="MouseOver">
+                                <Border BorderWidth="0px" />
+                                <Paddings Padding="0px" />
+                            </dx:ASPxNavBar>
+                        </div>
+                    </dx:SplitterContentControl>
+                </ContentCollection>
+            </dx:SplitterPane>
+            <dx:SplitterPane  Name="ContentCenter" ScrollBars="Auto">
+                <PaneStyle CssClass="contentPane" Paddings-PaddingLeft="10px" Paddings-PaddingTop="10px"  Paddings-PaddingRight="10px">
+                    <Paddings PaddingLeft="5px" PaddingTop="5px"></Paddings>
+                </PaneStyle>
+                <Separator Visible="True">
+                    <SeparatorStyle>
+                        <Border BorderWidth="1px" />
+                        <BorderTop BorderWidth="0px" />
+                    </SeparatorStyle>
+                </Separator>
+                <ContentCollection>
+                    <dx:SplitterContentControl >
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                    </dx:SplitterContentControl>
+                </ContentCollection>
+            </dx:SplitterPane>            
+        </Panes>
+    </dx:ASPxSplitter>
+    
+<%-- DXCOMMENT: Configure the left panel's ASPxNavBar --%>
+
+    
+</asp:Content>

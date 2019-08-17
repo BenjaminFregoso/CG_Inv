@@ -1,2 +1,2 @@
 System.NullReferenceException: Referencia a objeto no establecida como instancia de un objeto.
-   en CG_InvWeb.Global_asax.Application_Error(Object sender, EventArgs e) en D:\Documents\GitHub\CG_Inv\CG_InvWeb\Global.asax.cs:línea 25
+   en CG_InvWeb.Global_asax.Application_Error(Object sender, EventArgs e)

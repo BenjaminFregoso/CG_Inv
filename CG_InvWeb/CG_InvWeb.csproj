@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Articulos\Articulos.aspx" />
+    <Content Include="Articulos\Familias_Caracteristicas.aspx" />
     <Content Include="Articulos\DetalleCaracteristicas.aspx" />
     <Content Include="Articulos\Clasificacion.aspx" />
     <Content Include="Articulos\Caracteristicas.aspx" />
@@ -221,6 +222,7 @@
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="web.sitemap" />
+    <Content Include="MainInicio.master" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
@@ -238,6 +240,13 @@
     </Compile>
     <Compile Include="Articulos\Articulos.aspx.designer.cs">
       <DependentUpon>Articulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Articulos\Familias_Caracteristicas.aspx.cs">
+      <DependentUpon>Familias_Caracteristicas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos\Familias_Caracteristicas.aspx.designer.cs">
+      <DependentUpon>Familias_Caracteristicas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Articulos\DetalleCaracteristicas.aspx.cs">
       <DependentUpon>DetalleCaracteristicas.aspx</DependentUpon>
@@ -421,6 +430,13 @@
     </Compile>
     <Compile Include="Errores.aspx.designer.cs">
       <DependentUpon>Errores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainInicio.master.cs">
+      <DependentUpon>MainInicio.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainInicio.master.designer.cs">
+      <DependentUpon>MainInicio.master</DependentUpon>
     </Compile>
     <Compile Include="Menus.aspx.cs">
       <DependentUpon>Menus.aspx</DependentUpon>

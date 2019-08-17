@@ -34,7 +34,7 @@
 
     <item Text="Detalle de características" NavigateUrl="~/Articulos/DetalleCaracteristicas.aspx"/>
 
-    <item Text="Relación Familias y Características" NavigateUrl="~/Inicio.aspx"/>
+    <item Text="Relación Familias con Características" NavigateUrl="~/Articulos/Familias_Caracteristicas.aspx"/>
 
     <item Text="Rangos de tallas" NavigateUrl="~/Inicio.aspx"/>
 

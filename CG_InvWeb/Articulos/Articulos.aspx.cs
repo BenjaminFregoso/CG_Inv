@@ -3,6 +3,7 @@ using DevExpress.Web.Internal;
 using Npgsql;
 using NpgsqlTypes;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -110,6 +111,9 @@ namespace CG_InvWeb.Articulos
             //string PerfilValue = e.Values[index].ToString();
             //e.NewValues["fisica"] = (e.NewValues["fisica"] == null) ? 0 : e.NewValues["fisica"];
             //e.NewValues["moral"] = (e.NewValues["moral"] == null) ? 0: e.NewValues["moral"];
+
+
+
             using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
             {
                 sqlConnection1.Open();
@@ -138,7 +142,39 @@ namespace CG_InvWeb.Articulos
             cCodigo = "";
             cCodigo = String.Format("{0}{1}", cCodigo.PadLeft(9 - nCodigo.ToString().Length, '0'), nCodigo.ToString());
             e.NewValues["codigo_articulo"] = cCodigo;
+
         }
+
+        protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
+        {
+
+            string scodigo_articulo = e.NewValues["codigo_articulo"].ToString();
+            
+
+            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
+            {
+                sqlConnection1.Open();
+                NpgsqlCommand cmd = new NpgsqlCommand();
+
+                cmd.CommandText = "INSERT INTO \"Articulos_caracteristicas\" (fkey_articulo, fkey_caracteristica) SELECT ( select key_articulo from \"Articulos\" where codigo_articulo = @sParamcodigo_articulo  ) , fkey_caracteristicas from \"Familia_caracteristicas\" where fkey_familia = ( select fkey_familia from \"Articulos\" where codigo_articulo = @sParamcodigo_articulo  )";
+                cmd.CommandType = CommandType.Text;
+
+                NpgsqlParameter Param2;
+                Param2 = new NpgsqlParameter();
+                Param2.ParameterName = "sParamcodigo_articulo";
+                Param2.NpgsqlDbType = NpgsqlDbType.Varchar;
+                Param2.Value = scodigo_articulo;
+                cmd.Parameters.Add(Param2);
+
+                cmd.Connection = sqlConnection1;
+                cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+
+            }
+
+
+        }
+
 
         protected void ASPxGridLookup2_ValueChanged(object sender, EventArgs e)
         {
@@ -195,9 +231,11 @@ namespace CG_InvWeb.Articulos
         {
             Session["session_key_articulo"] = (sender as ASPxGridView).GetMasterRowKeyValue();
         }
-
-        protected void ASPxGridView2_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+       
+        protected void ASPxGridView2_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
+            e.NewValues["fkey_articulo"] = Session["session_key_articulo"];
+
             using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
             {
                 sqlConnection1.Open();
@@ -243,18 +281,15 @@ namespace CG_InvWeb.Articulos
 
         }
 
-        protected void ASPxGridView2_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
-        {
-            e.NewValues["fkey_articulo"] = Session["session_key_articulo"];
-        }
-
         protected void ASPxGridView3_BeforePerformDataSelect(object sender, EventArgs e)
         {
             Session["session_key_articulo"] = (sender as ASPxGridView).GetMasterRowKeyValue();
         }
 
-        protected void ASPxGridView3_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+        protected void ASPxGridView3_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
+            e.NewValues["fkey_articulo"] = Session["session_key_articulo"];
+
             using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
             {
                 sqlConnection1.Open();
@@ -297,11 +332,9 @@ namespace CG_InvWeb.Articulos
             nColor = cColor.Length == 9 ? 1 : Convert.ToInt32(cColor.Substring(cColor.Length - 2, 2)) + 1;
             cColor = String.Format("{0}{1}{2}", cColor.Substring(0, 9), cFolioColor.PadLeft(2 - nColor.ToString().Length, '0'), nColor.ToString());
             e.NewValues["color"] = cColor;
-        }
 
-        protected void ASPxGridView3_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
-        {
-            e.NewValues["fkey_articulo"] = Session["session_key_articulo"];
+
+
         }
 
 
@@ -309,8 +342,6 @@ namespace CG_InvWeb.Articulos
         {
             e.NewValues["fkey_articulo"] = Session["session_key_articulo"];
             //((ASPxGridView)sender).AllColumns["caracteristica_det"].Visible = true;
-
-
         }
 
         protected void ASPxGridView4_BeforePerformDataSelect(object sender, EventArgs e)
@@ -322,107 +353,58 @@ namespace CG_InvWeb.Articulos
         {
             if ((sender as ASPxGridView).IsNewRowEditing)
             {
-                if (e.Column.FieldName == "caracteristica_det")
+                if (e.Column.FieldName == "fkey_caracteristica_det")
+                {
                     e.Editor.Enabled = false;
+                    e.Editor.ReadOnly = true;
+                }
                 else
+                {
                     e.Editor.Enabled = true;
-
+                    e.Editor.ReadOnly = false;
+                }
                 return;
             }
 
             if ((sender as ASPxGridView).IsEditing)
             {
-                if (e.Column.FieldName == "caracteristica_det")
+                if (e.Column.FieldName == "fkey_caracteristica_det")
+                {
                     e.Editor.Enabled = true;
+                    e.Editor.ReadOnly = false;
+                }
                 else
+                {
                     e.Editor.Enabled = false;
+                    e.Editor.ReadOnly = true;
+                }
             }
 
-
-
-            if (!(sender as ASPxGridView).IsEditing || e.Column.FieldName != "caracteristica_det") return;
+            if (!(sender as ASPxGridView).IsEditing || e.Column.FieldName != "fkey_caracteristica_det" ) return;
             if (e.KeyValue == DBNull.Value || e.KeyValue == null) return;
-            object val = (sender as ASPxGridView).GetRowValuesByKeyValue(e.KeyValue, "caracteristica");
+            object val = (sender as ASPxGridView).GetRowValuesByKeyValue(e.KeyValue, "fkey_caracteristica"); /*cambio por columna fkey_caracteristica*/
             if (val == DBNull.Value) return;
-            string caracteristica = (string)val;
+            Int64 caracteristica = (Int64)val;
+            Session["session_fkey_caracteristicas"] = caracteristica;
+            SDS_Caracteristicas_det_edit.DataBind();
 
-            ASPxComboBox combo = e.Editor as ASPxComboBox;
+            ASPxComboBox combo = e.Editor as ASPxComboBox;           
             FillDetalleCombo(combo, caracteristica);
-
             combo.Callback += new CallbackEventHandlerBase(cmbDetalle_OnCallback);
         }
 
-        protected void FillDetalleCombo(ASPxComboBox cmb, string caracteristica)
+        protected void FillDetalleCombo(ASPxComboBox cmb, Int64 caracteristica)
         {
-            if (string.IsNullOrEmpty(caracteristica)) return;
 
-            List<string> detalle = GetDetalle(caracteristica);
-            cmb.Items.Clear();
-            foreach (string cDetCaracteristica in detalle)
-                cmb.Items.Add(cDetCaracteristica);
-        }
-        List<string> GetDetalle(string caracteristica)
-        {
-            List<string> cListaText = new List<string>();
-            //List<long> cListaValue = new List<long>();
-
-            //using (var context = new WorldCitiesContext())
-            //    return context.Cities.Where(c => c.Country.CountryName == country).OrderBy(c => c.CityName).Select(c => c.CityName).ToList();
-
-
-            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
-            {
-                sqlConnection1.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand();
-                NpgsqlDataReader reader;
-
-                //BUSCA ARTICULO para traer el codigo_articulo
-                cmd.CommandText = "Select caracteristica,descripcion from \"Caracteristicas_det\", \"Caracteristicas\" where \"Caracteristicas_det\".fkey_caracteristicas = \"Caracteristicas\".key_caracteristicas and caracteristica = @sParamCaracteristica";
-                cmd.CommandType = CommandType.Text;
-                NpgsqlParameter Param1;
-                Param1 = new NpgsqlParameter();
-                Param1.ParameterName = "sParamCaracteristica";
-                Param1.NpgsqlDbType = NpgsqlDbType.Varchar;
-                Param1.Value = caracteristica;
-                cmd.Parameters.Add(Param1);
-                cmd.Connection = sqlConnection1;
-                reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        cListaText.Add(reader["descripcion"].ToString());
-                        //cListaValue.Add(Convert.ToInt64(reader["key_caracteristicas_det"].ToString()));
-                    }
-                }
-                reader.Close();
-                sqlConnection1.Close();
-                return cListaText;
-            }
+            cmb.DataSourceID = "SDS_Caracteristicas_det_edit";
+            cmb.TextField = "descripcion";
+            cmb.ValueField = "key_caracteristicas_det";
 
         }
-
+ 
         void cmbDetalle_OnCallback(object source, CallbackEventArgsBase e)
         {
-            FillDetalleCombo(source as ASPxComboBox, e.Parameter);
-        }
-
-        protected void ASPxGridView4_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
-        {
-            //((ASPxGridView)sender).AllColumns["caracteristica_det"].Visible = false;
-
-
-            //pruebas
-            //((ASPxGridView)sender).EditFormLayoutProperties.FindColumnItem("Departamento").Visible = false;
-
-
-            //var respuesta = ((ASPxGridView)sender).EditFormLayoutProperties.Items.IsEmpty;
-
-            //.FindEditFormTemplateControl("caracteristica_det").Visible = false;
-            //("caracteristica_det").Visible = false;
-
-
-            //((ASPxGridView)sender).EditFormLayoutProperties.FindColumnItem("Detalle").Visible = false;
+            FillDetalleCombo(source as ASPxComboBox, Convert.ToInt64(e.Parameter)  );
         }
 
         protected void UploadControl_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
@@ -455,9 +437,6 @@ namespace CG_InvWeb.Articulos
                 cmd.ExecuteNonQuery();
                 sqlConnection1.Close();
             }
-
-
-
         }
 
         protected string SavePostedFile(UploadedFile uploadedFile)
@@ -482,15 +461,5 @@ namespace CG_InvWeb.Articulos
             Session["session_key_articulo"] = (sender as ASPxGridView).GetMasterRowKeyValue();           
         }
 
-        protected void ASPxButtonRefrescaGridFotos_Click(object sender, EventArgs e)
-        {
-            //*****
-            //ASPxGridView1.FindDetailRowTemplateControl(0, "ASPxGridView5").DataBind();
-            // Buscar primero el PageControl y luego el AspxGridView5
-            //*****
-
-            //ASPxGridView1.FindDetailRowTemplateControl(0, "ASPxPageControl1").TemplateControl.
-           
-        }
     }
 }

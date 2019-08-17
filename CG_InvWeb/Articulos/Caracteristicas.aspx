@@ -33,7 +33,7 @@
                         <SettingsItemCaptions Location="Top" />
                     </EditFormLayoutProperties>
                     <Columns>
-                        <dx:GridViewDataTextColumn FieldName="key_caracteristicas" ShowInCustomizationForm="True" VisibleIndex="0" Caption="Código" ReadOnly="True">
+                        <dx:GridViewDataTextColumn FieldName="key_caracteristicas" ShowInCustomizationForm="True" VisibleIndex="0" Caption="Código" ReadOnly="True" Visible="False">
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn FieldName="caracteristica" ShowInCustomizationForm="True" VisibleIndex="1" Caption="Característica">
@@ -58,7 +58,7 @@
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
-                    <SettingsPager Mode="ShowPager">
+                    <SettingsPager Mode="ShowPager" Position ="TopAndBottom">
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">

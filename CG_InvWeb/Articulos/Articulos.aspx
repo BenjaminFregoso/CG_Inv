@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="Artículos" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Articulos.aspx.cs" Inherits="CG_InvWeb.Articulos.Articulos" %>
+<%@ MasterType VirtualPath="~/Main.master"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link rel="stylesheet" type="text/css" href="../Content/UploadControl/DragAndDrop.css">
+    <% Master.BarraMenuColapsada = true;%>
     <style>
         Principal{
         width:80%;
@@ -22,86 +24,12 @@
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">                    
-                <dx:ASPxGridView  ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos" KeyFieldName="key_articulo" EnableTheming="True" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnRowInserting="ASPxGridView1_RowInserting" OnInitNewRow="ASPxGridView1_InitNewRow" OnCustomErrorText="ASPxGridView1_CustomErrorText" OnStartRowEditing="ASPxGridView1_StartRowEditing">
+                <dx:ASPxGridView  ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos" KeyFieldName="key_articulo" EnableTheming="True" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnRowInserting="ASPxGridView1_RowInserting" OnInitNewRow="ASPxGridView1_InitNewRow" OnCustomErrorText="ASPxGridView1_CustomErrorText" OnStartRowEditing="ASPxGridView1_StartRowEditing" EnableCallbackAnimation="True" OnRowInserted="ASPxGridView1_RowInserted">
                     <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="True" />
                     <Templates>                        
                         <DetailRow>
-                            <dx:ASPxPageControl BackColor="#CCCCCC" ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" EnableTabScrolling="True" Theme="MaterialCompact" Width="100%">
+                            <dx:ASPxPageControl BackColor="#CCCCCC" ID="ASPxPageControl1" runat="server" ActiveTabIndex="3" EnableTabScrolling="True" Theme="MaterialCompact" Width="100%">
                                 <TabPages>
-                                    <dx:TabPage Name="caracteristicas" Text="Características">
-                                        <ActiveTabImage IconID="spreadsheet_tableconverttorange_svg_16x16">
-                                        </ActiveTabImage>
-                                        <TabImage IconID="spreadsheet_multiplesheet_svg_16x16">
-                                        </TabImage>
-                                        <ContentCollection>
-                                            <dx:ContentControl runat="server">
-                                                <dx:ASPxGridView ID="ASPxGridView4" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Caracteristicas" KeyFieldName="key_articulos_caracteristicas" OnBeforePerformDataSelect="ASPxGridView4_BeforePerformDataSelect" OnRowInserting="ASPxGridView4_RowInserting" Theme="Glass" Width="100%" OnCellEditorInitialize="ASPxGridView4_CellEditorInitialize" OnInitNewRow="ASPxGridView4_InitNewRow" EnableTheming="True" KeyboardSupport="True">                                                    
-                                                    <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
-                                                    <SettingsPager Mode="ShowAllRecords">
-                                                    </SettingsPager>
-                                                    <SettingsEditing Mode="Inline">
-                                                    </SettingsEditing>
-                                                    <SettingsBehavior AllowFocusedRow="True" ConfirmDelete="True" />
-                                                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
-
-
-                                                    <SettingsCommandButton>
-                                                        <NewButton Text="Nuevo">
-                                                            <Image IconID="actions_add_16x16gray">
-                                                            </Image>
-                                                        </NewButton>
-                                                        <UpdateButton Text="Guardar">
-                                                            <Image IconID="actions_refresh_16x16gray">
-                                                            </Image>
-                                                        </UpdateButton>
-                                                        <CancelButton Text="Cerrar">
-                                                            <Image IconID="history_undo_16x16gray">
-                                                            </Image>
-                                                        </CancelButton>
-                                                        <EditButton Text="Editar">
-                                                            <Image AlternateText="Edit" IconID="edit_edit_16x16gray">
-                                                            </Image>
-                                                        </EditButton>
-                                                        <DeleteButton Text="Borrar">
-                                                            <Image IconID="edit_delete_16x16gray">
-                                                            </Image>
-                                                        </DeleteButton>
-                                                    </SettingsCommandButton>
-
-                                                    <Columns>
-                                                        <dx:GridViewCommandColumn ButtonRenderMode="Image" ButtonType="Image" ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" Width="50px">
-                                                        </dx:GridViewCommandColumn>
-                                                        <dx:GridViewDataTextColumn FieldName="key_articulos_caracteristicas" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1" Name="key_articulos_caracteristicas">
-                                                            <EditFormSettings Visible="False" />
-                                                        </dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataTextColumn Caption="fkey_articulo" FieldName="fkey_articulo" Name="fkey_articulo" ShowInCustomizationForm="True" Visible="False" VisibleIndex="4">
-                                                            <EditFormSettings Visible="False" />
-                                                        </dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataComboBoxColumn Caption="Característica" FieldName="caracteristica" ShowInCustomizationForm="True" VisibleIndex="2" Name="caracteristica">
-                                                            <PropertiesComboBox SelectInputTextOnClick="true" DataSourceID="SDS_Caracteristicas" TextField="caracteristica" ValueField="caracteristica" ClientInstanceName="caracteristica">                                                                
-                                                                <ReadOnlyStyle BackColor="#999999" ForeColor="White">
-                                                                </ReadOnlyStyle>
-                                                            </PropertiesComboBox>
-                                                        </dx:GridViewDataComboBoxColumn>
-                                                        <dx:GridViewDataComboBoxColumn Caption="Detalle" FieldName="caracteristica_det" ShowInCustomizationForm="True" VisibleIndex="3" Name="caracteristica_det">
-                                                            <PropertiesComboBox SelectInputTextOnClick="true" DataSourceID="SDS_Caracteristicas_det" TextField="descripcion" ValueField="descripcion">
-                                                                <ReadOnlyStyle BackColor="#999999" ForeColor="White">
-                                                                </ReadOnlyStyle>
-                                                            </PropertiesComboBox>
-                                                        </dx:GridViewDataComboBoxColumn>
-                                                    </Columns>
-                                                    <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
-                                                        <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
-                                                            <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
-                                                            </SettingsAdaptivity>                    
-                                                            <SettingsItemCaptions Location="Top" />
-                                                        </AdaptiveDetailLayoutProperties>
-                                                    </SettingsAdaptivity>
-                                                </dx:ASPxGridView>
-
-                                            </dx:ContentControl>
-                                        </ContentCollection>
-                                    </dx:TabPage>
                                     <dx:TabPage Name="talla" Text="Tallas">
                                         <ActiveTabImage IconID="spreadsheet_tableconverttorange_svg_16x16">
                                         </ActiveTabImage>
@@ -109,7 +37,7 @@
                                         </TabImage>
                                         <ContentCollection>
                                             <dx:ContentControl runat="server">
-                                                <dx:ASPxGridView ID="ASPxGridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Tallas" KeyFieldName="key_tallas" Theme="Glass" Width="100%" OnBeforePerformDataSelect="ASPxGridView2_BeforePerformDataSelect" OnInitNewRow="ASPxGridView2_InitNewRow" OnRowInserting="ASPxGridView2_RowInserting" KeyboardSupport="True">
+                                                <dx:ASPxGridView ID="ASPxGridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Tallas" KeyFieldName="key_tallas" Theme="Glass" Width="100%" OnBeforePerformDataSelect="ASPxGridView2_BeforePerformDataSelect" OnRowInserting="ASPxGridView2_RowInserting" KeyboardSupport="True">
                                                     <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
                                                     <SettingsPager Mode="ShowAllRecords">
                                                     </SettingsPager>
@@ -151,6 +79,8 @@
                                                         </dx:GridViewDataTextColumn>
                                                         <dx:GridViewDataTextColumn FieldName="tallas" ShowInCustomizationForm="True" VisibleIndex="2" Caption="Código de talla" ReadOnly="True">
                                                             <PropertiesTextEdit DisplayFormatInEditMode="false" DisplayFormatString="000000000-00">
+                                                                <ReadOnlyStyle BackColor="#CCCCCC">
+                                                                </ReadOnlyStyle>
                                                             </PropertiesTextEdit>
                                                         </dx:GridViewDataTextColumn>
                                                         <dx:GridViewDataTextColumn FieldName="descrip" ShowInCustomizationForm="True" VisibleIndex="3" Caption="Talla">
@@ -184,7 +114,7 @@
                                         </TabImage>
                                         <ContentCollection>
                                             <dx:ContentControl runat="server">
-                                                <dx:ASPxGridView ID="ASPxGridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Color" KeyFieldName="key_color" OnBeforePerformDataSelect="ASPxGridView3_BeforePerformDataSelect" OnInitNewRow="ASPxGridView3_InitNewRow" OnRowInserting="ASPxGridView3_RowInserting" Theme="Glass" Width="100%" KeyboardSupport="True">
+                                                <dx:ASPxGridView ID="ASPxGridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Color" KeyFieldName="key_color" OnBeforePerformDataSelect="ASPxGridView3_BeforePerformDataSelect" OnRowInserting="ASPxGridView3_RowInserting" Theme="Glass" Width="100%" KeyboardSupport="True">
                                                     <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
                                                     <SettingsPager Mode="ShowAllRecords">
                                                     </SettingsPager>
@@ -224,7 +154,9 @@
                                                             <EditFormSettings Visible="False" />
                                                         </dx:GridViewDataTextColumn>
                                                         <dx:GridViewDataTextColumn Caption="Código de color" FieldName="color" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="2">
-                                                            <PropertiesTextEdit DisplayFormatString="000000000-00">
+                                                            <PropertiesTextEdit>
+                                                                <ReadOnlyStyle BackColor="#CCCCCC">
+                                                                </ReadOnlyStyle>
                                                             </PropertiesTextEdit>
                                                         </dx:GridViewDataTextColumn>
                                                         <dx:GridViewDataTextColumn Caption="fkey_articulo" FieldName="fkey_articulo" Name="fkey_articulo" ShowInCustomizationForm="True" Visible="False" VisibleIndex="4">
@@ -289,7 +221,7 @@
                                                     <SettingsPager Mode="ShowAllRecords">
                                                     </SettingsPager>
                                                     <SettingsBehavior ConfirmDelete="True" />
-                                                    <Settings ShowColumnHeaders="false" VerticalScrollBarMode="Visible" VerticalScrollableHeight="430" />
+                                                    <Settings ShowColumnHeaders="false" VerticalScrollBarMode="Visible" VerticalScrollableHeight="405" />
                                                     <SettingsCommandButton>
                                                         <DeleteButton Text="Borrar">
                                                             <Image ToolTip="Eliminar foto" IconID="iconbuilder_actions_deletecircled_svg_16x16">
@@ -322,14 +254,93 @@
                                                             <SettingsItems ShowCaption="False" />
                                                         </AdaptiveDetailLayoutProperties>
                                                     </SettingsAdaptivity>
-
+                                                        <Toolbars>
+                                                            <dx:GridViewToolbar>
+                                                                <Items>
+                                                                    <dx:GridViewToolbarItem Name="btnRefrescar" Image-IconID="" Command="Refresh" Text="Actualiza listado de imágenes" ToolTip="Actualiza" DisplayMode="ImageWithText">
+                                                                        <Image IconID="outlookinspired_changeview_svg_16x16">
+                                                                        </Image>
+                                                                    </dx:GridViewToolbarItem>
+                                                                </Items>
+                                                            </dx:GridViewToolbar>
+                                                        </Toolbars>
 
                                                 </dx:ASPxGridView>
                                                 </div>
-                                                <div>
-                                                    <dx:ASPxButton ID="ASPxButtonRefrescaGridFotos" runat="server" Text="ASPxButton" OnClick="ASPxButtonRefrescaGridFotos_Click"></dx:ASPxButton>
-                                                </div>
-                                              
+
+                                            </dx:ContentControl>
+                                        </ContentCollection>
+                                    </dx:TabPage>
+                                    <dx:TabPage Name="caracteristicas" Text="Características">
+                                        <ActiveTabImage IconID="spreadsheet_tableconverttorange_svg_16x16">
+                                        </ActiveTabImage>
+                                        <TabImage IconID="spreadsheet_multiplesheet_svg_16x16">
+                                        </TabImage>
+                                        <ContentCollection>
+                                            <dx:ContentControl runat="server">
+                                                <dx:ASPxGridView ID="ASPxGridView4" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Articulos_Caracteristicas" KeyFieldName="key_articulos_caracteristicas" OnBeforePerformDataSelect="ASPxGridView4_BeforePerformDataSelect" OnRowInserting="ASPxGridView4_RowInserting" Theme="Glass" Width="100%" OnCellEditorInitialize="ASPxGridView4_CellEditorInitialize" EnableTheming="True" KeyboardSupport="True">                                                    
+                                                    <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
+                                                    <SettingsPager Mode="ShowAllRecords">
+                                                    </SettingsPager>
+                                                    <SettingsEditing Mode="Inline">
+                                                    </SettingsEditing>
+                                                    <SettingsBehavior AllowFocusedRow="True" ConfirmDelete="True" AllowSelectByRowClick="True" />
+                                                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+
+
+                                                    <SettingsCommandButton>
+                                                        <NewButton Text="Nuevo">
+                                                            <Image IconID="actions_add_16x16gray">
+                                                            </Image>
+                                                        </NewButton>
+                                                        <UpdateButton Text="Guardar">
+                                                            <Image IconID="actions_refresh_16x16gray">
+                                                            </Image>
+                                                        </UpdateButton>
+                                                        <CancelButton Text="Cerrar">
+                                                            <Image IconID="history_undo_16x16gray">
+                                                            </Image>
+                                                        </CancelButton>
+                                                        <EditButton Text="Editar">
+                                                            <Image AlternateText="Edit" IconID="edit_edit_16x16gray">
+                                                            </Image>
+                                                        </EditButton>
+                                                        <DeleteButton Text="Borrar">
+                                                            <Image IconID="edit_delete_16x16gray">
+                                                            </Image>
+                                                        </DeleteButton>
+                                                    </SettingsCommandButton>
+
+                                                    <Columns>
+                                                        <dx:GridViewCommandColumn ButtonRenderMode="Image" ButtonType="Image" ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" Width="50px">
+                                                        </dx:GridViewCommandColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="key_articulos_caracteristicas" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1" Name="key_articulos_caracteristicas">
+                                                            <EditFormSettings Visible="False" />
+                                                        </dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn Caption="fkey_articulo" FieldName="fkey_articulo" Name="fkey_articulo" ShowInCustomizationForm="True" Visible="False" VisibleIndex="4">
+                                                            <EditFormSettings Visible="False" />
+                                                        </dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataComboBoxColumn Caption="Característica" FieldName="fkey_caracteristica" ShowInCustomizationForm="True" VisibleIndex="5">
+                                                            <PropertiesComboBox DataSourceID="SDS_Caracteristicas" TextField="caracteristica" ValueField="key_caracteristicas">                                                                
+                                                                <ReadOnlyStyle BackColor="#CCCCCC" ForeColor="Black">
+                                                                </ReadOnlyStyle>
+                                                            </PropertiesComboBox>
+                                                        </dx:GridViewDataComboBoxColumn>
+                                                        <dx:GridViewDataComboBoxColumn Caption="Descripción" FieldName="fkey_caracteristica_det" ShowInCustomizationForm="True" VisibleIndex="6">
+                                                            <PropertiesComboBox DataSourceID="SDS_Caracteristicas_det" TextField="descripcion" ValueField="key_caracteristicas_det" >
+                                                                <ReadOnlyStyle BackColor="#CCCCCC" ForeColor="Black">
+                                                                </ReadOnlyStyle>
+                                                            </PropertiesComboBox>
+                                                        </dx:GridViewDataComboBoxColumn>
+                                                    </Columns>
+                                                    <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
+                                                        <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
+                                                            <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
+                                                            </SettingsAdaptivity>                    
+                                                            <SettingsItemCaptions Location="Top" />
+                                                        </AdaptiveDetailLayoutProperties>
+                                                    </SettingsAdaptivity>
+                                                </dx:ASPxGridView>
 
                                             </dx:ContentControl>
                                         </ContentCollection>
@@ -397,63 +408,54 @@
                     </EditFormLayoutProperties>
 
                     <Columns>
-                        <dx:GridViewCommandColumn Visible="false" ButtonRenderMode="Default" ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" ShowClearFilterButton="True">
+                        <dx:GridViewCommandColumn Visible="false" ButtonRenderMode="Default" ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" ShowClearFilterButton="True" Width="5px">
                         </dx:GridViewCommandColumn>
                         <dx:GridViewDataTextColumn Caption="key_articulo" FieldName="key_articulo" Name="key_articulo" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1">
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Descripción" FieldName="descripcion" Name="descripcion" ShowInCustomizationForm="True" VisibleIndex="6" AdaptivePriority="1" PropertiesTextEdit-NullText="Descripción..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused">
+                        <dx:GridViewDataTextColumn Caption="Descripción" FieldName="descripcion" Name="descripcion" ShowInCustomizationForm="True" VisibleIndex="3" AdaptivePriority="1" PropertiesTextEdit-NullText="Descripción..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="20%">
                             <PropertiesTextEdit>
                                 <ValidationSettings SetFocusOnError="true">
                                     <RequiredField IsRequired ="true" />
                                 </ValidationSettings>
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Modelo" FieldName="modelo" Name="modelo" ShowInCustomizationForm="True" VisibleIndex="9" Visible="False" PropertiesTextEdit-NullText="Modelo..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused">
+                        <dx:GridViewDataTextColumn Caption="Modelo" FieldName="modelo" Name="modelo" ShowInCustomizationForm="True" VisibleIndex="4" PropertiesTextEdit-NullText="Modelo..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" AdaptivePriority="2" Width="5%">
                             <PropertiesTextEdit>
                                 <ValidationSettings SetFocusOnError="true">
                                     <RequiredField IsRequired ="true" />
                                 </ValidationSettings>
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Otra información" FieldName="otra_informacion" Name="otra_informacion" ShowInCustomizationForm="True" VisibleIndex="10" AdaptivePriority="3" Visible="False" PropertiesTextEdit-NullText="Otra información..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused">
+                        <dx:GridViewDataTextColumn Caption="Otra información" FieldName="otra_informacion" Name="otra_informacion" ShowInCustomizationForm="True" VisibleIndex="9" AdaptivePriority="7" PropertiesTextEdit-NullText="Otra información..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="10%">
                             <PropertiesTextEdit>
                                 <ValidationSettings SetFocusOnError="true">
                                     <RequiredField IsRequired ="true" />
                                 </ValidationSettings>
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Cuidados y limpieza" FieldName="cuidado_limpieza" Name="cuidado_limpieza" ShowInCustomizationForm="True" VisibleIndex="11" AdaptivePriority="5" Visible="False" PropertiesTextEdit-NullText="Cuidados y limpieza..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused">
+                        <dx:GridViewDataTextColumn Caption="Cuidados y limpieza" FieldName="cuidado_limpieza" Name="cuidado_limpieza" ShowInCustomizationForm="True" VisibleIndex="10" AdaptivePriority="8" PropertiesTextEdit-NullText="Cuidados y limpieza..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="10%">
                             <PropertiesTextEdit>
                                 <ValidationSettings SetFocusOnError="true">
                                     <RequiredField IsRequired ="true" />
                                 </ValidationSettings>
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Código" FieldName="codigo_articulo" Name="codigo_articulo" ShowInCustomizationForm="True" VisibleIndex="5" PropertiesTextEdit-NullText="Código..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" ReadOnly="True">
-                            <PropertiesTextEdit>
-                                <ReadOnlyStyle BackColor="#999999" ForeColor="White">
-                                </ReadOnlyStyle>
-                                <ValidationSettings SetFocusOnError="true">
-                                    <RequiredField IsRequired ="false" />
-                                </ValidationSettings>
-                            </PropertiesTextEdit>
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataComboBoxColumn Caption="fkey_departamento" FieldName="fkey_departamento" Name="fkey_departamento" ShowInCustomizationForm="True" Visible="False" VisibleIndex="12" ToolTip="Departamento">
+                        <dx:GridViewDataComboBoxColumn Caption="fkey_departamento" FieldName="fkey_departamento" Name="fkey_departamento" ShowInCustomizationForm="True" Visible="False" VisibleIndex="12" ToolTip="Departamento" AdaptivePriority="10">
                             <PropertiesComboBox DataSourceID="SDS_Departamentos" TextField="departamento" ValueField="key_departamento" AnimationType="Fade" NullTextDisplayMode="UnfocusedAndFocused" NullText="Departamento...">
                                 <ValidationSettings SetFocusOnError="True">
                                     <RequiredField IsRequired="True" />                                    
                                 </ValidationSettings>
                             </PropertiesComboBox>
                         </dx:GridViewDataComboBoxColumn>
-                        <dx:GridViewDataComboBoxColumn Caption="fkey_clasificacion" FieldName="fkey_clasificacion" Name="fkey_clasificacion" ShowInCustomizationForm="True" Visible="False" VisibleIndex="13" ToolTip="Clasificación">
+                        <dx:GridViewDataComboBoxColumn Caption="fkey_clasificacion" FieldName="fkey_clasificacion" Name="fkey_clasificacion" ShowInCustomizationForm="True" Visible="False" VisibleIndex="13" ToolTip="Clasificación" AdaptivePriority="10">
                             <PropertiesComboBox DataSourceID="SDS_Clasificacion" TextField="clasificacion" ValueField="key_clasificacion" AnimationType="Fade" NullTextDisplayMode="UnfocusedAndFocused" NullText="Clasificación...">
                                 <ValidationSettings SetFocusOnError="True">
                                     <RequiredField IsRequired="True" />                                    
                                 </ValidationSettings>
                             </PropertiesComboBox>
                         </dx:GridViewDataComboBoxColumn>
-                        <dx:GridViewDataComboBoxColumn Caption="fkey_familia" FieldName="fkey_familia" Name="fkey_familia" ShowInCustomizationForm="True" Visible="False" VisibleIndex="15" ToolTip="Familia">
+                        <dx:GridViewDataComboBoxColumn Caption="fkey_familia" FieldName="fkey_familia" Name="fkey_familia" ShowInCustomizationForm="True" Visible="False" VisibleIndex="14" ToolTip="Familia" AdaptivePriority="10">
                             <PropertiesComboBox DataSourceID="SDS_Arbol" TextField="familia" ValueField="key_familia" AnimationType="Fade" NullTextDisplayMode="UnfocusedAndFocused" NullText="Familia...">
                                 <ValidationSettings SetFocusOnError="True">
                                     <RequiredField IsRequired="True" />                                    
@@ -491,7 +493,7 @@
                                 </dx:ASPxGridLookup>
                             </EditItemTemplate>                            
                         </dx:GridViewDataComboBoxColumn>
-                        <dx:GridViewDataDateColumn Caption="fecha_alta" FieldName="fecha_alta" Name="fecha_alta" ShowInCustomizationForm="True" Visible="False" VisibleIndex="14" PropertiesDateEdit-NullText="Fecha de alta..." PropertiesDateEdit-NullTextDisplayMode="UnfocusedAndFocused" ReadOnly="True">
+                        <dx:GridViewDataDateColumn Caption="fecha_alta" FieldName="fecha_alta" Name="fecha_alta" ShowInCustomizationForm="True" Visible="False" VisibleIndex="15" PropertiesDateEdit-NullText="Fecha de alta..." PropertiesDateEdit-NullTextDisplayMode="UnfocusedAndFocused" ReadOnly="True" AdaptivePriority="10">
                             <PropertiesDateEdit DisplayFormatString="dd/MMM/yy" DisplayFormatInEditMode="True" >
                                 <ReadOnlyStyle BackColor="#999999" ForeColor="White">
                                 </ReadOnlyStyle>
@@ -499,7 +501,7 @@
                             <SettingsHeaderFilter Mode="DateRangeCalendar">
                             </SettingsHeaderFilter>
                         </dx:GridViewDataDateColumn>
-                        <dx:GridViewDataMemoColumn AdaptivePriority="4" Caption="Descripción Larga" CellRowSpan="2" FieldName="descripcion_larga" Name="descripcion_larga" ShowInCustomizationForm="True" Visible="False" VisibleIndex="8" PropertiesMemoEdit-NullText="Descripción larga..." PropertiesMemoEdit-NullTextDisplayMode="UnfocusedAndFocused">
+                        <dx:GridViewDataMemoColumn AdaptivePriority="9" Caption="Descripción Larga" CellRowSpan="2" FieldName="descripcion_larga" Name="descripcion_larga" ShowInCustomizationForm="True" VisibleIndex="11" PropertiesMemoEdit-NullText="Descripción larga..." PropertiesMemoEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="15%">
                             <PropertiesMemoEdit Rows="4">
                                 <ValidationSettings SetFocusOnError="True">
                                     <RequiredField IsRequired="True" />                                    
@@ -507,27 +509,27 @@
                             </PropertiesMemoEdit>
                             <EditFormSettings ColumnSpan="2" RowSpan="2" />
                         </dx:GridViewDataMemoColumn>
-                        <dx:GridViewDataTextColumn Caption="Departamento" FieldName="departamento" Name="departamento" ShowInCustomizationForm="True" VisibleIndex="2" ReadOnly="True">
+                        <dx:GridViewDataTextColumn Caption="Departamento" FieldName="departamento" Name="departamento" ShowInCustomizationForm="True" VisibleIndex="6" ReadOnly="True" AdaptivePriority="4" Width="10%">
                             <PropertiesTextEdit>
                                 <ReadOnlyStyle BackColor="#999999" ForeColor="White">
                                 </ReadOnlyStyle>
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Clasificación" FieldName="clasificacion" Name="clasificacion" ShowInCustomizationForm="True" VisibleIndex="3" ReadOnly="True">
-                            <PropertiesTextEdit>
-                                <ReadOnlyStyle BackColor="#999999" ForeColor="White">
-                                </ReadOnlyStyle>
-                            </PropertiesTextEdit>
-                            <EditFormSettings Visible="False" />
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Familia" FieldName="familia" Name="familia" ShowInCustomizationForm="True" VisibleIndex="4" ReadOnly="True">
+                        <dx:GridViewDataTextColumn Caption="Clasificación" FieldName="clasificacion" Name="clasificacion" ShowInCustomizationForm="True" VisibleIndex="7" ReadOnly="True" AdaptivePriority="5" Width="10%">
                             <PropertiesTextEdit>
                                 <ReadOnlyStyle BackColor="#999999" ForeColor="White">
                                 </ReadOnlyStyle>
                             </PropertiesTextEdit>
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn AdaptivePriority="2" Caption="Marca" FieldName="marca" Name="marca" ShowInCustomizationForm="True" VisibleIndex="7">
+                        <dx:GridViewDataTextColumn Caption="Familia" FieldName="familia" Name="familia" ShowInCustomizationForm="True" VisibleIndex="8" ReadOnly="True" AdaptivePriority="6" Width="10%">
+                            <PropertiesTextEdit>
+                                <ReadOnlyStyle BackColor="#999999" ForeColor="White">
+                                </ReadOnlyStyle>
+                            </PropertiesTextEdit>
+                            <EditFormSettings Visible="False" />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn AdaptivePriority="3" Caption="Marca" FieldName="marca" Name="marca" ShowInCustomizationForm="True" VisibleIndex="5" Width="5%">
                             <PropertiesTextEdit NullText="Marca..." NullTextDisplayMode="UnfocusedAndFocused">
                                 <ValidationSettings SetFocusOnError="True">
                                     <RequiredField IsRequired="True" />
@@ -535,13 +537,21 @@
                             </PropertiesTextEdit>
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataComboBoxColumn Caption="fkey_marca" FieldName="fkey_marca" Name="fkey_marca" ShowInCustomizationForm="True" VisibleIndex="16" Visible="False">
+                        <dx:GridViewDataComboBoxColumn Caption="fkey_marca" FieldName="fkey_marca" Name="fkey_marca" ShowInCustomizationForm="True" VisibleIndex="16" Visible="False" AdaptivePriority="10">
                             <PropertiesComboBox DataSourceID="SDS_Marca" TextField="marca" ValueField="key_marca" NullText="Marca..." NullTextDisplayMode="UnfocusedAndFocused">
                                 <ValidationSettings SetFocusOnError="True">
                                     <RequiredField IsRequired="True" />
                                 </ValidationSettings>
                             </PropertiesComboBox>
                         </dx:GridViewDataComboBoxColumn>
+                        <dx:GridViewDataTextColumn Caption="Código" FieldName="codigo_articulo" Name="codigo_articulo" ShowInCustomizationForm="True" VisibleIndex="2" PropertiesTextEdit-NullText="Código..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" ReadOnly="True" Width="5%">
+                            <PropertiesTextEdit>
+                                <ReadOnlyStyle BackColor="#999999" ForeColor="White">
+                                </ReadOnlyStyle>
+                                <ValidationSettings SetFocusOnError="true">
+                                </ValidationSettings>
+                            </PropertiesTextEdit>
+                        </dx:GridViewDataTextColumn>
                     </Columns>                    
 
                     <SettingsPopup>
@@ -616,15 +626,15 @@
                     <Toolbars>
                         <dx:GridViewToolbar >
                             <Items>
-                                <dx:GridViewToolbarItem Command="New" Text="Nuevo" ToolTip="Nuevo">
+                                <dx:GridViewToolbarItem Name="btnNuevo" Command="New" Text="Nuevo" ToolTip="Nuevo">
                                 </dx:GridViewToolbarItem>
-                                <dx:GridViewToolbarItem Command="Edit"  Text="Editar" ToolTip="Editar">
+                                <dx:GridViewToolbarItem Name="btnEditar" Command="Edit"  Text="Editar" ToolTip="Editar">
                                 </dx:GridViewToolbarItem>
-                                <dx:GridViewToolbarItem Command="Delete"  Text="Borrar" ToolTip="Borrar">
+                                <dx:GridViewToolbarItem Name="btnBorrar" Command="Delete"  Text="Borrar" ToolTip="Borrar">
                                 </dx:GridViewToolbarItem>
-                                <dx:GridViewToolbarItem Command="ShowSearchPanel"  Text="Buscar" ToolTip="Panel de búsqueda">
+                                <dx:GridViewToolbarItem Name="btnBuscar" Command="ShowSearchPanel"  Text="Buscar" ToolTip="Panel de búsqueda">
                                 </dx:GridViewToolbarItem>
-                                <dx:GridViewToolbarItem  Text="Agrupar" Image-IconID="spreadsheet_group_svg_16x16"  >
+                                <dx:GridViewToolbarItem Name="btnAgrupar"  Text="Agrupar" Image-IconID="spreadsheet_group_svg_16x16"  >
                                     <Items>
                                         <dx:GridViewToolbarItem Command="ShowGroupPanel" Text="Panel Agrupador" >
                                         </dx:GridViewToolbarItem>
@@ -637,7 +647,7 @@
                                     </Items>
                                     <Image IconID="spreadsheet_group_svg_16x16"></Image>
                                 </dx:GridViewToolbarItem>
-                                <dx:GridViewToolbarItem  Text="Filtros" Image-IconID="dashboards_multiplemasterfilter_svg_16x16">
+                                <dx:GridViewToolbarItem Name="btnFiltro"  Text="Filtros" Image-IconID="dashboards_multiplemasterfilter_svg_16x16">
                                     <Items>
                                         <dx:GridViewToolbarItem Command="ShowFilterRow">
                                         </dx:GridViewToolbarItem>
@@ -648,7 +658,7 @@
                                     </Items>                                   
                                     <Image IconID="dashboards_multiplemasterfilter_svg_16x16"></Image>
                                 </dx:GridViewToolbarItem>
-                                <dx:GridViewToolbarItem  Text="Exportar" Image-IconID="export_export_svg_16x16">
+                                <dx:GridViewToolbarItem Name="btnExportar"  Text="Exportar" Image-IconID="export_export_svg_16x16">
                                     <Items>
                                         <dx:GridViewToolbarItem Command="ExportToXlsx">
                                         </dx:GridViewToolbarItem>
@@ -665,7 +675,7 @@
                                     </Items>                                   
                                     <Image IconID="export_export_svg_16x16"></Image>
                                 </dx:GridViewToolbarItem>
-                                <dx:GridViewToolbarItem Command="Refresh"  Text="Refrescar" ToolTip="Refrescar datos" DisplayMode="Image">
+                                <dx:GridViewToolbarItem Name="btnRefrescar" Command="Refresh"  Text="Refrescar" ToolTip="Refrescar datos" DisplayMode="Image">
                                 </dx:GridViewToolbarItem>
                             </Items>
                         </dx:GridViewToolbar>
@@ -680,13 +690,13 @@
 DeleteCommand="DELETE FROM &quot;Articulos&quot; WHERE &quot;key_articulo&quot; = ? AND &quot;codigo_articulo&quot; = ?" 
 InsertCommand="INSERT INTO &quot;Articulos&quot; (&quot;descripcion&quot;, &quot;modelo&quot;, &quot;descripcion_larga&quot;, &quot;otra_informacion&quot;, &quot;cuidado_limpieza&quot;, &quot;fkey_departamento&quot;, &quot;fkey_clasificacion&quot;, &quot;fkey_familia&quot;, &quot;fkey_marca&quot;, &quot;codigo_articulo&quot;, &quot;fecha_alta&quot; ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" 
-SelectCommand="SELECT &quot;key_articulo&quot;, &quot;descripcion&quot;, &quot;modelo&quot;, &quot;descripcion_larga&quot;, &quot;otra_informacion&quot;, &quot;cuidado_limpieza&quot;, &quot;Articulos&quot;.&quot;fkey_departamento&quot;, &quot;Articulos&quot;.&quot;fkey_clasificacion&quot;,&quot;Articulos&quot;.&quot;fkey_familia&quot;, &quot;fkey_marca&quot;, &quot;codigo_articulo&quot;, &quot;fecha_alta&quot;, &quot;usuario_alta&quot;, &quot;Departamento&quot;.&quot;departamento&quot;, &quot;Clasificacion&quot;.&quot;clasificacion&quot;, &quot;Familia&quot;.&quot;familia&quot;, &quot;Articulos_marca&quot;.&quot;marca&quot;
+SelectCommand="SELECT key_articulo, descripcion, modelo, descripcion_larga, otra_informacion, cuidado_limpieza, &quot;Articulos&quot;.fkey_departamento, &quot;Articulos&quot;.fkey_clasificacion,&quot;Articulos&quot;.fkey_familia, fkey_marca, codigo_articulo, fecha_alta, usuario_alta, &quot;Departamento&quot;.departamento, &quot;Clasificacion&quot;.clasificacion, &quot;Familia&quot;.familia, &quot;Articulos_marca&quot;.marca
 FROM &quot;Articulos&quot;, &quot;Departamento&quot;, &quot;Clasificacion&quot;, &quot;Familia&quot;, &quot;Articulos_marca&quot;
-WHERE &quot;Articulos&quot;.&quot;fkey_departamento&quot; = &quot;Departamento&quot;.&quot;key_departamento&quot;
-AND &quot;Articulos&quot;.&quot;fkey_clasificacion&quot; = &quot;Clasificacion&quot;.&quot;key_clasificacion&quot;
-AND &quot;Articulos&quot;.&quot;fkey_familia&quot; = &quot;Familia&quot;.&quot;key_familia&quot;
-AND &quot;Articulos&quot;.&quot;fkey_marca&quot; = &quot;Articulos_marca&quot;.&quot;key_marca&quot;
-ORDER BY key_articulo desc" 
+WHERE &quot;Articulos&quot;.fkey_departamento = &quot;Departamento&quot;.key_departamento
+AND &quot;Articulos&quot;.fkey_clasificacion = &quot;Clasificacion&quot;.key_clasificacion
+AND &quot;Articulos&quot;.fkey_familia = &quot;Familia&quot;.key_familia
+AND &quot;Articulos&quot;.fkey_marca = &quot;Articulos_marca&quot;.key_marca
+ORDER BY key_articulo DESC" 
 UpdateCommand="UPDATE &quot;Articulos&quot; SET &quot;descripcion&quot; = ?, &quot;modelo&quot; = ?, &quot;descripcion_larga&quot; = ?, &quot;otra_informacion&quot; = ?, &quot;cuidado_limpieza&quot; = ?, &quot;fkey_departamento&quot; = ?, &quot;fkey_clasificacion&quot; = ?, &quot;fkey_familia&quot; = ?, &quot;fkey_marca&quot; = ?,  &quot;fecha_alta&quot; = ?  WHERE &quot;key_articulo&quot; = ?">
         <DeleteParameters>
             <asp:Parameter Name="key_articulo" Type="Int64" />
@@ -769,7 +779,7 @@ WHERE &quot;Departamento&quot;.&quot;key_departamento&quot; = &quot;Clasificacio
 ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSource>
 
 
-    <asp:SqlDataSource ID="SDS_Articulos_Tallas" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Articulos_tallas&quot; WHERE key_tallas = ?" InsertCommand="INSERT INTO &quot;Articulos_tallas&quot; ( tallas, descrip, fkey_articulo, fkey_rango) VALUES (?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_tallas, tallas, descrip,fkey_articulo,fkey_rango FROM &quot;Articulos_tallas&quot; WHERE fkey_articulo = ? ORDER BY key_tallas" UpdateCommand="UPDATE &quot;Articulos_tallas&quot; SET tallas = ?, descrip = ?, fkey_articulo = ?, fkey_rango = ? WHERE key_tallas = ?">
+    <asp:SqlDataSource ID="SDS_Articulos_Tallas" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Articulos_tallas&quot; WHERE key_tallas = ?" InsertCommand="INSERT INTO &quot;Articulos_tallas&quot; ( tallas, descrip, fkey_articulo, fkey_rango) VALUES (?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_tallas,RIGHT(tallas,2) as tallas , descrip,fkey_articulo,fkey_rango FROM &quot;Articulos_tallas&quot; WHERE fkey_articulo = ? ORDER BY key_tallas DESC" UpdateCommand="UPDATE &quot;Articulos_tallas&quot; SET descrip = ?, fkey_rango = ? WHERE key_tallas = ?">
         <DeleteParameters>
             <asp:Parameter Name="key_tallas" Type="Int64" />
         </DeleteParameters>
@@ -783,9 +793,7 @@ ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSour
             <asp:SessionParameter Name="?" SessionField="session_key_articulo" />
         </SelectParameters>
         <UpdateParameters>
-            <asp:Parameter Name="tallas" Type="String" />
             <asp:Parameter Name="descrip" Type="String" />
-            <asp:Parameter Name="fkey_articulo" Type="Int64" />
             <asp:Parameter Name="fkey_rango" Type="Int64" />
             <asp:Parameter Name="key_tallas" Type="Int64" />
         </UpdateParameters>
@@ -796,7 +804,7 @@ ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSour
     </asp:SqlDataSource>
 
 
-    <asp:SqlDataSource ID="SDS_Articulos_Color" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Articulos_color&quot; WHERE key_color = ?" InsertCommand="INSERT INTO &quot;Articulos_color&quot; ( color, descrip, fkey_articulo, color_hex) VALUES ( ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_color, color, descrip,fkey_articulo, color_hex FROM &quot;Articulos_color&quot; WHERE fkey_articulo = ? order by key_color" UpdateCommand="UPDATE &quot;Articulos_color&quot; SET color = ?, descrip = ?, fkey_articulo = ?, color_hex = ? WHERE key_color = ?">
+    <asp:SqlDataSource ID="SDS_Articulos_Color" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Articulos_color&quot; WHERE key_color = ?" InsertCommand="INSERT INTO &quot;Articulos_color&quot; ( color, descrip, fkey_articulo, color_hex) VALUES ( ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_color, RIGHT(color,2) as color, descrip,fkey_articulo, color_hex FROM &quot;Articulos_color&quot; WHERE fkey_articulo = ? order by key_color DESC" UpdateCommand="UPDATE &quot;Articulos_color&quot; SET descrip = ?, color_hex = ? WHERE key_color = ?">
         <DeleteParameters>
             <asp:Parameter Name="key_color" Type="Int64" />
         </DeleteParameters>
@@ -810,30 +818,26 @@ ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSour
             <asp:SessionParameter Name="?" SessionField="session_key_articulo" />
         </SelectParameters>
         <UpdateParameters>
-            <asp:Parameter Name="color" Type="String" />
             <asp:Parameter Name="descrip" Type="String" />
-            <asp:Parameter Name="fkey_articulo" Type="Int64" />
             <asp:Parameter Name="color_hex" Type="String" />
             <asp:Parameter Name="key_color" Type="Int64" />            
         </UpdateParameters>
     </asp:SqlDataSource>
 
 
-    <asp:SqlDataSource ID="SDS_Articulos_Caracteristicas" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Articulos_caracteristicas&quot; WHERE key_articulos_caracteristicas = ?" InsertCommand="INSERT INTO &quot;Articulos_caracteristicas&quot; ( fkey_articulo, caracteristica, caracteristica_det) VALUES ( ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_articulos_caracteristicas, fkey_articulo, caracteristica, caracteristica_det FROM &quot;Articulos_caracteristicas&quot; WHERE fkey_articulo = ? order by key_articulos_caracteristicas" UpdateCommand="UPDATE &quot;Articulos_caracteristicas&quot; SET caracteristica = ?, caracteristica_det = ?  WHERE key_articulos_caracteristicas = ?">
+    <asp:SqlDataSource ID="SDS_Articulos_Caracteristicas" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Articulos_caracteristicas&quot; WHERE key_articulos_caracteristicas = ?" InsertCommand="INSERT INTO &quot;Articulos_caracteristicas&quot; ( fkey_articulo, fkey_caracteristica ) VALUES ( ?, ? )" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_articulos_caracteristicas, fkey_articulo,  fkey_caracteristica, fkey_caracteristica_det  FROM &quot;Articulos_caracteristicas&quot; WHERE fkey_articulo = ? order by key_articulos_caracteristicas" UpdateCommand="UPDATE &quot;Articulos_caracteristicas&quot; SET fkey_caracteristica_det = ? WHERE key_articulos_caracteristicas = ?">
         <DeleteParameters>
             <asp:Parameter Name="key_articulos_caracteristicas" Type="Int64" />
         </DeleteParameters>
         <InsertParameters>
             <asp:Parameter Name="fkey_articulo" Type="Int64" />            
-            <asp:Parameter Name="caracteristica" Type="String" />
-            <asp:Parameter Name="caracteristica_det" Type="String" />
+            <asp:Parameter Name="fkey_caracteristica" Type="Int64" />
         </InsertParameters>
         <SelectParameters>
             <asp:SessionParameter Name="fkey_articulo" SessionField="session_key_articulo"/>
         </SelectParameters>
         <UpdateParameters>
-            <asp:Parameter Name="caracteristica" Type="String" />
-            <asp:Parameter Name="caracteristica_det" Type="String" />            
+            <asp:Parameter Name="fkey_caracteristica_det" Type="Int64" />            
             <asp:Parameter Name="key_articulos_caracteristicas" Type="Int64" />            
         </UpdateParameters>
     </asp:SqlDataSource>
@@ -843,11 +847,18 @@ ORDER BY fkey_departamento,fkey_clasificacion,key_familia ASC"></asp:SqlDataSour
     </asp:SqlDataSource>
 
 
-    <asp:SqlDataSource ID="SDS_Caracteristicas_det" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_caracteristicas_det, fkey_caracteristicas, descripcion FROM &quot;Caracteristicas_det&quot;">
+    <asp:SqlDataSource ID="SDS_Caracteristicas_det" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_caracteristicas_det, fkey_caracteristicas, descripcion FROM &quot;Caracteristicas_det&quot; ORDER BY descripcion">
     </asp:SqlDataSource>
                 
                
-    <asp:SqlDataSource ID="SDS_Images" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Articulos_imagenes&quot; WHERE key_imagen = ?" InsertCommand="INSERT INTO Articulos_imagenes ( fkey_articulo, id_imagen) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_imagen, fkey_articulo, id_imagen, '../Archivos/Fotos/' || id_imagen as archivo_foto FROM &quot;Articulos_imagenes&quot; WHERE fkey_articulo = ?" UpdateCommand="UPDATE &quot;Articulos_imagenes&quot; SET fkey_articulo = ?, id_imagen = ? WHERE key_imagen = ?">
+    <asp:SqlDataSource ID="SDS_Caracteristicas_det_edit" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_caracteristicas_det, fkey_caracteristicas, descripcion FROM &quot;Caracteristicas_det&quot; WHERE fkey_caracteristicas = ? ORDER BY descripcion">
+        <SelectParameters>
+            <asp:SessionParameter Name="fkey_caracteristicas" SessionField="session_fkey_caracteristicas" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+                
+               
+    <asp:SqlDataSource ID="SDS_Images" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Articulos_imagenes&quot; WHERE key_imagen = ?" InsertCommand="INSERT INTO Articulos_imagenes ( fkey_articulo, id_imagen) VALUES (?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_imagen, fkey_articulo, id_imagen, '../Archivos/Fotos/' || id_imagen as archivo_foto FROM &quot;Articulos_imagenes&quot; WHERE fkey_articulo = ? ORDER BY key_imagen DESC" UpdateCommand="UPDATE &quot;Articulos_imagenes&quot; SET fkey_articulo = ?, id_imagen = ? WHERE key_imagen = ?">
         <SelectParameters>
             <asp:SessionParameter Name="fkey_articulo" SessionField="session_key_articulo"/>
         </SelectParameters>

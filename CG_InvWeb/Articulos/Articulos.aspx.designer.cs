@@ -175,6 +175,15 @@ namespace CG_InvWeb.Articulos {
         protected global::System.Web.UI.WebControls.SqlDataSource SDS_Caracteristicas_det;
         
         /// <summary>
+        /// Control SDS_Caracteristicas_det_edit.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Caracteristicas_det_edit;
+        
+        /// <summary>
         /// Control SDS_Images.
         /// </summary>
         /// <remarks>
@@ -182,5 +191,17 @@ namespace CG_InvWeb.Articulos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SDS_Images;
+        
+        /// <summary>
+        /// Propiedad Master.
+        /// </summary>
+        /// <remarks>
+        /// Propiedad generada automáticamente.
+        /// </remarks>
+        public new CG_InvWeb.MainMaster Master {
+            get {
+                return ((CG_InvWeb.MainMaster)(base.Master));
+            }
+        }
     }
 }
