@@ -413,28 +413,31 @@
                         <dx:GridViewDataTextColumn Caption="key_articulo" FieldName="key_articulo" Name="key_articulo" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1">
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Descripción" FieldName="descripcion" Name="descripcion" ShowInCustomizationForm="True" VisibleIndex="3" AdaptivePriority="1" PropertiesTextEdit-NullText="Descripción..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="20%">
+                        <dx:GridViewDataTextColumn Caption="Descripción" FieldName="descripcion" Name="descripcion" ShowInCustomizationForm="True" VisibleIndex="3" AdaptivePriority="1" PropertiesTextEdit-NullText="Descripción..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="200px" FixedStyle="Left">
+                            <PropertiesTextEdit>
+                                <ValidationSettings SetFocusOnError="true">
+                                    <RequiredField IsRequired ="true" />
+                                </ValidationSettings>
+                            </PropertiesTextEdit>
+                            <CellStyle>
+                                <BorderRight BorderColor="#666666" BorderStyle="Solid" BorderWidth="2px" />
+                            </CellStyle>
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Modelo" FieldName="modelo" Name="modelo" ShowInCustomizationForm="True" VisibleIndex="4" PropertiesTextEdit-NullText="Modelo..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" AdaptivePriority="2" Width="100px">
                             <PropertiesTextEdit>
                                 <ValidationSettings SetFocusOnError="true">
                                     <RequiredField IsRequired ="true" />
                                 </ValidationSettings>
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Modelo" FieldName="modelo" Name="modelo" ShowInCustomizationForm="True" VisibleIndex="4" PropertiesTextEdit-NullText="Modelo..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" AdaptivePriority="2" Width="5%">
+                        <dx:GridViewDataTextColumn Caption="Otra información" FieldName="otra_informacion" Name="otra_informacion" ShowInCustomizationForm="True" VisibleIndex="9" AdaptivePriority="7" PropertiesTextEdit-NullText="Otra información..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="200px">
                             <PropertiesTextEdit>
                                 <ValidationSettings SetFocusOnError="true">
                                     <RequiredField IsRequired ="true" />
                                 </ValidationSettings>
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Otra información" FieldName="otra_informacion" Name="otra_informacion" ShowInCustomizationForm="True" VisibleIndex="9" AdaptivePriority="7" PropertiesTextEdit-NullText="Otra información..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="10%">
-                            <PropertiesTextEdit>
-                                <ValidationSettings SetFocusOnError="true">
-                                    <RequiredField IsRequired ="true" />
-                                </ValidationSettings>
-                            </PropertiesTextEdit>
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Cuidados y limpieza" FieldName="cuidado_limpieza" Name="cuidado_limpieza" ShowInCustomizationForm="True" VisibleIndex="10" AdaptivePriority="8" PropertiesTextEdit-NullText="Cuidados y limpieza..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="10%">
+                        <dx:GridViewDataTextColumn Caption="Cuidados y limpieza" FieldName="cuidado_limpieza" Name="cuidado_limpieza" ShowInCustomizationForm="True" VisibleIndex="10" AdaptivePriority="8" PropertiesTextEdit-NullText="Cuidados y limpieza..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="200px">
                             <PropertiesTextEdit>
                                 <ValidationSettings SetFocusOnError="true">
                                     <RequiredField IsRequired ="true" />
@@ -501,7 +504,7 @@
                             <SettingsHeaderFilter Mode="DateRangeCalendar">
                             </SettingsHeaderFilter>
                         </dx:GridViewDataDateColumn>
-                        <dx:GridViewDataMemoColumn AdaptivePriority="9" Caption="Descripción Larga" CellRowSpan="2" FieldName="descripcion_larga" Name="descripcion_larga" ShowInCustomizationForm="True" VisibleIndex="11" PropertiesMemoEdit-NullText="Descripción larga..." PropertiesMemoEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="15%">
+                        <dx:GridViewDataMemoColumn AdaptivePriority="9" Caption="Descripción Larga" CellRowSpan="2" FieldName="descripcion_larga" Name="descripcion_larga" ShowInCustomizationForm="True" VisibleIndex="11" PropertiesMemoEdit-NullText="Descripción larga..." PropertiesMemoEdit-NullTextDisplayMode="UnfocusedAndFocused" Width="200px">
                             <PropertiesMemoEdit Rows="4">
                                 <ValidationSettings SetFocusOnError="True">
                                     <RequiredField IsRequired="True" />                                    
@@ -509,27 +512,27 @@
                             </PropertiesMemoEdit>
                             <EditFormSettings ColumnSpan="2" RowSpan="2" />
                         </dx:GridViewDataMemoColumn>
-                        <dx:GridViewDataTextColumn Caption="Departamento" FieldName="departamento" Name="departamento" ShowInCustomizationForm="True" VisibleIndex="6" ReadOnly="True" AdaptivePriority="4" Width="10%">
+                        <dx:GridViewDataTextColumn Caption="Departamento" FieldName="departamento" Name="departamento" ShowInCustomizationForm="True" VisibleIndex="6" ReadOnly="True" AdaptivePriority="4" Width="120px">
                             <PropertiesTextEdit>
                                 <ReadOnlyStyle BackColor="#999999" ForeColor="White">
                                 </ReadOnlyStyle>
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Clasificación" FieldName="clasificacion" Name="clasificacion" ShowInCustomizationForm="True" VisibleIndex="7" ReadOnly="True" AdaptivePriority="5" Width="10%">
-                            <PropertiesTextEdit>
-                                <ReadOnlyStyle BackColor="#999999" ForeColor="White">
-                                </ReadOnlyStyle>
-                            </PropertiesTextEdit>
-                            <EditFormSettings Visible="False" />
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Familia" FieldName="familia" Name="familia" ShowInCustomizationForm="True" VisibleIndex="8" ReadOnly="True" AdaptivePriority="6" Width="10%">
+                        <dx:GridViewDataTextColumn Caption="Clasificación" FieldName="clasificacion" Name="clasificacion" ShowInCustomizationForm="True" VisibleIndex="7" ReadOnly="True" AdaptivePriority="5" Width="120px">
                             <PropertiesTextEdit>
                                 <ReadOnlyStyle BackColor="#999999" ForeColor="White">
                                 </ReadOnlyStyle>
                             </PropertiesTextEdit>
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn AdaptivePriority="3" Caption="Marca" FieldName="marca" Name="marca" ShowInCustomizationForm="True" VisibleIndex="5" Width="5%">
+                        <dx:GridViewDataTextColumn Caption="Familia" FieldName="familia" Name="familia" ShowInCustomizationForm="True" VisibleIndex="8" ReadOnly="True" AdaptivePriority="6" Width="120px">
+                            <PropertiesTextEdit>
+                                <ReadOnlyStyle BackColor="#999999" ForeColor="White">
+                                </ReadOnlyStyle>
+                            </PropertiesTextEdit>
+                            <EditFormSettings Visible="False" />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn AdaptivePriority="3" Caption="Marca" FieldName="marca" Name="marca" ShowInCustomizationForm="True" VisibleIndex="5" Width="100px">
                             <PropertiesTextEdit NullText="Marca..." NullTextDisplayMode="UnfocusedAndFocused">
                                 <ValidationSettings SetFocusOnError="True">
                                     <RequiredField IsRequired="True" />
@@ -544,7 +547,7 @@
                                 </ValidationSettings>
                             </PropertiesComboBox>
                         </dx:GridViewDataComboBoxColumn>
-                        <dx:GridViewDataTextColumn Caption="Código" FieldName="codigo_articulo" Name="codigo_articulo" ShowInCustomizationForm="True" VisibleIndex="2" PropertiesTextEdit-NullText="Código..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" ReadOnly="True" Width="5%">
+                        <dx:GridViewDataTextColumn Caption="Código" FieldName="codigo_articulo" Name="codigo_articulo" ShowInCustomizationForm="True" VisibleIndex="2" PropertiesTextEdit-NullText="Código..." PropertiesTextEdit-NullTextDisplayMode="UnfocusedAndFocused" ReadOnly="True" Width="120px" FixedStyle="Left">
                             <PropertiesTextEdit>
                                 <ReadOnlyStyle BackColor="#999999" ForeColor="White">
                                 </ReadOnlyStyle>
@@ -552,7 +555,7 @@
                                 </ValidationSettings>
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
-                    </Columns>                    
+                    </Columns>                  
 
                     <SettingsPopup>
                         <EditForm CloseOnEscape="True" AllowResize="True" ShowCollapseButton="True" ShowMaximizeButton="True" ShowPinButton="True" ShowShadow="True" ShowViewportScrollbarWhenModal="True" HorizontalAlign="LeftSides" ShowFooter="True" ShowPageScrollbarWhenModal="True" VerticalAlign="Above">
@@ -572,7 +575,9 @@
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
-                    <SettingsPager Mode="ShowPager" Position ="TopAndBottom">                        
+
+
+                    <SettingsPager Mode="ShowPager" Position ="Bottom" PageSize="100">                        
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">
@@ -581,16 +586,18 @@
                         </NextPageButton>
                         <PrevPageButton Visible="False">
                         </PrevPageButton>
-                        <PageSizeItemSettings Visible="True">
+                        <PageSizeItemSettings Visible="True" Items="10, 50, 100, 200, 500">
                         </PageSizeItemSettings>
                     </SettingsPager>
 
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>
 
-                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" HorizontalScrollBarMode="Auto" VerticalScrollBarMode="Auto" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="570" />
 
                     <SettingsBehavior ConfirmDelete="True" AllowEllipsisInText="True" />
+
+                    <SettingsResizing ColumnResizeMode="Control" />
 
                     <SettingsCommandButton >
                         <NewButton  Text="Nuevo">
