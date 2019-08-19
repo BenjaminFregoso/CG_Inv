@@ -139,9 +139,14 @@
     <Reference Include="DevExpress.Web.ASPxRichEdit.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Articulos\Articulos.aspx" />
+    <Content Include="Articulos\Familias_Caracteristicas.aspx" />
+    <Content Include="Articulos\DetalleCaracteristicas.aspx" />
     <Content Include="Articulos\Clasificacion.aspx" />
+    <Content Include="Articulos\Caracteristicas.aspx" />
     <Content Include="Articulos\Departamento.aspx" />
     <Content Include="Articulos\Familias.aspx" />
+    <Content Include="Catalogos\Bancos_New.aspx" />
     <Content Include="Catalogos\Ciudades.aspx" />
     <Content Include="Catalogos\Estado.aspx" />
     <Content Include="Catalogos\MetodoPago.aspx" />
@@ -153,8 +158,12 @@
     <Content Include="Catalogos\ClaveProductoServicios.aspx" />
     <Content Include="Catalogos\CentroCostos.aspx" />
     <Content Include="Catalogos\UnidadMedida.aspx" />
+    <Content Include="Content\UploadControl\DragAndDrop.css" />
     <Content Include="entrada.aspx" />
     <Content Include="Images\fondo12.png" />
+    <Content Include="Images\talla_estandar.png" />
+    <Content Include="Images\talla_grande.png" />
+    <Content Include="Images\talla_petite.png" />
     <Content Include="Inicio.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
@@ -181,6 +190,7 @@
     <Content Include="Images\usuario.png" />
     <Content Include="Default.aspx" />
     <Content Include="Errores.aspx" />
+    <Content Include="JSCode.js" />
     <Content Include="Menus.aspx" />
     <Content Include="Content\Images\AquaHeader.jpg" />
     <Content Include="Content\Images\BlackGlassHeader.jpg" />
@@ -212,8 +222,10 @@
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="web.sitemap" />
+    <Content Include="MainInicio.master" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -222,12 +234,40 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Articulos\Articulos.aspx.cs">
+      <DependentUpon>Articulos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos\Articulos.aspx.designer.cs">
+      <DependentUpon>Articulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Articulos\Familias_Caracteristicas.aspx.cs">
+      <DependentUpon>Familias_Caracteristicas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos\Familias_Caracteristicas.aspx.designer.cs">
+      <DependentUpon>Familias_Caracteristicas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Articulos\DetalleCaracteristicas.aspx.cs">
+      <DependentUpon>DetalleCaracteristicas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos\DetalleCaracteristicas.aspx.designer.cs">
+      <DependentUpon>DetalleCaracteristicas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Articulos\Clasificacion.aspx.cs">
       <DependentUpon>Clasificacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Articulos\Clasificacion.aspx.designer.cs">
       <DependentUpon>Clasificacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Articulos\Caracteristicas.aspx.cs">
+      <DependentUpon>Caracteristicas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos\Caracteristicas.aspx.designer.cs">
+      <DependentUpon>Caracteristicas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Articulos\Departamento.aspx.cs">
       <DependentUpon>Departamento.aspx</DependentUpon>
@@ -242,6 +282,13 @@
     </Compile>
     <Compile Include="Articulos\Familias.aspx.designer.cs">
       <DependentUpon>Familias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Bancos_New.aspx.cs">
+      <DependentUpon>Bancos_New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Bancos_New.aspx.designer.cs">
+      <DependentUpon>Bancos_New.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Ciudades.aspx.cs">
       <DependentUpon>Ciudades.aspx</DependentUpon>
@@ -384,6 +431,13 @@
     <Compile Include="Errores.aspx.designer.cs">
       <DependentUpon>Errores.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MainInicio.master.cs">
+      <DependentUpon>MainInicio.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainInicio.master.designer.cs">
+      <DependentUpon>MainInicio.master</DependentUpon>
+    </Compile>
     <Compile Include="Menus.aspx.cs">
       <DependentUpon>Menus.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -468,6 +522,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Archivos\Fotos\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
