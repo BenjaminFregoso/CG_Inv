@@ -140,6 +140,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Articulos\Articulos.aspx" />
+    <Content Include="Compras\OrdenCompra.aspx" />
+    <Content Include="Compras\Compradores.aspx" />
+    <Content Include="Articulos\Rango_Tallas.aspx" />
+    <Content Include="Articulos\Marcas.aspx" />
     <Content Include="Articulos\Familias_Caracteristicas.aspx" />
     <Content Include="Articulos\DetalleCaracteristicas.aspx" />
     <Content Include="Articulos\Clasificacion.aspx" />
@@ -159,7 +163,6 @@
     <Content Include="Catalogos\CentroCostos.aspx" />
     <Content Include="Catalogos\UnidadMedida.aspx" />
     <Content Include="Content\UploadControl\DragAndDrop.css" />
-    <Content Include="entrada.aspx" />
     <Content Include="Images\fondo12.png" />
     <Content Include="Images\talla_estandar.png" />
     <Content Include="Images\talla_grande.png" />
@@ -198,12 +201,8 @@
     <Content Include="Content\Images\PlasticBlueHeader.jpg" />
     <Content Include="Content\Images\RedWineHeader.jpg" />
     <Content Include="Content\Site.css" />
-    <Content Include="Asigna_cia.aspx" />
-    <Content Include="Nuevo_Arti.aspx" />
-    <Content Include="Periodos.aspx" />
     <Content Include="Perfiles.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Accesos.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Light.master" />
@@ -240,6 +239,34 @@
     </Compile>
     <Compile Include="Articulos\Articulos.aspx.designer.cs">
       <DependentUpon>Articulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compras\OrdenCompra.aspx.cs">
+      <DependentUpon>OrdenCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compras\OrdenCompra.aspx.designer.cs">
+      <DependentUpon>OrdenCompra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compras\Compradores.aspx.cs">
+      <DependentUpon>Compradores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compras\Compradores.aspx.designer.cs">
+      <DependentUpon>Compradores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Articulos\Rango_Tallas.aspx.cs">
+      <DependentUpon>Rango_Tallas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos\Rango_Tallas.aspx.designer.cs">
+      <DependentUpon>Rango_Tallas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Articulos\Marcas.aspx.cs">
+      <DependentUpon>Marcas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos\Marcas.aspx.designer.cs">
+      <DependentUpon>Marcas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Articulos\Familias_Caracteristicas.aspx.cs">
       <DependentUpon>Familias_Caracteristicas.aspx</DependentUpon>
@@ -445,27 +472,6 @@
     <Compile Include="Menus.aspx.designer.cs">
       <DependentUpon>Menus.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Asigna_cia.aspx.cs">
-      <DependentUpon>Asigna_cia.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Asigna_cia.aspx.designer.cs">
-      <DependentUpon>Asigna_cia.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Nuevo_Arti.aspx.cs">
-      <DependentUpon>Nuevo_Arti.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Nuevo_Arti.aspx.designer.cs">
-      <DependentUpon>Nuevo_Arti.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Periodos.aspx.cs">
-      <DependentUpon>Periodos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Periodos.aspx.designer.cs">
-      <DependentUpon>Periodos.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Perfiles.aspx.cs">
       <DependentUpon>Perfiles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -497,13 +503,6 @@
     </Compile>
     <Compile Include="Root.master.designer.cs">
       <DependentUpon>Root.master</DependentUpon>
-    </Compile>
-    <Compile Include="Accesos.aspx.cs">
-      <DependentUpon>Accesos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Accesos.aspx.designer.cs">
-      <DependentUpon>Accesos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Empresas.aspx.cs">
       <DependentUpon>Empresas.aspx</DependentUpon>

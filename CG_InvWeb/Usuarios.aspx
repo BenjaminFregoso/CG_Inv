@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="CG_InvWeb.Usuarios" %>
+﻿<%@ Page Title="Usuarios" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="CG_InvWeb.Usuarios" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -23,10 +23,6 @@
                             </dx:GridViewColumnLayoutItem>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="perfil">
                             </dx:GridViewColumnLayoutItem>
-                            <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="empresa">
-                            </dx:GridViewColumnLayoutItem>
-                            <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="nombre">
-                            </dx:GridViewColumnLayoutItem>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="fecha_alta">
                             </dx:GridViewColumnLayoutItem>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="fecha_baja">
@@ -41,18 +37,12 @@
                     <Columns>
                         <dx:GridViewCommandColumn VisibleIndex="0" Caption="#" Visible="False">
                         </dx:GridViewCommandColumn>
-                        <dx:GridViewDataComboBoxColumn Caption="Empresa" FieldName="empresa" VisibleIndex="1">
-                            <PropertiesComboBox DataSourceID="SDS_Empresa" TextField="empresa" ValueField="empresa">
-                            </PropertiesComboBox>
-                        </dx:GridViewDataComboBoxColumn>
                         <dx:GridViewDataTextColumn Caption="Usuario" FieldName="usuario" ShowInCustomizationForm="True" VisibleIndex="2">
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataDateColumn Caption="Fecha de Baja" FieldName="fecha_baja" ShowInCustomizationForm="True" VisibleIndex="7">
                         </dx:GridViewDataDateColumn>
                         <dx:GridViewDataDateColumn Caption="Fecha de Alta" FieldName="fecha_alta" ShowInCustomizationForm="True" VisibleIndex="6">
                         </dx:GridViewDataDateColumn>
-                        <dx:GridViewDataTextColumn Caption="Nombre completo" FieldName="nombre" ShowInCustomizationForm="True" VisibleIndex="5">
-                        </dx:GridViewDataTextColumn>
                         <dx:GridViewDataComboBoxColumn Caption="Perfil" FieldName="perfil" ShowInCustomizationForm="True" VisibleIndex="4">
                             <PropertiesComboBox DataSourceID="SDS_Perfil" TextField="perfil" ValueField="perfil">
                             </PropertiesComboBox>
@@ -73,10 +63,6 @@
                                 </dx:GridViewColumnLayoutItem>
                                 <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="perfil">
                                 </dx:GridViewColumnLayoutItem>
-                                <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="empresa">
-                                </dx:GridViewColumnLayoutItem>
-                                <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="nombre">
-                                </dx:GridViewColumnLayoutItem>
                                 <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="fecha_alta">
                                 </dx:GridViewColumnLayoutItem>
                                 <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="fecha_baja">
@@ -86,7 +72,7 @@
                             </SettingsAdaptivity>
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
-                    <SettingsPager Mode="ShowPager">
+                    <SettingsPager Mode="ShowPager" Position ="Top" PageSize="100">
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">
@@ -95,12 +81,12 @@
                         </NextPageButton>
                         <PrevPageButton Visible="False">
                         </PrevPageButton>
-                        <PageSizeItemSettings Visible="True">
+                        <PageSizeItemSettings Visible="True" Items="10, 50, 100, 200, 500">
                         </PageSizeItemSettings>
                     </SettingsPager>
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>
-                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="570"/>
                     <SettingsBehavior ConfirmDelete="True" AllowEllipsisInText="True" />
                     <SettingsCommandButton >
                         <NewButton  Text="Nuevo">
@@ -208,7 +194,11 @@
         </PanelCollection>
     </dx:ASPxRoundPanel>
 
-    <asp:SqlDataSource ID="SDS_Usuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;Usuarios&quot; WHERE key_usuario = ?" InsertCommand="INSERT INTO &quot;Usuarios&quot; (usuario, contrasena, perfil, empresa, nombre, fecha_baja, fecha_alta) VALUES ( ?, ?, ?, ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_usuario, usuario, contrasena, perfil, empresa, nombre, fecha_baja, fecha_alta FROM &quot;Usuarios&quot;" UpdateCommand="UPDATE &quot;Usuarios&quot; SET usuario = ?, contrasena = ?, perfil = ?, empresa = ?, nombre = ?, fecha_baja = ?, fecha_alta = ? WHERE key_usuario = ?">
+    <asp:SqlDataSource ID="SDS_Usuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" 
+        DeleteCommand="DELETE FROM &quot;Usuarios&quot; WHERE key_usuario = ?" 
+        InsertCommand="INSERT INTO &quot;Usuarios&quot; (usuario, contrasena, perfil, fecha_baja, fecha_alta) VALUES ( ?, ?, ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" 
+        SelectCommand="SELECT key_usuario, usuario, contrasena, perfil,  fecha_baja, fecha_alta FROM &quot;Usuarios&quot;" 
+        UpdateCommand="UPDATE &quot;Usuarios&quot; SET usuario = ?, contrasena = ?, perfil = ?, fecha_baja = ?, fecha_alta = ? WHERE key_usuario = ?">
         <DeleteParameters>
             <asp:Parameter Name="key_usuario" Type="Int32" />
         </DeleteParameters>
@@ -216,8 +206,6 @@
             <asp:Parameter Name="usuario" Type="String" />
             <asp:Parameter Name="contrasena" Type="String" />
             <asp:Parameter Name="perfil" Type="String" />
-            <asp:Parameter Name="empresa" Type="String" />
-            <asp:Parameter Name="nombre" Type="String" />
             <asp:Parameter Name="fecha_baja" Type="DateTime" />
             <asp:Parameter Name="fecha_alta" Type="DateTime" />
         </InsertParameters>
@@ -225,8 +213,6 @@
             <asp:Parameter Name="usuario" Type="String" />
             <asp:Parameter Name="contrasena" Type="String" />
             <asp:Parameter Name="perfil" Type="String" />
-            <asp:Parameter Name="empresa" Type="String" />
-            <asp:Parameter Name="nombre" Type="String" />
             <asp:Parameter Name="fecha_baja" Type="DateTime" />
             <asp:Parameter Name="fecha_alta" Type="DateTime" />
             <asp:Parameter Name="key_usuario" Type="Int32" />

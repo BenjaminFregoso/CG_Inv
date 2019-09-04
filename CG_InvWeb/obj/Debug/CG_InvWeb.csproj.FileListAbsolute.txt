@@ -1098,10 +1098,7 @@ D:\Documents\GitHub\CG_Inv\CG_InvWeb\bin\de\DevExpress.DataAccess.v18.2.resource
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\bin\es\DevExpress.DataAccess.v18.2.resources.dll
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\bin\ja\DevExpress.DataAccess.v18.2.resources.dll
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\bin\ru\DevExpress.DataAccess.v18.2.resources.dll
-D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.csprojAssemblyReference.cache
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.dll.licenses
-D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.csproj.CoreCompileInputs.cache
-D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.csproj.CopyComplete
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.dll
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.pdb
 C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\bin\Microsoft.AspNet.Identity.Core.dll
@@ -1110,3 +1107,6 @@ C:\Users\siste\Documents\GitHub\CG_Inv\CG_InvWeb\bin\es\Microsoft.AspNet.Identit
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\bin\Microsoft.AspNet.Identity.Core.dll
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\bin\Microsoft.AspNet.Identity.Core.xml
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
+D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.csprojAssemblyReference.cache
+D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.csproj.CoreCompileInputs.cache
+D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.csproj.CopyComplete

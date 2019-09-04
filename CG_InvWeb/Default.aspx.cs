@@ -16,8 +16,6 @@ namespace CG_InvWeb
     {
         private string Usuario;
         private string Contraseña;
-        private string Compañia;
-        private string Obra;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -34,9 +32,7 @@ namespace CG_InvWeb
             string ip = Request.UserHostAddress.ToString();
 
 
-            //AQUI NO SIRVE 
-            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
-            //using (SqlConnection sqlConnection1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString.ToString()))
+            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))            
             {
                 sqlConnection1.Open();
                 NpgsqlCommand cmd = new NpgsqlCommand();

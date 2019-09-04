@@ -17,15 +17,15 @@ namespace CG_InvWeb.Catalogos
         {
             //ASPxGridView1.GetMasterRowKeyValue();
             //string PerfilValue = e.Values[index].ToString();
-            e.NewValues["fisica"] = (e.NewValues["fisica"] == null) ? 0 : e.NewValues["fisica"];
-            e.NewValues["moral"] = (e.NewValues["moral"] == null) ? 0: e.NewValues["moral"];
+            //e.NewValues["fisica"] = (e.NewValues["fisica"] == null) ? 0 : e.NewValues["fisica"];
+            //e.NewValues["moral"] = (e.NewValues["moral"] == null) ? 0: e.NewValues["moral"];
         }
 
         protected void ASPxGridView1_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
-            e.NewValues["fisica"] = (e.NewValues["fisica"] == null) ? 0 : e.NewValues["fisica"];
-            e.NewValues["moral"] = (e.NewValues["moral"] == null) ? 0 : e.NewValues["moral"];
-            e.NewValues["fecha_ini"] = DateTime.Today;
+            //e.NewValues["fisica"] = (e.NewValues["fisica"] == null) ? 0 : e.NewValues["fisica"];
+            //e.NewValues["moral"] = (e.NewValues["moral"] == null) ? 0 : e.NewValues["moral"];
+            //e.NewValues["fecha_ini"] = DateTime.Today;
 
         }
 
@@ -55,7 +55,7 @@ namespace CG_InvWeb.Catalogos
             }
 
             GlobalHandler objeto = new GlobalHandler();
-            objeto.Bitacora("UPDATE", e.OldValues["cc"].ToString() + " -- " + e.OldValues["descrip"].ToString(), e.NewValues["cc"].ToString() + " -- " + e.NewValues["descrip"].ToString(), usuario, "", "Clasificacion");
+            objeto.Bitacora("UPDATE", e.OldValues["centrocostos"].ToString(), e.NewValues["centrocostos"].ToString(), usuario, "", "CentroCostos");
             //TERMINA BITACORA #######################
         }
 
@@ -73,7 +73,7 @@ namespace CG_InvWeb.Catalogos
             }
 
             GlobalHandler objeto = new GlobalHandler();
-            objeto.Bitacora("INSERT", "", e.NewValues["cc"].ToString() + " -- " + e.NewValues["descrip"].ToString(), usuario, "", "Clasificacion");
+            objeto.Bitacora("INSERT", "", e.NewValues["centrocostos"].ToString(), usuario, "", "CentroCostos");
             //TERMINA BITACORA #######################
         }
 
@@ -91,7 +91,7 @@ namespace CG_InvWeb.Catalogos
             }
 
             GlobalHandler objeto = new GlobalHandler();
-            objeto.Bitacora("UPDATE", e.Values["cc"].ToString() + " -- " + e.Values["descrip"].ToString(), "", usuario, "", "Clasificacion");
+            objeto.Bitacora("UPDATE", e.Values["centrocostos"].ToString() , "", usuario, "", "CentroCostos");
             //TERMINA BITACORA #######################
         }
     }

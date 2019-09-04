@@ -69,7 +69,7 @@
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
-                    <SettingsPager Mode="ShowPager">
+                    <SettingsPager Mode="ShowPager" Position ="Top" PageSize="100">
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">
@@ -78,12 +78,12 @@
                         </NextPageButton>
                         <PrevPageButton Visible="False">
                         </PrevPageButton>
-                        <PageSizeItemSettings Visible="True">
+                        <PageSizeItemSettings Visible="True" Items="10, 50, 100, 200, 500">
                         </PageSizeItemSettings>
                     </SettingsPager>
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>
-                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="570"/>
                     <SettingsBehavior ConfirmDelete="True" AllowEllipsisInText="True" />
 
 

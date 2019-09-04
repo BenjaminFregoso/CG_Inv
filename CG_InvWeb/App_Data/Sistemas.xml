@@ -3,21 +3,19 @@
 <menu>
 
   <group Text="Configuración">
-    
-    <item Text="Empresas" NavigateUrl="~/Asigna_cia.aspx"/>
-
-    <item Text="Usuarios" NavigateUrl="~/Usuarios.aspx"/>
-
-    <item Text="Perfiles" NavigateUrl="~/Perfiles.aspx"/>
-
-    <item Text="Almacenes" NavigateUrl="~/Catalogos/Almacen.aspx"/>
-
-    <item Text="Centros de Costos" NavigateUrl="~/Catalogos/CentroCostos.aspx"/>    
 
     <item  Text="Datos compañía" NavigateUrl="~/Inicio.aspx"/>
 
-    <item  Text="Menus" NavigateUrl="~/Menus.aspx"/>
+    <item Text="Perfiles" NavigateUrl="~/Perfiles.aspx"/>
+    
+    <item Text="Usuarios" NavigateUrl="~/Usuarios.aspx"/>
 
+    <item  Text="Permisos y Accesos" NavigateUrl="~/Menus.aspx"/>
+        
+    <item Text="Centros de Costos" NavigateUrl="~/Catalogos/CentroCostos.aspx"/>
+
+    <item Text="Almacenes" NavigateUrl="~/Catalogos/Almacen.aspx"/>
+  
   </group>
 
   <group Text="Catálogo de Artículos">
@@ -36,9 +34,9 @@
 
     <item Text="Relación Familias con Características" NavigateUrl="~/Articulos/Familias_Caracteristicas.aspx"/>
 
-    <item Text="Rangos de tallas" NavigateUrl="~/Inicio.aspx"/>
+    <item Text="Rangos de tallas" NavigateUrl="~/Articulos/Rango_Tallas.aspx"/>
 
-    <item Text="Marcas" NavigateUrl="~/Inicio.aspx"/>
+    <item Text="Marcas" NavigateUrl="~/Articulos/Marcas.aspx"/>
 
   </group>
 
@@ -72,9 +70,10 @@
   
   
 
-  <group Text="Procesos">
+  <group Text="Compras">
 
-    <item Text="Orden de compra" NavigateUrl="~/Default.aspx" />
+    <item Text="Compradores" NavigateUrl="~/Compras/Compradores.aspx" />
+    <item Text="Orden de Compra" NavigateUrl="~/Compras/OrdenCompra.aspx" />
 
   </group>
 

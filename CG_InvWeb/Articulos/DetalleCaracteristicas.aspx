@@ -17,7 +17,7 @@
     }
 </style> 
 <div class="Principal">          
-    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Detalle de características" ShowCollapseButton="True" Theme="MaterialCompact" Width="100%" Font-Names="Century Gothic" CssClass="auto-style1" Height="100%" HeaderNavigateUrl="~/Articulos/Clasificacion.aspx">
+    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Detalle de características" ShowCollapseButton="True" Theme="MaterialCompact" Width="100%" Font-Names="Century Gothic" CssClass="auto-style1" Height="100%" HeaderNavigateUrl="~/Articulos/DetalleCaracteristicas.aspx">
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">                    
@@ -45,7 +45,7 @@
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn Caption="Detalle de característica" FieldName="descripcion" ShowInCustomizationForm="True" VisibleIndex="2">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataComboBoxColumn Caption="Característica" FieldName="fkey_caracteristicas" ShowInCustomizationForm="True" VisibleIndex="1">
+                        <dx:GridViewDataComboBoxColumn GroupIndex="0" Caption="Característica" FieldName="fkey_caracteristicas" ShowInCustomizationForm="True" VisibleIndex="1">
                             <PropertiesComboBox DataSourceID="SDS_Caracteristica" TextField="caracteristica" ValueField="key_caracteristicas">
                             </PropertiesComboBox>
                             <EditFormSettings Visible="False" />
@@ -70,7 +70,7 @@
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
-                    <SettingsPager Mode="ShowPager" Position ="TopAndBottom">
+                    <SettingsPager Mode="ShowPager" Position ="Top" PageSize="100">
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">
@@ -79,14 +79,14 @@
                         </NextPageButton>
                         <PrevPageButton Visible="False">
                         </PrevPageButton>
-                        <PageSizeItemSettings Visible="True">
+                        <PageSizeItemSettings Visible="True" Items="10, 50, 100, 200, 500">
                         </PageSizeItemSettings>
                     </SettingsPager>
 
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>
 
-                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="570"/>
 
                     <SettingsBehavior ConfirmDelete="True" AllowEllipsisInText="True" />
 

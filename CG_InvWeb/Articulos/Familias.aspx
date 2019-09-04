@@ -42,15 +42,15 @@
                         <dx:GridViewDataTextColumn FieldName="key_familia" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="1" Name="key_familia">
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="familia" ShowInCustomizationForm="True" VisibleIndex="4" Caption="Familia" Name="familia">
+                        <dx:GridViewDataTextColumn  FieldName="familia" ShowInCustomizationForm="True" VisibleIndex="4" Caption="Familia" Name="familia">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="departamento" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="2" Caption="Departamento" Name="departamento">
+                        <dx:GridViewDataTextColumn GroupIndex="0" FieldName="departamento" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="2" Caption="Departamento" Name="departamento">
                             <PropertiesTextEdit>
                                 <ReadOnlyStyle BackColor="#999999" ForeColor="White">
                                 </ReadOnlyStyle>
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="clasificacion" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="3" Caption="Clasificación" Name="clasificacion">
+                        <dx:GridViewDataTextColumn GroupIndex="1" FieldName="clasificacion" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="3" Caption="Clasificación" Name="clasificacion">
                             <PropertiesTextEdit>
                                 <ReadOnlyStyle BackColor="#999999" ForeColor="White">
                                 </ReadOnlyStyle>
@@ -109,7 +109,7 @@
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
-                    <SettingsPager Mode="ShowPager" Position ="TopAndBottom">
+                    <SettingsPager Mode="ShowPager" Position ="Top" PageSize="100">
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">
@@ -118,14 +118,14 @@
                         </NextPageButton>
                         <PrevPageButton Visible="False">
                         </PrevPageButton>
-                        <PageSizeItemSettings Visible="True">
+                        <PageSizeItemSettings Visible="True" Items="10, 50, 100, 200, 500">
                         </PageSizeItemSettings>
                     </SettingsPager>
 
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>
 
-                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="570"/>
 
                     <SettingsBehavior ConfirmDelete="True" AllowEllipsisInText="True" />
 

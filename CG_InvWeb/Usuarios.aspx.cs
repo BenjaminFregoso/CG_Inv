@@ -29,7 +29,7 @@ namespace CG_InvWeb
             }
 
             GlobalHandler objeto = new GlobalHandler();
-            objeto.Bitacora("DELETE", e.Values["usuario"].ToString() + " -- " + e.Values["contrasena"].ToString() + " -- " + e.Values["perfil"].ToString() + " -- " + e.Values["empresa"].ToString() + " -- " + e.Values["nombre"].ToString(), "", usuario, "", "Usuarios");
+            objeto.Bitacora("DELETE", e.Values["usuario"].ToString() + " -- " + e.Values["contrasena"].ToString() + " -- " + e.Values["perfil"].ToString(),"", usuario, "", "Usuarios");
             //TERMINA BITACORA #######################
         }
 
@@ -48,7 +48,7 @@ namespace CG_InvWeb
             }
 
             GlobalHandler objeto = new GlobalHandler();
-            objeto.Bitacora("INSERT", "", e.NewValues["usuario"].ToString() + " -- " + e.NewValues["contrasena"].ToString() + " -- " + e.NewValues["perfil"].ToString() + " -- " + e.NewValues["empresa"].ToString() + " -- " + e.NewValues["nombre"].ToString(), usuario, "", "Usuarios");
+            objeto.Bitacora("INSERT", "", e.NewValues["usuario"].ToString() + " -- " + e.NewValues["contrasena"].ToString() + " -- " + e.NewValues["perfil"].ToString(), usuario, "", "Usuarios");
             //TERMINA BITACORA #######################
         }
 
@@ -66,7 +66,9 @@ namespace CG_InvWeb
             }
 
             GlobalHandler objeto = new GlobalHandler();
-            objeto.Bitacora("UPDATE", e.OldValues["usuario"].ToString() + " -- " + e.OldValues["contrasena"].ToString() + " -- " + e.OldValues["perfil"].ToString() + " -- " + e.OldValues["empresa"].ToString() + " -- " + e.OldValues["nombre"].ToString(), e.NewValues["usuario"].ToString() + " -- " + e.NewValues["contrasena"].ToString() + " -- " + e.NewValues["perfil"].ToString() + " -- " + e.NewValues["empresa"].ToString() + " -- " + e.NewValues["nombre"].ToString(), usuario, "", "Usuarios");
+            //objeto.Bitacora("UPDATE", e.OldValues["departamento"].ToString(), e.NewValues["departamento"].ToString(), usuario, "", "Departamento");
+
+            objeto.Bitacora("UPDATE", e.OldValues["perfil"].ToString() + " -- " + e.OldValues["contrasena"].ToString(), e.NewValues["perfil"].ToString() + " -- " + e.NewValues["contrasena"].ToString(), usuario, "", "Usuarios");
             //TERMINA BITACORA #######################
         }
     }

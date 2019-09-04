@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Régimen Fiscal" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Caracteristicas.aspx.cs" Inherits="CG_InvWeb.Articulos.Caracteristicas" %>
+﻿<%@ Page Title="Características" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Caracteristicas.aspx.cs" Inherits="CG_InvWeb.Articulos.Caracteristicas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -17,7 +17,7 @@
     }
 </style> 
 <div class="Principal">          
-    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Características" ShowCollapseButton="True" Theme="MaterialCompact" Width="100%" Font-Names="Century Gothic" CssClass="auto-style1" Height="100%" HeaderNavigateUrl="~/Catalogos/Almacen.aspx">
+    <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Características" ShowCollapseButton="True" Theme="MaterialCompact" Width="100%" Font-Names="Century Gothic" CssClass="auto-style1" Height="100%" HeaderNavigateUrl="~/Articulos/Caracteristicas.aspx">
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
@@ -58,7 +58,7 @@
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
-                    <SettingsPager Mode="ShowPager" Position ="TopAndBottom">
+                    <SettingsPager Mode="ShowPager" Position ="Top" PageSize="100">
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">
@@ -67,14 +67,14 @@
                         </NextPageButton>
                         <PrevPageButton Visible="False">
                         </PrevPageButton>
-                        <PageSizeItemSettings Visible="True">
+                        <PageSizeItemSettings Visible="True" Items="10, 50, 100, 200, 500">
                         </PageSizeItemSettings>
                     </SettingsPager>
 
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>
 
-                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" VerticalScrollBarMode="Auto" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="570" />
 
                     <SettingsBehavior ConfirmDelete="True" AllowEllipsisInText="True" />
 

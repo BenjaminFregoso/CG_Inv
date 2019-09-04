@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Régimen Fiscal" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Clasificacion.aspx.cs" Inherits="CG_InvWeb.Articulos.Clasificacion" %>
+﻿<%@ Page Title="Clasificación" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Clasificacion.aspx.cs" Inherits="CG_InvWeb.Articulos.Clasificacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -42,7 +42,7 @@
                     <Columns>
                         <dx:GridViewCommandColumn VisibleIndex="0" Caption="#" Visible="False">
                         </dx:GridViewCommandColumn>
-                        <dx:GridViewDataComboBoxColumn FieldName="fkey_departamento" ShowInCustomizationForm="True" VisibleIndex="2" Caption="Departamento" >
+                        <dx:GridViewDataComboBoxColumn GroupIndex="0" FieldName="fkey_departamento" ShowInCustomizationForm="True" VisibleIndex="2" Caption="Departamento" >
                             <PropertiesComboBox DataSourceID="SDS_Departamento" TextField="departamento" ValueField="key_departamento" HelpText="Selecciona el departamento" NullText="Departamento">
                                 <ValidationSettings SetFocusOnError="True">
                                     <RequiredField IsRequired="True" />
@@ -76,7 +76,7 @@
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
-                    <SettingsPager Mode="ShowPager" Position ="TopAndBottom">
+                    <SettingsPager Mode="ShowPager" Position ="Top" PageSize="100">
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">
@@ -85,14 +85,14 @@
                         </NextPageButton>
                         <PrevPageButton Visible="False">
                         </PrevPageButton>
-                        <PageSizeItemSettings Visible="True">
+                        <PageSizeItemSettings Visible="True" Items="10, 50, 100, 200, 500">
                         </PageSizeItemSettings>
                     </SettingsPager>
 
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>
 
-                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="570" />
 
                     <SettingsBehavior ConfirmDelete="True" AllowEllipsisInText="True" />
 
