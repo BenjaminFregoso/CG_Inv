@@ -152,16 +152,25 @@
     <Content Include="Articulos\Familias.aspx" />
     <Content Include="Catalogos\Bancos_New.aspx" />
     <Content Include="Catalogos\Ciudades.aspx" />
+    <Content Include="Catalogos\Ciudades_New.aspx" />
+    <Content Include="Catalogos\ClaveProductoServicios_New.aspx" />
     <Content Include="Catalogos\Estado.aspx" />
+    <Content Include="Catalogos\Estado_New.aspx" />
+    <Content Include="Catalogos\FormaPago_New.aspx" />
     <Content Include="Catalogos\MetodoPago.aspx" />
     <Content Include="Catalogos\FormaPago.aspx" />
     <Content Include="Catalogos\Almacen.aspx" />
+    <Content Include="Catalogos\MetodoPago_New.aspx" />
     <Content Include="Catalogos\Moneda.aspx" />
     <Content Include="Catalogos\Country.aspx" />
     <Content Include="Catalogos\Bancos.aspx" />
     <Content Include="Catalogos\ClaveProductoServicios.aspx" />
     <Content Include="Catalogos\CentroCostos.aspx" />
+    <Content Include="Catalogos\Moneda_New.aspx" />
+    <Content Include="Catalogos\Paises_New.aspx" />
     <Content Include="Catalogos\UnidadMedida.aspx" />
+    <Content Include="Catalogos\RegimenFiscal_New.aspx" />
+    <Content Include="Catalogos\UnidadMedida_New.aspx" />
     <Content Include="Content\UploadControl\DragAndDrop.css" />
     <Content Include="Images\fondo12.png" />
     <Content Include="Images\talla_estandar.png" />
@@ -324,12 +333,40 @@
     <Compile Include="Catalogos\Ciudades.aspx.designer.cs">
       <DependentUpon>Ciudades.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\Ciudades_New.aspx.cs">
+      <DependentUpon>Ciudades_New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Ciudades_New.aspx.designer.cs">
+      <DependentUpon>Ciudades_New.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\ClaveProductoServicios_New.aspx.cs">
+      <DependentUpon>ClaveProductoServicios_New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\ClaveProductoServicios_New.aspx.designer.cs">
+      <DependentUpon>ClaveProductoServicios_New.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\Estado.aspx.cs">
       <DependentUpon>Estado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Catalogos\Estado.aspx.designer.cs">
       <DependentUpon>Estado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Estado_New.aspx.cs">
+      <DependentUpon>Estado_New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Estado_New.aspx.designer.cs">
+      <DependentUpon>Estado_New.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\FormaPago_New.aspx.cs">
+      <DependentUpon>FormaPago_New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\FormaPago_New.aspx.designer.cs">
+      <DependentUpon>FormaPago_New.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\MetodoPago.aspx.cs">
       <DependentUpon>MetodoPago.aspx</DependentUpon>
@@ -351,6 +388,13 @@
     </Compile>
     <Compile Include="Catalogos\Almacen.aspx.designer.cs">
       <DependentUpon>Almacen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\MetodoPago_New.aspx.cs">
+      <DependentUpon>MetodoPago_New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\MetodoPago_New.aspx.designer.cs">
+      <DependentUpon>MetodoPago_New.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Moneda.aspx.cs">
       <DependentUpon>Moneda.aspx</DependentUpon>
@@ -387,12 +431,40 @@
     <Compile Include="Catalogos\CentroCostos.aspx.designer.cs">
       <DependentUpon>CentroCostos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\Moneda_New.aspx.cs">
+      <DependentUpon>Moneda_New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Moneda_New.aspx.designer.cs">
+      <DependentUpon>Moneda_New.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Paises_New.aspx.cs">
+      <DependentUpon>Paises_New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Paises_New.aspx.designer.cs">
+      <DependentUpon>Paises_New.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\UnidadMedida.aspx.cs">
       <DependentUpon>UnidadMedida.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Catalogos\UnidadMedida.aspx.designer.cs">
       <DependentUpon>UnidadMedida.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\RegimenFiscal_New.aspx.cs">
+      <DependentUpon>RegimenFiscal_New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\RegimenFiscal_New.aspx.designer.cs">
+      <DependentUpon>RegimenFiscal_New.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\UnidadMedida_New.aspx.cs">
+      <DependentUpon>UnidadMedida_New.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\UnidadMedida_New.aspx.designer.cs">
+      <DependentUpon>UnidadMedida_New.aspx</DependentUpon>
     </Compile>
     <Compile Include="GlobalHandler.cs" />
     <Compile Include="Inicio.aspx.cs">
