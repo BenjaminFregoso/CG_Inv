@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Bancos" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Bancos_New.aspx.cs" Inherits="CG_InvWeb.Catalogos.Bancos_New" %>
 
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         Principal{
