@@ -14,7 +14,7 @@ namespace CG_InvWeb {
 
            string svIdMenu = System.Web.HttpContext.Current.Session["Perfil"] as String;
            XmlDataSourceLeft.DataFile = "~/App_Data/" + svIdMenu + ".xml";
-           
+
         }
 
 

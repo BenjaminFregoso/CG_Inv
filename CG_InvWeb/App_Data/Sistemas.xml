@@ -3,21 +3,19 @@
 <menu>
 
   <group Text="Configuración">
-    
-    <item Text="Empresas" NavigateUrl="~/Asigna_cia.aspx"/>
-
-    <item Text="Usuarios" NavigateUrl="~/Usuarios.aspx"/>
-
-    <item Text="Perfiles" NavigateUrl="~/Perfiles.aspx"/>
-
-    <item Text="Almacenes" NavigateUrl="~/Catalogos/Almacen.aspx"/>
-
-    <item Text="Centros de Costos" NavigateUrl="~/Catalogos/CentroCostos.aspx"/>    
 
     <item  Text="Datos compañía" NavigateUrl="~/Inicio.aspx"/>
 
-    <item  Text="Menus" NavigateUrl="~/Menus.aspx"/>
+    <item Text="Perfiles" NavigateUrl="~/Perfiles.aspx"/>
+    
+    <item Text="Usuarios" NavigateUrl="~/Usuarios.aspx"/>
 
+    <item  Text="Permisos y Accesos" NavigateUrl="~/Menus.aspx"/>
+        
+    <item Text="Centros de Costos" NavigateUrl="~/Catalogos/CentroCostos.aspx"/>
+
+    <item Text="Almacenes" NavigateUrl="~/Catalogos/Almacen.aspx"/>
+  
   </group>
 
   <group Text="Catálogo de Artículos">
@@ -36,9 +34,9 @@
 
     <item Text="Relación Familias con Características" NavigateUrl="~/Articulos/Familias_Caracteristicas.aspx"/>
 
-    <item Text="Rangos de tallas" NavigateUrl="~/Inicio.aspx"/>
+    <item Text="Rangos de tallas" NavigateUrl="~/Articulos/Rango_Tallas.aspx"/>
 
-    <item Text="Marcas" NavigateUrl="~/Inicio.aspx"/>
+    <item Text="Marcas" NavigateUrl="~/Articulos/Marcas.aspx"/>
 
   </group>
 
@@ -46,23 +44,23 @@
   <group Text="Universales">
 
 
-    <item  Text="Régimen fiscal" NavigateUrl="~/Catalogos/RegimenFiscal.aspx"/>
+    <item  Text="Régimen fiscal" NavigateUrl="~/Catalogos/RegimenFiscal_New.aspx"/>
 
-    <item  Text="Método de pago" NavigateUrl="~/Catalogos/MetodoPago.aspx"/>
+    <item  Text="Método de pago" NavigateUrl="~/Catalogos/MetodoPago_New.aspx"/>
 
-    <item  Text="Forma de pago" NavigateUrl="~/Catalogos/FormaPago.aspx"/>
+    <item  Text="Forma de pago" NavigateUrl="~/Catalogos/FormaPago_New.aspx"/>
 
-    <item  Text="Claves de producto" NavigateUrl="~/Catalogos/ClaveProductoServicios.aspx"/>
+    <item  Text="Claves de producto" NavigateUrl="~/Catalogos/ClaveProductoServicios_New.aspx"/>
 
-    <item  Text="Unidad de medida" NavigateUrl="~/Catalogos/UnidadMedida.aspx"/>
+    <item  Text="Unidad de medida" NavigateUrl="~/Catalogos/UnidadMedida_New.aspx"/>
 
-    <item  Text="Monedas" NavigateUrl="~/Catalogos/Moneda.aspx"/>
+    <item  Text="Monedas" NavigateUrl="~/Catalogos/Moneda_New.aspx"/>
 
-    <item  Text="Países" NavigateUrl="~/Catalogos/Country.aspx"/>
+    <item  Text="Países" NavigateUrl="~/Catalogos/Paises_New.aspx"/>
 
-    <item  Text="Estados" NavigateUrl="~/Catalogos/Estado.aspx"/>
+    <item  Text="Estados" NavigateUrl="~/Catalogos/Estado_New.aspx"/>
 
-    <item  Text="Ciudades" NavigateUrl="~/Catalogos/Ciudades.aspx"/>
+    <item  Text="Ciudades" NavigateUrl="~/Catalogos/Ciudades_New.aspx"/>
 
     <item  Text="Bancos" NavigateUrl="~/Catalogos/Bancos_New.aspx"/>
 
@@ -72,9 +70,10 @@
   
   
 
-  <group Text="Procesos">
+  <group Text="Compras">
 
-    <item Text="Orden de compra" NavigateUrl="~/Default.aspx" />
+    <item Text="Compradores" NavigateUrl="~/Compras/Compradores.aspx" />
+    <item Text="Orden de Compra" NavigateUrl="~/Compras/OrdenCompra.aspx" />
 
   </group>
 

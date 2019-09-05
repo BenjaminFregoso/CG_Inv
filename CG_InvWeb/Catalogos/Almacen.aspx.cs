@@ -60,7 +60,7 @@ namespace CG_InvWeb.Catalogos
 
             
             GlobalHandler objeto = new GlobalHandler();
-            objeto.Bitacora("INSERT", "", e.NewValues["almacen"].ToString() + " -- " + e.NewValues["descrip"].ToString(), usuario, "", "c_Almacen");
+            objeto.Bitacora("INSERT", "", e.NewValues["almacen"].ToString(), usuario, "", "Almacen");
             //TERMINA BITACORA #######################
         }
 
@@ -78,7 +78,7 @@ namespace CG_InvWeb.Catalogos
             }
 
             GlobalHandler objeto = new GlobalHandler();
-            objeto.Bitacora("UPDATE", e.OldValues["almacen"].ToString() + " -- " + e.OldValues["descrip"].ToString(), e.NewValues["almacen"].ToString() + " -- " + e.NewValues["descrip"].ToString(), usuario, "", "c_Almacen");
+            objeto.Bitacora("UPDATE", e.OldValues["almacen"].ToString(), e.NewValues["almacen"].ToString(), usuario, "", "Almacen");
             //TERMINA BITACORA #######################
         }
 
@@ -98,7 +98,7 @@ namespace CG_InvWeb.Catalogos
 
             GlobalHandler objeto = new GlobalHandler();
 
-            objeto.Bitacora("DELETE", e.Values["almacen"].ToString() + " -- " + e.Values["descrip"].ToString(), "", usuario, "", "c_Almacen");
+            objeto.Bitacora("DELETE", e.Values["almacen"].ToString() , "", usuario, "", "Almacen");
             //TERMINA BITACORA #######################
         }
 
