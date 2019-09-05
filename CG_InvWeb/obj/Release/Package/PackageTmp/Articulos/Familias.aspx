@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="Familias.aspx.cs" Inherits="CG_InvWeb.Articulos.Familias" %>
+<%@ Page Title="Familias" Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="Familias.aspx.cs" Inherits="CG_InvWeb.Articulos.Familias" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -14,7 +14,7 @@
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">               
-                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Familia" KeyFieldName="key_familia"  EnableTheming="True" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnInitNewRow="ASPxGridView1_InitNewRow" OnStartRowEditing="ASPxGridView1_StartRowEditing">
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Familia" KeyFieldName="key_familia"  EnableTheming="True" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnInitNewRow="ASPxGridView1_InitNewRow" OnStartRowEditing="ASPxGridView1_StartRowEditing" OnRowDeleted="ASPxGridView1_RowDeleted" OnRowInserted="ASPxGridView1_RowInserted" OnRowUpdated="ASPxGridView1_RowUpdated">
                     <EditFormLayoutProperties>
                         <Items>
                             <dx:GridViewLayoutGroup ColCount="2" ColSpan="1" ColumnCount="2" Caption="Departamento  |  Clasificación">
@@ -109,7 +109,7 @@
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
-                    <SettingsPager Mode="ShowPager">
+                    <SettingsPager Mode="ShowPager" Position ="TopAndBottom">
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">

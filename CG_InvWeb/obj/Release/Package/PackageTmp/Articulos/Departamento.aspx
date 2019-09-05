@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Régimen Fiscal" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Departamento.aspx.cs" Inherits="CG_InvWeb.Articulos.Departamento" %>
+﻿<%@ Page Title="Departamento" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Departamento.aspx.cs" Inherits="CG_InvWeb.Articulos.Departamento" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -21,7 +21,7 @@
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
-                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableTheming="True" KeyFieldName="key_departamento" Theme="MaterialCompact" KeyboardSupport="True" Width="100%">
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableTheming="True" KeyFieldName="key_departamento" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnRowDeleted="ASPxGridView1_RowDeleted" OnRowInserted="ASPxGridView1_RowInserted" OnRowUpdated="ASPxGridView1_RowUpdated">
 
                     <EditFormLayoutProperties ColCount="1">
                         <Items>
@@ -34,6 +34,7 @@
                         </SettingsAdaptivity>
                         <SettingsItemCaptions HorizontalAlign="Left" Location="Top" />
                     </EditFormLayoutProperties>
+
                     <Columns>
                         <dx:GridViewCommandColumn VisibleIndex="0" Caption="#" Visible="False">
                         </dx:GridViewCommandColumn>
@@ -67,7 +68,7 @@
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
 
-                    <SettingsPager Mode="ShowPager">
+                    <SettingsPager Mode="ShowPager" Position ="TopAndBottom">
                         <FirstPageButton Visible="True">
                         </FirstPageButton>
                         <LastPageButton Visible="True">
