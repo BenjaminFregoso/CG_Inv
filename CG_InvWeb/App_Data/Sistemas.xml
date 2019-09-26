@@ -60,7 +60,7 @@
 
     <item  Text="Estados" NavigateUrl="~/Catalogos/Estado_New.aspx"/>
 
-    <item  Text="Ciudades" NavigateUrl="~/Catalogos/Ciudades_New.aspx"/>
+    <item  Text="Ciudades" NavigateUrl="~/Catalogos/Ciudades.aspx"/>
 
     <item  Text="Bancos" NavigateUrl="~/Catalogos/Bancos_New.aspx"/>
 
@@ -71,10 +71,11 @@
   
 
   <group Text="Compras">
-
+    <item Text="Proveedores" NavigateUrl="~/Compras/Proveedores.aspx" />
     <item Text="Compradores" NavigateUrl="~/Compras/Compradores.aspx" />
+    <item Text="Representantes" NavigateUrl="~/Compras/Representantes.aspx" />
     <item Text="Orden de Compra" NavigateUrl="~/Compras/OrdenCompra.aspx" />
-
+    <item Text="Tipo de Movimientos" NavigateUrl="~/Compras/TM_Proveedores.aspx" />
   </group>
 
   <group Text="Consultas y reportes">

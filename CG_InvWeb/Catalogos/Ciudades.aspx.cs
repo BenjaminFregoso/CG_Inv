@@ -11,7 +11,9 @@ namespace CG_InvWeb.Catalogos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
+
 
         protected void ASPxGridView1_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {

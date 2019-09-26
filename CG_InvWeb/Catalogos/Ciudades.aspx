@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Régimen Fiscal" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Ciudades.aspx.cs" Inherits="CG_InvWeb.Catalogos.Ciudades" %>
+﻿<%@ Page Title="Ciudades" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="Ciudades.aspx.cs" Inherits="CG_InvWeb.Catalogos.Ciudades" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -20,69 +20,77 @@
     <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Ciudades" ShowCollapseButton="True" Theme="iOS" Width="100%" Font-Names="Century Gothic" CssClass="auto-style1" Height="100%" HeaderNavigateUrl="~/Catalogos/Ciudades.aspx">
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
-            <dx:PanelContent runat="server">                
-                <dx:ASPxGridView  ID="ASPxGridView1" Width="100%" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" KeyFieldName="key_ciudad" EnableTheming="True" Theme="Glass" OnRowInserting="ASPxGridView1_RowInserting" OnInitNewRow="ASPxGridView1_InitNewRow" OnCustomErrorText="ASPxGridView1_CustomErrorText" SettingsBehavior-ColumnResizeMode="Control" OnRowDeleted="ASPxGridView1_RowDeleted" OnRowInserted="ASPxGridView1_RowInserted" OnRowUpdated="ASPxGridView1_RowUpdated" >
-                    <ClientSideEvents RowDblClick="function(s, e) {
-                        s.StartEditRow(e.visibleIndex);
-                    }" />
-                    <SettingsEditing Mode="PopupEditForm" >
-                    </SettingsEditing>
-                    <Settings ShowFilterRow="True" VerticalScrollableHeight="350" HorizontalScrollBarMode="Auto" VerticalScrollBarMode="Visible"  />
-                    <SettingsBehavior AllowSelectByRowClick="true" AllowSelectSingleRowOnly="true" ConfirmDelete="True" />
-                    <SettingsSearchPanel Visible="True" />
-                    <SettingsPopup>
-                        <EditForm AllowResize="True" ShowHeader="true" CloseOnEscape="True" Modal="true" HorizontalAlign="Center" VerticalAlign="Middle"  />
-                    </SettingsPopup>
-                    <EditFormLayoutProperties ColCount="2">
+            <dx:PanelContent runat="server">     
+                
+                
+
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableTheming="true" KeyFieldName="key_ciudad" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnRowDeleted="ASPxGridView1_RowDeleted" OnRowInserted="ASPxGridView1_RowInserted" OnRowUpdated="ASPxGridView1_RowUpdated">
+                    <EditFormLayoutProperties ColCount="2" ColumnCount="2" ShowItemCaptionColon="False">
                         <Items>
-                            <dx:GridViewColumnLayoutItem ColSpan="2" ColumnName="descrip">
+                            <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="descrip">
                             </dx:GridViewColumnLayoutItem>
-                            <dx:EmptyLayoutItem ColSpan="2">
-                            </dx:EmptyLayoutItem>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="estado">
                             </dx:GridViewColumnLayoutItem>
-                            <dx:EmptyLayoutItem ColSpan="2">
-                            </dx:EmptyLayoutItem>
                             <dx:GridViewColumnLayoutItem ColSpan="1" ColumnName="pais">
                             </dx:GridViewColumnLayoutItem>
-                            <dx:EditModeCommandLayoutItem ColSpan="2" HorizontalAlign="Right">
+                            <dx:EditModeCommandLayoutItem ColSpan="2" ColumnSpan="2" HorizontalAlign="Right">
                             </dx:EditModeCommandLayoutItem>
                         </Items>
+                        <SettingsItemCaptions Location="Top" />
                     </EditFormLayoutProperties>
                     <Columns>
-                        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonType="Image">
-                        </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn FieldName="key_ciudad" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="1" Visible="False">
+                        <dx:GridViewDataTextColumn FieldName="key_ciudad" ReadOnly="True" ShowInCustomizationForm="True" Visible="False" VisibleIndex="0">
                             <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="descrip" Width="250px"  ShowInCustomizationForm="True" VisibleIndex="3" Caption="Ciudad">
-                            <PropertiesTextEdit MaxLength="100">
-                                <ValidationSettings SetFocusOnError="True">
-                                    <RequiredField IsRequired="True" />
-                                </ValidationSettings>
-                            </PropertiesTextEdit>
+                        <dx:GridViewDataTextColumn Caption="Ciudad" FieldName="descrip" ShowInCustomizationForm="True" VisibleIndex="1">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataComboBoxColumn Caption="Estado" Width="250px" FieldName="estado" ShowInCustomizationForm="True" VisibleIndex="4">
-                            <PropertiesComboBox DataSourceID="SqlDataSource2" TextField="descrip" ValueField="descrip">
-                                <Columns>
-                                    <dx:ListBoxColumn Caption="Código" FieldName="estado" Width="50px" />
-                                    <dx:ListBoxColumn Caption="Estado" FieldName="descrip" />
-                                </Columns>
-                            </PropertiesComboBox>
-                        </dx:GridViewDataComboBoxColumn>
-                        <dx:GridViewDataComboBoxColumn Caption="País" Width="250px" FieldName="pais" ShowInCustomizationForm="True" VisibleIndex="5">
-                            <PropertiesComboBox DataSourceID="SqlDataSource3" TextField="descrip" ValueField="descrip">
-                                <Columns>
-                                    <dx:ListBoxColumn Caption="Código" FieldName="pais" Width="50px" />
-                                    <dx:ListBoxColumn Caption="País" FieldName="descrip" />
-                                </Columns>
-                            </PropertiesComboBox>
-                        </dx:GridViewDataComboBoxColumn>
-
+                        <dx:GridViewDataTextColumn Caption="Estado" FieldName="estado" ShowInCustomizationForm="True" VisibleIndex="2">
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Pais" FieldName="pais" ShowInCustomizationForm="True" VisibleIndex="3">
+                        </dx:GridViewDataTextColumn>
                     </Columns>
-                  <SettingsCommandButton>
-                        <NewButton Text="Nuevo">
-                            <Image IconID="actions_add_16x16gray">
+
+                    <SettingsPopup>
+                        <EditForm CloseOnEscape="True" AllowResize="True" ShowCollapseButton="True" ShowMaximizeButton="True" ShowPinButton="True" ShowShadow="True" ShowViewportScrollbarWhenModal="True" HorizontalAlign="LeftSides" ShowFooter="True" ShowPageScrollbarWhenModal="True" VerticalAlign="Above">
+                            <SettingsAdaptivity Mode="OnWindowInnerWidth" />
+                        </EditForm>
+                    </SettingsPopup>
+
+                    <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" FileName="Empresas">
+                    </SettingsExport>
+
+                    <SettingsSearchPanel ShowApplyButton="True" ShowClearButton="True" />
+
+                    <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
+                        <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
+                            <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
+                            </SettingsAdaptivity>                    
+                        </AdaptiveDetailLayoutProperties>
+                    </SettingsAdaptivity>
+
+                    <SettingsPager Mode="ShowPager">
+                        <FirstPageButton Visible="True">
+                        </FirstPageButton>
+                        <LastPageButton Visible="True">
+                        </LastPageButton>
+                        <NextPageButton Visible="False">
+                        </NextPageButton>
+                        <PrevPageButton Visible="False">
+                        </PrevPageButton>
+                        <PageSizeItemSettings Visible="True">
+                        </PageSizeItemSettings>
+                    </SettingsPager>
+
+                    <SettingsEditing Mode="PopupEditForm">
+                    </SettingsEditing>
+
+                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+
+                    <SettingsBehavior ConfirmDelete="True" AllowEllipsisInText="True" />
+
+                    <SettingsCommandButton >
+                        <NewButton  Text="Nuevo">
+                            <Image  IconID="actions_add_16x16gray">
                             </Image>
                         </NewButton>
                         <UpdateButton Text="Guardar">
@@ -101,9 +109,78 @@
                             <Image IconID="edit_delete_16x16gray">
                             </Image>
                         </DeleteButton>
+                        <SearchPanelApplyButton ButtonType="Image" RenderMode="Image">
+                            <Image IconID="find_find_16x16gray" ToolTip="Buscar">
+                            </Image>
+                        </SearchPanelApplyButton>
+                        <SearchPanelClearButton ButtonType="Image" RenderMode="Image">
+                            <Image IconID="edit_delete_16x16gray" ToolTip="Vaciar">
+                            </Image>
+                        </SearchPanelClearButton>
                     </SettingsCommandButton>
 
+                    <Toolbars>
+                        <dx:GridViewToolbar >
+                            <Items>
+                                <dx:GridViewToolbarItem Command="New" Text="Nuevo" ToolTip="Nuevo">
+                                </dx:GridViewToolbarItem>
+                                <dx:GridViewToolbarItem Command="Edit"  Text="Editar" ToolTip="Editar">
+                                </dx:GridViewToolbarItem>
+                                <dx:GridViewToolbarItem Command="Delete"  Text="Borrar" ToolTip="Borrar">
+                                </dx:GridViewToolbarItem>
+                                <dx:GridViewToolbarItem Command="ShowSearchPanel"  Text="Buscar" ToolTip="Panel de búsqueda">
+                                </dx:GridViewToolbarItem>
+                                <dx:GridViewToolbarItem  Text="Agrupar" Image-IconID="spreadsheet_group_svg_16x16"  >
+                                    <Items>
+                                        <dx:GridViewToolbarItem Command="ShowGroupPanel" Text="Panel Agrupador" >
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="FullExpand">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="FullCollapse" Text="Contraer">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ClearSorting" Image-IconID="spreadsheet_ungroup_svg_16x16" Text="Quitar Orden o Grupos"><Image IconID="spreadsheet_ungroup_svg_16x16"></Image>
+                                        </dx:GridViewToolbarItem>
+                                    </Items>
+                                    <Image IconID="spreadsheet_group_svg_16x16"></Image>
+                                </dx:GridViewToolbarItem>
+                                <dx:GridViewToolbarItem  Text="Filtros" Image-IconID="dashboards_multiplemasterfilter_svg_16x16">
+                                    <Items>
+                                        <dx:GridViewToolbarItem Command="ShowFilterRow">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ShowFilterEditor" Text="Filtro Avanzado">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ClearFilter">
+                                        </dx:GridViewToolbarItem>
+                                    </Items>                                   
+                                    <Image IconID="dashboards_multiplemasterfilter_svg_16x16"></Image>
+                                </dx:GridViewToolbarItem>
+                                <dx:GridViewToolbarItem  Text="Exportar" Image-IconID="export_export_svg_16x16">
+                                    <Items>
+                                        <dx:GridViewToolbarItem Command="ExportToXlsx">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ExportToDocx">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ExportToPdf">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ExportToCsv">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ExportToRtf">
+                                        </dx:GridViewToolbarItem>
+                                        <dx:GridViewToolbarItem Command="ExportToXls">
+                                        </dx:GridViewToolbarItem>
+                                    </Items>                                   
+                                    <Image IconID="export_export_svg_16x16"></Image>
+                                </dx:GridViewToolbarItem>
+                                <dx:GridViewToolbarItem Command="Refresh"  Text="Refrescar" ToolTip="Refrescar datos" DisplayMode="Image">
+                                </dx:GridViewToolbarItem>
+                            </Items>
+                        </dx:GridViewToolbar>
+                    </Toolbars>
+
                 </dx:ASPxGridView>
+                
+                
+
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" DeleteCommand="DELETE FROM &quot;c_Ciudades&quot; WHERE &quot;key_ciudad&quot; = ?" InsertCommand="INSERT INTO &quot;c_Ciudades&quot; (&quot;descrip&quot;,&quot;estado&quot;,&quot;pais&quot; ) VALUES (?,?,?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT &quot;key_ciudad&quot;, &quot;descrip&quot;,&quot;estado&quot;,&quot;pais&quot; FROM &quot;c_Ciudades&quot; ORDER BY &quot;descrip&quot;" UpdateCommand="UPDATE &quot;c_Ciudades&quot; SET &quot;descrip&quot; = ?,&quot;estado&quot; =?,&quot;pais&quot; = ? WHERE &quot;key_ciudad&quot; = ?">
                     <DeleteParameters>
                         <asp:Parameter Name="key_ciudad" Type="Int64" />
@@ -129,4 +206,3 @@
     </dx:ASPxRoundPanel>
 </div>
 </asp:Content>
-
