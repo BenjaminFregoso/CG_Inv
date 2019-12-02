@@ -34,6 +34,15 @@ namespace CG_InvWeb.Compras
             //e.NewValues["moral"] = (e.NewValues["moral"] == null) ? 0 : e.NewValues["moral"];
             //e.NewValues["fecha_ini"] = DateTime.Today;
 
+            e.NewValues["es_factura"] = 0;
+            e.NewValues["obliga_cfdi_captura"] = 0;
+            e.NewValues["obliga_cfdi_autoriza"] = 0;
+            e.NewValues["obliga_cfdi_pago"] = 0;
+            e.NewValues["valida_recibido_captura"] = 0;
+            e.NewValues["valida_recibido_autoriza"] = 0;
+            e.NewValues["valida_recibido_pago"] = 0;
+            e.NewValues["obliga_oc"] = 0;
+
         }
 
         protected void ASPxGridView1_CustomErrorText(object sender, DevExpress.Web.ASPxGridViewCustomErrorTextEventArgs e)
@@ -60,10 +69,5 @@ namespace CG_InvWeb.Compras
                 grid.SettingsText.PopupEditFormCaption = "Editar  || Representantes";
 
         }
-
-        protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
-        {
-        }
-
     }
 }

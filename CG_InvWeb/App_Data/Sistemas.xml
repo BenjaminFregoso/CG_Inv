@@ -71,10 +71,10 @@
   
 
   <group Text="Compras">
+    <item Text="Orden de Compra" NavigateUrl="~/Compras/OrdenCompra.aspx" />
     <item Text="Proveedores" NavigateUrl="~/Compras/Proveedores.aspx" />
     <item Text="Compradores" NavigateUrl="~/Compras/Compradores.aspx" />
     <item Text="Representantes" NavigateUrl="~/Compras/Representantes.aspx" />
-    <item Text="Orden de Compra" NavigateUrl="~/Compras/OrdenCompra.aspx" />
     <item Text="Tipo de Movimientos" NavigateUrl="~/Compras/TM_Proveedores.aspx" />
   </group>
 

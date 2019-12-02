@@ -286,7 +286,7 @@
                                                     <SettingsDetail AllowOnlyOneMasterRowExpanded="True" />
                                                     <SettingsPager Mode="ShowAllRecords">
                                                     </SettingsPager>
-                                                    <SettingsEditing Mode="Inline">
+                                                    <SettingsEditing Mode="Inline">                                                        
                                                     </SettingsEditing>
                                                     <SettingsBehavior AllowFocusedRow="True" ConfirmDelete="True" AllowSelectByRowClick="True" />
                                                     <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
@@ -562,7 +562,7 @@
                         </EditForm>
                     </SettingsPopup>
 
-                    <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" FileName="Empresas">
+                    <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" FileName="Articulos">
                     </SettingsExport>
 
                     <SettingsSearchPanel ShowApplyButton="True" ShowClearButton="True" />
@@ -592,7 +592,7 @@
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>
 
-                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" HorizontalScrollBarMode="Auto" VerticalScrollBarMode="Auto" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="550" />
+                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" HorizontalScrollBarMode="Auto" VerticalScrollBarMode="Auto" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="700" />
 
                     <SettingsBehavior ConfirmDelete="True" AllowEllipsisInText="True" />
 

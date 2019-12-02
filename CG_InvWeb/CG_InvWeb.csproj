@@ -141,9 +141,9 @@
   <ItemGroup>
     <Content Include="Articulos\Articulos.aspx" />
     <Content Include="Compras\Proveedores.aspx" />
+    <Content Include="Compras\OrdenCompra.aspx" />
     <Content Include="Compras\TM_Proveedores.aspx" />
     <Content Include="Compras\Representantes.aspx" />
-    <Content Include="Compras\OrdenCompra.aspx" />
     <Content Include="Compras\Compradores.aspx" />
     <Content Include="Articulos\Rango_Tallas.aspx" />
     <Content Include="Articulos\Marcas.aspx" />
@@ -222,6 +222,7 @@
     <Content Include="Main.master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PruebasOC.aspx" />
     <Content Include="Root.master" />
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +259,13 @@
     <Compile Include="Compras\Proveedores.aspx.designer.cs">
       <DependentUpon>Proveedores.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Compras\OrdenCompra.aspx.cs">
+      <DependentUpon>OrdenCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compras\OrdenCompra.aspx.designer.cs">
+      <DependentUpon>OrdenCompra.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Compras\TM_Proveedores.aspx.cs">
       <DependentUpon>TM_Proveedores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -271,13 +279,6 @@
     </Compile>
     <Compile Include="Compras\Representantes.aspx.designer.cs">
       <DependentUpon>Representantes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Compras\OrdenCompra.aspx.cs">
-      <DependentUpon>OrdenCompra.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Compras\OrdenCompra.aspx.designer.cs">
-      <DependentUpon>OrdenCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compras\Compradores.aspx.cs">
       <DependentUpon>Compradores.aspx</DependentUpon>
@@ -585,6 +586,13 @@
       <DependentUpon>Main.master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PruebasOC.aspx.cs">
+      <DependentUpon>PruebasOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PruebasOC.aspx.designer.cs">
+      <DependentUpon>PruebasOC.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Root.master.cs">
       <DependentUpon>Root.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

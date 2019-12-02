@@ -1,36 +1,113 @@
 ﻿using DevExpress.Web;
+using Npgsql;
+using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Media;
 
 namespace CG_InvWeb.Compras
 {
     public partial class OrdenCompra : System.Web.UI.Page
     {
+        public Int64 iCC=0;
+        public Int64 iOC=0;
         protected void Page_Load(object sender, EventArgs e)
         {
-        }
 
-        protected void ASPxGridView1_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
-        {
-            //ASPxGridView1.GetMasterRowKeyValue();
-            //string PerfilValue = e.Values[index].ToString();
-            //e.NewValues["fisica"] = (e.NewValues["fisica"] == null) ? 0 : e.NewValues["fisica"];
-            //e.NewValues["moral"] = (e.NewValues["moral"] == null) ? 0: e.NewValues["moral"];
-            
         }
 
         protected void ASPxGridView1_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
-            //e.NewValues["fisica"] = (e.NewValues["fisica"] == null) ? 0 : e.NewValues["fisica"];
-            //e.NewValues["moral"] = (e.NewValues["moral"] == null) ? 0 : e.NewValues["moral"];
-            //e.NewValues["fecha_ini"] = DateTime.Today;
+            e.NewValues["fecha"] = DateTime.Today;
+            e.NewValues["tipo"] = 1;
+            e.NewValues["lugar_entrega"] = 1;
+        }
+
+        protected void ASPxGridView1_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            Int64 ioc = 0;
+            Int64 iCC = 0;
+            Decimal iDescto_unitario = 0;
+            Decimal iDescto_global = 0;
+            Decimal iDescto_notcred = 0;
+
+            iCC = Convert.ToInt64(e.NewValues["key_centrocostos"].ToString());
+
+            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
+            {
+                sqlConnection1.Open();
+                NpgsqlCommand cmd = new NpgsqlCommand();
+                NpgsqlDataReader reader;
+
+                //BUSCA ULTIMA OC de CC seleccionado
+                cmd.CommandText = "Select oc from \"Orden_compra\" WHERE key_centrocostos = @iCC ORDER BY oc DESC limit 1 ";
+                cmd.CommandType = CommandType.Text;
+                NpgsqlParameter Param1;
+                Param1 = new NpgsqlParameter();
+                Param1.ParameterName = "iCC";
+                Param1.NpgsqlDbType = NpgsqlDbType.Bigint;
+                Param1.Value = iCC;
+                cmd.Parameters.Add(Param1);
+                cmd.Connection = sqlConnection1;
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    ioc = Convert.ToInt64(reader["oc"].ToString());
+                }
+                else
+                {
+                    ioc = 0;
+                }
+                ioc++;
+                e.NewValues["oc"] = ioc;
+                reader.Close();
+                cmd.Connection.Close();
+
+                cmd.Connection.Open();
+                cmd.CommandText = "Select descuento_unitario, descuento_global, descuento_notcred from \"Proveedores_condiciones\" WHERE fkey_proveedores = @fkey_proveedores ORDER BY fecha DESC limit 1 ";
+                NpgsqlParameter Param2;
+                Param2 = new NpgsqlParameter
+                {
+                    ParameterName = "fkey_proveedores",
+                    NpgsqlDbType = NpgsqlDbType.Bigint,
+                    Value = Convert.ToInt64(e.NewValues["fkey_proveedores"].ToString())
+                };
+                cmd.Parameters.Add(Param2);
+                cmd.Connection = sqlConnection1;
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    iDescto_unitario = Convert.ToDecimal(reader["descuento_unitario"].ToString());
+                    iDescto_global = Convert.ToDecimal(reader["descuento_global"].ToString());
+                    iDescto_notcred = Convert.ToDecimal(reader["descuento_notcred"].ToString());
+                }
+                else
+                {
+                    iDescto_unitario = 0;
+                    iDescto_global = 0;
+                    iDescto_notcred = 0;
+                }
+                reader.Close();
+                sqlConnection1.Close();
+                e.NewValues["descuento_unitario"] = iDescto_unitario;
+                e.NewValues["descuento_global"] = iDescto_global;
+                e.NewValues["descuento_notcred"] = iDescto_notcred;
+            }
 
         }
 
+        protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
+        {
+            //ASPxGridView1.FocusedRowIndex = 0;
+        }
         protected void ASPxGridView1_CustomErrorText(object sender, DevExpress.Web.ASPxGridViewCustomErrorTextEventArgs e)
         {
             if (e.ErrorText.Contains("Cannot insert duplicate key"))
@@ -39,74 +116,172 @@ namespace CG_InvWeb.Compras
             }
             if (e.ErrorText.Contains("c_Almacen_almacen_key"))
             {
-                e.ErrorText = "Ya existe el código que estás tratando de agregar";
+                e.ErrorText = "Ya existe el código del Almacén que estás tratando de agregar";
             }
-        }
 
 
 
-        protected void ASPxGridView1_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
-        {
-            //BITACORA #######################
-            //string usuario = "";
-            //try
-            //{
-            //    usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
-            //}
-            //catch (Exception err)
-            //{
-            //    usuario = err.ToString();
-            //}
-
-            //GlobalHandler objeto = new GlobalHandler();
-            //objeto.Bitacora("UPDATE", e.OldValues["clasificacion"].ToString() + " -- " + e.OldValues["fkey_departamento"].ToString(), e.NewValues["clasificacion"].ToString() + " -- " + e.NewValues["fkey_departamento"].ToString(), usuario, "","Clasificacion");
-            //TERMINA BITACORA #######################
-        }
-
-        protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
-        {
-            //BITACORA #######################
-            //string usuario = "";
-            //try
-            //{
-            //    usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
-            //}
-            //catch (Exception err)
-            //{
-            //    usuario = err.ToString();
-            //}
-
-            //GlobalHandler objeto = new GlobalHandler();
-            //objeto.Bitacora("INSERT", "", e.NewValues["clasificacion"].ToString() + " -- " + e.NewValues["fkey_departamento"].ToString(), usuario, "", "Clasificacion");
-            //TERMINA BITACORA #######################
-        }
-
-        protected void ASPxGridView1_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
-            //BITACORA #######################
-            //string usuario = "";
-            //try
-            //{
-            //    usuario = System.Web.HttpContext.Current.Session["Usuario"].ToString();
-            //}
-            //catch (Exception err)
-            //{
-            //    usuario = err.ToString();
-            //}
-
-            //GlobalHandler objeto = new GlobalHandler();
-            //objeto.Bitacora("DELETE", e.Values["clasificacion"].ToString() + " -- " + e.Values["fkey_departamento"].ToString(), "", usuario, "", "Clasificacion");
-            //TERMINA BITACORA #######################
         }
 
         protected void ASPxGridView1_BeforeGetCallbackResult(object sender, EventArgs e)
         {
             ASPxGridView grid = sender as ASPxGridView;
             if (grid.IsNewRowEditing)
-                grid.SettingsText.PopupEditFormCaption = "Agregar || Datos Generales Orden de Compra";
+                grid.SettingsText.PopupEditFormCaption = "Agregar || Orden de Compra";
             else
-                grid.SettingsText.PopupEditFormCaption = "Editar  || Datos Generales Orden de Compra";
+                grid.SettingsText.PopupEditFormCaption = "Editar  || Orden de Compra";
 
         }
+
+        private void MsgBox(string sMessage)
+        {
+            string msg = "<script language=\"javascript\">";
+            msg += "alert('" + sMessage + "');";
+            msg += "</script>";
+            Response.Write(msg);
+        }
+
+        protected void grdCliente_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            String sMasterKey = (sender as ASPxGridView).GetMasterRowKeyValue().ToString();
+            Session["session_key_centrocostos"] = sMasterKey.Substring(0, sMasterKey.IndexOf("|"));
+            Session["session_key_orden_compra"] = sMasterKey.Substring(sMasterKey.IndexOf("|") + 1, sMasterKey.Length - (sMasterKey.IndexOf("|") + 1));
+            iCC = Convert.ToInt64(sMasterKey.Substring(0, sMasterKey.IndexOf("|")));
+            iOC = Convert.ToInt64(sMasterKey.Substring(sMasterKey.IndexOf("|") + 1, sMasterKey.Length - (sMasterKey.IndexOf("|") + 1)));
+        }
+
+        protected void grdCliente_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
+        {
+  
+                 if (e.Column.FieldName == "fkey_articulos_color")
+                {
+                    var cmbCombo = (ASPxComboBox)e.Editor;
+                    cmbCombo.Callback += CmbCombo_Callback;
+                }
+
+                if (e.Column.FieldName == "fkey_articulos_tallas")
+                {
+                    var tallacmbCombo = (ASPxComboBox)e.Editor;
+                    tallacmbCombo.Callback += TallaCmbCombo_Callback;
+                }
+
+        }
+
+        private void CmbCombo_Callback(object sender, CallbackEventArgsBase e)
+        {
+            var varPais = -1;
+            Int32.TryParse(e.Parameter, out varPais);
+            SDS_Colores.FilterExpression = string.Format("fkey_articulo = {0}", varPais);
+            ASPxComboBox cmbCombo = sender as ASPxComboBox;
+            cmbCombo.DataSourceID = "SDS_Colores";
+            cmbCombo.DataBind();
+        }
+        private void TallaCmbCombo_Callback(object sender, CallbackEventArgsBase e)
+        {
+            var varPais = -1;
+            Int32.TryParse(e.Parameter, out varPais);
+            SDS_Tallas.FilterExpression = string.Format("fkey_articulo = {0}", varPais);
+            ASPxComboBox tallacmbCombo = sender as ASPxComboBox;
+            tallacmbCombo.DataSourceID = "SDS_Tallas";
+            tallacmbCombo.DataBind();
+        }
+        protected void grdCliente_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+        {
+            e.NewValues["fecha_entrega"] = DateTime.Today.AddDays(10);
+            e.NewValues["cantidad"] = 0;
+            e.NewValues["costo_unitario"] = 0;
+            e.NewValues["partida"] = 0;
+
+
+            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
+            {
+                sqlConnection1.Open();
+                NpgsqlCommand cmd = new NpgsqlCommand();
+                NpgsqlDataReader reader;
+
+                //BUSCA ULTIMA OC de CC seleccionado
+                cmd.CommandText = "select descuento_unitario,descuento_global,descuento_notcred,dias_credito from \"Proveedores_condiciones\" where \"Proveedores_condiciones\".fkey_proveedores = (select fkey_proveedores from \"Orden_compra\" where \"Orden_compra\".key_centrocostos = @iCC and \"Orden_compra\".key_orden_compra = @iOC) order by \"Proveedores_condiciones\".fecha desc limit 1";
+                cmd.CommandType = CommandType.Text;
+                NpgsqlParameter Param1;
+                Param1 = new NpgsqlParameter();
+                Param1.ParameterName = "iCC";
+                Param1.NpgsqlDbType = NpgsqlDbType.Bigint;
+                Param1.Value = iCC;
+                cmd.Parameters.Add(Param1);
+                NpgsqlParameter Param2;
+                Param2 = new NpgsqlParameter();
+                Param2.ParameterName = "iOC";
+                Param2.NpgsqlDbType = NpgsqlDbType.Bigint;
+                Param2.Value = iOC;
+                cmd.Parameters.Add(Param2);
+                cmd.Connection = sqlConnection1;
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    e.NewValues["unitario_descuento_porc"] = (string.IsNullOrEmpty(reader["descuento_unitario"].ToString()) ? 0 : Convert.ToInt32(reader["descuento_unitario"]));
+                    e.NewValues["global_descuento_porc"] = (string.IsNullOrEmpty(reader["descuento_global"].ToString()) ? 0 : Convert.ToInt32(reader["descuento_global"]));
+                    e.NewValues["notcred_descuento_porc"] = (string.IsNullOrEmpty(reader["descuento_notcred"].ToString()) ? 0 : Convert.ToInt32(reader["descuento_notcred"]));
+                }
+                else
+                {
+                    e.NewValues["unitario_descuento_porc"] = 0;
+                    e.NewValues["global_descuento_porc"] = 0;
+                    e.NewValues["notcred_descuento_porc"] = 0;
+                }
+                reader.Close();
+                cmd.Connection.Close();
+                sqlConnection1.Close();
+            }
+
+
+        }
+
+        protected void grdCliente_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            e.NewValues["fkey_centrocostos"] = iCC;
+            e.NewValues["fkey_orden_compra"] = iOC;
+
+            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
+            {
+                sqlConnection1.Open();
+                NpgsqlCommand cmd = new NpgsqlCommand();
+                NpgsqlDataReader reader;
+
+                //BUSCA ULTIMA OC de CC seleccionado
+                cmd.CommandText = "Select max(partida) as partida from \"Orden_compra_det\" WHERE fkey_centrocostos = @iCC and fkey_orden_compra = @iOC";
+                cmd.CommandType = CommandType.Text;
+                NpgsqlParameter Param1;
+                Param1 = new NpgsqlParameter();
+                Param1.ParameterName = "iCC";
+                Param1.NpgsqlDbType = NpgsqlDbType.Bigint;
+                Param1.Value = iCC;
+                cmd.Parameters.Add(Param1);
+                NpgsqlParameter Param2;
+                Param2 = new NpgsqlParameter();
+                Param2.ParameterName = "iOC";
+                Param2.NpgsqlDbType = NpgsqlDbType.Bigint;
+                Param2.Value = iOC;
+                cmd.Parameters.Add(Param2);
+                cmd.Connection = sqlConnection1;
+                reader = cmd.ExecuteReader();
+                
+
+                if (reader.HasRows) 
+                {
+                    reader.Read();                    
+                    e.NewValues["partida"] = (string.IsNullOrEmpty(reader["partida"].ToString()) ? 1 : Convert.ToInt32(reader["partida"]) + 1);
+                }
+                else
+                {
+                    e.NewValues["partida"] = 1;
+                }
+                reader.Close();
+                cmd.Connection.Close();
+                sqlConnection1.Close();
+            }
+        }
+
     }
 }
