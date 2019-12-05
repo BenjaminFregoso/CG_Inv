@@ -6,6 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+
     <style type="text/css">
 
         .auto-style11 {
@@ -115,6 +116,10 @@
             </tr>
             </table>
     </div>
+
+
+
+
     <asp:SqlDataSource ID="SDataSourceUsu" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" SelectCommand="SELECT &quot;usuario&quot; FROM &quot;Usuarios&quot;" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>"></asp:SqlDataSource>
     </form>
 </body>

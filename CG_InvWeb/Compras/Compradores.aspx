@@ -21,7 +21,7 @@
         <LoadingPanelStyle HorizontalAlign="Left" VerticalAlign="Top"></LoadingPanelStyle>
         <PanelCollection>
             <dx:PanelContent runat="server">
-                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Compradores" EnableTheming="True" KeyFieldName="key_compradores" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnRowInserted="ASPxGridView1_RowInserted">
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_Compradores" EnableTheming="True" KeyFieldName="key_compradores" Theme="MaterialCompact" KeyboardSupport="True" Width="100%" OnRowInserted="ASPxGridView1_RowInserted" OnBeforeGetCallbackResult="ASPxGridView1_BeforeGetCallbackResult">
                     <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="True" />
 
 
@@ -43,7 +43,7 @@
                                                     <SettingsEditing Mode="Batch">
                                                     </SettingsEditing>
                                                     <SettingsBehavior AllowFocusedRow="True" ConfirmDelete="True" />
-                                                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" />
+                                                    <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" VerticalScrollBarMode="Auto" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="240"  />
 
                                                     <SettingsCommandButton>
                                                         <NewButton Text="Nuevo">
@@ -86,7 +86,7 @@
                                                         <dx:GridViewDataTextColumn FieldName="key_compradores_det" ShowInCustomizationForm="True" VisibleIndex="1" Visible="False">
                                                             <EditFormSettings Visible="False" />
                                                         </dx:GridViewDataTextColumn>
-                                                        <dx:GridViewDataTextColumn FieldName="fkey_compradores" ShowInCustomizationForm="True" VisibleIndex="3" Visible="False" Caption="fkey_articulo" Name="fkey_articulo">
+                                                        <dx:GridViewDataTextColumn FieldName="fkey_compradores" ShowInCustomizationForm="True" VisibleIndex="3" Visible="False" Caption="fkey_compradores" Name="fkey_compradores">
                                                             <EditFormSettings Visible="False" />
                                                         </dx:GridViewDataTextColumn>
                                                         <dx:GridViewDataComboBoxColumn Caption="Departamento" FieldName="fkey_departamento" ShowInCustomizationForm="True" VisibleIndex="2" ReadOnly="True">

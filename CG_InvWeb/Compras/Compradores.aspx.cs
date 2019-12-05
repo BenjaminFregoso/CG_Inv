@@ -129,5 +129,14 @@ namespace CG_InvWeb.Compras
             }
 
         }
+
+        protected void ASPxGridView1_BeforeGetCallbackResult(object sender, EventArgs e)
+        {
+            ASPxGridView grid = sender as ASPxGridView;
+            if (grid.IsNewRowEditing)
+                grid.SettingsText.PopupEditFormCaption = "Agregar || Compradores";
+            else
+                grid.SettingsText.PopupEditFormCaption = "Editar  || Compradores";
+        }
     }
 }

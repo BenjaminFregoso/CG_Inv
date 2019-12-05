@@ -7,13 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CG_InvWeb.Compras
-{
-
-
-    public partial class OrdenCompra
-    {
-
+namespace CG_InvWeb.Compras {
+    
+    
+    public partial class Proveedores {
+        
         /// <summary>
         /// Control ASPxRoundPanel1.
         /// </summary>
@@ -22,7 +20,7 @@ namespace CG_InvWeb.Compras
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxRoundPanel ASPxRoundPanel1;
-
+        
         /// <summary>
         /// Control ASPxGridView1.
         /// </summary>
@@ -31,52 +29,7 @@ namespace CG_InvWeb.Compras
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
-
-        /// <summary>
-        /// Control Orden_compra_det.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Orden_compra_det;
-
-        /// <summary>
-        /// Control SDS_Tallas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Tallas;
-
-        /// <summary>
-        /// Control SDS_Colores.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Colores;
-
-        /// <summary>
-        /// Control SDS_Articulos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Articulos;
-
-        /// <summary>
-        /// Control SDS_Orden_compra.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Orden_compra;
-
+        
         /// <summary>
         /// Control SDS_Proveedores.
         /// </summary>
@@ -85,50 +38,68 @@ namespace CG_InvWeb.Compras
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SDS_Proveedores;
-
+        
         /// <summary>
-        /// Control SDS_Compradores.
+        /// Control SDS_Proveedores_representantes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Compradores;
-
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Proveedores_representantes;
+        
         /// <summary>
-        /// Control SDS_Centrocostos.
+        /// Control SDS_representantes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Centrocostos;
-
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_representantes;
+        
         /// <summary>
-        /// Control SDS_Usuarios.
+        /// Control SDS_Proveedores_condiciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Usuarios;
-
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Proveedores_condiciones;
+        
         /// <summary>
-        /// Control SDS_Tipo_orden_compra.
+        /// Control SDS_Ciudades.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Tipo_orden_compra;
-
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Ciudades;
+        
         /// <summary>
-        /// Control SDS_Entrega.
+        /// Control SDS_Bancos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Entrega;
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Bancos;
+        
+        /// <summary>
+        /// Control SDS_TM_Proveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_TM_Proveedores;
+        
+        /// <summary>
+        /// Control SDS_Proveedores_TM.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDS_Proveedores_TM;
     }
 }

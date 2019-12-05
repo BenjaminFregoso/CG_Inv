@@ -13,13 +13,14 @@ using System.Media;
 
 namespace CG_InvWeb.Compras
 {
+    
     public partial class OrdenCompra : System.Web.UI.Page
     {
-        public Int64 iCC=0;
-        public Int64 iOC=0;
+        public Int64 fkeyusu = 0;
+        public Int64 fkeycomp = 0;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void ASPxGridView1_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
@@ -101,7 +102,7 @@ namespace CG_InvWeb.Compras
                 e.NewValues["descuento_global"] = iDescto_global;
                 e.NewValues["descuento_notcred"] = iDescto_notcred;
             }
-
+            
         }
 
         protected void ASPxGridView1_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
@@ -141,19 +142,25 @@ namespace CG_InvWeb.Compras
             Response.Write(msg);
         }
 
-        protected void grdCliente_BeforePerformDataSelect(object sender, EventArgs e)
-        {
-            String sMasterKey = (sender as ASPxGridView).GetMasterRowKeyValue().ToString();
-            Session["session_key_centrocostos"] = sMasterKey.Substring(0, sMasterKey.IndexOf("|"));
-            Session["session_key_orden_compra"] = sMasterKey.Substring(sMasterKey.IndexOf("|") + 1, sMasterKey.Length - (sMasterKey.IndexOf("|") + 1));
-            iCC = Convert.ToInt64(sMasterKey.Substring(0, sMasterKey.IndexOf("|")));
-            iOC = Convert.ToInt64(sMasterKey.Substring(sMasterKey.IndexOf("|") + 1, sMasterKey.Length - (sMasterKey.IndexOf("|") + 1)));
-        }
+        //protected void ASPxGridView2_BeforePerformDataSelect(object sender, EventArgs e)
+        //{
+        //    //String sMasterKey = (sender as ASPxGridView).GetMasterRowKeyValue().ToString();
+        //    //Session["session_key_centrocostos"] = sMasterKey.Substring(0, sMasterKey.IndexOf("|"));
+        //    //Session["session_key_orden_compra"] = sMasterKey.Substring(sMasterKey.IndexOf("|") + 1, sMasterKey.Length - (sMasterKey.IndexOf("|") + 1));
 
-        protected void grdCliente_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
+
+
+        //}
+
+        //protected void ASPxGridView2_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        //{
+        //}
+
+        protected void ASPxGridView2_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
-  
-                 if (e.Column.FieldName == "fkey_articulos_color")
+            try
+            {
+                if (e.Column.FieldName == "fkey_articulos_color")
                 {
                     var cmbCombo = (ASPxComboBox)e.Editor;
                     cmbCombo.Callback += CmbCombo_Callback;
@@ -165,10 +172,18 @@ namespace CG_InvWeb.Compras
                     tallacmbCombo.Callback += TallaCmbCombo_Callback;
                 }
 
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void CmbCombo_Callback(object sender, CallbackEventArgsBase e)
         {
+            MsgBox("CmbCombo_Callback");
             var varPais = -1;
             Int32.TryParse(e.Parameter, out varPais);
             SDS_Colores.FilterExpression = string.Format("fkey_articulo = {0}", varPais);
@@ -178,6 +193,7 @@ namespace CG_InvWeb.Compras
         }
         private void TallaCmbCombo_Callback(object sender, CallbackEventArgsBase e)
         {
+            MsgBox("TallaCmbCombo_Callback");
             var varPais = -1;
             Int32.TryParse(e.Parameter, out varPais);
             SDS_Tallas.FilterExpression = string.Format("fkey_articulo = {0}", varPais);
@@ -185,103 +201,11 @@ namespace CG_InvWeb.Compras
             tallacmbCombo.DataSourceID = "SDS_Tallas";
             tallacmbCombo.DataBind();
         }
-        protected void grdCliente_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
-        {
-            e.NewValues["fecha_entrega"] = DateTime.Today.AddDays(10);
-            e.NewValues["cantidad"] = 0;
-            e.NewValues["costo_unitario"] = 0;
-            e.NewValues["partida"] = 0;
 
 
-            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
-            {
-                sqlConnection1.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand();
-                NpgsqlDataReader reader;
-
-                //BUSCA ULTIMA OC de CC seleccionado
-                cmd.CommandText = "select descuento_unitario,descuento_global,descuento_notcred,dias_credito from \"Proveedores_condiciones\" where \"Proveedores_condiciones\".fkey_proveedores = (select fkey_proveedores from \"Orden_compra\" where \"Orden_compra\".key_centrocostos = @iCC and \"Orden_compra\".key_orden_compra = @iOC) order by \"Proveedores_condiciones\".fecha desc limit 1";
-                cmd.CommandType = CommandType.Text;
-                NpgsqlParameter Param1;
-                Param1 = new NpgsqlParameter();
-                Param1.ParameterName = "iCC";
-                Param1.NpgsqlDbType = NpgsqlDbType.Bigint;
-                Param1.Value = iCC;
-                cmd.Parameters.Add(Param1);
-                NpgsqlParameter Param2;
-                Param2 = new NpgsqlParameter();
-                Param2.ParameterName = "iOC";
-                Param2.NpgsqlDbType = NpgsqlDbType.Bigint;
-                Param2.Value = iOC;
-                cmd.Parameters.Add(Param2);
-                cmd.Connection = sqlConnection1;
-                reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    e.NewValues["unitario_descuento_porc"] = (string.IsNullOrEmpty(reader["descuento_unitario"].ToString()) ? 0 : Convert.ToInt32(reader["descuento_unitario"]));
-                    e.NewValues["global_descuento_porc"] = (string.IsNullOrEmpty(reader["descuento_global"].ToString()) ? 0 : Convert.ToInt32(reader["descuento_global"]));
-                    e.NewValues["notcred_descuento_porc"] = (string.IsNullOrEmpty(reader["descuento_notcred"].ToString()) ? 0 : Convert.ToInt32(reader["descuento_notcred"]));
-                }
-                else
-                {
-                    e.NewValues["unitario_descuento_porc"] = 0;
-                    e.NewValues["global_descuento_porc"] = 0;
-                    e.NewValues["notcred_descuento_porc"] = 0;
-                }
-                reader.Close();
-                cmd.Connection.Close();
-                sqlConnection1.Close();
-            }
 
 
-        }
 
-        protected void grdCliente_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
-        {
-            e.NewValues["fkey_centrocostos"] = iCC;
-            e.NewValues["fkey_orden_compra"] = iOC;
-
-            using (NpgsqlConnection sqlConnection1 = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["ServerPostgreSql"].ConnectionString.ToString()))
-            {
-                sqlConnection1.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand();
-                NpgsqlDataReader reader;
-
-                //BUSCA ULTIMA OC de CC seleccionado
-                cmd.CommandText = "Select max(partida) as partida from \"Orden_compra_det\" WHERE fkey_centrocostos = @iCC and fkey_orden_compra = @iOC";
-                cmd.CommandType = CommandType.Text;
-                NpgsqlParameter Param1;
-                Param1 = new NpgsqlParameter();
-                Param1.ParameterName = "iCC";
-                Param1.NpgsqlDbType = NpgsqlDbType.Bigint;
-                Param1.Value = iCC;
-                cmd.Parameters.Add(Param1);
-                NpgsqlParameter Param2;
-                Param2 = new NpgsqlParameter();
-                Param2.ParameterName = "iOC";
-                Param2.NpgsqlDbType = NpgsqlDbType.Bigint;
-                Param2.Value = iOC;
-                cmd.Parameters.Add(Param2);
-                cmd.Connection = sqlConnection1;
-                reader = cmd.ExecuteReader();
-                
-
-                if (reader.HasRows) 
-                {
-                    reader.Read();                    
-                    e.NewValues["partida"] = (string.IsNullOrEmpty(reader["partida"].ToString()) ? 1 : Convert.ToInt32(reader["partida"]) + 1);
-                }
-                else
-                {
-                    e.NewValues["partida"] = 1;
-                }
-                reader.Close();
-                cmd.Connection.Close();
-                sqlConnection1.Close();
-            }
-        }
 
     }
 }

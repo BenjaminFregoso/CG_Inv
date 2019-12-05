@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CG_InvWeb.Compras
+namespace CG_InvWeb
 {
 
 
-    public partial class OrdenCompra
+    public partial class PruebasOC
     {
 
         /// <summary>

@@ -1,6 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="OrdenCompra.aspx.cs" Inherits="CG_InvWeb.Compras.OrdenCompra" %>
-
-<%@ Register Assembly="DevExpress.Xpo.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Xpo" TagPrefix="dx" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="PruebasOC.aspx.cs" Inherits="CG_InvWeb.PruebasOC" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -11,7 +9,6 @@
         var lastCmb = null;
         var isCustomCascadingCallback = false;
         var isCustomCascadingCallbackTallas = false;
-        var fieldName;
 
         function OnSelectedIndexChanged(s, e) {
             lastPAIS = s.GetValue();
@@ -19,18 +16,15 @@
             isCustomCascadingCallbackTallas = true;
             RefreshDataColor(lastPAIS);
             RefreshDataTallas(lastPAIS);
-            alert("OnSelectedIndexChange");
-
         }
         function ColorCombo_EndCallback(s, e) {
 
             if (isCustomCascadingCallback) {
                 if (s.GetItemCount() > 0)
                     grdCliente.batchEditApi.SetCellValue(curentEditingIndex, "fkey_articulos_color", s.GetItem(0).value);
-                isCustomCascadingCallback = false;                
+                isCustomCascadingCallback = false;
             }
             else {
-                grdCliente.batchEditApi.SetCellValue(curentEditingIndex, "fkey_articulos_color", s.GetItem(0).value);
                 grdCliente.batchEditApi.StartEdit(curentEditingIndex, grdCliente.GetColumnByField("fkey_articulos_color").index);
             }
         }
@@ -41,98 +35,32 @@
                 isCustomCascadingCallbackTallas = false;
             }
             else {
-                grdCliente.batchEditApi.SetCellValue(curentEditingIndex, "fkey_articulos_tallas", s.GetItem(0).value);
                 grdCliente.batchEditApi.StartEdit(curentEditingIndex, grdCliente.GetColumnByField("fkey_articulos_tallas").index);
             }
         }
 
         function OnBatchEditStartEditing(s, e) {
-            fieldName = e.focusedColumn.fieldName;
             curentEditingIndex = e.visibleIndex;
             var currentPAIS = grdCliente.batchEditApi.GetCellValue(curentEditingIndex, "fkey_articulo");
-            //grdCliente.batchEditApi.SetCellValue(curentEditingIndex, "fkey_articulos_color", s.GetItem(0).value);
             if ((currentPAIS != lastPAIS || lastCmb == "fkey_articulos_tallas") && e.focusedColumn.fieldName == "fkey_articulos_color" && currentPAIS != null) {
                 e.cancel = true;
                 lastPAIS = currentPAIS;
                 lastCmb = "fkey_articulos_color";
-                grdCliente.batchEditApi.SetCellValue(curentEditingIndex, "fkey_articulos_color", "...");
                 RefreshDataColor(currentPAIS);
             }
             if ((currentPAIS != lastPAIS || lastCmb == "fkey_articulos_color") && e.focusedColumn.fieldName == "fkey_articulos_tallas" && currentPAIS != null) {
                 e.cancel = true;
                 lastPAIS = currentPAIS;
                 lastCmb = "fkey_articulos_tallas";
-                grdCliente.batchEditApi.SetCellValue(curentEditingIndex, "fkey_articulos_tallas", "...");
                 RefreshDataTallas(currentPAIS);
             }
         }
         function RefreshDataColor(currentPAIS) {
             grdCliente.GetEditor("fkey_articulos_color").PerformCallback(currentPAIS);
-            alert("RefreshDataColor");
         }
         function RefreshDataTallas(currentPAIS) {
             grdCliente.GetEditor("fkey_articulos_tallas").PerformCallback(currentPAIS);
-            alert("RefreshDataTallas");
-
         }
-
-        function OnBatchEditEndEditing(s, e) {
-          
-            if (fieldName == "costo_unitario" || fieldName == "unitario_descuento_porc" || fieldName == "cantidad" || fieldName == "global_descuento_porc" || fieldName == "notcred_descuento_porc")
-            {
-                var cUniDesPorc = s.GetColumnByField("unitario_descuento_porc");
-                var cUniDesPorc = e.rowValues[cUniDesPorc.index].value;
-                var cCosto = s.GetColumnByField("costo_unitario");
-                var cCosto = e.rowValues[cCosto.index].value;
-                var cCantidad = s.GetColumnByField("cantidad");
-                var cCantidad = e.rowValues[cCantidad.index].value;
-                var cGloDesPorc = s.GetColumnByField("global_descuento_porc");
-                var cGloDesPorc = e.rowValues[cGloDesPorc.index].value;
-                var cNotDesPorc = s.GetColumnByField("notcred_descuento_porc");
-                var cNotDesPorc = e.rowValues[cNotDesPorc.index].value;
-
-                //var cGloDesPorc = s.batchEditApi.GetCellValue(e.visibleIndex, "global_descuento_porc");
-                //var cNotDesPorc = s.batchEditApi.GetCellValue(e.visibleIndex, "notcred_descuento_porc");
-
-                var cUniDes = Math.round(cCosto * cUniDesPorc) / 100;
-                var cUniDesImp = cCantidad * cUniDes;
-                var cUniCosNet = cCosto - cUniDes;
-                var cUniImpTot = cUniCosNet * cCantidad;
-                if (cGloDesPorc == 0) {
-                    var cGloDes = 0;
-                    var cGloDesImp = 0;
-                } else {
-                    var cGloDes = Math.round(cUniCosNet * cGloDesPorc) / 100;
-                    var cGloDesImp = cGloDes * cCantidad;
-                }
-                var cGloCosNet = cCosto - cUniDes - cGloDes;
-                var cGloImpTot = cGloCosNet * cCantidad;
-
-                if (cNotDesPorc == 0) {
-                    var cNotDes = 0;
-                    var cNotDesImp = 0;
-                } else {
-                    var cNotDes = Math.round(cGloCosNet * cNotDesPorc) / 100;
-                    var cNotDesImp = cNotDes * cCantidad;
-                }
-                var cNotCosNet = cCosto - cUniDes - cGloDes - cNotDes;
-                var cNotImpTot = cNotCosNet * cCantidad;
-
-                s.batchEditApi.SetCellValue(e.visibleIndex, "unitario_descuento", cUniDes, null, false);
-                s.batchEditApi.SetCellValue(e.visibleIndex, "unitario_descuento_importe", cUniDesImp, null, false);
-                s.batchEditApi.SetCellValue(e.visibleIndex, "unitario_costo_neto", cUniCosNet, null, false);
-                s.batchEditApi.SetCellValue(e.visibleIndex, "unitario_importe_total", cUniImpTot, null, false);
-                s.batchEditApi.SetCellValue(e.visibleIndex, "global_descuento", cGloDes, null, false);
-                s.batchEditApi.SetCellValue(e.visibleIndex, "global_descuento_importe", cGloDesImp, null, false);
-                s.batchEditApi.SetCellValue(e.visibleIndex, "global_costo_neto", cGloCosNet, null, false);
-                s.batchEditApi.SetCellValue(e.visibleIndex, "global_importe_total", cGloImpTot, null, false);
-                s.batchEditApi.SetCellValue(e.visibleIndex, "notcred_descuento", cNotDes, null, false);
-                s.batchEditApi.SetCellValue(e.visibleIndex, "notcred_descuento_importe", cNotDesImp, null, false);
-                s.batchEditApi.SetCellValue(e.visibleIndex, "notcred_costo_neto", cNotCosNet, null, false);
-                s.batchEditApi.SetCellValue(e.visibleIndex, "notcred_importe_total", cNotImpTot, null, false);
-            }
-        }
-
     </script>
 
     <dx:ASPxRoundPanel ID="ASPxRoundPanel1" HorizontalAlign="Left" runat="server" HeaderText="Orden de Compra" ShowCollapseButton="True" Theme="MaterialCompact" Width="100%" Font-Names="Century Gothic" CssClass="auto-style1" Height="100%" HeaderNavigateUrl="~/Compras/OrdenCompra.aspx">
@@ -144,25 +72,91 @@
                 <SettingsDetail ShowDetailRow="True" AllowOnlyOneMasterRowExpanded="True" />                    
                 <Templates>                        
                     <DetailRow> 
-                        <dx:ASPxGridView ID="grdCliente" ClientInstanceName="grdCliente" OnCellEditorInitialize="grdCliente_CellEditorInitialize"  OnBeforePerformDataSelect="grdCliente_BeforePerformDataSelect" runat="server" AutoGenerateColumns="False" DataSourceID="Orden_compra_det" KeyFieldName="key_orden_compra_det" EnableTheming="True" Width="100%" Theme="Glass" KeyboardSupport="True" OnInitNewRow="grdCliente_InitNewRow" OnRowInserting="grdCliente_RowInserting" >
-                            <SettingsPager Mode="EndlessPaging" Position ="Top" PageSize="10">
-                            </SettingsPager>
-                            <ClientSideEvents BatchEditStartEditing="OnBatchEditStartEditing" BatchEditEndEditing="OnBatchEditEndEditing" />
-                            <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
-                                <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
-                                    <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
-                                    </SettingsAdaptivity>                    
-                                    <SettingsItemCaptions Location="Top" />
-                                </AdaptiveDetailLayoutProperties>
-                            </SettingsAdaptivity>
+                        <dx:ASPxGridView ID="grdCliente" ClientInstanceName="grdCliente" OnCellEditorInitialize="grdCliente_CellEditorInitialize" OnBeforePerformDataSelect="grdCliente_BeforePerformDataSelect" runat="server" AutoGenerateColumns="False" DataSourceID="Orden_compra_det" KeyFieldName="key_orden_compra_det" EnableTheming="True" Width="100%" Theme="Glass" KeyboardSupport="True" OnInitNewRow="grdCliente_InitNewRow" OnRowInserting="grdCliente_RowInserting" >
                             <SettingsPager Mode="ShowAllRecords">
                             </SettingsPager>
                             <SettingsEditing Mode="Batch">
                                 <BatchEditSettings ShowConfirmOnLosingChanges="true" EditMode="Cell" />
                             </SettingsEditing>
-                            <Settings VerticalScrollBarMode="Auto" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="240" HorizontalScrollBarMode="Auto" ShowFooter="True" ShowGroupFooter="VisibleAlways"  />
-                            <SettingsBehavior AllowSort="false" AllowFocusedRow="True" AllowEllipsisInText="True" ConfirmDelete="True" />
-                            <SettingsResizing ColumnResizeMode="Control" />
+                            <SettingsBehavior AllowFocusedRow="True" ConfirmDelete="True" />
+                            <Settings ShowHeaderFilterButton="True" ShowHeaderFilterBlankItems="false" ShowGroupedColumns="True" ShowFilterRowMenu="True" ShowFilterRowMenuLikeItem="True" VerticalScrollBarMode="Auto" VerticalScrollBarStyle="VirtualSmooth" VerticalScrollableHeight="240"  />
+                            <ClientSideEvents BatchEditStartEditing="OnBatchEditStartEditing" />
+                            <Columns>
+                                <dx:GridViewCommandColumn ButtonRenderMode="Image" ButtonType="Image" ShowDeleteButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" Width="50px">
+                                </dx:GridViewCommandColumn>
+                                <dx:GridViewDataTextColumn FieldName="key_orden_compra_det" ReadOnly="True" VisibleIndex="1" ShowInCustomizationForm="True" Visible="False">
+                                    <EditFormSettings Visible="False" />
+                                </dx:GridViewDataTextColumn>
+                                <dx:GridViewDataComboBoxColumn SettingsHeaderFilter-ListBoxSearchUISettings-EnableAnimation ="true" FieldName="fkey_articulo" VisibleIndex="3" Name="fkey_articulo" Caption="Artículo">
+                                    <PropertiesComboBox DataSourceID="SDS_Articulos" TextField="descripcion" ValueField="key_articulo" NullValueItemDisplayText="{0}  |  {1}  |  {2}" TextFormatString="{0}  |  {1}  |  {2}">
+                                        <Columns>
+                                            <dx:ListBoxColumn Caption="Codigo" FieldName="codigo_articulo" Name="codigo_articulo">
+                                            </dx:ListBoxColumn>
+                                            <dx:ListBoxColumn Caption="Descripción" FieldName="descripcion" Name="descripcion">
+                                            </dx:ListBoxColumn>
+                                            <dx:ListBoxColumn Caption="Modelo" FieldName="modelo" Name="modelo">
+                                            </dx:ListBoxColumn>
+                                            <dx:ListBoxColumn Caption="Departamento" FieldName="departamento" Name="departamento">
+                                            </dx:ListBoxColumn>
+                                            <dx:ListBoxColumn Caption="Clasificación" FieldName="clasificacion" Name="clasificacion">
+                                            </dx:ListBoxColumn>
+                                            <dx:ListBoxColumn Caption="Familia" FieldName="familia" Name="familia">
+                                            </dx:ListBoxColumn>
+                                        </Columns>
+                                        <ClientSideEvents SelectedIndexChanged ="OnSelectedIndexChanged" />
+                                    </PropertiesComboBox>
+                                </dx:GridViewDataComboBoxColumn>
+                                <dx:GridViewDataComboBoxColumn Name="fkey_articulos_color" FieldName="fkey_articulos_color" VisibleIndex="4" Caption="Color">
+                                    <PropertiesComboBox DataSourceID="SDS_Colores" TextField="descrip" ValueField="key_color" TextFormatString="{0} | {1}" DisplayFormatInEditMode="True" SelectInputTextOnClick="True" ValueType="System.Int32">                            
+                                        <Columns>
+                                            <dx:ListBoxColumn Caption="Codigo" FieldName="color" Name="color">
+                                            </dx:ListBoxColumn>
+                                            <dx:ListBoxColumn Caption="Color" FieldName="descrip" Name="descrip">
+                                            </dx:ListBoxColumn>
+                                        </Columns>
+                                        <ClientSideEvents EndCallback ="ColorCombo_EndCallback"  />
+                                    </PropertiesComboBox>
+                                </dx:GridViewDataComboBoxColumn>
+                                <dx:GridViewDataComboBoxColumn FieldName="fkey_articulos_tallas" VisibleIndex="5" Caption="Talla">
+                                    <PropertiesComboBox DataSourceID="SDS_Tallas" TextField="descrip" ValueField="key_tallas" TextFormatString="{0} | {1}" DisplayFormatInEditMode="True" SelectInputTextOnClick="True" ValueType="System.Int32">
+                                        <Columns>
+                                            <dx:ListBoxColumn Caption="Codigo" FieldName="tallas" Name="tallas">
+                                            </dx:ListBoxColumn>
+                                            <dx:ListBoxColumn Caption="Talla" FieldName="descrip" Name="descrip">
+                                            </dx:ListBoxColumn>
+                                        </Columns>
+                                        <ClientSideEvents EndCallback ="TallasCombo_EndCallback"  />
+                                    </PropertiesComboBox>
+                                </dx:GridViewDataComboBoxColumn>
+                                <dx:GridViewDataTextColumn FieldName="partida" VisibleIndex="2" Caption="Partida" ReadOnly="True" Width="70px">
+                                    <PropertiesTextEdit>
+                                        <ReadOnlyStyle BackColor="#C0E0E7">
+                                        </ReadOnlyStyle>
+                                    </PropertiesTextEdit>
+                                </dx:GridViewDataTextColumn>
+                                <dx:GridViewDataSpinEditColumn Caption="Costo" FieldName="costo_unitario" VisibleIndex="8" Width="100px">
+                                    <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
+                                        <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
+                                        </SpinButtons>
+                                        <ValidationSettings>
+                                            <RequiredField IsRequired="True" />
+                                        </ValidationSettings>
+                                    </PropertiesSpinEdit>
+                                </dx:GridViewDataSpinEditColumn>
+                                <dx:GridViewDataSpinEditColumn FieldName="cantidad" VisibleIndex="7" Caption="Cantidad" Width="100px">
+                                    <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="N0" MaxValue="999999" NumberFormat="Custom" NumberType="Integer" SelectInputTextOnClick="True">
+                                        <SpinButtons ClientVisible="False">
+                                        </SpinButtons>
+                                        <ValidationSettings>
+                                            <RequiredField IsRequired="True" />
+                                        </ValidationSettings>
+                                    </PropertiesSpinEdit>
+                                </dx:GridViewDataSpinEditColumn>
+                                <dx:GridViewDataDateColumn Caption="Fecha de Entrega" FieldName="fecha_entrega" VisibleIndex="6" Width="150px">
+                                    <PropertiesDateEdit DisplayFormatString="dd/MMM/yy" SelectInputTextOnClick="True">
+                                    </PropertiesDateEdit>
+                                </dx:GridViewDataDateColumn>
+                            </Columns>
                             <SettingsCommandButton>
                                 <NewButton Text="Nuevo">
                                     <Image IconID="actions_add_16x16gray">
@@ -193,299 +187,13 @@
                                     </Image>
                                 </DeleteButton>
                             </SettingsCommandButton>
-                            <Columns>
-                                <dx:GridViewCommandColumn ButtonRenderMode="Image" ButtonType="Image" ShowDeleteButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0" Width="50px" FixedStyle="Left">
-                                </dx:GridViewCommandColumn>
-                                <dx:GridViewDataTextColumn FieldName="key_orden_compra_det" ReadOnly="True" VisibleIndex="1" ShowInCustomizationForm="True" Visible="False">
-                                    <EditFormSettings Visible="False" />
-                                </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataComboBoxColumn SettingsHeaderFilter-ListBoxSearchUISettings-EnableAnimation ="true" FieldName="fkey_articulo" VisibleIndex="3" Name="fkey_articulo" Caption="Artículo" FixedStyle="Left">
-                                    <PropertiesComboBox LoadDropDownOnDemand="true" DataSourceID="SDS_Articulos" TextField="descripcion" ValueField="key_articulo" NullValueItemDisplayText="{0}  |  {1}  |  {2}" TextFormatString="{0}  |  {1}  |  {2}">
-                                        <Columns>
-                                            <dx:ListBoxColumn Caption="Codigo" FieldName="codigo_articulo" Name="codigo_articulo">
-                                            </dx:ListBoxColumn>
-                                            <dx:ListBoxColumn Caption="Descripción" FieldName="descripcion" Name="descripcion">
-                                            </dx:ListBoxColumn>
-                                            <dx:ListBoxColumn Caption="Modelo" FieldName="modelo" Name="modelo">
-                                            </dx:ListBoxColumn>
-                                            <dx:ListBoxColumn Caption="Departamento" FieldName="departamento" Name="departamento">
-                                            </dx:ListBoxColumn>
-                                            <dx:ListBoxColumn Caption="Clasificación" FieldName="clasificacion" Name="clasificacion">
-                                            </dx:ListBoxColumn>
-                                            <dx:ListBoxColumn Caption="Familia" FieldName="familia" Name="familia">
-                                            </dx:ListBoxColumn>
-                                        </Columns>
-                                        <ClientSideEvents SelectedIndexChanged ="OnSelectedIndexChanged" />
-                                    </PropertiesComboBox>
-                                    <CellStyle>
-                                        <BorderRight BorderColor="#666666" BorderStyle="Solid" BorderWidth="2px" />
-                                    </CellStyle>
-                                </dx:GridViewDataComboBoxColumn>
-                                <dx:GridViewDataComboBoxColumn Name="fkey_articulos_color" FieldName="fkey_articulos_color" VisibleIndex="4" Caption="Color" >
-                                    <PropertiesComboBox LoadDropDownOnDemand="true" DataSourceID="SDS_Colores" TextField="descrip" ValueField="key_color" TextFormatString="{0} | {1}" DisplayFormatInEditMode="True" SelectInputTextOnClick="True" ValueType="System.Int32">                            
-                                        <Columns>
-                                            <dx:ListBoxColumn Caption="Codigo" FieldName="color" Name="color">
-                                            </dx:ListBoxColumn>
-                                            <dx:ListBoxColumn Caption="Color" FieldName="descrip" Name="descrip">
-                                            </dx:ListBoxColumn>
-                                        </Columns>
-                                        <ClientSideEvents EndCallback ="ColorCombo_EndCallback"  />
-                                    </PropertiesComboBox>
-                                </dx:GridViewDataComboBoxColumn>
-                                <dx:GridViewDataComboBoxColumn FieldName="fkey_articulos_tallas" VisibleIndex="5" Caption="Talla">
-                                    <PropertiesComboBox LoadDropDownOnDemand="true" DataSourceID="SDS_Tallas" TextField="descrip" ValueField="key_tallas" TextFormatString="{0} | {1}" DisplayFormatInEditMode="True" SelectInputTextOnClick="True" ValueType="System.Int32">
-                                        <Columns>
-                                            <dx:ListBoxColumn Caption="Codigo" FieldName="tallas" Name="tallas">
-                                            </dx:ListBoxColumn>
-                                            <dx:ListBoxColumn Caption="Talla" FieldName="descrip" Name="descrip">
-                                            </dx:ListBoxColumn>
-                                        </Columns>
-                                        <ClientSideEvents EndCallback ="TallasCombo_EndCallback"  />
-                                    </PropertiesComboBox>
-                                </dx:GridViewDataComboBoxColumn>
-                                <dx:GridViewDataTextColumn FieldName="partida" VisibleIndex="2" Caption="Part." ReadOnly="True" Width="40px" FixedStyle="Left">
-                                    <PropertiesTextEdit>
-                                        <ReadOnlyStyle BackColor="#C0E0E7">
-                                        </ReadOnlyStyle>
-                                    </PropertiesTextEdit>
-                                </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataSpinEditColumn Caption="Costo" FieldName="costo_unitario" VisibleIndex="8" Width="100px">
-                                    <PropertiesSpinEdit Style-HorizontalAlign="Right" DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                        <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                        </SpinButtons>
-                                        <ValidationSettings>
-                                            <RequiredField IsRequired="True" />
-                                        </ValidationSettings>
-                                        <Style HorizontalAlign="Right">
-                                        </Style>
-                                    </PropertiesSpinEdit>
-                                </dx:GridViewDataSpinEditColumn>
-                                <dx:GridViewDataSpinEditColumn FieldName="cantidad" VisibleIndex="7" Caption="Cantidad" Width="100px">
-                                    <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="N0" MaxValue="999999" NumberFormat="Custom" NumberType="Integer" SelectInputTextOnClick="True">
-                                        <SpinButtons ClientVisible="False">
-                                        </SpinButtons>
-                                        <ValidationSettings>
-                                            <RequiredField IsRequired="True" />
-                                        </ValidationSettings>
-                                    </PropertiesSpinEdit>
-                                </dx:GridViewDataSpinEditColumn>
-                                <dx:GridViewDataDateColumn Caption="Fecha de Entrega" FieldName="fecha_entrega" VisibleIndex="6" Width="100px">
-                                    <PropertiesDateEdit DisplayFormatString="dd/MMM/yy" SelectInputTextOnClick="True">
-                                    </PropertiesDateEdit>
-                                    <HeaderStyle Wrap="True" />
-                                </dx:GridViewDataDateColumn>
-
-                                <dx:GridViewBandColumn Caption="Descto. Unitario" VisibleIndex="24">
-                                    <%--<HeaderStyle  BackColor="#0066FF" />--%>
-                                    <Columns>
-                                        <dx:GridViewDataSpinEditColumn  Caption="% Descto." FieldName="unitario_descuento_porc" ShowInCustomizationForm="True" VisibleIndex="0" Width="100px">                                           
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="P2" MaxValue="100.00" NumberFormat="Percent">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#0066FF" />
-                                            <CellStyle BackColor="#aefff0">
-                                            </CellStyle>
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Descuento" FieldName="unitario_descuento" ShowInCustomizationForm="True" VisibleIndex="1" Width="100px">
-                                            <PropertiesSpinEdit  DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#0066FF" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Importe Descto" FieldName="unitario_descuento_importe" ShowInCustomizationForm="True" VisibleIndex="2" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#0066FF" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Costo neto" FieldName="unitario_costo_neto" ShowInCustomizationForm="True" VisibleIndex="3" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#0066FF" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Importe" FieldName="unitario_importe_total" ShowInCustomizationForm="True" VisibleIndex="4" Width="100px">
-                                            <PropertiesSpinEdit  DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#0066FF" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                    </Columns>
-                                </dx:GridViewBandColumn>
-                                <dx:GridViewBandColumn Caption="Descto. Global" VisibleIndex="25">
-                                    <%--<HeaderStyle BackColor="#339966" />--%>
-                                    <Columns>
-                                        <dx:GridViewDataSpinEditColumn Caption="% Descto." FieldName="global_descuento_porc" ShowInCustomizationForm="True" VisibleIndex="0" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="P2" MaxValue="100.00" NumberFormat="Percent">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#339966" />
-                                            <CellStyle BackColor="#9FDFBF">
-                                            </CellStyle>
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Descuento" FieldName="global_descuento" ShowInCustomizationForm="True" VisibleIndex="1" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#339966" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Importe Descto" FieldName="global_descuento_importe" ShowInCustomizationForm="True" VisibleIndex="2" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#339966" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Costo neto" FieldName="global_costo_neto" ShowInCustomizationForm="True" VisibleIndex="3" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#339966" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Importe" FieldName="global_importe_total" ShowInCustomizationForm="True" VisibleIndex="4" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#339966" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                    </Columns>
-                                </dx:GridViewBandColumn>
-                                <dx:GridViewBandColumn Caption="Descto. Nota de Crédito" VisibleIndex="26">
-                                    <%--<HeaderStyle BackColor="#FFFF99" />--%>
-                                    <Columns>
-                                        <dx:GridViewDataSpinEditColumn Caption="% Descto." FieldName="notcred_descuento_porc" ShowInCustomizationForm="True" VisibleIndex="0" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="P2" MaxValue="100.00" NumberFormat="Percent">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#FFFF99" />
-                                            <CellStyle BackColor="#f0f09c">
-                                            </CellStyle>
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Descuento" FieldName="notcred_descuento" ShowInCustomizationForm="True" VisibleIndex="1" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#FFFF99" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Importe Descto" FieldName="notcred_descuento_importe" ShowInCustomizationForm="True" VisibleIndex="2" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#FFFF99" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Costo neto" FieldName="notcred_costo_neto" ShowInCustomizationForm="True" VisibleIndex="3" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#FFFF99" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn ReadOnly="true" Caption="Importe" FieldName="notcred_importe_total" ShowInCustomizationForm="True" VisibleIndex="4" Width="100px">
-                                            <PropertiesSpinEdit DecimalPlaces="2" DisplayFormatInEditMode="True" DisplayFormatString="c" MaxValue="9999999999.99" NumberFormat="Currency">
-                                                <SpinButtons ClientVisible="False" Enabled="False" ShowIncrementButtons="False">
-                                                </SpinButtons>
-                                                <ValidationSettings>
-                                                    <RequiredField IsRequired="True" />
-                                                </ValidationSettings>
-                                                <Style HorizontalAlign="Right">
-                                                </Style>
-                                            </PropertiesSpinEdit>
-                                            <HeaderStyle BackColor="#FFFF99" />
-                                        </dx:GridViewDataSpinEditColumn>
-                                    </Columns>
-                                </dx:GridViewBandColumn>
-
-                            </Columns>
-                            <TotalSummary>                                
-                                <dx:ASPxSummaryItem DisplayFormat="c2" FieldName="unitario_importe_total" SummaryType="Sum" ValueDisplayFormat="c2" />
-                                <dx:ASPxSummaryItem DisplayFormat="c2" FieldName="unitario_descuento_importe" SummaryType="Sum" ValueDisplayFormat="c2" />
-                                <dx:ASPxSummaryItem DisplayFormat="c2" FieldName="global_descuento_importe" SummaryType="Sum" ValueDisplayFormat="c2" />
-                                <dx:ASPxSummaryItem DisplayFormat="c2" FieldName="global_importe_total" SummaryType="Sum" ValueDisplayFormat="c2" />
-                                <dx:ASPxSummaryItem DisplayFormat="c2" FieldName="notcred_descuento_importe" SummaryType="Sum" ValueDisplayFormat="c2" />
-                                <dx:ASPxSummaryItem DisplayFormat="c2" FieldName="notcred_importe_total" SummaryType="Sum" ValueDisplayFormat="c2" />
-                            </TotalSummary>
+                            <SettingsAdaptivity AdaptivityMode="HideDataCells" AllowOnlyOneAdaptiveDetailExpanded="True">
+                                <AdaptiveDetailLayoutProperties ShowItemCaptionColon="False">
+                                    <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="800">
+                                    </SettingsAdaptivity>                    
+                                    <SettingsItemCaptions Location="Top" />
+                                </AdaptiveDetailLayoutProperties>
+                            </SettingsAdaptivity>
                         </dx:ASPxGridView>                            
                     </DetailRow>
                 </Templates>
@@ -871,10 +579,10 @@
     </dx:ASPxRoundPanel>
 
     <asp:SqlDataSource ID="Orden_compra_det" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" 
-        SelectCommand="SELECT key_orden_compra_det, fkey_centrocostos, fkey_orden_compra, fkey_articulo, fkey_articulos_color, fkey_articulos_tallas, partida, fecha_entrega, cantidad, costo_unitario, unitario_descuento_porc, unitario_descuento, unitario_descuento_importe, unitario_costo_neto, unitario_importe_total, global_descuento_porc, global_descuento, global_descuento_importe, global_costo_neto, global_importe_total, notcred_descuento_porc, notcred_descuento, notcred_descuento_importe, notcred_costo_neto, notcred_importe_total, descuento_neto, descuento_importe, costo_neto, importe_total FROM &quot;Orden_compra_det&quot; WHERE fkey_centrocostos = ? and fkey_orden_compra = ? ORDER BY partida" 
+        SelectCommand="SELECT key_orden_compra_det, fkey_centrocostos, fkey_orden_compra, fkey_articulo, fkey_articulos_color, fkey_articulos_tallas, partida, fecha_entrega, cantidad, costo_unitario FROM &quot;Orden_compra_det&quot; WHERE fkey_centrocostos = ? and fkey_orden_compra = ? ORDER BY key_orden_compra_det DESC" 
         DeleteCommand="DELETE FROM &quot;Orden_compra_det&quot; WHERE key_orden_compra_det = ?" 
-        InsertCommand="INSERT INTO &quot;Orden_compra_det&quot; ( fkey_centrocostos, fkey_orden_compra, fkey_articulo, fkey_articulos_color, fkey_articulos_tallas, partida, fecha_entrega, cantidad, costo_unitario, unitario_descuento_porc, unitario_descuento, unitario_descuento_importe, unitario_costo_neto, unitario_importe_total, global_descuento_porc, global_descuento, global_descuento_importe, global_costo_neto, global_importe_total, notcred_descuento_porc, notcred_descuento, notcred_descuento_importe, notcred_costo_neto, notcred_importe_total, descuento_neto, descuento_importe, costo_neto, importe_total) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" 
-        UpdateCommand="UPDATE &quot;Orden_compra_det&quot; SET fkey_articulo = ?, fkey_articulos_color = ?, fkey_articulos_tallas = ?, partida = ?, fecha_entrega = ?, cantidad = ?, costo_unitario = ?, unitario_descuento_porc=?, unitario_descuento=?, unitario_descuento_importe=?, unitario_costo_neto=?, unitario_importe_total=?, global_descuento_porc=?, global_descuento=?, global_descuento_importe=?, global_costo_neto=?, global_importe_total=?, notcred_descuento_porc=?, notcred_descuento=?, notcred_descuento_importe=?, notcred_costo_neto=?, notcred_importe_total=?, descuento_neto=?, descuento_importe=?, costo_neto=?, importe_total=?  WHERE key_orden_compra_det = ?">
+        InsertCommand="INSERT INTO &quot;Orden_compra_det&quot; ( fkey_centrocostos, fkey_orden_compra, fkey_articulo, fkey_articulos_color, fkey_articulos_tallas, partida, fecha_entrega, cantidad, costo_unitario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)" 
+        UpdateCommand="UPDATE &quot;Orden_compra_det&quot; SET fkey_articulo = ?, fkey_articulos_color = ?, fkey_articulos_tallas = ?, partida = ?, fecha_entrega = ?, cantidad = ?, costo_unitario = ?  WHERE key_orden_compra_det = ?">
         <SelectParameters>
             <asp:SessionParameter Name="fkey_centrocostos" Type="Int64" SessionField="session_key_centrocostos"/>
             <asp:SessionParameter Name="fkey_orden_compra" Type="Int64" SessionField="session_key_orden_compra"/>                        
@@ -892,25 +600,6 @@
             <asp:Parameter Name="fecha_entrega" Type="DateTime" />
             <asp:Parameter Name="cantidad" Type="Int32" />
             <asp:Parameter Name="costo_unitario" Type="Decimal" />
-            <asp:Parameter Name="unitario_descuento_porc" Type="Decimal" />
-            <asp:Parameter Name="unitario_descuento" Type="Decimal" />
-            <asp:Parameter Name="unitario_descuento_importe" Type="Decimal" />
-            <asp:Parameter Name="unitario_costo_neto" Type="Decimal" />
-            <asp:Parameter Name="unitario_importe_total" Type="Decimal" />
-            <asp:Parameter Name="global_descuento_porc" Type="Decimal" />
-            <asp:Parameter Name="global_descuento" Type="Decimal" />
-            <asp:Parameter Name="global_descuento_importe" Type="Decimal" />
-            <asp:Parameter Name="global_costo_neto" Type="Decimal" />
-            <asp:Parameter Name="global_importe_total" Type="Decimal" />
-            <asp:Parameter Name="notcred_descuento_porc" Type="Decimal" />
-            <asp:Parameter Name="notcred_descuento" Type="Decimal" />
-            <asp:Parameter Name="notcred_descuento_importe" Type="Decimal" />
-            <asp:Parameter Name="notcred_costo_neto" Type="Decimal" />
-            <asp:Parameter Name="notcred_importe_total" Type="Decimal" />
-            <asp:Parameter Name="descuento_neto" Type="Decimal" />
-            <asp:Parameter Name="descuento_importe" Type="Decimal" />
-            <asp:Parameter Name="costo_neto" Type="Decimal" />
-            <asp:Parameter Name="importe_total" Type="Decimal" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="fkey_articulo" Type="Int64" />
@@ -920,25 +609,6 @@
             <asp:Parameter Name="fecha_entrega" Type="DateTime" />
             <asp:Parameter Name="cantidad" Type="Int32" />
             <asp:Parameter Name="costo_unitario" Type="Decimal" />
-            <asp:Parameter Name="unitario_descuento_porc" Type="Decimal" />
-            <asp:Parameter Name="unitario_descuento" Type="Decimal" />
-            <asp:Parameter Name="unitario_descuento_importe" Type="Decimal" />
-            <asp:Parameter Name="unitario_costo_neto" Type="Decimal" />
-            <asp:Parameter Name="unitario_importe_total" Type="Decimal" />
-            <asp:Parameter Name="global_descuento_porc" Type="Decimal" />
-            <asp:Parameter Name="global_descuento" Type="Decimal" />
-            <asp:Parameter Name="global_descuento_importe" Type="Decimal" />
-            <asp:Parameter Name="global_costo_neto" Type="Decimal" />
-            <asp:Parameter Name="global_importe_total" Type="Decimal" />
-            <asp:Parameter Name="notcred_descuento_porc" Type="Decimal" />
-            <asp:Parameter Name="notcred_descuento" Type="Decimal" />
-            <asp:Parameter Name="notcred_descuento_importe" Type="Decimal" />
-            <asp:Parameter Name="notcred_costo_neto" Type="Decimal" />
-            <asp:Parameter Name="notcred_importe_total" Type="Decimal" />
-            <asp:Parameter Name="descuento_neto" Type="Decimal" />
-            <asp:Parameter Name="descuento_importe" Type="Decimal" />
-            <asp:Parameter Name="costo_neto" Type="Decimal" />
-            <asp:Parameter Name="importe_total" Type="Decimal" />
             <asp:Parameter Name="key_orden_compra_det" Type="Int64" />
         </UpdateParameters>
     </asp:SqlDataSource>
@@ -948,7 +618,7 @@
                 <asp:SqlDataSource ID="SDS_Orden_compra" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" 
                     DeleteCommand="DELETE FROM &quot;Orden_compra&quot; WHERE key_orden_compra = ?" 
                     InsertCommand="INSERT INTO &quot;Orden_compra&quot; (key_centrocostos, fkey_compradores, oc, solicita, autoriza, fkey_proveedores, fecha, tipo, lugar_entrega,descuento_unitario, descuento_global, descuento_notcred ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" 
-                    SelectCommand="SELECT key_orden_compra, key_centrocostos, fkey_compradores, oc, solicita, autoriza, fecha_autoriza, fkey_proveedores, fecha, tipo, lugar_entrega, porcentaje_iva, sub_total, iva, total, recibido_sub_total, recibido_iva, recibido_total, ajuste_sub_total, ajuste_iva, ajuste_total, cancela_sub_total, cancela_iva, cancela_total, total_facturado, total_pagado, estatus_recibido, estatus_autoriza, estatus_impresa, descuento_unitario, descuento_global, descuento_notcred  FROM &quot;Orden_compra&quot;" 
+                    SelectCommand="SELECT key_orden_compra, key_centrocostos, fkey_compradores, oc, solicita, autoriza, fecha_autoriza, fkey_proveedores, fecha, tipo, lugar_entrega, porcentaje_iva, sub_total, iva, total, recibido_sub_total, recibido_iva, recibido_total, ajuste_sub_total, ajuste_iva, ajuste_total, cancela_sub_total, cancela_iva, cancela_total, total_facturado, total_pagado, estatus_recibido, estatus_autoriza, estatus_impresa, descuento_unitario, descuento_global, descuento_notcred  FROM &quot;Orden_compra&quot; ORDER BY key_orden_compra DESC" 
                     UpdateCommand="UPDATE &quot;Orden_compra&quot; SET key_centrocostos=?, fkey_compradores=?, oc=?, solicita=?, autoriza=?, fkey_proveedores=?, fecha=?, tipo=?, lugar_entrega=?, descuento_unitario=?, descuento_global=?, descuento_notcred=? WHERE key_orden_compra = ?">
                     <DeleteParameters>
                         <asp:Parameter Name="key_orden_compra" Type="Int64" />
@@ -1001,11 +671,13 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
 
-                <asp:SqlDataSource ID="SDS_Usuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_usuario, usuario, nombre FROM &quot;Usuarios&quot;"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SDS_Usuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_usuario, usuario, nombre FROM &quot;Usuarios&quot; ORDER BY nombre"></asp:SqlDataSource>
 
                 <asp:SqlDataSource ID="SDS_Tipo_orden_compra" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" 
                     SelectCommand="SELECT key_orden_compra_tipo,tipo_oc,imagen FROM &quot;Orden_compra_tipo&quot;">
                 </asp:SqlDataSource>
 
                 <asp:SqlDataSource ID="SDS_Entrega" runat="server" ConnectionString="<%$ ConnectionStrings:ServerPostgreSqlODBC %>" ProviderName="<%$ ConnectionStrings:ServerPostgreSqlODBC.ProviderName %>" SelectCommand="SELECT key_orden_compra_entrega, entrega FROM &quot;Orden_compra_entrega&quot;"></asp:SqlDataSource>
+
+
 </asp:Content>

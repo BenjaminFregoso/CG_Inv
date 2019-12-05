@@ -1108,5 +1108,4 @@ D:\Documents\GitHub\CG_Inv\CG_InvWeb\bin\Microsoft.AspNet.Identity.Core.dll
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\bin\Microsoft.AspNet.Identity.Core.xml
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.csprojAssemblyReference.cache
-D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.csproj.CoreCompileInputs.cache
 D:\Documents\GitHub\CG_Inv\CG_InvWeb\obj\Debug\CG_InvWeb.csproj.CopyComplete
